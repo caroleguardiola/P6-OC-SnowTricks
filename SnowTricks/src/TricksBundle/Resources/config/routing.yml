@@ -1,0 +1,4 @@
+tricks_homepage:
+    path:     /
+    defaults: { _controller: TricksBundle:Default:index }
+
