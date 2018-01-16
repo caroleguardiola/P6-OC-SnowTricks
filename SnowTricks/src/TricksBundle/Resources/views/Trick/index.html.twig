@@ -1,0 +1,63 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Home {% endblock %}
+
+{% block sections_body %}
+
+  <!--Home Sections-->
+
+  <section id="hello" class="home bg-mega">
+      <div class="overlay"></div>
+      <div class="container">
+          <div class="row">
+              <div class="main_home">
+                  <div class="home_text">
+                      <h1 class="text-blue wow fadeInLeft" data-wow-duration="2s">Bienvenue sur SnowTricks !</h1>
+                      <p class="text-blue wow fadeInLeft" data-wow-duration="2s">Site communautaire pour les passionnés du Snowboard</p>
+                  </div>
+              </div>
+          </div><!--End off row-->
+      </div><!--End off container -->
+
+      <!-- scroll down-->
+      <div class="scrolldown">
+         <a href="#list_tricks"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+      </div><!-- End off scroll down -->
+
+  </section> <!--End off Home Sections-->
+
+  <!-- Page Content -->
+  <section class="container roomy-100 list_tricks" id="list_tricks">
+
+      <div class="row">
+        {% for trick in listTricks %}
+          <div class="col-md-2 point5 ">
+              <div class="trick">
+                  <a href="#">
+                      <img class="img-responsive" src="http://placehold.it/750x450" alt="">
+                  </a>
+                  <div class="trick_info">
+                      <div class="trick_name">
+                          <a href=""><h6>{{ trick.title }}</h6></a>
+                      </div>
+                      <div class="trick_update">
+                          <a href=""><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                      </div>
+                      <div class="trick_delete">
+                          <a href=""><i class="fa fa-trash" aria-hidden="true"></i></a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        {% else %}
+            Pas (encore !) d'annonces
+        {% endfor %}
+      </div>
+
+      <div class="button-loading">
+          <button type="button" class="btn btn-primary btn-lg" id="load" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Loading">Load More</button>
+      </div>
+
+  </section>
+
+{% endblock %}
