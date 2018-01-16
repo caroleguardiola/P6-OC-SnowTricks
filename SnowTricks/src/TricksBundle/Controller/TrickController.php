@@ -9,7 +9,7 @@ class TrickController extends Controller
 {
     public function indexAction()
     {
-         $content = $this->get('templating')->render('TricksBundle:Trick:index.html.twig');
+         $content = $this->render('TricksBundle:Trick:index.html.twig');
     
     return new Response($content);
     }
