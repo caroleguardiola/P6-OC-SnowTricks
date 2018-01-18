@@ -1,6 +1,6 @@
 {% extends "::layout.html.twig" %}
 
-{% block title %}{{ parent() }} - Ajout Trick {% endblock %}
+{% block title %}{{ parent() }} - Modifier un Trick {% endblock %}
 
 {% block sections_body %}
 
@@ -24,7 +24,7 @@
             <div class="col-md-12">
               <div class="home_text">
                 <h1 class="text-blue wow fadeInLeft" data-wow-duration="2s">Trick Name</h1>
-                <p class="text-blue wow fadeInLeft" data-wow-duration="2s">Formulaire de création</h1>
+                <p class="text-blue wow fadeInLeft" data-wow-duration="2s">Formulaire de modification</h1>
               </div>
             </div>
           </div>
@@ -42,6 +42,14 @@
                 <div class="col-md-2">
                   <div class="trick">
                       <p>Médias trick</p>
+                  </div>
+                  <div class="trick_info_details pull-right">
+                    <div class="trick_update">
+                      <a href=""><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="trick_delete">
+                      <a href=""><i class="fa fa-trash" aria-hidden="true"></i></a>
+                    </div>
                   </div>
                 </div>
               </div>
