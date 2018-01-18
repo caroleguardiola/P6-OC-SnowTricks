@@ -23,13 +23,23 @@ class TrickController extends Controller
 
     public function addAction(Request $request)
 	{
-	    // Si la requête est en POST, c'est que le visiteur a soumis le formulaire
 	    if ($request->isMethod('POST')) {
-	      $request->getSession()->getFlashBag()->add('notice', 'Trick bien enregistré.');
-	      // Puis on redirige vers la page de visualisation de cettte annonce
-	      return $this->redirectToRoute('tricks_homepage', array('id' => 5));
+	      $request->getSession()->getFlashBag()->add('notice', 'Trick bien enregistré.');	     
+	      return $this->redirectToRoute('tricks_homepage');
 	    }
-	    // Si on n'est pas en POST, alors on affiche le formulaire
+	    
 	    return $this->render('TricksBundle:Trick:add.html.twig');
 	}
+
+    public function editAction($id, Request $request)
+    {
+        if ($request->isMethod('POST')) {
+          $request->getSession()->getFlashBag()->add('notice', 'Trick bien modifié.');
+          return $this->redirectToRoute('tricks_homepage');
+        }
+        
+        return $this->render('TricksBundle:Trick:edit.html.twig', array(
+          'trick' => array()
+        ));
+    }
 }

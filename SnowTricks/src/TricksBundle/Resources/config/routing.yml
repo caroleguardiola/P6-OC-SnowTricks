@@ -14,4 +14,10 @@ tricks_add:
     path:     /tricks/ajout
     defaults: 
       _controller: TricksBundle:Trick:add
+
+tricks_edit:
+    path:     /tricks/modification/{id}/{slug}
+    defaults: 
+      _controller: TricksBundle:Trick:edit
     requirements:
+      id: \d+
