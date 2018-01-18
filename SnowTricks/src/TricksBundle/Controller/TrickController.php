@@ -27,7 +27,7 @@ class TrickController extends Controller
 	    if ($request->isMethod('POST')) {
 	      $request->getSession()->getFlashBag()->add('notice', 'Trick bien enregistré.');
 	      // Puis on redirige vers la page de visualisation de cettte annonce
-	      return $this->redirectToRoute('tricks_view', array('id' => 5));
+	      return $this->redirectToRoute('tricks_homepage', array('id' => 5));
 	    }
 	    // Si on n'est pas en POST, alors on affiche le formulaire
 	    return $this->render('TricksBundle:Trick:add.html.twig');
