@@ -1,0 +1,103 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Trick {% endblock %}
+
+{% block sections_body %}
+
+<div class="home_tricks">
+
+  
+    <div class="container content">
+      <div class="row page-wrapper">
+
+      <section class="trick_header">
+        <div class="trick_info_details">
+            <div class="trick_update">
+                <a href=""><i class="fa fa-pencil" aria-hidden="true"></i></a>
+            </div>
+            <div class="trick_delete">
+                <a href=""><i class="fa fa-trash" aria-hidden="true"></i></a>
+            </div>
+        </div>
+
+        <div class="trick_image">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="home_text">
+                <h1 class="text-blue wow fadeInLeft" data-wow-duration="2s">Trick Name</h1>
+              </div>
+            </div>
+          </div>
+          <!-- scroll down-->
+          <div class="scrolldown">
+             <a href="#list_tricks"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+          </div><!-- End off scroll down -->
+        </div>
+      </section>
+
+        <section class="trick_details_section">
+          <div class="row trick_details">
+            <div class="trick_list_medias">
+              {% for trickImage in trickDetails %}
+                <div class="col-md-12 trick_medias">
+                  <div class="col-md-2">
+                    <div class="trick">
+                        <a href="#">
+                            <img class="img-responsive" src="http://placehold.it/750x450" alt="">
+                        </a>
+                    </div>
+                  </div>
+                </div>
+              {% else %}
+                Médias trick
+              {% endfor %}
+            </div>
+          </div>
+       
+          <div class="row trick_details">
+            <div class="trick_description">
+                <div class="col-md-12">
+                    <p>Description trick</p>
+                </div>
+            </div>
+          </div>
+       
+          <div class="row trick_details">
+            <div class="trick_description">
+                <div class="col-md-12">
+                    <p>Informations trick</p>
+                </div>
+            </div>
+          </div>
+       
+
+        <hr class="divider">
+
+       
+          <div class="row trick_details">
+            <div class="trick_description">
+                <div class="col-md-12">
+                    <p>Formulaire commentaire</p>
+                </div>
+            </div>
+          </div>
+       
+
+        <hr class="divider ">
+
+       
+          <div class="row trick_details">
+            <div class="trick_description">
+                <div class="col-md-12">
+                    <p>Liste commentaires</p>
+                </div>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+</div> <!--End off Home Sections-->
+
+
+{% endblock %}
