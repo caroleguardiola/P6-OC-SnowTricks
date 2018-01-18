@@ -1,6 +1,6 @@
 {% extends "::layout.html.twig" %}
 
-{% block title %}{{ parent() }} - Trick {% endblock %}
+{% block title %}{{ parent() }} - Ajout Trick {% endblock %}
 
 {% block sections_body %}
 
@@ -11,12 +11,12 @@
 
       <section class="trick_header">
         <div class="trick_info_details pull-right">
-            <div class="trick_update">
-                <a href=""><i class="fa fa-pencil" aria-hidden="true"></i></a>
-            </div>
-            <div class="trick_delete">
-                <a href=""><i class="fa fa-trash" aria-hidden="true"></i></a>
-            </div>
+          <div class="trick_update">
+            <a href=""><i class="fa fa-pencil" aria-hidden="true"></i></a>
+          </div>
+          <div class="trick_delete">
+            <a href=""><i class="fa fa-trash" aria-hidden="true"></i></a>
+          </div>
         </div>
 
         <div class="trick_image">
@@ -37,30 +37,16 @@
       <section class="trick_details_section">
         <div class="row trick_details">
           <div class="trick_list_medias">
-            {% for trickImage in trickDetails %}
               <div class="col-md-12 trick_medias">
                 <div class="col-md-2">
                   <div class="trick">
-                      <a href="#">
-                          <img class="img-responsive" src="http://placehold.it/750x450" alt="">
-                      </a>
+                      <p>Médias trick</p>
                   </div>
                 </div>
               </div>
-            {% else %}
-              Médias trick
-            {% endfor %}
           </div>
         </div>
-     
-        <div class="row trick_details">
-          <div class="trick_description">
-              <div class="col-md-12">
-                  <p>Description trick</p>
-              </div>
-          </div>
-        </div>
-     
+
         <div class="row trick_details">
           <div class="trick_description">
               <div class="col-md-12">
@@ -69,29 +55,10 @@
           </div>
         </div>
      
-
-      <hr class="divider">
-
-     
         <div class="row trick_details">
           <div class="trick_description">
               <div class="col-md-12">
-                  <p>Formulaire commentaire</p>
-              </div>
-          </div>
-        </div>
-     
-
-      <hr class="divider ">
-
-     
-        <div class="row trick_details">
-          <div class="trick_description">
-              <div class="col-md-12">
-                  <p>Liste commentaires</p>
-              </div>
-               <div class="button-loading">
-                  <button type="button" class="btn btn-primary btn-lg" id="load" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Loading">Load More</button>
+                  <p>Formulaire - Description trick</p>
               </div>
           </div>
         </div>

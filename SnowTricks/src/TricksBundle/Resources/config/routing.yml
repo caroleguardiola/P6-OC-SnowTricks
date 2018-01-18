@@ -9,3 +9,9 @@ tricks_view:
       _controller: TricksBundle:Trick:view
     requirements:
       id: \d+
+
+tricks_add:
+    path:     /tricks/ajout
+    defaults: 
+      _controller: TricksBundle:Trick:add
+    requirements:
