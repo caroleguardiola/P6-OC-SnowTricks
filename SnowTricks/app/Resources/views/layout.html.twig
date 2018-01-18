@@ -62,20 +62,7 @@
             <!--Home page style-->
 
             <nav class="navbar navbar-default navbar-fixed white no-background bootsnav">
-                <!-- Start Top Search -->
-                <div class="top-search">
-                    <div class="container">
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                            <input type="text" class="form-control" placeholder="Search">
-                            <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
-                        </div>
-                    </div>
-                </div>
-                <!-- End Top Search -->
-
                 <div class="container">    
-                    
                     <!-- Start Header Navigation -->
                     <div class="navbar-header">
                         <a class="navbar-brand" href="#brand">
@@ -85,27 +72,11 @@
                     </div>
                     <!-- End Header Navigation -->
 
-                    <nav class="navbar navbar-default navbar-fixed-bottom">
-                        <div class="container-fluid navbar-responsive">
-                            <div class="row">
-                                <div class="col-xs-4">
-                                    <a href="#hello"><i class="fa fa-home" aria-hidden="true"></i></a>
-                                </div>
-                                <div class="col-xs-4">                  
-                                    <a href="#"><i class="fa fa-bookmark" aria-hidden="true"></i></a>
-                                </div>
-                                <div class="col-xs-4">                
-                                    <a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
-                                </div>   
-                            </div>
-                        </div>
-                    </nav>
-
-                    <!-- Collect the nav links, forms, and other content for toggling -->
+                 <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
                             <li><a href="#hello">Accueil</a></li>                    
-                            <li><a href="#">Tricks</a></li>                    
+                            <li><a href="#list_tricks">Tricks</a></li>                    
                             <li><a href="#">Sign In</a></li>                    
                             <li><a href="#">Sign Up</a></li>                    
                         </ul>
@@ -113,7 +84,21 @@
                 </div>  
 
             </nav>
-        </div>
+            <nav class="navbar navbar-default navbar-fixed-bottom">
+                <div class="container-fluid navbar-responsive">
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <a href="#hello"><i class="fa fa-home" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="col-xs-4">                  
+                            <a href="#"><i class="fa fa-bookmark" aria-hidden="true"></i></a>
+                        </div>
+                        <div class="col-xs-4">                
+                            <a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                        </div>   
+                    </div>
+                </div>
+            </nav>
 
             {% block sections_body %}
             {% endblock %}

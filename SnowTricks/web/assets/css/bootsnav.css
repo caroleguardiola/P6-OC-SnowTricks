@@ -1027,6 +1027,11 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
 @media (max-width: 992px) {
     /* Navbar Responsive
     =================================*/ 
+
+    nav.navbar.bootsnav.navbar-fixed {
+        display: none;
+    }
+
     nav.navbar.bootsnav .navbar-brand    {
         display: inline-block;
         float: none !important;
@@ -1507,3 +1512,5 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
         padding-bottom: 30px;
     }
 }
+
+

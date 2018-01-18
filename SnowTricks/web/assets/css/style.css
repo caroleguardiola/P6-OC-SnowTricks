@@ -1032,7 +1032,7 @@ Home Section style
 }
 
 .home_tricks {
-    background: url(../images/background/snowboarding.jpg) no-repeat bottom center;
+    background: url(../images/background/snowboarding.jpg) no-repeat top center;
     background-color: rgba(111,111,111,0.1);
 }
 
