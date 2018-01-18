@@ -1,3 +1,11 @@
 tricks_homepage:
     path:     /
-    defaults: { _controller: TricksBundle:Trick:index }
+    defaults: 
+      _controller: TricksBundle:Trick:index
+
+tricks_view:
+    path:     /tricks/details/{id}/{slug}
+    defaults: 
+      _controller: TricksBundle:Trick:view
+    requirements:
+      id: \d+

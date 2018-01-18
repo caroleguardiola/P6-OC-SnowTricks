@@ -13,4 +13,10 @@ class TrickController extends Controller
     
     return new Response($content);
     }
+
+    public function viewAction($id)
+    {
+    	 return $this->render('TricksBundle:Trick:view.html.twig', array(
+      'trickDetails'  => array()));
+    }
 }
