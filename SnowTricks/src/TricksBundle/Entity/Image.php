@@ -35,6 +35,12 @@ class Image
      */
     private $alt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="TricksBundle\Entity\Trick")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $trick;
+
 
     /**
      * Get id
@@ -93,5 +99,28 @@ class Image
     {
         return $this->alt;
     }
-}
 
+    /**
+     * Set trick
+     *
+     * @param \TricksBundle\Entity\Trick $trick
+     *
+     * @return Image
+     */
+    public function setTrick(\TricksBundle\Entity\Trick $trick)
+    {
+        $this->trick = $trick;
+
+        return $this;
+    }
+
+    /**
+     * Get trick
+     *
+     * @return \TricksBundle\Entity\Trick
+     */
+    public function getTrick()
+    {
+        return $this->trick;
+    }
+}
