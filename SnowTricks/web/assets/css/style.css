@@ -1058,6 +1058,14 @@ Home Section style
     text-align: center;
 }
 
+.modal-title {
+    font-family: 'Lobster', sans-serif;
+    font-size:24px;
+    font-weight: 300;
+    text-align: center;
+    color: #12a7cd;
+}
+
 .page-header {
     color: #12a7cd;
     font-family: 'Lobster', sans-serif;
