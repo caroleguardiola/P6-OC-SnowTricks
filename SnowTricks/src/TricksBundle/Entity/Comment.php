@@ -41,6 +41,12 @@ class Comment
      */
     private $trick;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="TricksBundle\Entity\User", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
 
     /**
      * Get id
@@ -122,5 +128,29 @@ class Comment
     public function getTrick()
     {
         return $this->trick;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \TricksBundle\Entity\User $user
+     *
+     * @return Comment
+     */
+    public function setUser(\TricksBundle\Entity\User $user)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \TricksBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
