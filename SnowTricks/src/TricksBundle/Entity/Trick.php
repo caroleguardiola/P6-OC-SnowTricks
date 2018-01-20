@@ -35,6 +35,12 @@ class Trick
      */
     private $description;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="TricksBundle\Entity\Category", cascade={"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
+
 
     /**
      * Get id
@@ -93,5 +99,28 @@ class Trick
     {
         return $this->description;
     }
-}
 
+    /**
+     * Set category
+     *
+     * @param \TricksBundle\Entity\Category $category
+     *
+     * @return Trick
+     */
+    public function setCategory(\TricksBundle\Entity\Category $category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \TricksBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+}

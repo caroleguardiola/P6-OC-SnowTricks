@@ -24,7 +24,7 @@ class Comment
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateCreation", type="datetimetz")
+     * @ORM\Column(name="date_creation", type="datetimetz")
      */
     private $dateCreation;
 
