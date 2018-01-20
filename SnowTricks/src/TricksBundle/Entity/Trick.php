@@ -24,16 +24,16 @@ class Trick
     /**
      * @var string
      *
-     * @ORM\Column(name="title", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255)
      */
-    private $title;
+    private $name;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="content", type="text")
+     * @ORM\Column(name="description", type="text")
      */
-    private $content;
+    private $description;
 
 
     /**
@@ -47,51 +47,51 @@ class Trick
     }
 
     /**
-     * Set title
+     * Set name
      *
-     * @param string $title
+     * @param string $name
      *
      * @return Trick
      */
-    public function setTitle($title)
+    public function setName($title)
     {
-        $this->title = $title;
+        $this->name = $name;
 
         return $this;
     }
 
     /**
-     * Get title
+     * Get name
      *
      * @return string
      */
-    public function getTitle()
+    public function getName()
     {
-        return $this->title;
+        return $this->name;
     }
 
     /**
-     * Set content
+     * Set description
      *
-     * @param string $content
+     * @param string $description
      *
      * @return Trick
      */
-    public function setContent($content)
+    public function setDescription($description)
     {
-        $this->content = $content;
+        $this->description = $description;
 
         return $this;
     }
 
     /**
-     * Get content
+     * Get description
      *
      * @return string
      */
-    public function getContent()
+    public function getDescription()
     {
-        return $this->content;
+        return $this->description;
     }
 }
 

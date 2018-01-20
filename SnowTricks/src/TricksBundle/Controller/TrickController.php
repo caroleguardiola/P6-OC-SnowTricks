@@ -46,8 +46,8 @@ class TrickController extends Controller
 	{
 	    // Création de l'entité Advert
     $trick = new Trick();
-    $trick->setTitle('Recherche développeur Symfony.');
-    $trick->setContent("Nous recherchons un développeur Symfony débutant sur Lyon. Blabla…");
+    $trick->setName('Recherche développeur Symfony.');
+    $trick->setDescription("Nous recherchons un développeur Symfony débutant sur Lyon. Blabla…");
 
     // Création de l'entité Image
     $image = new Image();
