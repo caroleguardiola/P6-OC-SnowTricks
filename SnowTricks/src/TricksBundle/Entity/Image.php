@@ -36,7 +36,7 @@ class Image
     private $alt;
 
     /**
-     * @ORM\ManyToOne(targetEntity="TricksBundle\Entity\Trick")
+     * @ORM\ManyToOne(targetEntity="TricksBundle\Entity\Trick", cascade={"persist"})
      * @ORM\JoinColumn(nullable=false)
      */
     private $trick;

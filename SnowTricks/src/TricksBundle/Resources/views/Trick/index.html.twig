@@ -33,7 +33,7 @@
         {% for trick in listTricks %}
           <div class="col-md-2 point5 ">
               <div class="trick">
-                  <a href="#">
+                  <a href="{{ path('tricks_view', {'id': trick.id}) }}">
                       <img class="img-responsive" src="http://placehold.it/750x450" alt="">
                   </a>
                   <div class="trick_info">
