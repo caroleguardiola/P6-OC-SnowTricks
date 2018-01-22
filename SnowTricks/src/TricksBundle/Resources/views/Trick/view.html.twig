@@ -23,7 +23,7 @@
           <div class="row">
             <div class="col-md-12">
               <div class="home_text">
-                <h1 class="text-blue wow fadeInLeft" data-wow-duration="2s">Trick Name</h1>
+                <h1 class="text-blue wow fadeInLeft" data-wow-duration="2s">{{trick.name}}</h1>
               </div>
             </div>
           </div>
@@ -37,26 +37,33 @@
       <section class="trick_details_section">
         <div class="row trick_details">
           <div class="trick_list_medias">
-            {% for trickImage in trickDetails %}
               <div class="col-md-12 trick_medias">
+                {% for image in listImages %}
                 <div class="col-md-2">
                   <div class="trick">
                       <a href="#">
-                          <img class="img-responsive" src="http://placehold.it/750x450" alt="">
+                        <img src="{{image.url}}" alt="{{image.alt}}">                      
                       </a>
                   </div>
                 </div>
+              {% endfor %}
+              {% for video in listVideos %}
+                <div class="col-md-2">
+                  <div class="trick">
+                      <a href="#">
+                        <iframe src="{{video.url}}" allowfullscreen></iframe>                      
+                      </a>
+                  </div>
+                </div>
+              {% endfor %}
               </div>
-            {% else %}
-              Médias trick
-            {% endfor %}
           </div>
         </div>
      
         <div class="row trick_details">
           <div class="trick_description">
               <div class="col-md-12">
-                  <p>Description trick</p>
+                  <p>{{trick.description}}</p>
               </div>
           </div>
         </div>
@@ -65,6 +72,10 @@
           <div class="trick_description">
               <div class="col-md-12">
                   <p>Informations trick</p>
+                    <p>
+                      Ce trick fait partie de la catégorie suivante :
+                        {{trick.category.name}}
+                    </p>
               </div>
           </div>
         </div>
@@ -96,6 +107,11 @@
           </div>
         </div>
       </section>
+
+      <a href="{{ path('tricks_home') }}" class="btn btn-primary btn-lg">
+     <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+      Retour à la liste
+    </a>
 
     </div>
   </div>
