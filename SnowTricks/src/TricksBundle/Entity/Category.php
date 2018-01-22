@@ -24,9 +24,14 @@ class Category
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=255)
+     * @ORM\Column(name="name", type="string", length=255, unique=true)
      */
     private $name;
+
+    /**
+     * @ORM\OneToMany(targetEntity="TricksBundle\Entity\Trick", mappedBy="category")
+     */
+    private $tricks;
 
  
     /**
@@ -61,5 +66,46 @@ class Category
     public function getName()
     {
         return $this->name;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tricks = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add trick
+     *
+     * @param \TricksBundle\Entity\Trick $trick
+     *
+     * @return Category
+     */
+    public function addTrick(\TricksBundle\Entity\Trick $trick)
+    {
+        $this->tricks[] = $trick;
+
+        return $this;
+    }
+
+    /**
+     * Remove trick
+     *
+     * @param \TricksBundle\Entity\Trick $trick
+     */
+    public function removeTrick(\TricksBundle\Entity\Trick $trick)
+    {
+        $this->tricks->removeElement($trick);
+    }
+
+    /**
+     * Get tricks
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getTricks()
+    {
+        return $this->tricks;
     }
 }

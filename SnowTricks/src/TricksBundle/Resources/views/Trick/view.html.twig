@@ -42,7 +42,8 @@
                 <div class="col-md-2">
                   <div class="trick">
                       <a href="#">
-                        <img src="{{image.url }}" alt="{{image.alt }}" height="60">                      </a>
+                        <img src="{{image.url}}" alt="{{image.alt}}" height="60">                      
+                      </a>
                   </div>
                 </div>
               {% endfor %}
@@ -53,7 +54,7 @@
         <div class="row trick_details">
           <div class="trick_description">
               <div class="col-md-12">
-                  <p>Description trick</p>
+                  <p>{{trick.description}}</p>
               </div>
           </div>
         </div>
@@ -62,6 +63,10 @@
           <div class="trick_description">
               <div class="col-md-12">
                   <p>Informations trick</p>
+                    <p>
+                      Ce trick fait partie de la catégorie suivante :
+                        {{trick.category.name}}
+                    </p>
               </div>
           </div>
         </div>

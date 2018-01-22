@@ -36,16 +36,21 @@ class Comment
     private $content;
 
     /**
-     * @ORM\ManyToOne(targetEntity="TricksBundle\Entity\Trick", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="TricksBundle\Entity\Trick", cascade={"persist"}, inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
      */
     private $trick;
 
     /**
-     * @ORM\ManyToOne(targetEntity="TricksBundle\Entity\User", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="TricksBundle\Entity\User", inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;
+
+    public function __construct()
+    {
+        $this->dateCreation = new \Datetime();
+    }
 
 
     /**

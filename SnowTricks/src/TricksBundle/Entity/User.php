@@ -63,6 +63,11 @@ class User
      */
     private $password;
 
+    /**
+     * @ORM\OneToMany(targetEntity="TricksBundle\Entity\Comment", mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $comments;
+
 
     /**
      * Get id
@@ -217,5 +222,50 @@ class User
     {
         return $this->password;
     }
-}
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
+    /**
+     * Add comment
+     *
+     * @param \TricksBundle\Entity\Comment $comment
+     *
+     * @return User
+     */
+    public function addComment(\TricksBundle\Entity\Comment $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param \TricksBundle\Entity\Comment $comment
+     */
+    public function removeComment(\TricksBundle\Entity\Comment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    public function getFullName()
+    {
+        return $this->firstname. ' '.$this->lastname;
+    }
+}
