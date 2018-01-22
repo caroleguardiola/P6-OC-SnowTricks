@@ -42,7 +42,16 @@
                 <div class="col-md-2">
                   <div class="trick">
                       <a href="#">
-                        <img src="{{image.url}}" alt="{{image.alt}}" height="60">                      
+                        <img src="{{image.url}}" alt="{{image.alt}}">                      
+                      </a>
+                  </div>
+                </div>
+              {% endfor %}
+              {% for video in listVideos %}
+                <div class="col-md-2">
+                  <div class="trick">
+                      <a href="#">
+                        <iframe src="{{video.url}}" allowfullscreen></iframe>                      
                       </a>
                   </div>
                 </div>

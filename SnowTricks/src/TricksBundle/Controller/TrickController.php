@@ -73,7 +73,7 @@ class TrickController extends Controller
 
        // Création de l'entité Video
       $video = new Video();
-      $video->setUrl('https://www.youtube.com/watch?v=id8VKl9RVQw');
+      $video->setUrl('https://www.youtube.com/embed/id8VKl9RVQw');
 
       // Création de l'entité Category
       $category = new Category();
