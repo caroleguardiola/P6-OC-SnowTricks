@@ -130,7 +130,7 @@ class Trick
      *
      * @return Trick
      */
-    public function setCategory(\TricksBundle\Entity\Category $category)
+    public function setCategory(Category $category)
     {
         $this->category = $category;
 
@@ -164,7 +164,7 @@ class Trick
      *
      * @return Trick
      */
-    public function addImage(\TricksBundle\Entity\Image $image)
+    public function addImage(Image $image)
     {
         $this->images[] = $image;
         $image->setTrick($this);
@@ -177,7 +177,7 @@ class Trick
      *
      * @param \TricksBundle\Entity\Image $image
      */
-    public function removeImage(\TricksBundle\Entity\Image $image)
+    public function removeImage(Image $image)
     {
         $this->images->removeElement($image);
     }
@@ -199,7 +199,7 @@ class Trick
      *
      * @return Trick
      */
-    public function addVideo(\TricksBundle\Entity\Video $video)
+    public function addVideo(Video $video)
     {
         $this->videos[] = $video;
         $video->setTrick($this);
@@ -212,7 +212,7 @@ class Trick
      *
      * @param \TricksBundle\Entity\Video $video
      */
-    public function removeVideo(\TricksBundle\Entity\Video $video)
+    public function removeVideo(Video $video)
     {
         $this->videos->removeElement($video);
     }
@@ -234,7 +234,7 @@ class Trick
      *
      * @return Trick
      */
-    public function addComment(\TricksBundle\Entity\Comment $comment)
+    public function addComment(Comment $comment)
     {
         $this->comments[] = $comment;
         $comment->setTrick($this);
@@ -247,7 +247,7 @@ class Trick
      *
      * @param \TricksBundle\Entity\Comment $comment
      */
-    public function removeComment(\TricksBundle\Entity\Comment $comment)
+    public function removeComment(Comment $comment)
     {
         $this->comments->removeElement($comment);
     }

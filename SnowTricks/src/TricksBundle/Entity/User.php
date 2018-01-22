@@ -2,6 +2,7 @@
 
 namespace TricksBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -227,7 +228,7 @@ class User
      */
     public function __construct()
     {
-        $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     /**
@@ -237,7 +238,7 @@ class User
      *
      * @return User
      */
-    public function addComment(\TricksBundle\Entity\Comment $comment)
+    public function addComment(Comment $comment)
     {
         $this->comments[] = $comment;
 
@@ -249,7 +250,7 @@ class User
      *
      * @param \TricksBundle\Entity\Comment $comment
      */
-    public function removeComment(\TricksBundle\Entity\Comment $comment)
+    public function removeComment(Comment $comment)
     {
         $this->comments->removeElement($comment);
     }

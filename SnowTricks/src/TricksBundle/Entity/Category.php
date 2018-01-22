@@ -2,6 +2,7 @@
 
 namespace TricksBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -72,7 +73,7 @@ class Category
      */
     public function __construct()
     {
-        $this->tricks = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->tricks = new ArrayCollection();
     }
 
     /**
@@ -82,7 +83,7 @@ class Category
      *
      * @return Category
      */
-    public function addTrick(\TricksBundle\Entity\Trick $trick)
+    public function addTrick(Trick $trick)
     {
         $this->tricks[] = $trick;
 
@@ -94,7 +95,7 @@ class Category
      *
      * @param \TricksBundle\Entity\Trick $trick
      */
-    public function removeTrick(\TricksBundle\Entity\Trick $trick)
+    public function removeTrick(Trick $trick)
     {
         $this->tricks->removeElement($trick);
     }

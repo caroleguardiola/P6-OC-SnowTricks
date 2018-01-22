@@ -76,7 +76,7 @@ class Video
      *
      * @return Video
      */
-    public function setTrick(\TricksBundle\Entity\Trick $trick)
+    public function setTrick(Trick $trick)
     {
         $this->trick = $trick;
 

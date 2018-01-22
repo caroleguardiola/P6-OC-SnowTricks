@@ -118,7 +118,7 @@ class Comment
      *
      * @return Comment
      */
-    public function setTrick(\TricksBundle\Entity\Trick $trick)
+    public function setTrick(Trick $trick)
     {
         $this->trick = $trick;
 
@@ -142,7 +142,7 @@ class Comment
      *
      * @return Comment
      */
-    public function setUser(\TricksBundle\Entity\User $user)
+    public function setUser(User $user)
     {
         $this->user = $user;
 
