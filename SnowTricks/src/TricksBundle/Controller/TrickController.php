@@ -97,7 +97,7 @@ class TrickController extends Controller
 
         if ($request->isMethod('POST')) {
   	      $request->getSession()->getFlashBag()->add('notice', 'Trick bien enregistré.');	     
-  	      return $this->redirectToRoute('tricks_homepage');
+  	      return $this->redirectToRoute('tricks_homepage', array('id' => $trick->getId()));
   	    }
   	    
   	    return $this->render('TricksBundle:Trick:add.html.twig');
@@ -124,11 +124,11 @@ class TrickController extends Controller
 
       if ($request->isMethod('POST')) {
         $request->getSession()->getFlashBag()->add('notice', 'Trick bien modifié.');
-        return $this->redirectToRoute('tricks_homepage');
+        return $this->redirectToRoute('tricks_homepage', array('id' => $trick->getId()));
       }
       
       return $this->render('TricksBundle:Trick:edit.html.twig', array(
-        'trick' => array()
+        'trick' => $trick
       ));
     }
 }

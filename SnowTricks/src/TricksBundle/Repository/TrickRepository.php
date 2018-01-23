@@ -35,7 +35,6 @@ class TrickRepository extends EntityRepository
 	      ->addSelect('v')
 	      ->innerJoin('t.category', 'c')
 	      ->addSelect('c')
-	      
 	      ->orderBy('t.dateCreation', 'DESC')
 	    ;
 
