@@ -236,7 +236,7 @@ h5,
 h6 {
     margin: 0;
     font-family: 'Montserrat', sans-serif;
-    color:#1a1a1a;
+    color:#085796;
     margin-bottom: 10px;
 }
 
@@ -1083,7 +1083,8 @@ Home Section style
 
 .trick_info{
     display: flex;
-    position: absolute;
+    /*position: absolute;*/
+    margin-top: -15px;
 }
 
 .trick_info a{
@@ -1132,7 +1133,8 @@ Home Section style
 }
 
 .trick_header {
-    background: url(../images/background/snow.jpg) no-repeat top center;
+    background: rgba(8,87,150, 1);
+    padding: 20px 0;
 }
 
 .trick_image {
@@ -1157,6 +1159,12 @@ Home Section style
 
 .trick_details_section {
     padding: 50px;
+}
+
+iframe{
+    width: 100%;
+    /*min-height: 350px;*/
+    border: 0;
 }
 
 .divider {

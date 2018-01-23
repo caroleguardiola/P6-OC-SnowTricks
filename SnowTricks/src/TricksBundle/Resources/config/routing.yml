@@ -4,7 +4,7 @@ tricks_home:
       _controller: TricksBundle:Trick:index
 
 tricks_view:
-    path:     /tricks/details/{id}/{slug}
+    path:     /tricks/details/{id}
     defaults: 
       _controller: TricksBundle:Trick:view
     requirements:
@@ -16,7 +16,7 @@ tricks_add:
       _controller: TricksBundle:Trick:add
 
 tricks_edit:
-    path:     /tricks/modification/{id}/{slug}
+    path:     /tricks/modification/{id}
     defaults: 
       _controller: TricksBundle:Trick:edit
     requirements:

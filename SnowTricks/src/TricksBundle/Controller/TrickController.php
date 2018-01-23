@@ -17,42 +17,33 @@ class TrickController extends Controller
 {
     public function indexAction()
     {
-         $content = $this->render('TricksBundle:Trick:index.html.twig', array('listTricks' => array()));
-    
-    return new Response($content);
+      $listTricks = $this
+        ->getDoctrine()
+        ->getManager()
+        ->getRepository('TricksBundle:Trick')
+        ->getTricks()
+      ;
+
+      return $this->render('TricksBundle:Trick:index.html.twig', array(
+        'listTricks' => $listTricks,
+      ));
     }
 
     public function viewAction($id)
     {
-  	  $em = $this->getDoctrine()->getManager();
+  	  $trick = $this
+        ->getDoctrine()
+        ->getManager()
+        ->getRepository('TricksBundle:Trick')
+        ->getTrickDetails($id);
 
-      // On récupère le trick $id
-      $trick = $em->getRepository('TricksBundle:Trick')->find($id);
-
-      // $trick est donc une instance de TricksBundle\Entity\Trick
-      // ou null si l'id $id n'existe pas, d'où ce if :
       if (null === $trick) {
         throw new NotFoundHttpException("Le trick d'id ".$id." n'existe pas.");
       }
-
-      // On récupère la liste des images de ce trick
-      $listImages = $em
-        ->getRepository('TricksBundle:Image')
-        ->findBy(array('trick' => $trick))
-      ;
-
-      // On récupère la liste des videos de ce trick
-      $listVideos = $em
-        ->getRepository('TricksBundle:Video')
-        ->findBy(array('trick' => $trick))
-      ;
-
-      
+    
       return $this->render('TricksBundle:Trick:view.html.twig',array(
-          'trick'      => $trick,
-          'listImages' => $listImages,
-          'listVideos' => $listVideos,
-        ));
+          'trick' => $trick,
+      ));
     }
 
     public function addAction(Request $request)
@@ -106,7 +97,7 @@ class TrickController extends Controller
 
         if ($request->isMethod('POST')) {
   	      $request->getSession()->getFlashBag()->add('notice', 'Trick bien enregistré.');	     
-  	      return $this->redirectToRoute('tricks_homepage');
+  	      return $this->redirectToRoute('tricks_homepage', array('id' => $trick->getId()));
   	    }
   	    
   	    return $this->render('TricksBundle:Trick:add.html.twig');
@@ -133,11 +124,11 @@ class TrickController extends Controller
 
       if ($request->isMethod('POST')) {
         $request->getSession()->getFlashBag()->add('notice', 'Trick bien modifié.');
-        return $this->redirectToRoute('tricks_homepage');
+        return $this->redirectToRoute('tricks_homepage', array('id' => $trick->getId()));
       }
       
       return $this->render('TricksBundle:Trick:edit.html.twig', array(
-        'trick' => array()
+        'trick' => $trick
       ));
     }
 }
