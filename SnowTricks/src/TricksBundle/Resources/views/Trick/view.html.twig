@@ -19,11 +19,11 @@
             </div>
         </div>
 
-        <div class="trick_image">
+        <div class="trick_image" style="background: url('{% for image in listImages %} {% if loop.first %} {{image.url}} {% endif %} {% endfor %}') no-repeat center">
           <div class="row">
             <div class="col-md-12">
               <div class="home_text">
-                <h1 class="text-blue wow fadeInLeft" data-wow-duration="2s">{{trick.name}}</h1>
+                <h1 class="wow fadeInLeft" data-wow-duration="2s">{{trick.name}}</h1>
               </div>
             </div>
           </div>
@@ -48,7 +48,7 @@
                 </div>
               {% endfor %}
               {% for video in listVideos %}
-                <div class="col-md-2">
+                <div class="col-md-4">
                   <div class="trick">
                       <a href="#">
                         <iframe src="{{video.url}}" allowfullscreen></iframe>                      
