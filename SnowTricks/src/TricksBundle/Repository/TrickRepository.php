@@ -24,5 +24,29 @@ class TrickRepository extends EntityRepository
 	      ->getQuery()
 	      ->getResult()
 	    ;
-	  }
+	}
+
+	public function getTrickDetails($id)
+	{
+	    $query = $this->createQueryBuilder('t')
+	      ->innerJoin('t.images', 'i')
+	      ->addSelect('i')
+	      ->innerJoin('t.videos', 'v')
+	      ->addSelect('v')
+	      ->innerJoin('t.category', 'c')
+	      ->addSelect('c')
+	      
+	      ->orderBy('t.dateCreation', 'DESC')
+	    ;
+
+	    $query
+	      ->where('t.id = :id')
+	      ->setParameter('id', $id)
+	    ;
+	    
+	    return $query
+	      ->getQuery()
+	      ->getOneOrNullResult()
+	    ;
+	}
 }

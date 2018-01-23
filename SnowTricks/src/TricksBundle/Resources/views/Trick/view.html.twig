@@ -19,7 +19,7 @@
             </div>
         </div>
 
-        <div class="trick_image" style="background: url('{% for image in listImages %} {% if loop.first %} {{image.url}} {% endif %} {% endfor %}') no-repeat center">
+        <div class="trick_image" style="background: url('{% for image in trick.images %} {% if loop.first %} {{image.url}} {% endif %} {% endfor %}') no-repeat center">
           <div class="row">
             <div class="col-md-12">
               <div class="home_text">
@@ -38,7 +38,7 @@
         <div class="row trick_details">
           <div class="trick_list_medias">
               <div class="col-md-12 trick_medias">
-                {% for image in listImages %}
+                {% for image in trick.images %}
                 <div class="col-md-2">
                   <div class="trick">
                       <a href="#">
@@ -47,7 +47,7 @@
                   </div>
                 </div>
               {% endfor %}
-              {% for video in listVideos %}
+              {% for video in trick.videos %}
                 <div class="col-md-4">
                   <div class="trick">
                       <a href="#">
@@ -63,6 +63,7 @@
         <div class="row trick_details">
           <div class="trick_description">
               <div class="col-md-12">
+                  <h5>Description :</h5>
                   <p>{{trick.description}}</p>
               </div>
           </div>
@@ -71,11 +72,12 @@
         <div class="row trick_details">
           <div class="trick_description">
               <div class="col-md-12">
-                  <p>Informations trick</p>
-                    <p>
-                      Ce trick fait partie de la catégorie suivante :
-                        {{trick.category.name}}
-                    </p>
+                  <h5>Date de création :</h5>
+                  <p>Trick créé le {{trick.dateCreation|date('d/m/Y à H:i')}}</p>
+                  <h5>Date de dernière modification :</h5>
+                  <p>Trick modifié le {{trick.dateCreation|date('d/m/Y à H:i')}}</p>
+                  <h5>Catégorie de figure :</h5>
+                  <p>Ce trick fait partie de la catégorie {{trick.category.name}}.</p>
               </div>
           </div>
         </div>

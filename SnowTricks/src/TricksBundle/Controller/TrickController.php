@@ -31,35 +31,19 @@ class TrickController extends Controller
 
     public function viewAction($id)
     {
-  	  $em = $this->getDoctrine()->getManager();
+  	  $trick = $this
+        ->getDoctrine()
+        ->getManager()
+        ->getRepository('TricksBundle:Trick')
+        ->getTrickDetails($id);
 
-      // On récupère le trick $id
-      $trick = $em->getRepository('TricksBundle:Trick')->find($id);
-
-      // $trick est donc une instance de TricksBundle\Entity\Trick
-      // ou null si l'id $id n'existe pas, d'où ce if :
       if (null === $trick) {
         throw new NotFoundHttpException("Le trick d'id ".$id." n'existe pas.");
       }
-
-      // On récupère la liste des images de ce trick
-      $listImages = $em
-        ->getRepository('TricksBundle:Image')
-        ->findBy(array('trick' => $trick))
-      ;
-
-      // On récupère la liste des videos de ce trick
-      $listVideos = $em
-        ->getRepository('TricksBundle:Video')
-        ->findBy(array('trick' => $trick))
-      ;
-
-      
+    
       return $this->render('TricksBundle:Trick:view.html.twig',array(
-          'trick'      => $trick,
-          'listImages' => $listImages,
-          'listVideos' => $listVideos,
-        ));
+          'trick' => $trick,
+      ));
     }
 
     public function addAction(Request $request)
