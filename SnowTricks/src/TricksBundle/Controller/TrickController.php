@@ -9,6 +9,11 @@ use TricksBundle\Entity\Category;
 use TricksBundle\Entity\Comment;
 use TricksBundle\Entity\User;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -48,35 +53,67 @@ class TrickController extends Controller
 
     public function addAction(Request $request)
   	{
-      $em = $this->getDoctrine()->getManager();
-      // On ne sait toujours pas gérer le formulaire, patience cela vient dans la prochaine partie !
+      $trick = new Trick();
+
+      $trick->setDateCreation(new \Datetime());
+
+      $form = $this->get('form.factory')->createBuilder(FormType::class, $trick)
+        ->add('dateCreation', DateType::class)
+        ->add('name',         TextType::class)
+        ->add('description',  TextareaType::class)
+        ->add('save',         SubmitType::class)
+        ->getForm();
 
       if ($request->isMethod('POST')) {
-	      $request->getSession()->getFlashBag()->add('notice', 'Trick bien enregistré.');	     
+         $form->handleRequest($request);
+      
+      if ($form->isValid()) {
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($trick);
+        $em->flush();
+
+        $request->getSession()->getFlashBag()->add('notice', 'Trick bien enregistré.');	     
 	      return $this->redirectToRoute('tricks_homepage', array('id' => $trick->getId()));
   	    }
+      }
   	    
-  	    return $this->render('TricksBundle:Trick:add.html.twig');
+      return $this->render('TricksBundle:Trick:add.html.twig', array(
+        'form' => $form->createView(),
+        ));
   	}
 
     public function editAction($id, Request $request)
     {
-      $em = $this->getDoctrine()->getManager();
-      // On récupère le trick $id
-      $trick = $em->getRepository('TricksBundle:Trick')->find($id);
-      if (null === $trick) {
-        throw new NotFoundHttpException("Le trick d'id ".$id." n'existe pas.");
-      }
-      
-      // Ici encore, il faudra mettre la gestion du formulaire 
+      $trick = $this
+        ->getDoctrine()
+        ->getManager()
+        ->getRepository('TricksBundle:Trick')
+        ->find($id)
+      ;
+
+      $form = $this->get('form.factory')->createBuilder(FormType::class, $trick)
+        ->add('dateCreation', DateType::class)
+        ->add('name',         TextType::class)
+        ->add('description',  TextareaType::class)
+        ->add('save',         SubmitType::class)
+        ->getForm();
 
       if ($request->isMethod('POST')) {
-        $request->getSession()->getFlashBag()->add('notice', 'Trick bien modifié.');
-        return $this->redirectToRoute('tricks_homepage', array('id' => $trick->getId()));
+         $form->handleRequest($request);
+      
+      if ($form->isValid()) {
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($trick);
+        $em->flush();
+
+        $request->getSession()->getFlashBag()->add('notice', 'Trick bien modifié.');      
+        return $this->redirectToRoute('tricks_homepage', array('id' => $trick->getId()
+        ));
+        }
       }
       
-      return $this->render('TricksBundle:Trick:edit.html.twig', array(
-        'trick' => $trick
-      ));
+      return $this->render('TricksBundle:Trick:add.html.twig', array(
+        'form' => $form->createView(),
+        ));
     }
 }
