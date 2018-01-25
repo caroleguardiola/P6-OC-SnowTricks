@@ -10,7 +10,7 @@
         <title>{% block title %}SnowTricks{% endblock %}</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" type="image/png" href="favicon.ico">
+        <link rel="icon" type="image/png" href="{{ asset('favicon.ico') }}">
 
         <!--Google Font link-->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
@@ -75,8 +75,8 @@
                  <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
-                            <li><a href="#hello">Accueil</a></li>                    
-                            <li><a href="#list_tricks">Tricks</a></li>                    
+                            <li><a href="{{ path('tricks_home') }}">Accueil</a></li>                    
+                            <li><a href="{{ path('tricks_home') }}#list_tricks">Tricks</a></li>                    
                             <li><a href="#">Sign In</a></li>                    
                             <li><a href="#">Sign Up</a></li>                    
                         </ul>
