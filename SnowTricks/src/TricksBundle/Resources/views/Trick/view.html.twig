@@ -101,7 +101,12 @@
         <div class="row trick_details">
           <div class="trick_description">
               <div class="col-md-12">
-                  <p>Liste commentaires</p>
+                  <h5>Liste commentaires</h5>
+                  {% for comment in trick.comments %}
+                    <p>Auteur : {{comment.user.username}}</p>
+                    <p>Message : {{comment.content}}</p>
+                  {% endfor %}
+
               </div>
                <div class="button-loading">
                   <button type="button" class="btn btn-primary btn-lg" id="load" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Loading">Load More</button>
@@ -111,9 +116,9 @@
       </section>
 
       <a href="{{ path('tricks_home') }}" class="btn btn-primary btn-lg">
-     <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-      Retour à la liste
-    </a>
+        <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+        Retour à la liste
+      </a>
 
     </div>
   </div>

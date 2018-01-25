@@ -37,7 +37,7 @@
                   <a href="{{ path('tricks_view', {'id': trick.id}) }}">
                       {% for image in trick.images %}
                         {% if loop.first %}
-                            <img class="img-responsive" src="{{image.url}}" alt="{{ image.alt }}">
+                            <img class="img-responsive" src="{{image.url}}" alt="{{image.alt}}">
                             <br>
                         {% endif %}
                     {% else %}
