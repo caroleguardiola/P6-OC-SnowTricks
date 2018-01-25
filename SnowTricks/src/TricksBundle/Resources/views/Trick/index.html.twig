@@ -51,7 +51,7 @@
                         <a href="{{ path('tricks_view', {'id': trick.id}) }}"><h6>{{ trick.name }}</h6></a>
                     </div>
                     <div class="trick_update">
-                        <a href=""><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        <a href="{{ path('tricks_edit', {'id': trick.id}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                     </div>
                     <div class="trick_delete">
                         <a href="#blog-detail" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash" aria-hidden="true"></i></a>
