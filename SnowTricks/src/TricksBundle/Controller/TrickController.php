@@ -91,8 +91,11 @@ class TrickController extends Controller
         ->find($id)
       ;
 
+      $trick->setUpdatedAt(new \Datetime());
+
       $form = $this->get('form.factory')->createBuilder(FormType::class, $trick)
         ->add('dateCreation', DateType::class)
+        ->add('updatedAt',    DateType::class)     
         ->add('name',         TextType::class)
         ->add('description',  TextareaType::class)
         ->add('save',         SubmitType::class)

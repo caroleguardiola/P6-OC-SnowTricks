@@ -105,6 +105,8 @@
                   {% for comment in trick.comments %}
                     <p>Auteur : {{comment.user.username}}</p>
                     <p>Message : {{comment.content}}</p>
+                  {% else %}
+                    Pas (encore !) de commentaires
                   {% endfor %}
 
               </div>
