@@ -8,6 +8,7 @@ use TricksBundle\Entity\Video;
 use TricksBundle\Entity\Category;
 use TricksBundle\Entity\Comment;
 use TricksBundle\Entity\User;
+use TricksBundle\Form\TrickType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
@@ -57,24 +58,15 @@ class TrickController extends Controller
 
       $trick->setDateCreation(new \Datetime());
 
-      $form = $this->get('form.factory')->createBuilder(FormType::class, $trick)
-        ->add('dateCreation', DateType::class)
-        ->add('name',         TextType::class)
-        ->add('description',  TextareaType::class)
-        ->add('save',         SubmitType::class)
-        ->getForm();
+      $form = $this->get('form.factory')->create(TrickType::class, $trick);
 
-      if ($request->isMethod('POST')) {
-         $form->handleRequest($request);
-      
-      if ($form->isValid()) {
+      if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
         $em = $this->getDoctrine()->getManager();
         $em->persist($trick);
         $em->flush();
 
         $request->getSession()->getFlashBag()->add('notice', 'Trick bien enregistré.');	     
-	      return $this->redirectToRoute('tricks_homepage', array('id' => $trick->getId()));
-  	    }
+	      return $this->redirectToRoute('tricks_home', array('id' => $trick->getId()));
       }
   	    
       return $this->render('TricksBundle:Trick:add.html.twig', array(
@@ -93,29 +85,20 @@ class TrickController extends Controller
 
       $trick->setUpdatedAt(new \Datetime());
 
-      $form = $this->get('form.factory')->createBuilder(FormType::class, $trick)
-        ->add('dateCreation', DateType::class)
-        ->add('updatedAt',    DateType::class)     
-        ->add('name',         TextType::class)
-        ->add('description',  TextareaType::class)
-        ->add('save',         SubmitType::class)
-        ->getForm();
+      $form = $this->get('form.factory')->create(TrickType::class, $trick);
 
-      if ($request->isMethod('POST')) {
-         $form->handleRequest($request);
-      
-      if ($form->isValid()) {
+      if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
         $em = $this->getDoctrine()->getManager();
         $em->persist($trick);
         $em->flush();
 
         $request->getSession()->getFlashBag()->add('notice', 'Trick bien modifié.');      
-        return $this->redirectToRoute('tricks_homepage', array('id' => $trick->getId()
+        return $this->redirectToRoute('tricks_home', array('id' => $trick->getId()
         ));
-        }
       }
       
-      return $this->render('TricksBundle:Trick:add.html.twig', array(
+      return $this->render('TricksBundle:Trick:edit.html.twig', array(
+        'trick' => $trick,
         'form' => $form->createView(),
         ));
     }
