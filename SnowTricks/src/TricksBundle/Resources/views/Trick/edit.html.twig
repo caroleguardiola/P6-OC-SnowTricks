@@ -35,49 +35,9 @@
         </div>
       </section>
 
-      <h5>Formulaire de création</h5>
+      <h5>Formulaire de modification</h5>
 
-      <div class="well">
-        {{ form(form) }}
-      </div>
-
-      <section class="trick_details_section">
-        <div class="row trick_details">
-          <div class="trick_list_medias">
-              <div class="col-md-12 trick_medias">
-                <div class="col-md-2">
-                  <div class="trick">
-                      <p>Médias trick</p>
-                  </div>
-                  <div class="trick_info_details pull-right">
-                    <div class="trick_update">
-                      <a href=""><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                    </div>
-                    <div class="trick_delete">
-                      <a href=""><i class="fa fa-trash" aria-hidden="true"></i></a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-          </div>
-        </div>
-
-        <div class="row trick_details">
-          <div class="trick_description">
-              <div class="col-md-12">
-                  <p>Informations trick</p>
-              </div>
-          </div>
-        </div>
-     
-        <div class="row trick_details">
-          <div class="trick_description">
-              <div class="col-md-12">
-                  <p>Formulaire - Description trick</p>
-              </div>
-          </div>
-        </div>
-      </section>
+      {{ include("TricksBundle:Trick:form.html.twig") }}
 
       <a href="{{ path('tricks_home') }}" class="btn btn-primary btn-lg">
         <i class="fa fa-long-arrow-left" aria-hidden="true"></i>

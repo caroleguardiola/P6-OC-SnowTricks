@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -32,7 +33,13 @@ class TrickType extends AbstractType
                 'allow_add' =>  true,
                 'allow_delete'  => true
             ))
-            ->add('save',           SubmitType::class);
+            ->add('category',       EntityType::class, array(
+                'class' => 'TricksBundle:Category',
+                'choice_label' =>  'name',
+                'multiple'  => false,
+                'expanded'  => false
+            ))
+            ->add('Enregistrer',           SubmitType::class);
     }/**
      * {@inheritdoc}
      */
