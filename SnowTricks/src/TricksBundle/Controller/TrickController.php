@@ -61,11 +61,26 @@ class TrickController extends Controller
       $form = $this->get('form.factory')->create(TrickType::class, $trick);
 
       if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+        
+        $listImages = $trick->getImages();
+            foreach ($listImages as $image)
+            {
+                $trick->addImage($image);
+            }
+
+        $listVideos = $trick->getVideos();
+            foreach ($listVideos as $video)
+            {
+                $trick->addVideo($video);
+            } 
+
+
         $em = $this->getDoctrine()->getManager();
         $em->persist($trick);
         $em->flush();
 
-        $request->getSession()->getFlashBag()->add('notice', 'Trick bien enregistré.');	     
+        $request->getSession()->getFlashBag()->add('notice', 'Trick bien enregistré.');	  
+
 	      return $this->redirectToRoute('tricks_home', array('id' => $trick->getId()));
       }
   	    
@@ -88,8 +103,7 @@ class TrickController extends Controller
       $form = $this->get('form.factory')->create(TrickType::class, $trick);
 
       if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($trick);
+      // Inutile de persister ici, Doctrine connait déjà notre trick
         $em->flush();
 
         $request->getSession()->getFlashBag()->add('notice', 'Trick bien modifié.');      

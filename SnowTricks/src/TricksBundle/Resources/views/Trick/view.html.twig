@@ -19,11 +19,11 @@
             </div>
         </div>
 
-        <div class="trick_image" style="background: url('{% for image in trick.images %} {% if loop.first %} {{image.url}} {% endif %} {% endfor %}') no-repeat center">
+        <div class="trick_image" style="background: url('{% for image in trick.images %} {% if loop.first %} {{asset(image.webPath)}} {% endif %} {% endfor %}') no-repeat center">
           <div class="row">
             <div class="col-md-12">
               <div class="home_text">
-                <h1 class="wow fadeInLeft" data-wow-duration="2s">{{trick.name}}</h1>
+                <h1 class="text-blue wow fadeInLeft" data-wow-duration="2s">{{trick.name}}</h1>
               </div>
             </div>
           </div>
@@ -42,7 +42,7 @@
                 <div class="col-md-2">
                   <div class="trick">
                       <a href="#">
-                        <img src="{{image.url}}" alt="{{image.alt}}">                      
+                        <img src="{{asset(image.webPath)}}" alt="{{image.alt}}">                      
                       </a>
                   </div>
                 </div>
