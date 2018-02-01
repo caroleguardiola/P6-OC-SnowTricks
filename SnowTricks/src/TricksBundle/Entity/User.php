@@ -267,6 +267,6 @@ class User
 
     public function getFullName()
     {
-        return $this->firstname. ' '.$this->lastname;
+        return $this->firstName. ' '.$this->lastName;
     }
 }

@@ -1,0 +1,26 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+  Supprimer un trick - {{ parent() }}
+{% endblock %}
+
+{% block sections_body %}
+
+  <h2>Supprimer un trick</h2>
+
+  <p>
+    Etes-vous certain de vouloir supprimer l'annonce "{{ trick.name }}" ?
+  </p>
+
+  {# On met l'id de l'annonce dans la route de l'action du formulaire #}
+  <form action="" method="post">
+    <a href="{{ path('tricks_view', {'id': trick.id}) }}" class="btn btn-default">
+      Retour au trick
+    </a>
+    {# Ici j'ai écrit le bouton de soumission à la main #}
+    <input type="submit" value="Supprimer" class="btn btn-danger" />
+    {# Ceci va générer le champ CSRF #}
+    {{ form_rest(form) }}
+  </form>
+
+{% endblock %}

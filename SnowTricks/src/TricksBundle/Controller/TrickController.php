@@ -37,7 +37,7 @@ class TrickController extends Controller
 
     public function viewAction($id)
     {
-  	   $trick = $this
+  	  $trick = $this
         ->getDoctrine()
         ->getManager()
         ->getRepository('TricksBundle:Trick')
@@ -116,4 +116,28 @@ class TrickController extends Controller
         'form' => $form->createView(),
         ));
     }
+
+    public function deleteAction(Request $request, $id)
+    {
+      $em = $this->getDoctrine()->getManager();
+      $trick = $em->getRepository('TricksBundle:Trick')->find($id);
+      if (null === $trick) {
+        throw new NotFoundHttpException("Le trick d'id ".$id." n'existe pas.");
+      }
+      // On crée un formulaire vide, qui ne contiendra que le champ CSRF
+      // Cela permet de protéger la suppression d'annonce contre cette faille
+      $form = $this->get('form.factory')->create();
+      if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+        $em->remove($trick);
+        $em->flush();
+        $request->getSession()->getFlashBag()->add('info', "Le trick a bien été supprimé.");
+        return $this->redirectToRoute('tricks_home');
+      }
+
+       return $this->render('TricksBundle:Trick:delete1.html.twig', array(
+      'trick' => $trick,
+      'form'   => $form->createView(),
+      ));
+    }
+
 }
