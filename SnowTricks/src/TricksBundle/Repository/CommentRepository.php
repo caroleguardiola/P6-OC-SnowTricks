@@ -12,18 +12,23 @@ use Doctrine\ORM\EntityRepository;
  */
 class CommentRepository extends EntityRepository
 {
-	 public function getComments()
+	 public function findByTrick($trick_id)
     {
         $query = $this->createQueryBuilder('c')
             ->leftJoin('c.user', 'u')
             ->addSelect('u')
             ->orderBy('c.dateCreation', 'DESC')
         ;
+
+	    $query
+	      ->where('c.trick = :trick')
+	      ->setParameter('trick', $trick_id)
+	    ;
 	    
 	    return $query
 	      ->getQuery()
 	      ->getResult()
 	    ;
-            
+	       
     }
 }

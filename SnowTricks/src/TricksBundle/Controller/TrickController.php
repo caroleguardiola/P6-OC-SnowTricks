@@ -9,6 +9,7 @@ use TricksBundle\Entity\Category;
 use TricksBundle\Entity\Comment;
 use TricksBundle\Entity\User;
 use TricksBundle\Form\TrickType;
+use TricksBundle\Form\CommentType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
@@ -35,7 +36,7 @@ class TrickController extends Controller
       ));
     }
 
-    public function viewAction($id)
+    public function viewAction($id, Request $request)
     {
   	  $trick = $this
         ->getDoctrine()
@@ -44,19 +45,37 @@ class TrickController extends Controller
         ->getTrickDetails($id);
 
       $listComments = $this
-      ->getDoctrine()
-      ->getManager()
-      ->getRepository('TricksBundle:Comment')
-      ->getComments();
+        ->getDoctrine()
+        ->getManager()
+        ->getRepository('TricksBundle:Comment')
+        ->findByTrick($id);
 
       if (null === $trick) {
         throw new NotFoundHttpException("Le trick d'id ".$id." n'existe pas.");
       }
     
+      $comment = new Comment();
+
+      $comment->setDateCreation(new \Datetime());
+      $comment->setTrick($trick);
+
+      $form = $this->get('form.factory')->create(CommentType::class, $comment);
+
+      if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+        
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($comment);
+        $em->flush();
+
+        $request->getSession()->getFlashBag()->add('notice', 'Commentaire bien enregistré.');
+
+        return $this->redirectToRoute('tricks_home', array('id' => $trick->getId()));
+      }
+        
       return $this->render('TricksBundle:Trick:view.html.twig',array(
           'trick' => $trick,
           'listComments' => $listComments,
-
+          'form' => $form->createView(),
       ));
     }
 
