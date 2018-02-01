@@ -79,7 +79,7 @@ class TrickController extends Controller
         $em->persist($trick);
         $em->flush();
 
-        $request->getSession()->getFlashBag()->add('notice', 'Trick bien enregistré.');	  
+        $request->getSession()->getFlashBag()->add('notice', 'Trick bien enregistré.');
 
 	      return $this->redirectToRoute('tricks_home', array('id' => $trick->getId()));
       }

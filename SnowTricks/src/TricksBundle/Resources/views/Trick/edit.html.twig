@@ -19,7 +19,7 @@
           </div>
         </div>
 
-        <div class="trick_image">
+        <div class="trick_image" style="background: url('{% for image in trick.images %} {% if loop.first %} {{asset(image.webPath)}} {% endif %} {% endfor %}') no-repeat center">
           <div class="row">
             <div class="col-md-12">
               <div class="home_text">
