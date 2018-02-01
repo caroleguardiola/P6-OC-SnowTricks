@@ -58,6 +58,7 @@ class TrickController extends Controller
 
       $comment->setDateCreation(new \Datetime());
       $comment->setTrick($trick);
+      //$comment->setUser($this->getUser());
 
       $form = $this->get('form.factory')->create(CommentType::class, $comment);
 
