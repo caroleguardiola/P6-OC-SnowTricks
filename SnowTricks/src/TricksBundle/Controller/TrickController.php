@@ -153,7 +153,7 @@ class TrickController extends Controller
         throw new NotFoundHttpException("Le trick d'id ".$id." n'existe pas.");
       }
       // On crée un formulaire vide, qui ne contiendra que le champ CSRF
-      // Cela permet de protéger la suppression d'annonce contre cette faille
+      // Cela permet de protéger la suppression de trick contre cette faille
       $form = $this->createFormBuilder()->setAction($this->generateUrl('tricks_delete', ['id' => $trick->getId()]))->getForm();
       if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
         $em->remove($trick);
