@@ -102,8 +102,9 @@
           <div class="trick_description">
               <div class="col-md-12">
                   <h5>Liste commentaires</h5>
-                  {% for comment in trick.comments %}
-                    <p>Auteur : {{comment.user.username}}</p>
+                  {% for comment in listComments %}
+                    <p>Auteur : {{comment.user.fullName}}</p>
+                    <p>Date : {{comment.dateCreation|date('d/m/Y à H:i')}}</p>
                     <p>Message : {{comment.content}}</p>
                   {% else %}
                     Pas (encore !) de commentaires

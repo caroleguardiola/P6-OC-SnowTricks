@@ -43,12 +43,20 @@ class TrickController extends Controller
         ->getRepository('TricksBundle:Trick')
         ->getTrickDetails($id);
 
+      $listComments = $this
+      ->getDoctrine()
+      ->getManager()
+      ->getRepository('TricksBundle:Comment')
+      ->getComments();
+
       if (null === $trick) {
         throw new NotFoundHttpException("Le trick d'id ".$id." n'existe pas.");
       }
     
       return $this->render('TricksBundle:Trick:view.html.twig',array(
           'trick' => $trick,
+          'listComments' => $listComments,
+
       ));
     }
 
