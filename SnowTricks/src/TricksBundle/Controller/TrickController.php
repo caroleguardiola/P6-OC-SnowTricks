@@ -154,7 +154,7 @@ class TrickController extends Controller
       }
       // On crée un formulaire vide, qui ne contiendra que le champ CSRF
       // Cela permet de protéger la suppression d'annonce contre cette faille
-      $form = $this->get('form.factory')->create();
+      $form = $this->createFormBuilder()->setAction($this->generateUrl('tricks_delete', ['id' => $trick->getId()]))->getForm();
       if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
         $em->remove($trick);
         $em->flush();
@@ -162,7 +162,7 @@ class TrickController extends Controller
         return $this->redirectToRoute('tricks_home');
       }
 
-       return $this->render('TricksBundle:Trick:delete1.html.twig', array(
+       return $this->render('TricksBundle:Trick:delete.html.twig', array(
       'trick' => $trick,
       'form'   => $form->createView(),
       ));
