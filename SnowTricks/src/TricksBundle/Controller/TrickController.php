@@ -38,15 +38,13 @@ class TrickController extends Controller
 
     public function viewAction($id, Request $request)
     {
-  	  $trick = $this
-        ->getDoctrine()
-        ->getManager()
+  	  $em = $this->getDoctrine()->getManager();
+
+      $trick = $em
         ->getRepository('TricksBundle:Trick')
         ->getTrickDetails($id);
 
-      $listComments = $this
-        ->getDoctrine()
-        ->getManager()
+      $listComments = $em
         ->getRepository('TricksBundle:Comment')
         ->findByTrick($id);
 
@@ -64,7 +62,6 @@ class TrickController extends Controller
 
       if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
         
-        $em = $this->getDoctrine()->getManager();
         $em->persist($comment);
         $em->flush();
 
@@ -149,12 +146,14 @@ class TrickController extends Controller
     {
       $em = $this->getDoctrine()->getManager();
       $trick = $em->getRepository('TricksBundle:Trick')->find($id);
+
       if (null === $trick) {
         throw new NotFoundHttpException("Le trick d'id ".$id." n'existe pas.");
       }
-      // On crée un formulaire vide, qui ne contiendra que le champ CSRF
-      // Cela permet de protéger la suppression de trick contre cette faille
-      $form = $this->createFormBuilder()->setAction($this->generateUrl('tricks_delete', ['id' => $trick->getId()]))->getForm();
+
+      $form = $this->get('form.factory')->create();
+        
+
       if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
         $em->remove($trick);
         $em->flush();
