@@ -34,11 +34,7 @@ class TrickRepository extends EntityRepository
 	      ->innerJoin('t.videos', 'v')
 	      ->addSelect('v')
 	      ->innerJoin('t.category', 'c')
-	      ->addSelect('c')
-	      ->innerJoin('t.comments', 'co')
-	      ->addSelect('co')
-		  ->innerJoin('co.user', 'u')
-	      ->addSelect('u')	      
+	      ->addSelect('c')      
 	      ->orderBy('t.dateCreation', 'DESC')
 	    ;
 

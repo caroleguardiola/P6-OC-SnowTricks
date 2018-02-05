@@ -12,18 +12,44 @@
       <section class="trick_header">
         <div class="trick_info_details pull-right">
             <div class="trick_update">
-                <a href=""><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <a href="{{ path('tricks_edit', {'id': trick.id}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
             </div>
             <div class="trick_delete">
-                <a href=""><i class="fa fa-trash" aria-hidden="true"></i></a>
+                <a href="#trick_delete"data-toggle="modal" data-backdrop="false"><i class="fa fa-trash" aria-hidden="true"></i></a>
             </div>
+            <!--start modal -->
+              <div class="modal fade" id="trick_delete" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-md">
+                  <div class="modal-content">
+
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fermer</span></button>
+                        <h3 class="modal-title" id="actu_1">Suppression  Trick</h3>
+                    </div>
+                    
+                    <div class="modal-body">
+                      <div class="blog-content">
+                      </div>
+                      <div>
+                        {{render(controller('TricksBundle:Trick:delete',{'id': trick.id} ))}}
+                      </div>
+                    </div>
+
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Fermer</button>
+                    </div>
+
+                  </div> 
+                </div>
+              </div>
+              <!--end modal -->
         </div>
 
-        <div class="trick_image" style="background: url('{% for image in trick.images %} {% if loop.first %} {{image.url}} {% endif %} {% endfor %}') no-repeat center">
+        <div class="trick_image" style="background: url('{% for image in trick.images %} {% if loop.first %} {{asset(image.webPath)}} {% endif %} {% endfor %}') no-repeat center">
           <div class="row">
             <div class="col-md-12">
               <div class="home_text">
-                <h1 class="wow fadeInLeft" data-wow-duration="2s">{{trick.name}}</h1>
+                <h1 class="text-blue wow fadeInLeft" data-wow-duration="2s">{{trick.name}}</h1>
               </div>
             </div>
           </div>
@@ -42,7 +68,7 @@
                 <div class="col-md-2">
                   <div class="trick">
                       <a href="#">
-                        <img src="{{image.url}}" alt="{{image.alt}}">                      
+                        <img src="{{asset(image.webPath)}}" alt="{{image.alt}}">                      
                       </a>
                   </div>
                 </div>
@@ -89,7 +115,12 @@
         <div class="row trick_details">
           <div class="trick_description">
               <div class="col-md-12">
-                  <p>Formulaire commentaire</p>
+                  <h5>Formulaire commentaire</h5>
+                  <div class="well">
+                    <p>Auteur : </p>
+                    <p>Photo : </p>
+                    {{ form(form) }}
+                  </div>
               </div>
           </div>
         </div>
@@ -102,9 +133,17 @@
           <div class="trick_description">
               <div class="col-md-12">
                   <h5>Liste commentaires</h5>
-                  {% for comment in trick.comments %}
-                    <p>Auteur : {{comment.user.username}}</p>
-                    <p>Message : {{comment.content}}</p>
+                  {% for comment in listComments %}
+                    <div class="col-md-2">
+                      <img src="{{asset(comment.user.photo.webPath)}}" alt="{{comment.user.photo.alt}}" style="">
+                    </div>
+                    <div class="col-md-10">
+                      <p>Auteur : {{comment.user.fullName}}</p>                  
+                      <p>Date : {{comment.dateCreation|date('d/m/Y à H:i')}}</p>
+                      <p>Message : {{comment.content}}</p>
+                    </div>
+                  {% else %}
+                    Pas (encore !) de commentaires
                   {% endfor %}
 
               </div>

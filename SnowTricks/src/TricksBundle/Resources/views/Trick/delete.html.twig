@@ -1,0 +1,13 @@
+  <p>
+    Etes-vous certain de vouloir supprimer le trick "{{ trick.name }}" ?
+  </p>
+    
+<form action="{{ path('tricks_delete', {'id': trick.id}) }}" method="post">
+  {# Ici j'ai écrit le bouton de soumission à la main #}
+  <input type="submit" value="Supprimer" class="btn btn-danger" />
+   <a href="{{path('tricks_home')}}#list_tricks" class="btn btn-modal">
+    Retour aux tricks
+  </a>
+  {# Ceci va générer le champ CSRF #}
+  {{ form_rest(form) }}
+</form>

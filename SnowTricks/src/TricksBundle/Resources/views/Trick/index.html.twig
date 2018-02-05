@@ -35,13 +35,13 @@
               <div class="trick">
                   
                   <a href="{{ path('tricks_view', {'id': trick.id}) }}">
-                      {% for image in trick.images %}
+                    {% for image in trick.images %}
                         {% if loop.first %}
-                            <img class="img-responsive" src="{{image.url}}" alt="{{image.alt}}">
+                            <img class="img-responsive" src="{{asset(image.webPath)}}" alt="{{image.alt}}">
                             <br>
                         {% endif %}
                     {% else %}
-                        <img src="" alt="image par défaut">
+                        <img src="../images/background/snowboarding.jpg" alt="image par défaut">
                         <br>
                     {% endfor %}
                   </a>
@@ -54,11 +54,11 @@
                         <a href="{{ path('tricks_edit', {'id': trick.id}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                     </div>
                     <div class="trick_delete">
-                        <a href="#blog-detail" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                        <a href="#trick_delete" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash" aria-hidden="true"></i></a>
                     </div>
 
                     <!--start modal -->
-                    <div class="modal fade" id="blog-detail" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal fade" id="trick_delete" tabindex="-1" role="dialog" aria-hidden="true">
                       <div class="modal-dialog modal-md">
                         <div class="modal-content">
 
@@ -69,10 +69,10 @@
                           
                           <div class="modal-body">
                             <div class="blog-content">
-                              <p>Vous êtes sur le point de supprimer ce trick !</p>
-                              <p>Etes-vous sûr de vouloir le supprimer ?</p>
                             </div>
-                            <div>Formulaire</div>
+                            <div>
+                              {{render(controller('TricksBundle:Trick:delete',{'id': trick.id} ))}}
+                            </div>
                           </div>
 
                           <div class="modal-footer">

@@ -21,3 +21,17 @@ tricks_edit:
       _controller: TricksBundle:Trick:edit
     requirements:
       id: \d+
+
+tricks_delete:
+    path:     /tricks/suppression/{id}
+    defaults: 
+      _controller: TricksBundle:Trick:delete
+    requirements:
+      id: \d+
+
+images_delete:
+    path:     /tricks/suppression images/{id}
+    defaults: 
+      _controller: TricksBundle:Image:delete
+    requirements:
+      id: \d+

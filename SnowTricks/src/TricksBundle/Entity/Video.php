@@ -3,6 +3,7 @@
 namespace TricksBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Video
@@ -25,6 +26,7 @@ class Video
      * @var string
      *
      * @ORM\Column(name="url", type="string", length=255)
+     * @Assert\Url(message="Vous devez renseigner une adresse URL valide.")
      */
     private $url;
 

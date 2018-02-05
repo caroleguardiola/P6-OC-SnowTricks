@@ -8,6 +8,8 @@ use TricksBundle\Entity\Video;
 use TricksBundle\Entity\Category;
 use TricksBundle\Entity\Comment;
 use TricksBundle\Entity\User;
+use TricksBundle\Form\TrickType;
+use TricksBundle\Form\CommentType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,7 +23,7 @@ class TrickController extends Controller
         ->getDoctrine()
         ->getManager()
         ->getRepository('TricksBundle:Trick')
-        ->getTricks()
+        ->findAll()
       ;
 
       return $this->render('TricksBundle:Trick:index.html.twig', array(
@@ -29,54 +31,147 @@ class TrickController extends Controller
       ));
     }
 
-    public function viewAction($id)
+    public function viewAction($id, Request $request)
     {
-  	   $trick = $this
-        ->getDoctrine()
-        ->getManager()
+  	  $em = $this->getDoctrine()->getManager();
+
+      $trick = $em
         ->getRepository('TricksBundle:Trick')
         ->getTrickDetails($id);
+
+      $listComments = $em
+        ->getRepository('TricksBundle:Comment')
+        ->findByTrick($id);
 
       if (null === $trick) {
         throw new NotFoundHttpException("Le trick d'id ".$id." n'existe pas.");
       }
     
+      $comment = new Comment();
+
+      $comment->setDateCreation(new \Datetime());
+      $comment->setTrick($trick);
+      //$comment->setUser($this->getUser());
+
+      $form = $this->get('form.factory')->create(CommentType::class, $comment);
+
+      if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+        
+        $em->persist($comment);
+        $em->flush();
+
+        $request->getSession()->getFlashBag()->add('notice', 'Commentaire bien enregistré.');
+
+        return $this->redirectToRoute('tricks_home', array('id' => $trick->getId()));
+      }
+        
       return $this->render('TricksBundle:Trick:view.html.twig',array(
           'trick' => $trick,
+          'listComments' => $listComments,
+          'form' => $form->createView(),
       ));
     }
 
     public function addAction(Request $request)
   	{
-      $em = $this->getDoctrine()->getManager();
-      // On ne sait toujours pas gérer le formulaire, patience cela vient dans la prochaine partie !
+      $trick = new Trick();
 
-      if ($request->isMethod('POST')) {
-	      $request->getSession()->getFlashBag()->add('notice', 'Trick bien enregistré.');	     
-	      return $this->redirectToRoute('tricks_homepage', array('id' => $trick->getId()));
-  	    }
+      $trick->setDateCreation(new \Datetime());
+
+      $form = $this->get('form.factory')->create(TrickType::class, $trick);
+
+      if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+        
+        $listImages = $trick->getImages();
+            foreach ($listImages as $image)
+            {
+                $trick->addImage($image);
+            }
+
+        $listVideos = $trick->getVideos();
+            foreach ($listVideos as $video)
+            {
+                $trick->addVideo($video);
+            } 
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($trick);
+        $em->flush();
+
+        $request->getSession()->getFlashBag()->add('notice', 'Trick bien enregistré.');
+
+	      return $this->redirectToRoute('tricks_home', array('id' => $trick->getId()));
+      }
   	    
-  	    return $this->render('TricksBundle:Trick:add.html.twig');
+      return $this->render('TricksBundle:Trick:add.html.twig', array(
+        'form' => $form->createView(),
+        ));
   	}
 
     public function editAction($id, Request $request)
     {
-      $em = $this->getDoctrine()->getManager();
-      // On récupère le trick $id
-      $trick = $em->getRepository('TricksBundle:Trick')->find($id);
-      if (null === $trick) {
-        throw new NotFoundHttpException("Le trick d'id ".$id." n'existe pas.");
-      }
-      
-      // Ici encore, il faudra mettre la gestion du formulaire 
+       $em = $this->getDoctrine()->getManager();
 
-      if ($request->isMethod('POST')) {
-        $request->getSession()->getFlashBag()->add('notice', 'Trick bien modifié.');
-        return $this->redirectToRoute('tricks_homepage', array('id' => $trick->getId()));
+      $trick = $em
+        ->getRepository('TricksBundle:Trick')
+        ->find($id);
+      ;
+
+      $trick->setUpdatedAt(new \Datetime());
+
+      $form = $this->get('form.factory')->create(TrickType::class, $trick);
+
+      if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+
+        $listImages = $trick->getImages();
+            foreach ($listImages as $image)
+            {
+                $trick->addImage($image);
+            }
+
+        $listVideos = $trick->getVideos();
+            foreach ($listVideos as $video)
+            {
+                $trick->addVideo($video);
+            } 
+            
+      // Inutile de persister ici, Doctrine connait déjà notre trick
+        $em->flush();
+
+        $request->getSession()->getFlashBag()->add('notice', 'Trick bien modifié.');      
+        return $this->redirectToRoute('tricks_home', array('id' => $trick->getId()
+        ));
       }
       
       return $this->render('TricksBundle:Trick:edit.html.twig', array(
-        'trick' => $trick
+        'trick' => $trick,
+        'form' => $form->createView(),
+        ));
+    }
+
+    public function deleteAction(Request $request, $id)
+    {
+      $em = $this->getDoctrine()->getManager();
+      $trick = $em->getRepository('TricksBundle:Trick')->find($id);
+
+      if (null === $trick) {
+        throw new NotFoundHttpException("Le trick d'id ".$id." n'existe pas.");
+      }
+
+      $form = $this->get('form.factory')->create();
+        
+
+      if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+        $em->remove($trick);
+        $em->flush();
+        $request->getSession()->getFlashBag()->add('info', "Le trick a bien été supprimé.");
+        return $this->redirectToRoute('tricks_home');
+      }
+
+       return $this->render('TricksBundle:Trick:delete.html.twig', array(
+      'trick' => $trick,
+      'form'   => $form->createView(),
       ));
     }
+
 }

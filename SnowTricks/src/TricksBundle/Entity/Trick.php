@@ -4,6 +4,7 @@ namespace TricksBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Trick
@@ -27,6 +28,7 @@ class Trick
      * @var string
      *
      * @ORM\Column(name="name", type="string", length=255, unique=true)
+     * @Assert\NotBlank(message="Le trick doit comporter obligatoirement un nom.")
      */
     private $name;
 
@@ -34,12 +36,14 @@ class Trick
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     * @Assert\NotBlank(message="Le trick doit comporter obligatoirement une description même succinte.")
      */
     private $description;
 
     /**
      * @ORM\ManyToOne(targetEntity="TricksBundle\Entity\Category", cascade={"persist"}, inversedBy="tricks")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\Valid()
      */
     private $category;
 
@@ -50,6 +54,7 @@ class Trick
 
     /**
      * @ORM\OneToMany(targetEntity="TricksBundle\Entity\Video", mappedBy="trick", cascade={"persist","remove"})
+     * @Assert\Valid()
      */
     private $videos;
 
@@ -62,6 +67,7 @@ class Trick
      * @var \DateTime
      *
      * @ORM\Column(name="date_creation", type="datetimetz")
+     * @Assert\DateTime()
      */
     private $dateCreation;
 

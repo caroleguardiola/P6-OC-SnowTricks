@@ -4,6 +4,7 @@ namespace TricksBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -26,6 +27,7 @@ class User
      * @var string
      *
      * @ORM\Column(name="first_name", type="string", length=255)
+     * @Assert\NotBlank(message="Vous devez renseigner obligatoirement votre prénom.")
      */
     private $firstName;
 
@@ -33,13 +35,14 @@ class User
      * @var string
      *
      * @ORM\Column(name="last_name", type="string", length=255)
+     * @Assert\NotBlank(message="Vous devez renseigner obligatoirement votre nom.")
      */
     private $lastName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="photo", type="string", length=255)
+     * @ORM\OneToOne(targetEntity="TricksBundle\Entity\Photo", cascade={"persist", "remove"})
      */
     private $photo;
 
@@ -47,6 +50,7 @@ class User
      * @var string
      *
      * @ORM\Column(name="username", type="string", length=255, unique=true)
+     * @Assert\NotBlank(message="Vous devez renseigner obligatoirement votre nom d'utilisateur.")
      */
     private $username;
 
@@ -54,6 +58,8 @@ class User
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, unique=true)
+     * @Assert\NotBlank(message="Vous devez renseigner obligatoirement votre e-mail.")
+     * @Assert\Email(message="Vous devez renseigner un email valide.")
      */
     private $email;
 
@@ -135,7 +141,7 @@ class User
      *
      * @return User
      */
-    public function setPhoto($photo)
+    public function setPhoto(Photo $photo = null)
     {
         $this->photo = $photo;
 
@@ -267,6 +273,6 @@ class User
 
     public function getFullName()
     {
-        return $this->firstname. ' '.$this->lastname;
+        return $this->firstName. ' '.$this->lastName;
     }
 }

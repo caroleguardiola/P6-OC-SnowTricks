@@ -3,6 +3,7 @@
 namespace TricksBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Comment
@@ -25,6 +26,7 @@ class Comment
      * @var \DateTime
      *
      * @ORM\Column(name="date_creation", type="datetimetz")
+     * @Assert\DateTime()
      */
     private $dateCreation;
 
@@ -32,6 +34,7 @@ class Comment
      * @var string
      *
      * @ORM\Column(name="content", type="text")
+     * @Assert\NotBlank(message="Vous devez poster un commentaire même succint.")
      */
     private $content;
 
