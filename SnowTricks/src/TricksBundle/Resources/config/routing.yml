@@ -35,3 +35,14 @@ images_delete:
       _controller: TricksBundle:Image:delete
     requirements:
       id: \d+
+
+login:
+    path: /login
+    defaults:
+        _controller: UserBundle:Security:login
+
+login_check:
+    path: /login_check
+
+logout:
+    path: /logout
