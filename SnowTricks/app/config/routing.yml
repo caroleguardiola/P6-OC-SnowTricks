@@ -1,7 +1,3 @@
-user:
-    resource: "@UserBundle/Resources/config/routing.yml"
-    prefix:   /
-
 tricks:
     resource: "@TricksBundle/Resources/config/routing.yml"
     prefix:   /
