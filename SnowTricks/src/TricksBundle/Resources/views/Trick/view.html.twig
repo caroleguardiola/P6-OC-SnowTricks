@@ -134,9 +134,14 @@
               <div class="col-md-12">
                   <h5>Liste commentaires</h5>
                   {% for comment in listComments %}
-                    <p>Auteur : {{comment.user.fullName}}</p>
-                    <p>Date : {{comment.dateCreation|date('d/m/Y à H:i')}}</p>
-                    <p>Message : {{comment.content}}</p>
+                    <div class="col-md-2">
+                      <img src="{{asset(comment.user.photo.webPath)}}" alt="{{comment.user.photo.alt}}" style="">
+                    </div>
+                    <div class="col-md-10">
+                      <p>Auteur : {{comment.user.fullName}}</p>                  
+                      <p>Date : {{comment.dateCreation|date('d/m/Y à H:i')}}</p>
+                      <p>Message : {{comment.content}}</p>
+                    </div>
                   {% else %}
                     Pas (encore !) de commentaires
                   {% endfor %}

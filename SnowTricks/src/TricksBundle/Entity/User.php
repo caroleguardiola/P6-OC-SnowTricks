@@ -39,7 +39,7 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="photo", type="string", length=255)
+     * @ORM\OneToOne(targetEntity="TricksBundle\Entity\Photo", cascade={"persist", "remove"})
      */
     private $photo;
 
@@ -135,7 +135,7 @@ class User
      *
      * @return User
      */
-    public function setPhoto($photo)
+    public function setPhoto(Photo $photo = null)
     {
         $this->photo = $photo;
 

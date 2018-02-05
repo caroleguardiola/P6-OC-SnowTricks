@@ -6,13 +6,12 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 /**
- * Image
+ * Photo
  *
- * @ORM\Table(name="image")
- * @ORM\Entity(repositoryClass="TricksBundle\Repository\ImageRepository")
- * @ORM\HasLifecycleCallbacks
+ * @ORM\Table(name="photo")
+ * @ORM\Entity(repositoryClass="TricksBundle\Repository\PhotoRepository")
  */
-class Image
+class Photo
 {
     /**
      * @var int
@@ -42,13 +41,6 @@ class Image
     private $tempFilename;
 
     /**
-     * @ORM\ManyToOne(targetEntity="TricksBundle\Entity\Trick", inversedBy="images")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $trick;
-
-
-    /**
      * Get id
      *
      * @return int
@@ -63,7 +55,7 @@ class Image
      *
      * @param string $extension
      *
-     * @return Image
+     * @return Photo
      */
     public function setExtension($extension)
     {
@@ -87,7 +79,7 @@ class Image
      *
      * @param string $alt
      *
-     * @return Image
+     * @return Photo
      */
     public function setAlt($alt)
     {
@@ -106,32 +98,7 @@ class Image
         return $this->alt;
     }
 
-    /**
-     * Set trick
-     *
-     * @param \TricksBundle\Entity\Trick $trick
-     *
-     * @return Image
-     */
-    public function setTrick(Trick $trick)
-    {
-        $this->trick = $trick;
-
-        return $this;
-    }
-
-    /**
-     * Get trick
-     *
-     * @return \TricksBundle\Entity\Trick
-     */
-    public function getTrick()
-    {
-        return $this->trick;
-    }
-
-
-     public function getFile()
+    public function getFile()
     {
         return $this->file;
     }
@@ -218,7 +185,7 @@ class Image
     public function getUploadDir()
     {
         // On retourne le chemin relatif vers l'image pour un navigateur
-        return 'uploads/tricks';
+        return 'uploads/users';
     }
 
     protected function getUploadRootDir()
