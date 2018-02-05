@@ -1,6 +1,6 @@
 <?php
 
-namespace ST\TricksBundle\Entity;
+namespace ST\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
@@ -10,7 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Photo
  *
  * @ORM\Table(name="photo")
- * @ORM\Entity(repositoryClass="ST\TricksBundle\Repository\PhotoRepository")
+ * @ORM\Entity(repositoryClass="ST\UserBundle\Repository\PhotoRepository")
  */
 class Photo
 {

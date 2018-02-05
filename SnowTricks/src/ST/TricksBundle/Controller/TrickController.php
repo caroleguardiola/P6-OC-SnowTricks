@@ -6,10 +6,10 @@ use ST\TricksBundle\Entity\Trick;
 use ST\TricksBundle\Entity\Image;
 use ST\TricksBundle\Entity\Video;
 use ST\TricksBundle\Entity\Category;
-use ST\TricksBundle\Entity\Comment;
-use ST\TricksBundle\Entity\User;
+use ST\UserBundle\Entity\Comment;
+use ST\UserBundle\Entity\User;
 use ST\TricksBundle\Form\TrickType;
-use ST\TricksBundle\Form\CommentType;
+use ST\UserBundle\Form\CommentType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -40,7 +40,7 @@ class TrickController extends Controller
         ->getTrickDetails($id);
 
       $listComments = $em
-        ->getRepository('TricksBundle:Comment')
+        ->getRepository('UserBundle:Comment')
         ->findByTrick($id);
 
       if (null === $trick) {

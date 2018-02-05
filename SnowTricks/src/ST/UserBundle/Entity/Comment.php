@@ -1,17 +1,17 @@
 <?php
 
-namespace ST\TricksBundle\Entity;
+namespace ST\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ST\TricksBundle\Entity\Trick;
-use ST\TricksBundle\Entity\User;
+use ST\UserBundle\Entity\User;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Comment
  *
  * @ORM\Table(name="comment")
- * @ORM\Entity(repositoryClass="ST\TricksBundle\Repository\CommentRepository")
+ * @ORM\Entity(repositoryClass="ST\UserBundle\Repository\CommentRepository")
  */
 class Comment
 {
@@ -47,7 +47,7 @@ class Comment
     private $trick;
 
     /**
-     * @ORM\ManyToOne(targetEntity="ST\TricksBundle\Entity\User", inversedBy="comments")
+     * @ORM\ManyToOne(targetEntity="ST\UserBundle\Entity\User", inversedBy="comments")
      * @ORM\JoinColumn(nullable=false)
      */
     private $user;

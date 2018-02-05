@@ -1,19 +1,21 @@
 <?php
 
-namespace ST\TricksBundle\Entity;
+namespace ST\UserBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use ST\TricksBundle\Entity\Comment;
+use ST\UserBundle\Entity\Comment;
+use ST\UserBundle\Entity\Photo;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * User
  *
  * @ORM\Table(name="user")
- * @ORM\Entity(repositoryClass="ST\TricksBundle\Repository\UserRepository")
+ * @ORM\Entity(repositoryClass="ST\UserBundle\Repository\UserRepository")
  */
-class User
+class User implements UserInterface, \Serializable
 {
     /**
      * @var int
@@ -43,14 +45,14 @@ class User
     /**
      * @var string
      *
-     * @ORM\OneToOne(targetEntity="ST\TricksBundle\Entity\Photo", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="ST\UserBundle\Entity\Photo", cascade={"persist", "remove"})
      */
     private $photo;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="username", type="string", length=255, unique=true)
+     * @ORM\Column(name="username", type="string", length=25, unique=true)
      * @Assert\NotBlank(message="Vous devez renseigner obligatoirement votre nom d'utilisateur.")
      */
     private $username;
@@ -58,7 +60,7 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=255, unique=true)
+     * @ORM\Column(name="email", type="string", length=60, unique=true)
      * @Assert\NotBlank(message="Vous devez renseigner obligatoirement votre e-mail.")
      * @Assert\Email(message="Vous devez renseigner un email valide.")
      */
@@ -67,16 +69,32 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="string", length=255)
+     * @ORM\Column(name="password", type="string", length=64)
      */
     private $password;
 
     /**
-     * @ORM\OneToMany(targetEntity="ST\TricksBundle\Entity\Comment", mappedBy="user", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="ST\UserBundle\Entity\Comment", mappedBy="user", cascade={"persist", "remove"})
      */
     private $comments;
 
+    /**
+     * @ORM\Column(name="is_active", type="boolean")
+     */
+    private $isActive;
 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->isActive = true;
+        // may not be needed, see section on salt below
+        // $this->salt = md5(uniqid('', true));
+        $this->comments = new ArrayCollection();
+    }
+
+     
     /**
      * Get id
      *
@@ -230,13 +248,6 @@ class User
     {
         return $this->password;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->comments = new ArrayCollection();
-    }
 
     /**
      * Add comment
@@ -275,5 +286,45 @@ class User
     public function getFullName()
     {
         return $this->firstName. ' '.$this->lastName;
+    }
+
+    public function getSalt()
+    {
+        // you *may* need a real salt depending on your encoder
+        // see section on salt below
+        return null;
+    }
+
+    public function getRoles()
+    {
+        return array('ROLE_USER');
+    }
+
+    public function eraseCredentials()
+    {
+    }
+
+    /** @see \Serializable::serialize() */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->username,
+            $this->password,
+            // see section on salt below
+            // $this->salt,
+        ));
+    }
+
+    /** @see \Serializable::unserialize() */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->id,
+            $this->username,
+            $this->password,
+            // see section on salt below
+            // $this->salt
+        ) = unserialize($serialized);
     }
 }

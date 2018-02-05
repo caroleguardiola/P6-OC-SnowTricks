@@ -1,6 +1,6 @@
 <?php
 
-namespace ST\TricksBundle\Repository;
+namespace ST\UserBundle\Repository;
 
 /**
  * PhotoRepository

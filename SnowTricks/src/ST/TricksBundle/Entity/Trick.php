@@ -63,7 +63,7 @@ class Trick
     private $videos;
 
     /**
-     * @ORM\OneToMany(targetEntity="ST\TricksBundle\Entity\Comment", mappedBy="trick", cascade={"persist","remove"})
+     * @ORM\OneToMany(targetEntity="ST\UserBundle\Entity\Comment", mappedBy="trick", cascade={"persist","remove"})
      */
     private $comments;
 
