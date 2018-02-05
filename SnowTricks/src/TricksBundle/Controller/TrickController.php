@@ -11,11 +11,6 @@ use TricksBundle\Entity\User;
 use TricksBundle\Form\TrickType;
 use TricksBundle\Form\CommentType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\FormType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -28,7 +23,7 @@ class TrickController extends Controller
         ->getDoctrine()
         ->getManager()
         ->getRepository('TricksBundle:Trick')
-        ->getTricks()
+        ->findAll()
       ;
 
       return $this->render('TricksBundle:Trick:index.html.twig', array(
@@ -99,7 +94,6 @@ class TrickController extends Controller
                 $trick->addVideo($video);
             } 
 
-
         $em = $this->getDoctrine()->getManager();
         $em->persist($trick);
         $em->flush();
@@ -116,11 +110,11 @@ class TrickController extends Controller
 
     public function editAction($id, Request $request)
     {
-      $trick = $this
-        ->getDoctrine()
-        ->getManager()
+       $em = $this->getDoctrine()->getManager();
+
+      $trick = $em
         ->getRepository('TricksBundle:Trick')
-        ->find($id)
+        ->find($id);
       ;
 
       $trick->setUpdatedAt(new \Datetime());
@@ -128,6 +122,19 @@ class TrickController extends Controller
       $form = $this->get('form.factory')->create(TrickType::class, $trick);
 
       if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+
+        $listImages = $trick->getImages();
+            foreach ($listImages as $image)
+            {
+                $trick->addImage($image);
+            }
+
+        $listVideos = $trick->getVideos();
+            foreach ($listVideos as $video)
+            {
+                $trick->addVideo($video);
+            } 
+            
       // Inutile de persister ici, Doctrine connait déjà notre trick
         $em->flush();
 

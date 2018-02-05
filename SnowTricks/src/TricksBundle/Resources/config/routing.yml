@@ -28,3 +28,10 @@ tricks_delete:
       _controller: TricksBundle:Trick:delete
     requirements:
       id: \d+
+
+images_delete:
+    path:     /tricks/suppression images/{id}
+    defaults: 
+      _controller: TricksBundle:Image:delete
+    requirements:
+      id: \d+

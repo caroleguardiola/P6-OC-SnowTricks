@@ -31,60 +31,18 @@
   </div>
 
   <div class="form-group">
-    {{ form_row(form.images) }}
-    <a href="#" id="add_image" class="btn btn-default">Ajouter une image</a>
-  </div>
-
-  <div class="row">
-    <h5>Images déjà en ligne :</h5>
+    {{ form_label(form.images, "Images", {'label_attr': {'class': 'control-label'}}) }}
+    {{ form_errors(form.images) }}
     {% if trick.images is defined %}
-      <div class="col-md-2 point5 ">
-          <div class="trick">
-              <a href="{{ path('tricks_view', {'id': trick.id}) }}">
-                  {% for image in trick.images %}
-                        <img class="img-responsive" src="{{asset(image.webPath)}}" alt="{{image.alt}}">
-                        <br>
-                {% else %}
-                    <p>Pas d'images pour ce trick !!</p>
-                {% endfor %}
-              </a>
-
-              <div class="trick_info">
-                 <div class="trick_delete">
-                    <a href="#blog-detail" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                </div>
-                <!--start modal -->
-                    <div class="modal fade" id="blog-detail" tabindex="-1" role="dialog" aria-hidden="true">
-                      <div class="modal-dialog modal-md">
-                        <div class="modal-content">
-
-                          <div class="modal-header">
-                              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fermer</span></button>
-                              <h3 class="modal-title" id="actu_1">Suppression  Trick</h3>
-                          </div>
-                          
-                          <div class="modal-body">
-                            <div class="blog-content">
-                              <p>Vous êtes sur le point de supprimer ce trick !</p>
-                              <p>Etes-vous sûr de vouloir le supprimer ?</p>
-                            </div>
-                            <div>Formulaire</div>
-                          </div>
-
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Fermer</button>
-                          </div>
-
-                        </div> 
-                      </div>
-                    </div>
-                    <!--end modal -->
-              </div><!-- end trick_info -->
+        {% for image in trick.images %}
+          <div>
+            <img style="width: 200px;" src="{{ asset(image.webPath) }}" alt="{{ image.alt }}">
+            <a href="{{ path('images_delete', {'id': image.id}) }}" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
           </div>
-      </div>
-    {% else %}
-        Pas (encore !) de tricks
-   {% endif %}
+        {% endfor %}
+    {% endif %}
+    {{ form_widget(form.images) }}
+    <a href="#" id="add_image" class="btn btn-default">Ajouter une image</a>
   </div>
 
   <div class="form-group">
