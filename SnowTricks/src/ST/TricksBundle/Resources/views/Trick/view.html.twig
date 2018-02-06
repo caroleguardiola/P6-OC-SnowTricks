@@ -117,8 +117,8 @@
               <div class="col-md-12">
                   <h5>Formulaire commentaire</h5>
                   <div class="well">
-                    <p>Auteur : </p>
-                    <p>Photo : </p>
+                    <p>Auteur : {{app.user.username}}</p>
+                    <p>Photo : <img src="{{app.user.photo.webPath}}" alt="{{app.user.photo.alt}}"></p>
                     {{ form(form) }}
                   </div>
               </div>
