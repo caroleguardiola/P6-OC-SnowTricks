@@ -107,7 +107,44 @@ section { overflow: hidden; }*/
     background-color: #fff;
 }
 
+.login-page {
+  padding-top: 250px;
+  padding-bottom: 220px;
+}
 
+.page-wrapper-login{
+    background-color: #12a7cd;
+    margin: 0 350px;
+    text-align: center;
+}
+
+.login {
+    padding: 50px 0; 
+}
+
+.login-user {
+    padding: 20px 0;
+}
+
+.login-user label{
+    font-weight: 600;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-family: 'Raleway', sans-serif;
+    color: #fff;
+}
+
+.login-submit {
+    padding-top: 20px;
+}
+
+.login .login-user input {
+    background-color: transparent;
+    box-shadow: none;
+    border-bottom: 2px solid #fff !important;
+    border: none;
+    color: #fff;
+}
 /*text color*/
 
 .text-muted{}
@@ -398,11 +435,33 @@ Button
     border-radius: 20px;
 }
 
+.btn-login{
+    -webkit-transition: all 0.6s;
+    transition: all 0.6s;
+    text-transform: uppercase;
+    font-size:18px;
+    font-weight: 600;
+    border:1px solid;
+    color: #12a7cd;
+    background-color: #fff;
+    border-color: #fff;
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-family: 'Raleway', sans-serif;
+}
+
 .btn:hover{
     border:1px solid;
     background-color: #eee;
     border-color: #eee;
     color:#12a7cd;
+}
+
+.btn-login:hover{
+    border:1px solid;
+    background-color:  #12a7cd;
+    border-color:  #12a7cd;
+    color:#fff;
 }
 
 .btn-success{}
