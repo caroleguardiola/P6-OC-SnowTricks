@@ -14,6 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class TrickController extends Controller
 {
@@ -51,7 +52,12 @@ class TrickController extends Controller
 
       $comment->setDateCreation(new \Datetime());
       $comment->setTrick($trick);
-      $comment->setUser($this->getUser());
+
+      $user = $this->getUser();
+
+      if (null !== $user) {
+          $comment->setUser($this->getUser());
+      }
 
       $form = $this->get('form.factory')->create(CommentType::class, $comment);
 
@@ -71,6 +77,10 @@ class TrickController extends Controller
           'form' => $form->createView(),
       ));
     }
+
+    /**
+    * @Security("has_role('ROLE_USER')")
+    */
 
     public function addAction(Request $request)
   	{

@@ -45,17 +45,20 @@
                         <br>
                     {% endfor %}
                   </a>
-
+                  
                   <div class="trick_info">
                     <div class="trick_name">
                         <a href="{{ path('tricks_view', {'id': trick.id}) }}"><h6>{{ trick.name }}</h6></a>
                     </div>
+
+                    {% if is_granted('ROLE_USER') %}
                     <div class="trick_update">
                         <a href="{{ path('tricks_edit', {'id': trick.id}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                     </div>
                     <div class="trick_delete">
                         <a href="#trick_delete" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash" aria-hidden="true"></i></a>
                     </div>
+                    {% endif %}
 
                     <!--start modal -->
                     <div class="modal fade" id="trick_delete" tabindex="-1" role="dialog" aria-hidden="true">
