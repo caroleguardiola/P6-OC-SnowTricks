@@ -119,7 +119,7 @@ section { overflow: hidden; }*/
 }
 
 .login {
-    padding: 50px 0; 
+    padding: 30px 0; 
 }
 
 .login-user {
@@ -147,7 +147,20 @@ section { overflow: hidden; }*/
 }
 
 .login-title {
-    padding-bottom: 70px;
+    padding-bottom: 40px;
+}
+
+.page-wrapper-login a {
+    color: #fff;
+    font-family:'Raleway', sans-serif;
+}
+
+.register {
+    padding-bottom: 15px;
+}
+
+.forgot {
+    padding-bottom: 30px;
 }
 
 /*text color*/

@@ -3,11 +3,14 @@
 namespace ST\UserBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
 
 class SecurityController extends Controller
 {
+	 /**
+     * @Route("/login", name="login")
+     */
   public function loginAction(Request $request)
   {
     // Si le visiteur est déjà identifié, on le redirige vers l'accueil
