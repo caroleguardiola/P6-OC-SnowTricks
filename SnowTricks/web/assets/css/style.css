@@ -108,8 +108,8 @@ section { overflow: hidden; }*/
 }
 
 .login-page {
-  padding-top: 250px;
-  padding-bottom: 220px;
+  padding-top: 150px;
+  padding-bottom: 150px;
 }
 
 .page-wrapper-login{
@@ -145,6 +145,11 @@ section { overflow: hidden; }*/
     border: none;
     color: #fff;
 }
+
+.login-title {
+    padding-bottom: 70px;
+}
+
 /*text color*/
 
 .text-muted{}
