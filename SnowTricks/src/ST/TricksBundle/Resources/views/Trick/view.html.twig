@@ -10,6 +10,8 @@
     <div class="row page-wrapper">
 
       <section class="trick_header">
+
+        {% if is_granted('ROLE_USER') %}
         <div class="trick_info_details pull-right">
             <div class="trick_update">
                 <a href="{{ path('tricks_edit', {'id': trick.id}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
@@ -44,6 +46,7 @@
               </div>
               <!--end modal -->
         </div>
+      {% endif %}
 
         <div class="trick_image" style="background: url('{% for image in trick.images %} {% if loop.first %} {{asset(image.webPath)}} {% endif %} {% endfor %}') no-repeat center">
           <div class="row">
@@ -111,7 +114,7 @@
 
       <hr class="divider">
 
-     
+        {% if is_granted('ROLE_USER') %}
         <div class="row trick_details">
           <div class="trick_description">
               <div class="col-md-12">
@@ -123,10 +126,10 @@
                   </div>
               </div>
           </div>
-        </div>
-     
+        </div>  
 
       <hr class="divider ">
+      {% endif %}
 
      
         <div class="row trick_details">

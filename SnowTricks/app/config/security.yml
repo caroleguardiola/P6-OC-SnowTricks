@@ -2,7 +2,6 @@
 # https://symfony.com/doc/current/security.html
 security:
     encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
         ST\UserBundle\Entity\User: plaintext
 
     role_hierarchy:

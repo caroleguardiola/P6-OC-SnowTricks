@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use ST\TricksBundle\Entity\Image;
 use ST\TricksBundle\Entity\Video;
 use ST\TricksBundle\Entity\Category;
-use ST\TricksBundle\Entity\Comment;
+use ST\UserBundle\Entity\Comment;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
