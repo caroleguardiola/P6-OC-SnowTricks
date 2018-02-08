@@ -1,0 +1,49 @@
+{% extends "::layout.html.twig" %}
+
+{% block sections_body %}
+
+  <!-- Page Content -->
+<div class="container login-page">
+  <div class="row login-title">
+        <div class="home_text">
+            <h1 class="text-blue wow fadeInLeft" data-wow-duration="2s">Enregistrement</h1>
+        </div>
+  </div><!--End off row-->
+  <div class="row page-wrapper-login">
+
+{{ form_start(form) }}
+
+    <div class="register-user">
+    {{ form_row(form.username) }}
+    </div>
+
+    <div class="register-user">
+      {{ form_row(form.email) }}
+    </div>
+
+    <div class="register-user">
+      {{ form_row(form.plainPassword.first) }}
+    </div>
+
+    <div class="register-user">
+      {{ form_row(form.plainPassword.second) }}
+    </div>
+    
+    <div class="register-submit">
+      <input type="submit" class="btn-login" value="Enregistrer" />
+    </div>
+
+  {{ form_end(form) }}
+
+  <div class="register">
+    <a href="">S'enregistrer</a>
+  </div>
+
+  <div class="forgot">
+    <a href="">Mot de passe oublié ?</a>
+  </div>
+
+ </div>
+</div>
+
+{% endblock %}

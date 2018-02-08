@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use ST\UserBundle\Entity\Comment;
 use ST\UserBundle\Entity\Photo;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
@@ -14,6 +15,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
  *
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="ST\UserBundle\Repository\UserRepository")
+ * @UniqueEntity(fields="email", message="Email already taken")
+ * @UniqueEntity(fields="username", message="Username already taken")
  */
 class User implements UserInterface, \Serializable
 {
@@ -29,16 +32,14 @@ class User implements UserInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(name="first_name", type="string", length=255)
-     * @Assert\NotBlank(message="Vous devez renseigner obligatoirement votre prénom.")
+     * @ORM\Column(name="first_name", type="string", length=255, nullable=true)
      */
     private $firstName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="last_name", type="string", length=255)
-     * @Assert\NotBlank(message="Vous devez renseigner obligatoirement votre nom.")
+     * @ORM\Column(name="last_name", type="string", length=255, nullable=true)
      */
     private $lastName;
 
@@ -52,7 +53,7 @@ class User implements UserInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(name="username", type="string", length=25, unique=true)
+     * @ORM\Column(name="username", type="string", length=255, unique=true)
      * @Assert\NotBlank(message="Vous devez renseigner obligatoirement votre nom d'utilisateur.")
      */
     private $username;
@@ -60,11 +61,17 @@ class User implements UserInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=60, unique=true)
+     * @ORM\Column(name="email", type="string", length=255, unique=true)
      * @Assert\NotBlank(message="Vous devez renseigner obligatoirement votre e-mail.")
      * @Assert\Email(message="Vous devez renseigner un email valide.")
      */
     private $email;
+
+    /**
+     * @Assert\NotBlank()
+     * @Assert\Length(max=4096)
+     */
+    private $plainPassword;
 
     /**
      * @var string
@@ -223,6 +230,16 @@ class User implements UserInterface, \Serializable
     public function getEmail()
     {
         return $this->email;
+    }
+
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    public function setPlainPassword($password)
+    {
+        $this->plainPassword = $password;
     }
 
     /**

@@ -138,11 +138,33 @@ section { overflow: hidden; }*/
     padding-top: 20px;
 }
 
-.login .login-user input {
+.login-user input {
     background-color: transparent;
     box-shadow: none;
     border-bottom: 2px solid #fff !important;
     border: none;
+    color: #fff;
+}
+
+.register-user {
+    padding: 20px 0;
+}
+
+.register-user input {
+    background-color: transparent;
+    box-shadow: none;
+    border-bottom: 2px solid #fff !important;
+    border: none;
+    color: #fff;
+    margin-left: 110px;
+    width: 50%;
+}
+
+.register-user label{
+    font-weight: 600;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-family: 'Raleway', sans-serif;
     color: #fff;
 }
 
