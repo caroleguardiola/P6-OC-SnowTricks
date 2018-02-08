@@ -9,7 +9,7 @@
             <h1 class="text-blue wow fadeInLeft" data-wow-duration="2s">Enregistrement</h1>
         </div>
   </div><!--End off row-->
-  <div class="row page-wrapper-login">
+  <div class="row page-wrapper-register">
 
 {{ form_start(form) }}
 
@@ -19,6 +19,18 @@
 
     <div class="register-user">
       {{ form_row(form.email) }}
+    </div>
+
+     <div class="register-user">
+    {{ form_row(form.firstName) }}
+    </div>
+
+     <div class="register-user">
+    {{ form_row(form.lastName) }}
+    </div>
+
+     <div class="register-user">
+    {{ form_row(form.photo) }}
     </div>
 
     <div class="register-user">
@@ -34,14 +46,6 @@
     </div>
 
   {{ form_end(form) }}
-
-  <div class="register">
-    <a href="">S'enregistrer</a>
-  </div>
-
-  <div class="forgot">
-    <a href="">Mot de passe oublié ?</a>
-  </div>
 
  </div>
 </div>

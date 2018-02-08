@@ -68,7 +68,7 @@ class TrickController extends Controller
 
         $request->getSession()->getFlashBag()->add('notice', 'Commentaire bien enregistré.');
 
-        return $this->redirectToRoute('tricks_home', array('id' => $trick->getId()));
+        return $this->redirectToRoute('tricks_view', array('id' => $trick->getId()));
       }
         
       return $this->render('TricksBundle:Trick:view.html.twig',array(

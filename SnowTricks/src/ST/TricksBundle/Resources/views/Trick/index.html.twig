@@ -29,6 +29,12 @@
   <!-- Page Content -->
   <section class="container roomy-100 list_tricks" id="list_tricks">
 
+      {% if is_granted('ROLE_USER') %}
+        <a href="{{ path('tricks_add') }}" class="btn btn-primary btn-lg">
+        Créer un trick
+      </a>
+      {% endif %}
+
       <div class="row">
         {% for trick in listTricks %}
           <div class="col-md-2 point5 ">

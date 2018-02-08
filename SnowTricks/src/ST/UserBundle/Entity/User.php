@@ -32,14 +32,14 @@ class User implements UserInterface, \Serializable
     /**
      * @var string
      *
-     * @ORM\Column(name="first_name", type="string", length=255, nullable=true)
+     * @ORM\Column(name="first_name", type="string", length=255)
      */
     private $firstName;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="last_name", type="string", length=255, nullable=true)
+     * @ORM\Column(name="last_name", type="string", length=255)
      */
     private $lastName;
 
@@ -47,6 +47,7 @@ class User implements UserInterface, \Serializable
      * @var string
      *
      * @ORM\OneToOne(targetEntity="ST\UserBundle\Entity\Photo", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
      */
     private $photo;
 

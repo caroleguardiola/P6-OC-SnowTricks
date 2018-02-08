@@ -143,7 +143,7 @@ class Image
         return $this->file;
     }
 
-  public function setFile(UploadedFile $file)
+    public function setFile(UploadedFile $file)
     {
        $this->file = $file;
         // On vérifie si on avait déjà un fichier pour cette entité

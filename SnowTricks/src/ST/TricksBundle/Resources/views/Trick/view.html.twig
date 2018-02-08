@@ -121,7 +121,14 @@
                   <h5>Formulaire commentaire</h5>
                   <div class="well">
                     <p>Auteur : {{app.user.username}}</p>
-                    <p>Photo : <img src="{{app.user.photo.webPath}}" alt="{{app.user.photo.alt}}"></p>
+                      <div class="row">
+                        <div class="col-md-2">
+                          <p>Photo : </p>
+                        </div>
+                        <div class="col-md-2">
+                          <img src="{{asset(app.user.photo.webPath)}}" alt="{{app.user.photo.alt}}">
+                        </div>
+                      </div>
                     {{ form(form) }}
                   </div>
               </div>
@@ -137,14 +144,18 @@
               <div class="col-md-12">
                   <h5>Liste commentaires</h5>
                   {% for comment in listComments %}
-                    <div class="col-md-2">
-                      <img src="{{asset(comment.user.photo.webPath)}}" alt="{{comment.user.photo.alt}}" style="">
+                    <div class="row">
+                      <div class="col-md-2">
+                        <img src="{{asset(comment.user.photo.webPath)}}" alt="{{comment.user.photo.alt}}" style="">
+                      </div>
+                      <div class="col-md-10">
+                        <p>Auteur : {{comment.user.fullName}}</p>                  
+                        <p>Date : {{comment.dateCreation|date('d/m/Y à H:i')}}</p>
+                        <p>Message : {{comment.content}}</p>
+                      </div>
                     </div>
-                    <div class="col-md-10">
-                      <p>Auteur : {{comment.user.fullName}}</p>                  
-                      <p>Date : {{comment.dateCreation|date('d/m/Y à H:i')}}</p>
-                      <p>Message : {{comment.content}}</p>
-                    </div>
+
+                    <hr>
                   {% else %}
                     Pas (encore !) de commentaires
                   {% endfor %}

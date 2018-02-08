@@ -4,6 +4,7 @@ namespace ST\UserBundle\Controller;
 
 use ST\UserBundle\Form\UserType;
 use ST\UserBundle\Entity\User;
+use ST\UserBundle\Entity\Photo;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
@@ -33,11 +34,11 @@ class SecurityController extends Controller
         $passwordEncoder = $this->get('security.password_encoder');
         // 1) build the form
         $user = new User();
-        $form = $this->createForm(UserType::class, $user);
+      	$form = $this->get('form.factory')->create(UserType::class, $user);
 
         // 2) handle the submit (will only happen on POST)
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+        
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
 
             // 3) Encode the password (you could also do this via Doctrine listener)
             $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
@@ -51,7 +52,7 @@ class SecurityController extends Controller
             // ... do any other work - like sending them an email, etc
             // maybe set a "flash" success message for the user
 
-            return $this->redirectToRoute('tricks_home');
+            return $this->redirectToRoute('login');
         }
 
         return $this->render(
