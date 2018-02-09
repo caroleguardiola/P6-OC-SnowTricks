@@ -9,6 +9,7 @@ use ST\TricksBundle\Entity\Video;
 use ST\TricksBundle\Entity\Category;
 use ST\UserBundle\Entity\Comment;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * Trick
@@ -16,6 +17,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="trick")
  * @ORM\Entity(repositoryClass="ST\TricksBundle\Repository\TrickRepository")
  * @ORM\HasLifecycleCallbacks()
+ *
+ * @UniqueEntity(fields="name", message="Un trick existe déjà avec ce titre.")
  */
 class Trick
 {
