@@ -11,6 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *
  * @ORM\Table(name="photo")
  * @ORM\Entity(repositoryClass="ST\UserBundle\Repository\PhotoRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Photo
 {
@@ -104,12 +105,12 @@ class Photo
         return $this->alt;
     }
 
-    public function getFile()
+     public function getFile()
     {
         return $this->file;
     }
 
-  public function setFile(UploadedFile $file)
+    public function setFile(UploadedFile $file)
     {
        $this->file = $file;
         // On vérifie si on avait déjà un fichier pour cette entité
@@ -197,7 +198,7 @@ class Photo
     protected function getUploadRootDir()
     {
         // On retourne le chemin relatif vers l'image pour notre code PHP
-        return __DIR__.'/../../../web/'.$this->getUploadDir();
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
     }
 
     public function getWebPath()

@@ -16,7 +16,9 @@ class ImageController extends Controller
       $em = $this->getDoctrine()->getManager();
       $image = $em->getRepository('TricksBundle:Image')->find($id);
 
-      $trick = $image->getTrick()->getId();
+      if (null == $image) {
+        $trick = $image->getTrick()->getId();
+      }
 
       if (null === $image) {
         throw new NotFoundHttpException("L'image d'id ".$id." n'existe pas.");
@@ -30,7 +32,7 @@ class ImageController extends Controller
         $em->flush();
         $request->getSession()->getFlashBag()->add('info', "L'image a bien été supprimée.");
 
-        return $this->redirectToRoute('tricks_home', array('trick' => $trick));
+         return $this->redirectToRoute('tricks_home');
       }
 
        return $this->render('TricksBundle:Trick:delete_image.html.twig', array(
