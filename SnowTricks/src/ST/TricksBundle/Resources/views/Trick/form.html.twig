@@ -35,10 +35,12 @@
     {{ form_errors(form.images) }}
     {% if trick.images is defined %}
         {% for image in trick.images %}
+          {% if image.id is not null %}
           <div>
             <img style="width: 200px;" src="{{ asset(image.webPath) }}" alt="{{ image.alt }}">
-            <a href="{{ path('images_delete', {'id': image.id}) }}" class="btn btn-danger"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+            <a href="#image_delete" class="btn btn-danger" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
           </div>
+          {% endif %}
         {% endfor %}
     {% endif %}
     {{ form_widget(form.images) }}
@@ -62,4 +64,41 @@
 
   {# Fermeture de la balise <form> du formulaire HTML #}
   {{ form_end(form) }}
+
+  <!--start modal -->
+   {% if trick.images is defined %}
+  {% for image in trick.images %}
+  {% if image.id is not null %}
+    <div class="modal fade" id="image_delete" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fermer</span></button>
+              <h3 class="modal-title" id="actu_1">Suppression  Image</h3>
+          </div>
+          
+          <div class="modal-body">
+            <div class="blog-content">
+            </div>
+         
+            <div>
+              {{render(controller('TricksBundle:Image:delete',{'id': image.id} ))}}
+            </div>
+           
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Fermer</button>
+          </div>
+
+        </div> 
+      </div>
+    </div>
+    <!--end modal -->
+   {% endif %}
+   {% endfor %}
+      {% endif %}
+
+
 </div>

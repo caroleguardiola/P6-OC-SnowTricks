@@ -38,7 +38,7 @@ class TrickController extends Controller
 
       $trick = $em
         ->getRepository('TricksBundle:Trick')
-        ->getTrickDetails($id);
+        ->find($id);
 
       $listComments = $em
         ->getRepository('UserBundle:Comment')
@@ -149,7 +149,7 @@ class TrickController extends Controller
         $em->flush();
 
         $request->getSession()->getFlashBag()->add('notice', 'Trick bien modifié.');      
-        return $this->redirectToRoute('tricks_home', array('id' => $trick->getId()
+        return $this->redirectToRoute('tricks_view', array('id' => $trick->getId()
         ));
       }
       
