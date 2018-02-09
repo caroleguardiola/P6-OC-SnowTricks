@@ -52,6 +52,34 @@ class SecurityController extends Controller
             // ... do any other work - like sending them an email, etc
             // maybe set a "flash" success message for the user
 
+            
+        $message = (new \Swift_Message('Validation compte SnowTricks'))
+            ->setFrom('send@example.com')
+            ->setTo($user->getEmail())
+            ->setBody(
+                $this->renderView(
+                    'UserBundle:Security:registerValidation.html.twig',
+                    array('name' => $user->getUsername())
+                ),
+                'text/html'
+            )
+            /*
+             * If you also want to include a plaintext version of the message
+            ->addPart(
+                $this->renderView(
+                    'Emails/registration.txt.twig',
+                    array('name' => $name)
+                ),
+                'text/plain'
+            )
+            */
+        ;
+
+        $this->get('mailer')->send($message);
+        // or, you can also fetch the mailer service this way
+        // $this->get('mailer')->send($message);
+
+
             return $this->redirectToRoute('login');
         }
 
