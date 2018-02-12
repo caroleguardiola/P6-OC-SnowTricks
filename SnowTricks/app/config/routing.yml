@@ -17,3 +17,8 @@ register:
     path: /register
     defaults:
         _controller: UserBundle:Security:register
+
+register_confirmation:
+    path: /register_confirmation/{token}
+    defaults:
+        _controller: UserBundle:Security:check
