@@ -33,6 +33,7 @@ class User implements AdvancedUserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="first_name", type="string", length=255)
+     * @Assert\NotBlank(message="Vous devez renseigner obligatoirement votre prénom.")
      */
     private $firstName;
 
@@ -40,6 +41,7 @@ class User implements AdvancedUserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="last_name", type="string", length=255)
+     * @Assert\NotBlank(message="Vous devez renseigner obligatoirement votre nom.")
      */
     private $lastName;
 
@@ -48,6 +50,7 @@ class User implements AdvancedUserInterface, \Serializable
      *
      * @ORM\OneToOne(targetEntity="ST\UserBundle\Entity\Photo", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank(message="Vous devez obligatoirement ajouter une photo.")
      */
     private $photo;
 
@@ -63,7 +66,7 @@ class User implements AdvancedUserInterface, \Serializable
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, unique=true)
-     * @Assert\NotBlank(message="Vous devez renseigner obligatoirement votre e-mail.")
+     * @Assert\NotBlank(message="Vous devez renseigner obligatoirement votre e-mail.", groups={"forgotPassword"})
      * @Assert\Email(message="Vous devez renseigner un email valide.")
      */
     private $email;
