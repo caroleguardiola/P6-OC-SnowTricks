@@ -3,6 +3,7 @@
 namespace ST\UserBundle\Controller;
 
 use ST\UserBundle\Form\UserType;
+use ST\UserBundle\Form\UserForgotPasswordType;
 use ST\UserBundle\Entity\User;
 use ST\UserBundle\Entity\Photo;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -34,7 +35,7 @@ class SecurityController extends Controller
         $passwordEncoder = $this->get('security.password_encoder');
         // 1) build the form
         $user = new User();
-      	$form = $this->get('form.factory')->create(UserType::class, $user);
+        $form = $this->get('form.factory')->create(UserType::class, $user);
 
         // 2) handle the submit (will only happen on POST)
         
@@ -84,6 +85,8 @@ class SecurityController extends Controller
 
 
             return $this->redirectToRoute('login');
+        }else {
+            $this->addFlash('danger', 'Mail invalide');
         }
 
         return $this->render(
@@ -92,7 +95,7 @@ class SecurityController extends Controller
         );
     }
 
-     public function checkAction($token)
+    public function checkAction($token)
     {
         $em = $this->getDoctrine()->getManager();
         $repository = $em->getRepository('UserBundle:User');
@@ -105,5 +108,45 @@ class SecurityController extends Controller
             $this->addFlash('danger', 'Le lien sur lequel vous avez cliqué semble corrumpu.');
         }
         return $this->redirectToRoute('login');
+    }
+
+    public function resetPasswordAction(Request $request)
+    {
+        $form = $this->get('form.factory')->create(UserForgotPasswordType::class);
+
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+
+            $em = $this->getDoctrine()->getManager();
+            $repository = $em->getRepository('UserBundle:User');
+            $user = $form->getData();
+
+            if ($user = $repository->findOneBy(array('email' => $user->getEmail()))){
+                $user->setConfirmationToken(md5(time()*rand(357,412)));
+                $em->flush();
+
+                $this->addFlash('warning', 'Un mail de confirmation vient de vous être envoyé, merci de cliquer sur le lien joint.');
+
+                 $message = (new \Swift_Message('Changement mot de passe compte SnowTricks'))
+                ->setFrom('send@example.com')
+                ->setTo($user->getEmail())
+                ->setBody(
+                    $this->renderView(
+                        'UserBundle:Security:forgotPasswordValidation.html.twig',
+                        array('name' => $user->getUsername(),
+                        'token' => $user->getConfirmationToken())
+                    ),
+                    'text/html'
+                );
+
+                $this->get('mailer')->send($message);
+            } else {
+                $this->addFlash('danger', 'Mail invalide');
+            }
+            
+        }
+        return $this->render(
+            'UserBundle:Security:forgotPassword.html.twig',
+            array('form' => $form->createView())
+        );
     }
 }
