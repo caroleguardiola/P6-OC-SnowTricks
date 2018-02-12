@@ -11,23 +11,23 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class SecurityController extends Controller
 {
-  public function loginAction(Request $request)
-  {
-    // Si le visiteur est déjà identifié, on le redirige vers l'accueil
-    if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-      return $this->redirectToRoute('tricks_home');
+    public function loginAction(Request $request)
+    {
+        // Si le visiteur est déjà identifié, on le redirige vers l'accueil
+        if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
+          return $this->redirectToRoute('tricks_home');
+        }
+
+        // Le service authentication_utils permet de récupérer le nom d'utilisateur
+        // et l'erreur dans le cas où le formulaire a déjà été soumis mais était invalide
+        // (mauvais mot de passe par exemple)
+        $authenticationUtils = $this->get('security.authentication_utils');
+
+        return $this->render('UserBundle:Security:login.html.twig', array(
+          'last_username' => $authenticationUtils->getLastUsername(),
+          'error'         => $authenticationUtils->getLastAuthenticationError(),
+        ));
     }
-
-    // Le service authentication_utils permet de récupérer le nom d'utilisateur
-    // et l'erreur dans le cas où le formulaire a déjà été soumis mais était invalide
-    // (mauvais mot de passe par exemple)
-    $authenticationUtils = $this->get('security.authentication_utils');
-
-    return $this->render('UserBundle:Security:login.html.twig', array(
-      'last_username' => $authenticationUtils->getLastUsername(),
-      'error'         => $authenticationUtils->getLastAuthenticationError(),
-    ));
-  }
 
     public function registerAction(Request $request)
     {
@@ -44,6 +44,8 @@ class SecurityController extends Controller
             $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
             $user->setPassword($password);
 
+            $user->setConfirmationToken(md5(time()*rand(357,412)));
+
             // 4) save the User!
             $em = $this->getDoctrine()->getManager();
             $em->persist($user);
@@ -59,7 +61,8 @@ class SecurityController extends Controller
             ->setBody(
                 $this->renderView(
                     'UserBundle:Security:registerValidation.html.twig',
-                    array('name' => $user->getUsername())
+                    array('name' => $user->getUsername(),
+                    'token' => $user->getConfirmationToken())
                 ),
                 'text/html'
             )
@@ -87,5 +90,20 @@ class SecurityController extends Controller
             'UserBundle:Security:register.html.twig',
             array('form' => $form->createView())
         );
+    }
+
+     public function checkAction($token)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository('UserBundle:User');
+        if ($user = $repository->findOneBy(array('confirmationToken' =>$token))){
+            $user->setConfirmationToken(NULL);
+            $user->setIsActive(true);            
+            $em->flush();
+            $this->addFlash('success', 'Bienvenue à vous '. $user->getUsername().' Votre compte est maintenant activé, vous pouvez vous connecter.');
+        } else {
+            $this->addFlash('danger', 'Le lien sur lequel vous avez cliqué semble corrumpu.');
+        }
+        return $this->redirectToRoute('login');
     }
 }
