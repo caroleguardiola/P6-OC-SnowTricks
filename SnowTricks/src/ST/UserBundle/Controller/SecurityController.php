@@ -4,6 +4,7 @@ namespace ST\UserBundle\Controller;
 
 use ST\UserBundle\Form\UserType;
 use ST\UserBundle\Form\UserForgotPasswordType;
+use ST\UserBundle\Form\UserResetPasswordType;
 use ST\UserBundle\Entity\User;
 use ST\UserBundle\Entity\Photo;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -84,7 +85,7 @@ class SecurityController extends Controller
         // $this->get('mailer')->send($message);
 
 
-            return $this->redirectToRoute('login');
+        return $this->redirectToRoute('tricks_home');
         }else {
             $this->addFlash('danger', 'Mail invalide');
         }
@@ -99,7 +100,8 @@ class SecurityController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
         $repository = $em->getRepository('UserBundle:User');
-        if ($user = $repository->findOneBy(array('confirmationToken' =>$token))){
+
+        if ($user = $repository->findOneBy(array('confirmationToken' => $token))){
             $user->setConfirmationToken(NULL);
             $user->setIsActive(true);            
             $em->flush();
@@ -107,10 +109,10 @@ class SecurityController extends Controller
         } else {
             $this->addFlash('danger', 'Le lien sur lequel vous avez cliqué semble corrumpu.');
         }
-        return $this->redirectToRoute('login');
+        return $this->redirectToRoute('tricks_home');
     }
 
-    public function resetPasswordAction(Request $request)
+    public function forgotPasswordAction(Request $request)
     {
         $form = $this->get('form.factory')->create(UserForgotPasswordType::class);
 
@@ -142,11 +144,47 @@ class SecurityController extends Controller
             } else {
                 $this->addFlash('danger', 'Mail invalide');
             }
-            
+            return $this->redirectToRoute('tricks_home');
         }
         return $this->render(
             'UserBundle:Security:forgotPassword.html.twig',
             array('form' => $form->createView())
         );
+    }
+
+    public function resetPasswordAction(Request $request, $token)
+    {
+        $passwordEncoder = $this->get('security.password_encoder');
+
+        $em = $this->getDoctrine()->getManager();
+
+        $repository = $em
+            ->getRepository('UserBundle:User');
+            ;
+        ;
+
+        if ($user=$repository->findOneBy(array('confirmationToken' => $token))){
+
+            $form = $this->get('form.factory')->create(UserResetPasswordType::class, $user);
+
+            if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+
+                // Inutile de persister ici, Doctrine connait déjà notre user
+               
+                $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
+                $user->setPassword($password);
+                $user->setConfirmationToken(NULL);
+                $em->flush();
+
+            return $this->redirectToRoute('tricks_home');
+            }
+        }
+          
+         return $this->render(
+            'UserBundle:Security:resetPassword.html.twig', array(
+            'user' => $user,
+            'form' => $form->createView(),
+        ));
+
     }
 }

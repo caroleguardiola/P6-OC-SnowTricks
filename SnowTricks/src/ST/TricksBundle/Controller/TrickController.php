@@ -120,7 +120,7 @@ class TrickController extends Controller
 
     public function editAction($id, Request $request)
     {
-       $em = $this->getDoctrine()->getManager();
+      $em = $this->getDoctrine()->getManager();
 
       $trick = $em
         ->getRepository('TricksBundle:Trick')

@@ -26,4 +26,9 @@ register_confirmation:
 forgot_password:
     path: /forgot_password/reset
     defaults:
+        _controller: UserBundle:Security:forgotPassword
+
+reset_password:
+    path: /reset_password/{token}
+    defaults:
         _controller: UserBundle:Security:resetPassword
