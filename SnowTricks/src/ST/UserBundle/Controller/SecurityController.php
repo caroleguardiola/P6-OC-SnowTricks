@@ -17,7 +17,7 @@ class SecurityController extends Controller
     {
         // Si le visiteur est déjà identifié, on le redirige vers l'accueil
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-          return $this->redirectToRoute('tricks_home');
+        return $this->redirectToRoute('tricks_home');
         }
 
         // Le service authentication_utils permet de récupérer le nom d'utilisateur
@@ -55,40 +55,26 @@ class SecurityController extends Controller
 
             // ... do any other work - like sending them an email, etc
             // maybe set a "flash" success message for the user
+          
+            $message = (new \Swift_Message('Validation compte SnowTricks'))
+                ->setFrom('send@example.com')
+                ->setTo($user->getEmail())
+                ->setBody(
+                    $this->renderView(
+                        'UserBundle:Security:registerValidation.html.twig',
+                        array('name' => $user->getUsername(),
+                        'token' => $user->getConfirmationToken())
+                    ),
+                    'text/html'
+                );
 
-            
-        $message = (new \Swift_Message('Validation compte SnowTricks'))
-            ->setFrom('send@example.com')
-            ->setTo($user->getEmail())
-            ->setBody(
-                $this->renderView(
-                    'UserBundle:Security:registerValidation.html.twig',
-                    array('name' => $user->getUsername(),
-                    'token' => $user->getConfirmationToken())
-                ),
-                'text/html'
-            )
-            /*
-             * If you also want to include a plaintext version of the message
-            ->addPart(
-                $this->renderView(
-                    'Emails/registration.txt.twig',
-                    array('name' => $name)
-                ),
-                'text/plain'
-            )
-            */
-        ;
+            $this->get('mailer')->send($message);
+            // or, you can also fetch the mailer service this way
+            // $this->get('mailer')->send($message);
 
-        $this->get('mailer')->send($message);
-        // or, you can also fetch the mailer service this way
-        // $this->get('mailer')->send($message);
-
-
-        return $this->redirectToRoute('tricks_home');
-        }else {
-            $this->addFlash('danger', 'Mail invalide');
-        }
+            $this->addFlash('warning', 'Un mail de confirmation vient de vous être envoyé, merci de cliquer sur le lien joint.');
+            return $this->redirectToRoute('tricks_home');
+        }          
 
         return $this->render(
             'UserBundle:Security:register.html.twig',
@@ -105,9 +91,9 @@ class SecurityController extends Controller
             $user->setConfirmationToken(NULL);
             $user->setIsActive(true);            
             $em->flush();
-            $this->addFlash('success', 'Bienvenue à vous '. $user->getUsername().' Votre compte est maintenant activé, vous pouvez vous connecter.');
+            $this->addFlash('notice', 'Bienvenue '. $user->getUsername(). '! Votre compte est maintenant activé, vous pouvez vous connecter !');
         } else {
-            $this->addFlash('danger', 'Le lien sur lequel vous avez cliqué semble corrumpu.');
+            $this->addFlash('error', 'Le lien sur lequel vous avez cliqué semble corrumpu.');
         }
         return $this->redirectToRoute('tricks_home');
     }
@@ -126,8 +112,6 @@ class SecurityController extends Controller
                 $user->setConfirmationToken(md5(time()*rand(357,412)));
                 $em->flush();
 
-                $this->addFlash('warning', 'Un mail de confirmation vient de vous être envoyé, merci de cliquer sur le lien joint.');
-
                  $message = (new \Swift_Message('Changement mot de passe compte SnowTricks'))
                 ->setFrom('send@example.com')
                 ->setTo($user->getEmail())
@@ -141,8 +125,10 @@ class SecurityController extends Controller
                 );
 
                 $this->get('mailer')->send($message);
+                $this->addFlash('warning', 'Un mail de confirmation vient de vous être envoyé, merci de cliquer sur le lien joint.');
             } else {
-                $this->addFlash('danger', 'Mail invalide');
+                $this->addFlash('error', 'Mail invalide');
+                return $this->redirectToRoute('forgot_password');
             }
             return $this->redirectToRoute('tricks_home');
         }
@@ -175,8 +161,8 @@ class SecurityController extends Controller
                 $user->setPassword($password);
                 $user->setConfirmationToken(NULL);
                 $em->flush();
-
-            return $this->redirectToRoute('tricks_home');
+                $this->addFlash('notice', 'Bienvenue '. $user->getUsername(). '! Votre compte est à nouveau activé, vous pouvez vous connecter !');
+                return $this->redirectToRoute('tricks_home');
             }
         }
           
