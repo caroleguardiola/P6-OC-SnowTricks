@@ -91,7 +91,7 @@ class SecurityController extends Controller
             $user->setConfirmationToken(NULL);
             $user->setIsActive(true);            
             $em->flush();
-            $this->addFlash('notice', 'Bienvenue '. $user->getUsername(). '! Votre compte est maintenant activé, vous pouvez vous connecter !');
+            $this->addFlash('notice', 'Bienvenue '. $user->getUsername(). ' ! Votre compte est maintenant activé, vous pouvez vous connecter !');
         } else {
             $this->addFlash('error', 'Le lien sur lequel vous avez cliqué semble corrumpu.');
         }
@@ -161,7 +161,7 @@ class SecurityController extends Controller
                 $user->setPassword($password);
                 $user->setConfirmationToken(NULL);
                 $em->flush();
-                $this->addFlash('notice', 'Bienvenue '. $user->getUsername(). '! Votre compte est à nouveau activé, vous pouvez vous connecter !');
+                $this->addFlash('notice', 'Bienvenue '. $user->getUsername(). ' ! Votre compte est à nouveau activé, vous pouvez vous connecter !');
                 return $this->redirectToRoute('tricks_home');
             }
         }

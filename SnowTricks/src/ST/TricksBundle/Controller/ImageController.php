@@ -30,8 +30,7 @@ class ImageController extends Controller
       if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
         $em->remove($image);
         $em->flush();
-        $request->getSession()->getFlashBag()->add('info', "L'image a bien été supprimée.");
-
+        $this->addFlash('notice', "L'image a bien été supprimée.");
          return $this->redirectToRoute('tricks_home');
       }
 
