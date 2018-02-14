@@ -694,6 +694,7 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
     nav.navbar.bootsnav.navbar-transparent.white ul.nav > li,
     nav.navbar.bootsnav.no-background.white ul.nav > li{
         color: #12a7cd;
+        padding: 0 5px;
     }
     
     nav.navbar.bootsnav.navbar-transparent.dark .attr-nav > ul > li > a,
@@ -1020,6 +1021,10 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
         font-weight: 600;
         font-size: 18px;
         font-family: 'Lobster';
+    }
+
+    nav.navbar.bootsnav ul.nav > li {
+        padding: 0 5px;
     }
 }
 

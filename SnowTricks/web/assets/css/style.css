@@ -1387,3 +1387,43 @@ border-top: solid 1px rgba(18,167,205,0.3);
 .btn-modal {
     color: #fff !important;
 }
+
+.flash-warning {
+    font-family: 'Lobster', sans-serif;
+    font-size:24px;
+    font-weight: 300;
+    text-align: center;
+    color: #ff5a00;
+    border: 1px solid #ff5a00;
+    background-color: rgba(255,90,0,0.3);
+    margin: 0 200px;
+}
+
+.flash-error {
+    font-family: 'Lobster', sans-serif;
+    font-size:24px;
+    font-weight: 300;
+    text-align: center;
+    color: #F44336;
+    border: 1px solid #F44336;
+    background-color: rgba(244, 67, 54,0.3);
+    margin: 0 200px;
+}
+
+.flash-notice {
+    font-family: 'Lobster', sans-serif;
+    font-size:24px;
+    font-weight: 300;
+    text-align: center;
+    color: #4CAF50;
+    border: 1px solid #4CAF50;
+    background-color: rgba( 76, 175, 80,0.3);
+    margin: 0 200px;
+}
+
+.connected {
+    font-family: 'Lobster', sans-serif;
+    font-size:16px;
+    font-weight: 300;
+    padding-right: 5px;
+}

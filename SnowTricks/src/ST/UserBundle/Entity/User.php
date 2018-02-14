@@ -72,7 +72,7 @@ class User implements AdvancedUserInterface, \Serializable
     private $email;
 
     /**
-     * @Assert\NotBlank()
+     * @Assert\NotBlank(groups={"resetPassword"})
      * @Assert\Length(max=4096)
      */
     private $plainPassword;

@@ -66,7 +66,7 @@ class TrickController extends Controller
         $em->persist($comment);
         $em->flush();
 
-        $request->getSession()->getFlashBag()->add('notice', 'Commentaire bien enregistré.');
+        $this->addFlash('notice', 'Commentaire bien enregistré.');
 
         return $this->redirectToRoute('tricks_view', array('id' => $trick->getId()));
       }
@@ -108,7 +108,7 @@ class TrickController extends Controller
         $em->persist($trick);
         $em->flush();
 
-        $request->getSession()->getFlashBag()->add('notice', 'Trick bien enregistré.');
+        $this->addFlash('notice', 'Trick bien enregistré.');
 
 	      return $this->redirectToRoute('tricks_home', array('id' => $trick->getId()));
       }
@@ -120,7 +120,7 @@ class TrickController extends Controller
 
     public function editAction($id, Request $request)
     {
-       $em = $this->getDoctrine()->getManager();
+      $em = $this->getDoctrine()->getManager();
 
       $trick = $em
         ->getRepository('TricksBundle:Trick')
@@ -148,7 +148,7 @@ class TrickController extends Controller
       // Inutile de persister ici, Doctrine connait déjà notre trick
         $em->flush();
 
-        $request->getSession()->getFlashBag()->add('notice', 'Trick bien modifié.');      
+        $this->addFlash('notice', 'Trick bien modifié.');      
         return $this->redirectToRoute('tricks_view', array('id' => $trick->getId()
         ));
       }
@@ -174,7 +174,7 @@ class TrickController extends Controller
       if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
         $em->remove($trick);
         $em->flush();
-        $request->getSession()->getFlashBag()->add('info', "Le trick a bien été supprimé.");
+        $this->addFlash('notice', "Le trick a bien été supprimé.");
         return $this->redirectToRoute('tricks_home');
       }
 

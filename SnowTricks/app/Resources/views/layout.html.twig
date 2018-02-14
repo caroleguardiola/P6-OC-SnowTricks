@@ -77,8 +77,15 @@
                         <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
                             <li><a href="{{ path('tricks_home') }}">Accueil</a></li>                    
                             <li><a href="{{ path('tricks_home') }}#list_tricks">Tricks</a></li>                    
-                            <li><a href="{{ path('login') }}">Sign In</a></li>                    
-                            <li><a href="{{ path('logout') }}">Sign Up</a></li>                    
+                            <li> 
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                    Connecté en tant que <span class="connected">{{ app.user.username }}</span>
+                                    |
+                                    <a href="{{ path('logout') }}">Déconnexion</a>
+                                {% else %}
+                                    <a href="{{ path('login') }}">Connexion</a>
+                                {% endif %}
+                            </li>                  
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div>  
