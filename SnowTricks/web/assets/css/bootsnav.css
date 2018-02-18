@@ -101,10 +101,10 @@ ul.menu-col li a:focus{
 div.navbar-collapse a {
     display: inline-block;
 }
-ul li:after {
+.navbar-collapse ul li:after {
     content: "|";
 }
-ul li:last-child:after {
+.navbar-collapse ul li:last-child:after {
     content: "";
 }
 .navbar-responsive {
@@ -1517,5 +1517,3 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
         padding-bottom: 30px;
     }
 }
-
-

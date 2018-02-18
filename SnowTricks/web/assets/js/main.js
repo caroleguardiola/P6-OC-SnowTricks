@@ -201,14 +201,21 @@ jQuery(document).ready(function ($) {
 
 });
 
-$('.btn').on('click', function() {
-    var $this = $(this);
-  $this.button('loading');
-    setTimeout(function() {
-       $this.button('reset');
-   }, 8000);
-});
+//Loading
 
+$( document ).ready(function () {
+    $(".trick_load").slice(0, 1).show();
+    if ($(".trick_load:hidden").length != 0) {
+      $("#load").show();
+    }   
+    $("#load").on('click', function (e) {
+      e.preventDefault();
+      $(".trick_load:hidden").slice(0, 1).slideDown();
+      if ($(".trick_load:hidden").length == 0) {
+        $("#load").fadeOut('slow');
+      }
+    });
+  });
 
 
 //---------------------------------------------

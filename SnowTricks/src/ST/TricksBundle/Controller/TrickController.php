@@ -32,17 +32,33 @@ class TrickController extends Controller
       ));
     }
 
-    public function viewAction($id, Request $request)
+    public function viewAction($id, Request $request, $page)
     {
-  	  $em = $this->getDoctrine()->getManager();
+  	  
+      if ($page < 1)
+        {
+            throw new NotFoundHttpException("La page n'existe pas");
+        }
+
+      $nbPerPage = 2;
+
+      $em = $this->getDoctrine()->getManager();
 
       $trick = $em
         ->getRepository('TricksBundle:Trick')
-        ->find($id);
+        ->find($id);       
 
       $listComments = $em
         ->getRepository('UserBundle:Comment')
-        ->findByTrick($id);
+        ->findByTrick($id, $page, $nbPerPage);
+
+      // On calcule le nombre total de pages grâce au count($listAdverts) qui retourne le nombre total d'annonces
+      $nbPages = ceil(count($listComments) / $nbPerPage);
+
+      // Si la page n'existe pas, on retourne une 404
+      if ($page > $nbPages) {
+        throw $this->createNotFoundException("La page ".$page." n'existe pas.");
+      }
 
       if (null === $trick) {
         throw new NotFoundHttpException("Le trick d'id ".$id." n'existe pas.");
@@ -74,6 +90,8 @@ class TrickController extends Controller
       return $this->render('TricksBundle:Trick:view.html.twig',array(
           'trick' => $trick,
           'listComments' => $listComments,
+          'nbPages'     => $nbPages,
+          'page'        => $page,
           'form' => $form->createView(),
       ));
     }

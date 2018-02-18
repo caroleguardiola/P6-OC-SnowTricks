@@ -4,11 +4,13 @@ tricks_home:
       _controller: TricksBundle:Trick:index
 
 tricks_view:
-    path:     /tricks/details/{id}
+    path:     /tricks/details/{id}/{page}
     defaults: 
       _controller: TricksBundle:Trick:view
+      page: 1
     requirements:
       id: \d+
+      page: \d+
 
 tricks_add:
     path:     /tricks/ajout
