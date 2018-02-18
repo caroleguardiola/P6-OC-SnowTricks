@@ -145,13 +145,12 @@
       <hr class="divider ">
       {% endif %}
 
-     
         <div class="row trick_details">
           <div class="trick_description">
               <div class="col-md-12">
                   <h5>Liste commentaires</h5>
                   {% for comment in listComments %}
-                    <div class="row">
+                    <div class="row"  id="comments">
                       <div class="col-md-2">
                         <img src="{{asset(comment.user.photo.webPath)}}" alt="{{comment.user.photo.alt}}" style="">
                       </div>
@@ -166,10 +165,23 @@
                   {% else %}
                     Pas (encore !) de commentaires
                   {% endfor %}
+  
+                  <div class="text-center">
+                    <ul class="pagination">
+                      {% if page > 1 %}
+                          <li class="page-item"><a class="page-link" href="{{ path('tricks_view', {'id': trick.id, 'page': page-1}) }}">Précédent</a></li>
+                      {% endif %}
+                      {% for p in range(1, nbPages) %}
+                          <li {% if p == page %}class="active"{% endif %}>
+                              <a href="{{ path('tricks_view', {'id': trick.id, 'page': p}) }}" style="{%  if p == 0 %}display: none;{% endif %}">{{ p }}</a>
+                          </li>
+                      {% endfor %}
+                      {% if page < nbPages and page >= 1 %}
+                          <li class="page-item"><a class="page-link" href="{{ path('tricks_view', {'id': trick.id, 'page': page+1}) }}">Suivant</a></li>
+                      {% endif %}
+                    </ul>
+                  </div>
 
-              </div>
-               <div class="button-loading">
-                  <button type="button" class="btn btn-primary btn-lg" id="load" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Loading">Load More</button>
               </div>
           </div>
         </div>
