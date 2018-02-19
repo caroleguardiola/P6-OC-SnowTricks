@@ -222,7 +222,38 @@ $( document ).ready(function () {
 // Forms
 //---------------------------------------------
 
-//Images
+//Thumbnail
+
+$(document).ready(function() {
+    // On récupère la balise <div> en question qui contient l'attribut « data-prototype » qui nous intéresse.
+    var $container = $('div#tricksbundle_trick_thumbnail');
+
+    
+      // S'il existe déjà des images, on ajoute un lien de suppression pour chacune d'entre elles
+      $container.children('div').each(function() {
+        addDeleteLink($(this));
+      });
+   
+
+    // La fonction qui ajoute un lien de suppression d'une catégorie
+    function addDeleteLink($prototype) {
+      // Création du lien
+      var $deleteLink = $('<a href="#" class="btn btn-danger">Ne pas modifier l\'image à la une</a>');
+
+      // Ajout du lien
+      $prototype.append($deleteLink);
+
+      // Ajout du listener sur le clic du lien pour effectivement supprimer la video
+      $deleteLink.click(function(e) {
+        $prototype.remove();
+
+        e.preventDefault(); // évite qu'un # apparaisse dans l'URL
+        return false;
+      });
+    }
+  });
+
+  //Images
 
 $(document).ready(function() {
     // On récupère la balise <div> en question qui contient l'attribut « data-prototype » qui nous intéresse.

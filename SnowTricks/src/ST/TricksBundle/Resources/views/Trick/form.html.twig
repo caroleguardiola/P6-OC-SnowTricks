@@ -31,6 +31,16 @@
   </div>
 
   <div class="form-group">
+    {{ form_label(form.thumbnail, "Image à la une", {'label_attr': {'class': 'control-label'}}) }}
+    {{ form_errors(form.thumbnail) }}
+    <div>
+      <img style="width: 200px;" src="{{ asset(trick.thumbnail.webPath) }}" alt="{{ trick.thumbnail.alt }}">
+      <a href="#image_delete" class="btn btn-danger" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+    </div>
+    {{ form_widget(form.thumbnail) }}
+    </div>
+
+  <div class="form-group">
     {{ form_label(form.images, "Images", {'label_attr': {'class': 'control-label'}}) }}
     {{ form_errors(form.images) }}
     {% if trick.images is defined %}
@@ -38,7 +48,7 @@
           {% if image.id is not null %}
           <div>
             <img style="width: 200px;" src="{{ asset(image.webPath) }}" alt="{{ image.alt }}">
-            <a href="#image_delete" class="btn btn-danger" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+            <a href="#delete_image_{{image.id}}" class="btn btn-danger" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
           </div>
           {% endif %}
         {% endfor %}
@@ -69,7 +79,7 @@
    {% if trick.images is defined %}
   {% for image in trick.images %}
   {% if image.id is not null %}
-    <div class="modal fade" id="image_delete" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal fade" id="delete_image_{{image.id}}" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog modal-md">
         <div class="modal-content">
 
@@ -95,10 +105,9 @@
         </div> 
       </div>
     </div>
-    <!--end modal -->
    {% endif %}
    {% endfor %}
       {% endif %}
-
+<!--end modal -->
 
 </div>
