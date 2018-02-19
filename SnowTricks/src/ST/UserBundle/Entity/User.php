@@ -51,6 +51,7 @@ class User implements AdvancedUserInterface, \Serializable
      * @ORM\OneToOne(targetEntity="ST\UserBundle\Entity\Photo", cascade={"persist", "remove"})
      * @ORM\JoinColumn(nullable=false)
      * @Assert\NotBlank(message="Vous devez obligatoirement ajouter une photo.")
+     * @Assert\Valid()
      */
     private $photo;
 

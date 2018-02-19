@@ -1,0 +1,27 @@
+  <p>
+    Etes-vous certain de vouloir modifier cette image ?
+  </p>
+<form action="{{ path('images_edit', {'id': image.id}) }}" method="post">
+<div class="form-group">
+    {{ form_label(form.file, "Images", {'label_attr': {'class': 'control-label'}}) }}
+    {{ form_errors(form.file) }}
+    {% if trick.images is defined %}
+        {% for image in trick.images %}
+          {% if image.id is not null %}
+          <div>
+            <img style="width: 200px;" src="{{ asset(image.webPath) }}" alt="{{ image.alt }}">
+            <a href="#image_delete" class="btn btn-danger" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+          </div>
+          {% endif %}
+        {% endfor %}
+    {% endif %}
+    {{ form_widget(form.file) }}
+    <a href="#" id="add_image" class="btn btn-default">Ajouter une image</a>
+  </div>
+
+  {# Ici j'ai écrit le bouton de soumission à la main #}
+  <input type="submit" value="Modifier" class="btn btn-danger" />
+  {# Ceci va générer le champ CSRF #}
+  {{ form_rest(form) }}
+
+</form>

@@ -37,3 +37,10 @@ images_delete:
       _controller: TricksBundle:Image:delete
     requirements:
       id: \d+
+
+images_edit:
+    path:     /tricks/modification images/{id}
+    defaults: 
+      _controller: TricksBundle:Image:edit
+    requirements:
+      id: \d+

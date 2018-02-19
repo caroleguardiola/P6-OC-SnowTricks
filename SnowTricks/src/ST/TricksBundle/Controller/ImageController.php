@@ -4,6 +4,7 @@ namespace ST\TricksBundle\Controller;
 
 use ST\TricksBundle\Entity\Trick;
 use ST\TricksBundle\Entity\Image;
+use ST\TricksBundle\Form\ImageType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -11,6 +12,37 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class ImageController extends Controller
 {
+    public function editAction(Request $request, $id)
+    {
+      $em = $this->getDoctrine()->getManager();
+      $image = $em->getRepository('TricksBundle:Image')->find($id);
+
+     if (null === $image) {
+        throw new NotFoundHttpException("L'image d'id ".$id." n'existe pas.");
+      }
+
+      $trick = $image->getTrick();
+
+      $form = $this->get('form.factory')->create(ImageType::class, $image);
+        
+
+      if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+         $listImages = $trick->getImages();
+            foreach ($listImages as $image)
+            {
+                $trick->addImage($image);
+            }
+        $em->flush();
+        $this->addFlash('notice', "L'image a bien été modifiée.");
+         return $this->redirectToRoute('tricks_edit', ['id' => $trick->getId()]);
+      }
+
+       return $this->render('TricksBundle:Trick:edit_image.html.twig', array(
+      'image' => $image,
+      'form'   => $form->createView(),
+      ));
+    }
+
     public function deleteAction(Request $request, $id)
     {
       $em = $this->getDoctrine()->getManager();

@@ -48,15 +48,22 @@
               <div class="trick">
                   
                   <a href="{{ path('tricks_view', {'id': trick.id}) }}">
-                    {% for image in trick.images %}
-                        {% if loop.first %}
-                            <img class="img-responsive" src="{{asset(image.webPath)}}" alt="{{image.alt}}">
-                            <br>
-                        {% endif %}
-                    {% else %}
-                        <img src="../images/background/snowboarding.jpg" alt="image par défaut">
-                        <br>
-                    {% endfor %}
+                                      
+                    {% if trick.thumbnail is not null %}
+                      <img class="img-responsive" src="{{asset(trick.thumbnail.webPath)}}" alt="{{trick.thumbnail.alt}}">
+                      <br>
+                    {% elseif trick.images is not null %}
+                      {% for image in trick.images %}
+                          {% if loop.first %}
+                              <img class="img-responsive" src="{{asset(image.webPath)}}" alt="{{image.alt}}">
+                              <br>
+                          {% endif %}
+                      {% else %}
+                           <img src="{{asset('assets/images/background/snowboarding.jpg')}}" alt="image par défaut">
+                          <br>
+                      {% endfor %}
+                    {% endif %}
+                   
                   </a>
                   
                   <div class="trick_info">
