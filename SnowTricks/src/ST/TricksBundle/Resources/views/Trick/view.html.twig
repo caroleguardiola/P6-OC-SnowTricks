@@ -48,7 +48,8 @@
         </div>
       {% endif %}
 
-        <div class="trick_image" style="background: url('{% for image in trick.images %} {% if loop.first %} {{asset(image.webPath)}} {% endif %} {% endfor %}') no-repeat center">
+        <div class="trick_image" style="background: url('{% if trick.thumbnail is not null %} {{asset(trick.thumbnail.webPath)}}  {% elseif trick.images is not null %} {% for image in trick.images %} {% if loop.first %} {{asset(image.webPath)}} {% endif %} {% else %} {{asset('assets/images/background/snowboarding.jpg')}} {% endfor %}  {% endif %}') no-repeat center">
+
           <div class="row">
             <div class="col-md-12">
               <div class="home_text">
