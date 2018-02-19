@@ -23,7 +23,7 @@ class TrickType extends AbstractType
             ->add('dateCreation',   DateTimeType::class)
             ->add('name',           TextType::class)
             ->add('description',    TextareaType::class)
-            ->add('thumbnail',    ThumbnailType::class)
+            ->add('thumbnail',    ThumbnailType::class, array('required' => false))
             ->add('images',         CollectionType::class, array(
                 'entry_type' => ImageType::class,
                 'allow_add' =>  true,

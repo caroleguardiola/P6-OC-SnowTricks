@@ -3,6 +3,7 @@
 namespace ST\TricksBundle\Controller;
 
 use ST\TricksBundle\Entity\Trick;
+use ST\TricksBundle\Entity\Thumbnail;
 use ST\TricksBundle\Entity\Image;
 use ST\TricksBundle\Entity\Video;
 use ST\TricksBundle\Entity\Category;

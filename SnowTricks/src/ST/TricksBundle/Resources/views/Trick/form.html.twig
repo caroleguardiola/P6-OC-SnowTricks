@@ -33,10 +33,14 @@
   <div class="form-group">
     {{ form_label(form.thumbnail, "Image à la une", {'label_attr': {'class': 'control-label'}}) }}
     {{ form_errors(form.thumbnail) }}
+    {% if trick.thumbnail is defined %}
+          {% if trick.thumbnail.id is not null %}
     <div>
       <img style="width: 200px;" src="{{ asset(trick.thumbnail.webPath) }}" alt="{{ trick.thumbnail.alt }}">
-      <a href="#image_delete" class="btn btn-danger" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+      <a href="" class="btn btn-danger" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
     </div>
+    {% endif %}
+    {% endif %}
     {{ form_widget(form.thumbnail) }}
     </div>
 
