@@ -38,16 +38,16 @@ images_delete:
     requirements:
       id: \d+
 
-images_edit:
-    path:     /tricks/modification images/{id}
-    defaults: 
-      _controller: TricksBundle:Image:edit
-    requirements:
-      id: \d+
-
 thumbnail_delete:
     path:     /tricks/suppression image à la une/{id}
     defaults: 
       _controller: TricksBundle:Thumbnail:delete
+    requirements:
+      id: \d+
+
+videos_delete:
+    path:     /tricks/suppression videos/{id}
+    defaults: 
+      _controller: TricksBundle:Video:delete
     requirements:
       id: \d+
