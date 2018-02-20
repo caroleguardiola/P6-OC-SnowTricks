@@ -1,0 +1,29 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Erreur 500 {% endblock %}
+
+{% block sections_body %}
+
+  <!--Home Sections-->
+
+  <section id="hello" class="home bg-mega">
+      <div class="overlay"></div>
+      <div class="container">
+          <div class="row">
+              <div class="main_home">
+                  <div class="home_text">
+                      <h1 class="text-blue wow fadeInLeft" data-wow-duration="2s">Oups ! Une erreur est survenue !</h1>
+                      <p class="text-blue wow fadeInLeft" data-wow-duration="2s">Le serveur a retourné une "{{ status_code }} {{ status_text }}".</p>
+                      <p class="wow fadeInLeft" data-wow-duration="2s" style="font-family: 'Raleway', sans-serif"><a href="{{ path('tricks_home') }}" class="btn btn-primary btn-lg">
+                        Retour à l'accueil
+                      </a>
+                      </p>
+                  </div>  
+              </div>
+          </div><!--End off row-->
+      </div><!--End off container -->
+      
+
+  </section> <!--End off Home Sections-->
+
+{% endblock %}
