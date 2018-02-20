@@ -4,6 +4,7 @@ namespace ST\TricksBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use ST\TricksBundle\Entity\Thumbnail;
 use ST\TricksBundle\Entity\Image;
 use ST\TricksBundle\Entity\Video;
 use ST\TricksBundle\Entity\Category;
@@ -53,6 +54,12 @@ class Trick
      * @Assert\Valid()
      */
     private $category;
+
+    /**
+     * @ORM\OneToOne(targetEntity="ST\TricksBundle\Entity\Thumbnail", cascade={"persist", "remove"})
+     * @Assert\Valid()
+     */
+    private $thumbnail;
 
     /**
      * @ORM\OneToMany(targetEntity="ST\TricksBundle\Entity\Image", mappedBy="trick", cascade={"persist","remove"})
@@ -174,6 +181,30 @@ class Trick
         $this->images = new ArrayCollection();
         $this->videos = new ArrayCollection();
         $this->comments = new ArrayCollection();
+    }
+
+    /**
+     * Set thumbnail
+     *
+     * @param string $thumbnail
+     *
+     * @return Trick
+     */
+    public function setThumbnail(Thumbnail $thumbnail = null)
+    {
+        $this->thumbnail = $thumbnail;
+
+        return $this;
+    }
+
+    /**
+     * Get thumbnail
+     *
+     * @return string
+     */
+    public function getThumbnail()
+    {
+        return $this->thumbnail;
     }
 
     /**

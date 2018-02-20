@@ -1,11 +1,12 @@
   <p>
-    Etes-vous certain de vouloir supprimer le trick "{{ trick.name }}" ?
+    Etes-vous certain de vouloir supprimer cette vidéo ?
   </p>
-    
-<form id="trick_delete_{{trick.id}}" action="{{ path('tricks_delete', {'id': trick.id}) }}" method="post">
+<form id="delete_video_{{video.id}}" action="{{ path('videos_delete', {'id': video.id}) }}" method="post">
+
+
   {# Ici j'ai écrit le bouton de soumission à la main #}
   <input type="submit" value="Supprimer" class="btn btn-danger" />
-  </a>
   {# Ceci va générer le champ CSRF #}
   {{ form_rest(form) }}
+
 </form>

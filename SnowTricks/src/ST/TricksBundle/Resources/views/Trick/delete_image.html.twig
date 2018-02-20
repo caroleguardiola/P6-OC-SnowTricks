@@ -1,7 +1,8 @@
   <p>
     Etes-vous certain de vouloir supprimer cette image ?
   </p>
-<form action="{{ path('images_delete', {'id': image.id}) }}" method="post">
+<form id="delete_image_{{image.id}}" action="{{ path('images_delete', {'id': image.id}) }}" method="post">
+
 
   {# Ici j'ai écrit le bouton de soumission à la main #}
   <input type="submit" value="Supprimer" class="btn btn-danger" />
