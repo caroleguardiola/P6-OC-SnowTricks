@@ -44,3 +44,10 @@ images_edit:
       _controller: TricksBundle:Image:edit
     requirements:
       id: \d+
+
+thumbnail_delete:
+    path:     /tricks/suppression image à la une/{id}
+    defaults: 
+      _controller: TricksBundle:Thumbnail:delete
+    requirements:
+      id: \d+

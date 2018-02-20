@@ -12,11 +12,71 @@
       <section class="trick_header">
         <div class="trick_info_details pull-right">
             <div class="trick_update">
-               <a href=""><i class="fa fa-pencil" aria-hidden="true"></i></a>
+               <a href="" data-toggle="modal" data-backdrop="false"><i class="fa fa-pencil" aria-hidden="true"></i></a>
             </div>
+         
             <div class="trick_delete">
-                <a href="#trick_delete"data-toggle="modal" data-backdrop="false"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                <a href="#thumbnail_delete" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash" aria-hidden="true"></i></a>
             </div>
+            <!--start modal -->
+ 
+    <div class="modal fade" id="thumbnail_delete" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog modal-md">
+        <div class="modal-content">
+
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fermer</span></button>
+              <h3 class="modal-title" id="actu_1">Suppression Image à la une</h3>
+          </div>
+          
+          <div class="modal-body">
+            <div class="blog-content">
+            </div>
+         
+            <div>
+              {{render(controller('TricksBundle:Thumbnail:delete',{'id': trick.id} ))}}
+            </div>
+           
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Fermer</button>
+          </div>
+
+        </div> 
+      </div>
+    </div>
+  
+<!--end modal -->
+
+        </div>
+
+        <div class="trick_image" style="background: url('{% if trick.thumbnail is defined %} {% if trick.thumbnail is not null %}{{asset(trick.thumbnail.webPath)}} {% endif %} {% endif %}') no-repeat center">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="home_text">
+                <h1 class="text-blue wow fadeInLeft" data-wow-duration="2s">{{trick.name}}</h1>
+                <p class="text-blue wow fadeInLeft" data-wow-duration="2s">Formulaire de modification</h1>
+              </div>
+            </div>
+          </div>
+          <!-- scroll down-->
+          <div class="scrolldown">
+             <a href="#list_tricks"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+          </div><!-- End off scroll down -->
+        </div>
+      </section>
+
+      <h5>Formulaire de modification</h5>
+
+      {{ include("TricksBundle:Trick:form.html.twig") }}
+
+      <a href="{{ path('tricks_home') }}" class="btn btn-primary btn-lg">
+        <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
+        Retour à la liste
+      </a>
+
+      <a href="#trick_delete"data-toggle="modal" data-backdrop="false" class="btn btn-primary btn-lg">Supprimer ce trick</a>
             <!--start modal -->
               <div class="modal fade" id="trick_delete" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog modal-md">
@@ -43,32 +103,6 @@
                 </div>
               </div>
               <!--end modal -->
-        </div>
-
-        <div class="trick_image" style="background: url('{% if trick.thumbnail is not null %} {{asset(trick.thumbnail.webPath)}}  {% elseif trick.images is not null %} {% for image in trick.images %} {% if loop.first %} {{asset(image.webPath)}} {% endif %} {% else %} {{asset('assets/images/background/snowboarding.jpg')}} {% endfor %}  {% endif %}') no-repeat center">
-          <div class="row">
-            <div class="col-md-12">
-              <div class="home_text">
-                <h1 class="text-blue wow fadeInLeft" data-wow-duration="2s">{{trick.name}}</h1>
-                <p class="text-blue wow fadeInLeft" data-wow-duration="2s">Formulaire de modification</h1>
-              </div>
-            </div>
-          </div>
-          <!-- scroll down-->
-          <div class="scrolldown">
-             <a href="#list_tricks"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
-          </div><!-- End off scroll down -->
-        </div>
-      </section>
-
-      <h5>Formulaire de modification</h5>
-
-      {{ include("TricksBundle:Trick:form.html.twig") }}
-
-      <a href="{{ path('tricks_home') }}" class="btn btn-primary btn-lg">
-        <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-        Retour à la liste
-      </a>
 
     </div>
   </div>

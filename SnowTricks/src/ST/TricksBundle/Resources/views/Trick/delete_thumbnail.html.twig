@@ -1,0 +1,12 @@
+  <p>
+    Etes-vous certain de vouloir supprimer cette image à la une ?
+  </p>
+<form id="thumbnail_delete" action="{{ path('thumbnail_delete', {'id': trick.id}) }}" method="post">
+
+
+  {# Ici j'ai écrit le bouton de soumission à la main #}
+  <input type="submit" value="Supprimer" class="btn btn-danger" />
+  {# Ceci va générer le champ CSRF #}
+  {{ form_rest(form) }}
+
+</form>
