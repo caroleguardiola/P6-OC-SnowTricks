@@ -42,11 +42,11 @@
       </a>
       {% endif %}
 
-      <div class="row">
+      <div class="row featurette">
         {% for trick in listTricks %}
           <div class="col-md-2 point5 trick_load" style="display:none">
               <div class="trick">
-                  
+                  <div class="thumbnail">
                   <a href="{{ path('tricks_view', {'id': trick.id}) }}">
                                       
                     {% if trick.thumbnail is not null %}
@@ -59,13 +59,13 @@
                               <br>
                           {% endif %}
                       {% else %}
-                           <img src="{{asset('assets/images/background/snowboarding.jpg')}}" alt="image par défaut">
+                           <img class="img-responsive" src="{{asset('assets/images/background/snowboarding.jpg')}}" alt="image par défaut">
                           <br>
                       {% endfor %}
                     {% endif %}
                    
                   </a>
-                  
+                  </div>
                   <div class="trick_info">
                     <div class="trick_name">
                         <a href="{{ path('tricks_view', {'id': trick.id}) }}"><h6>{{ trick.name }}</h6></a>
