@@ -87,7 +87,8 @@
   {{ form_end(form) }}
 
    <!--start modal -->
- 
+   {% if trick is defined %}
+  {% if trick is not null %}
     <div class="modal fade" id="thumbnail_delete" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog modal-md">
         <div class="modal-content">
@@ -114,6 +115,8 @@
         </div> 
       </div>
     </div>
+    {% endif %}
+      {% endif %}
   
 <!--end modal -->
 

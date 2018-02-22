@@ -38,7 +38,8 @@ class TrickType extends AbstractType
                 'class' => 'TricksBundle:Category',
                 'choice_label' =>  'name',
                 'multiple'  => false,
-                'expanded'  => false
+                'expanded'  => false,
+                'label' => 'Catégorie'
             ))
             ->add('Enregistrer',           SubmitType::class);
     }/**
