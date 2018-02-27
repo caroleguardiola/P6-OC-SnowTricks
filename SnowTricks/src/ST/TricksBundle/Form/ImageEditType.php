@@ -7,7 +7,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ThumbnailType extends AbstractType
+class ImageEditType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -15,14 +15,14 @@ class ThumbnailType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('file',    FileType::class, array('label' => 'Choisir une image à la une'));
+            ->add('file',    FileType::class, array('label' => 'Modifier l\'image'));
     }/**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'ST\TricksBundle\Entity\Thumbnail'
+            'data_class' => 'ST\TricksBundle\Entity\Image'
         ));
     }
 
@@ -31,7 +31,7 @@ class ThumbnailType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'tricksbundle_thumbnail';
+        return 'tricksbundle_image';
     }
 
 

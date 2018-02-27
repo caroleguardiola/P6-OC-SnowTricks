@@ -1,4 +1,4 @@
-<div class="well">
+<div class="trick_form">
   {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
 
   {# Les erreurs générales du formulaire. #}
@@ -30,50 +30,55 @@
     </div>
   </div>
 
+       <hr class="divider">
+
   <div class="form-group"  id="thumbnail_edit">
     {{ form_label(form.thumbnail, "Image à la une", {'label_attr': {'class': 'control-label'}}) }}
     {{ form_errors(form.thumbnail) }}
-    {% if trick.thumbnail is defined %}
-          {% if trick.thumbnail is not null %}
-    <div>
-      <img style="width: 200px;" src="{{ asset(trick.thumbnail.webPath) }}" alt="{{ trick.thumbnail.alt }}">
-      <a href="#thumbnail_delete" class="btn btn-danger" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-    </div>
-          {% endif %}
-    {% endif %}
-    {{ form_widget(form.thumbnail) }}
+    
+    {{ form_widget(form.thumbnail) }}  
     </div>
 
+     <hr class="divider">
+
   <div class="form-group">
-    {{ form_label(form.images, "Images", {'label_attr': {'class': 'control-label'}}) }}
-    {{ form_errors(form.images) }}
-    {% if trick.images is defined %}
-        {% for image in trick.images %}
-          {% if image.id is not null %}
-          <div>
-            <img style="width: 200px;" src="{{ asset(image.webPath) }}" alt="{{ image.alt }}">
-            <a href="#delete_image_{{image.id}}" class="btn btn-danger" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-          </div>
-          {% endif %}
-        {% endfor %}
-    {% endif %}
-    {{ form_widget(form.images) }}
-    <a href="#" id="add_image" class="btn btn-default">Ajouter une image</a>
-  </div>
+      <div>{{ form_label(form.images, "Images", {'label_attr': {'class': 'control-label'}}) }}</div>
+        {{ form_errors(form.images) }}
+        {% if trick.images is defined %}
+            {% for image in trick.images %}
+              {% if image.id is not null %}
+              <div class="col-md-3">
+                <div><img style="width: 200px;" src="{{ asset(image.webPath) }}" alt="{{ image.alt }}"></div>
+                <div><a href="#delete_image_{{image.id}}" class="btn-form" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i> Supprimer cette image</a></div>
+              </div>
+              {% endif %}
+            {% endfor %}
+
+        {% endif %}
+      </div>
+        {{ form_widget(form.images) }}
+
+    <a href="#" id="add_image" class="btn-form">Ajouter une image</a>
+
+     <hr class="divider">
 
   <div class="form-group">
     {{ form_row(form.videos) }}
     {% if trick.videos is defined %}
         {% for video in trick.videos %}
           {% if video.id is not null %}
-    <a href="#delete_video_{{video.id}}" class="btn btn-danger" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+    <a href="#delete_video_{{video.id}}" class="btn-form" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i> Supprimer cette video</a>
     {% endif %}
         {% endfor %}
     {% endif %}
-    <a href="#" id="add_video" class="btn btn-default">Ajouter une vidéo</a>
+    <a href="#" id="add_video" class="btn-form">Ajouter une vidéo</a>
   </div>
 
+       <hr class="divider">
+
   {{ form_row(form.category) }}
+
+       <hr class="divider">
 
   {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
   {{ form_widget(form.Enregistrer, {'attr': {'class': 'btn btn-primary'}}) }}
@@ -85,6 +90,7 @@
 
   {# Fermeture de la balise <form> du formulaire HTML #}
   {{ form_end(form) }}
+
 
    <!--start modal -->
    {% if trick is defined %}

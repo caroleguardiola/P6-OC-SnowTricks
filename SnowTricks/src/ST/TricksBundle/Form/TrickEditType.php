@@ -12,7 +12,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class TrickType extends AbstractType
+class TrickEditType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -20,18 +20,16 @@ class TrickType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('dateCreation',   DateTimeType::class)
-            ->add('name',           TextType::class)
             ->add('description',    TextareaType::class)
-            ->add('thumbnail',    ThumbnailType::class, array('required' => false))
+            ->add('thumbnail',    ThumbnailEditType::class, array('required' => false))
             ->add('images',         CollectionType::class, array(
-                'entry_type' => ImageType::class,
+                'entry_type' => ImageEditType::class,
                 'allow_add' =>  true,
                 'allow_delete'  => true,
                 'required' => false
             ))
             ->add('videos',         CollectionType::class, array(
-                'entry_type' => VideoType::class,
+                'entry_type' => VideoEditType::class,
                 'allow_add' =>  true,
                 'allow_delete'  => true,
                 'required' => false

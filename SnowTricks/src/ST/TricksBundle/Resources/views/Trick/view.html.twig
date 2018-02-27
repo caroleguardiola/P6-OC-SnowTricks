@@ -54,13 +54,7 @@
             <div class="col-md-12">
               <div class="home_text">
                 <h1 class="text-blue wow fadeInLeft" data-wow-duration="2s">{{trick.name}}</h1>
-                {% for label, messages in app.flashes %}
-                    {% for message in messages %}
-                        <div class="flash-{{ label }} wow fadeInLeft" data-wow-duration="2s">
-                            {{ message }}
-                        </div>
-                    {% endfor %}
-                {% endfor %}
+                
               </div>
             </div>
           </div>
@@ -68,7 +62,24 @@
         </div>
       </section>
 
+      <div>{% for label, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="flash-{{ label }} wow fadeInLeft" data-wow-duration="2s">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+      </div>
+
+      <div class="row col-sm-12 button-return"><a href="{{ path('tricks_home') }}#list_tricks" class="btn btn-primary btn-lg">
+        <span class="meta-nav">&larr;</span> 
+        Retour à la liste des tricks
+      </a></div>
+
+
+
       <section class="trick_details_section">
+         <hr class="divider">
         <div class="row trick_details">
           <div class="trick_list_medias">
               <div class="col-md-12 trick_medias">
@@ -76,7 +87,7 @@
                 <div class="col-md-2">
                   <div class="trick">
                       <a href="#">
-                        <img src="{{asset(image.webPath)}}" alt="{{image.alt}}">                      
+                        <img src="{{asset(image.webPath)}}" alt="{{image.alt}}" style="width: 200px;">                      
                       </a>
                   </div>
                 </div>
@@ -85,7 +96,7 @@
                 <div class="col-md-4">
                   <div class="trick">
                       <a href="#">
-                        <iframe src="{{video.url}}" allowfullscreen></iframe>                      
+                        <iframe src="{{video.url}}" allowfullscreen style="width: 200px;"></iframe>                      
                       </a>
                   </div>
                 </div>
@@ -172,11 +183,6 @@
                       {% endif %}
                     </ul>
                   </div>
-                       <hr class="divider">
-                       <a href="{{ path('tricks_home') }}" class="btn btn-primary btn-lg">
-                        <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-                        Retour à la liste
-                      </a>
 
               </div>
           </div>

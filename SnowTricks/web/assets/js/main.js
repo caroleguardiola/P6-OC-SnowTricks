@@ -226,19 +226,12 @@ $( document ).ready(function () {
 
 $(document).ready(function() {
     // On récupère la balise <div> en question qui contient l'attribut « data-prototype » qui nous intéresse.
-    var $container = $('div#tricksbundle_trick_thumbnail');
-
-    
-      // S'il existe déjà des images, on ajoute un lien de suppression pour chacune d'entre elles
-      $container.children('div').each(function() {
-        addDeleteLink($(this));
-      });
-   
+    var $container = $('div#tricksbundle_trick_thumbnail');   
 
     // La fonction qui ajoute un lien de suppression d'une catégorie
     function addDeleteLink($prototype) {
       // Création du lien
-      var $deleteLink = $('<a href="#" class="btn btn-danger">Ne pas modifier l\'image à la une</a>');
+      var $deleteLink = $('<a href="#" class="btn-form"><i class="fa fa-trash-o" aria-hidden="true"></i></a>');
 
       // Ajout du lien
       $prototype.append($deleteLink);
@@ -273,11 +266,6 @@ $(document).ready(function() {
     // On ajoute un premier champ automatiquement s'il n'en existe pas déjà un (cas d'un nouveau trick par exemple).
     if (index == 0) {
       addImage($container);
-    } else {
-      // S'il existe déjà des images, on ajoute un lien de suppression pour chacune d'entre elles
-      $container.children('div').each(function() {
-        addDeleteLink($(this));
-      });
     }
 
     // La fonction qui ajoute un formulaire ImageType
@@ -293,7 +281,7 @@ $(document).ready(function() {
       // On crée un objet jquery qui contient ce template
       var $prototype = $(template);
 
-      // On ajoute au prototype un lien pour pouvoir supprimer la video
+      // On ajoute au prototype un lien pour pouvoir supprimer l'image
       addDeleteLink($prototype);
 
       // On ajoute le prototype modifié à la fin de la balise <div>
@@ -306,12 +294,12 @@ $(document).ready(function() {
     // La fonction qui ajoute un lien de suppression d'une catégorie
     function addDeleteLink($prototype) {
       // Création du lien
-      var $deleteLink = $('<a href="#" class="btn btn-danger">Ne pas modifier cette image</a>');
+      var $deleteLink = $('<a href="#" class="btn-form"><i class="fa fa-trash-o" aria-hidden="true"></i></a>');
 
       // Ajout du lien
       $prototype.append($deleteLink);
 
-      // Ajout du listener sur le clic du lien pour effectivement supprimer la video
+      // Ajout du listener sur le clic du lien pour effectivement supprimer l'image
       $deleteLink.click(function(e) {
         $prototype.remove();
 
@@ -338,10 +326,6 @@ $(document).ready(function() {
 
     if (index == 0) {
       addVideo($container);
-    } else {
-      $container.children('div').each(function() {
-        addDeleteLink($(this));
-      });
     }
 
     function addVideo($container) {
@@ -360,7 +344,7 @@ $(document).ready(function() {
     }
 
     function addDeleteLink($prototype) {
-      var $deleteLink = $('<a href="#" class="btn btn-danger">Ne pas modifier cette vidéo</a>');
+      var $deleteLink = $('<a href="#" class="btn-form"><i class="fa fa-trash-o" aria-hidden="true"></i></a>');
 
       $prototype.append($deleteLink);
 

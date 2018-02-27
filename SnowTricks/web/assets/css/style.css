@@ -98,6 +98,11 @@ section { overflow: hidden; }*/
     padding-bottom: 40px;
 }
 
+.roomy-50-100 {
+    padding-top: 50px;
+    padding-bottom: 100px;
+}
+
 .content {
   padding-top: 100px;
   padding-bottom: 100px;
@@ -105,173 +110,6 @@ section { overflow: hidden; }*/
 
 .page-wrapper {
     background-color: #fff;
-}
-
-.login-page {
-  padding-top: 150px;
-  padding-bottom: 150px;
-}
-
-.page-wrapper-login{
-    background-color: #12a7cd;
-    margin: 0 350px;
-    text-align: center;
-}
-
-.login {
-    padding: 30px 0; 
-}
-
-.login-user {
-    padding: 20px 0;
-}
-
-.login-user label{
-    font-weight: 600;
-    font-size: 18px;
-    text-transform: uppercase;
-    font-family: 'Raleway', sans-serif;
-    color: #fff;
-}
-
-.login-submit {
-    padding-top: 20px;
-}
-
-.register-submit {
-    padding: 30px 0;
-}
-
-.login-user input {
-    background-color: transparent;
-    box-shadow: none;
-    border-bottom: 2px solid #fff !important;
-    border: none;
-    color: #fff;
-}
-
-.page-wrapper-register{
-    background-color: #12a7cd;
-    margin: 0 250px;
-    text-align: center;
-}
-
-.register-user {
-    padding: 20px 0;
-}
-
-.register-user input {
-    background-color: transparent;
-    box-shadow: none;
-    border-bottom: 2px solid #fff !important;
-    border: none;
-    color: #fff;
-    margin-left: 160px;
-    width: 50%;
-}
-
-.register-user label{
-    font-weight: 600;
-    font-size: 16px;
-    text-transform: uppercase;
-    font-family: 'Raleway', sans-serif;
-    color: #fff;
-}
-
-#user_photo label{
-    font-weight: 600;
-    font-size: 16px;
-    text-transform: uppercase;
-    font-family: 'Raleway', sans-serif;
-    color: #12a7cd;
-    cursor: pointer;
-     -webkit-transition: all 0.6s;
-    transition: all 0.6s;
-    text-transform: uppercase;
-    border:1px solid;
-    background-color: #fff;
-    border-color: #fff;
-    padding: 0.5rem 1.5rem;
-    border-radius: 10px;
-}
-
-#user_photo label:hover {
-    color: #6f6f6f;
-    border:1px solid;
-    background-color:  #12a7cd;
-    border-color:  #12a7cd;
-    color:#fff;
-}
-
-.form-comment label{
-    display: none;
-}
-
-.form-comment div{
-    display: inline-block;
-}
-
-.form-control {
-    border-radius: 5px;
-    border: 1px solid rgba(18,167,205,0.5);
-    box-shadow: inset 0 0px 0px rgba(0,0,0,.075);
-    width: 100%;
-    height: 50px;
-}
-
-.login-title {
-    padding-bottom: 40px;
-}
-
-.page-wrapper-login a {
-    color: #fff;
-    font-family:'Raleway', sans-serif;
-}
-
-.register {
-    padding-bottom: 15px;
-}
-
-.forgot {
-    padding-bottom: 30px;
-}
-
-#user_photo_file {
-    display: none;
-}
-
-.user-photo-img {
-    width: 50px;
-    height: 50px;
-}
-
-.user-photo {
-    text-align: center;
-}
-
-.user-comment {
-    border-radius: 5px;
-    border: 1px solid rgba(18,167,205,0.5);
-}
-
-.user-comment-name {
-    font-family: 'Lobster', sans-serif;
-    color: #12a7cd;
-    font-weight: 200;
-    font-size: 16px;
-}
-
-.user-comment-content {
-    font-weight: 600;
-    color: #494949;
-}
-
-.user-comment-date {
-    font-size: 12px;
-}
-
-#comments {
-    margin: 10px;
 }
 
 /*text color*/
@@ -553,14 +391,11 @@ Button
 .btn{
     -webkit-transition: all 0.6s;
     transition: all 0.6s;
-    text-transform: uppercase;
     font-size:14px;
-    font-weight: 600;
     border:1px solid;
     color: #fff;
     background-color: #12a7cd;
     border-color: #12a7cd;
-    padding: 1rem 2rem;
     border-radius: 20px;
 }
 
@@ -591,6 +426,36 @@ Button
     background-color:  #12a7cd;
     border-color:  #12a7cd;
     color:#fff;
+}
+
+.btn-form {
+    font-size: 14px;
+    font-family: 'Raleway', sans-serif;
+    color: #fff;
+    cursor: pointer;
+     -webkit-transition: all 0.6s;
+    transition: all 0.6s;
+    border:1px solid;
+    background-color: #12a7cd;
+    border-color: #12a7cd;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.btn-form:hover {
+    color: #6f6f6f;
+    border:1px solid;
+    background-color:  #fff;
+    border-color:  #fff;
+    color:#12a7cd;
+}
+
+.btn-page {
+    border-radius: 5px;
+    border: 1px solid rgba(18,167,205,0.5);
+    box-shadow: inset 0 0px 0px rgba(0,0,0,.075);
+    padding: 5px;
+    color: #12a7cd;
 }
 
 .btn-success{}
@@ -1302,7 +1167,8 @@ Home Section style
 }
 
 .trick_header {
-    background: rgba(8,87,150, 1);
+    background: url(../images/snowflake.png) repeat;
+   
     padding: 20px 0;
 }
 
@@ -1354,6 +1220,102 @@ Home Section style
     margin-bottom: 40px;
 }
 
+.trick_form {
+    padding: 20px;
+}
+
+.trick_form label{
+    font-family: 'Lobster', sans-serif;
+    color:  #12a7cd;
+    font-size: 18px;
+    font-weight: 200;
+    margin-bottom: 20px !important;
+}
+
+#tricksbundle_trick_thumbnail_file {
+    display: none;
+}
+
+#tricksbundle_trick_thumbnail label{
+    font-size: 12px;
+    font-family: 'Raleway', sans-serif;
+    color: #fff;
+    cursor: pointer;
+     -webkit-transition: all 0.6s;
+    transition: all 0.6s;
+    border:1px solid;
+    background-color: #12a7cd;
+    border-color: #12a7cd;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin-bottom: 0 !important;
+    margin-top: 20px;
+}
+
+#tricksbundle_trick_thumbnail label:hover {
+    color: #6f6f6f;
+    border:1px solid;
+    background-color:  #fff;
+    border-color:  #fff;
+    color:#12a7cd;
+}
+
+.thumbnail_edit_form {
+    display: inline-block;
+}
+
+#tricksbundle_trick_images input {
+    display: none;
+}
+
+#tricksbundle_trick_images label{
+    font-size: 12px;
+    font-family: 'Raleway', sans-serif;
+    color: #fff;
+    cursor: pointer;
+     -webkit-transition: all 0.6s;
+    transition: all 0.6s;
+    border:1px solid;
+    background-color: #12a7cd;
+    border-color: #12a7cd;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin-bottom: 0 !important;
+    margin-top: 20px;
+}
+
+#tricksbundle_trick_images label:hover {
+    color: #6f6f6f;
+    border:1px solid;
+    background-color:  #fff;
+    border-color:  #fff;
+    color:#12a7cd;
+}
+
+#tricksbundle_trick_videos label{
+    font-size: 14px;
+    font-family: 'Raleway', sans-serif;
+    color: #12a7cd;
+     -webkit-transition: all 0.6s;
+    transition: all 0.6s;
+    margin-bottom: 0 !important;
+    margin-top: 20px;
+}
+
+.button-form {
+    text-align: right;
+    padding-right: 100px;
+}
+
+.button-return {
+    text-align: center;
+    padding: 20px;
+}
+
+.add {
+    padding-top: 30px;
+}
+
 iframe{
     width: 100%;
     /*min-height: 350px;*/
@@ -1362,6 +1324,172 @@ iframe{
 
 .divider {
  margin: 30px 0;
+}
+
+.login-page {
+  padding-top: 150px;
+  padding-bottom: 150px;
+}
+
+.page-wrapper-login{
+    background-color: #12a7cd;
+    margin: 0 350px;
+    text-align: center;
+}
+
+.login {
+    padding: 30px 0; 
+}
+
+.login-user {
+    padding: 20px 0;
+}
+
+.login-user label{
+    font-weight: 600;
+    font-size: 18px;
+    text-transform: uppercase;
+    font-family: 'Raleway', sans-serif;
+    color: #fff;
+}
+
+.login-submit {
+    padding-top: 20px;
+}
+
+.register-submit {
+    padding: 30px 0;
+}
+
+.login-user input {
+    background-color: transparent;
+    box-shadow: none;
+    border-bottom: 2px solid #fff !important;
+    border: none;
+    color: #fff;
+}
+
+.page-wrapper-register{
+    background-color: #12a7cd;
+    margin: 0 250px;
+    text-align: center;
+}
+
+.register-user {
+    padding: 20px 0;
+}
+
+.register-user input {
+    background-color: transparent;
+    box-shadow: none;
+    border-bottom: 2px solid #fff !important;
+    border: none;
+    color: #fff;
+    margin-left: 160px;
+    width: 50%;
+}
+
+.register-user label{
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: 'Raleway', sans-serif;
+    color: #fff;
+}
+
+#user_photo label{
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: 'Raleway', sans-serif;
+    color: #12a7cd;
+    cursor: pointer;
+     -webkit-transition: all 0.6s;
+    transition: all 0.6s;
+    text-transform: uppercase;
+    border:1px solid;
+    background-color: #fff;
+    border-color: #fff;
+    padding: 0.5rem 1.5rem;
+    border-radius: 10px;
+}
+
+#user_photo label:hover {
+    color: #6f6f6f;
+    border:1px solid;
+    background-color:  #12a7cd;
+    border-color:  #12a7cd;
+    color:#fff;
+}
+
+.form-comment label{
+    display: none;
+}
+
+.form-comment div{
+    display: inline-block;
+}
+
+.form-control {
+    border-radius: 5px;
+    border: 1px solid rgba(18,167,205,0.5);
+    box-shadow: inset 0 0px 0px rgba(0,0,0,.075);
+    width: 100%;
+}
+
+.login-title {
+    padding-bottom: 40px;
+}
+
+.page-wrapper-login a {
+    color: #fff;
+    font-family:'Raleway', sans-serif;
+}
+
+.register {
+    padding-bottom: 15px;
+}
+
+.forgot {
+    padding-bottom: 30px;
+}
+
+#user_photo_file {
+    display: none;
+}
+
+.user-photo-img {
+    width: 50px;
+    height: 50px;
+}
+
+.user-photo {
+    text-align: center;
+}
+
+.user-comment {
+    border-radius: 5px;
+    border: 1px solid rgba(18,167,205,0.5);
+}
+
+.user-comment-name {
+    font-family: 'Lobster', sans-serif;
+    color: #12a7cd;
+    font-weight: 200;
+    font-size: 16px;
+}
+
+.user-comment-content {
+    font-weight: 600;
+    color: #494949;
+}
+
+.user-comment-date {
+    font-size: 12px;
+}
+
+#comments {
+    margin: 10px;
 }
 
 /* scrollup */
@@ -1542,4 +1670,17 @@ border-top: solid 1px rgba(18,167,205,0.3);
 .pagination > li > a,
 .pagination > li > a:hover {
     color: #12a7cd;
+}
+
+div.form-edit {
+    margin: auto;
+    width: 700px;
+}
+
+.category_input {
+    width: 200px;
+}
+
+textarea#tricksbundle_trick_description.form-control {
+    height: 200px;
 }

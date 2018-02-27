@@ -34,12 +34,12 @@
   </section> <!--End off Home Sections-->
 
   <!-- Page Content -->
-  <section class="container roomy-100 list_tricks" id="list_tricks">
+  <section class="container roomy-50-100 list_tricks" id="list_tricks">
 
       {% if is_granted('ROLE_USER') %}
-        <a href="{{ path('tricks_add') }}" class="btn btn-primary btn-lg">
+        <div class="button-return"><a href="{{ path('tricks_add') }}" class="btn btn-primary btn-lg">
         Créer un trick
-      </a>
+      </a></div>
       {% endif %}
 
       <div class="row featurette">
@@ -120,7 +120,7 @@
       </div>
 
       <div class="button-loading">
-          <button type="button" class="btn btn-primary btn-lg btn-load" id="load" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Loading">Load More</button>
+          <button type="button" class="btn btn-primary btn-lg btn-load" id="load" data-loading-text="<i class='fa fa-spinner fa-spin '></i> Loading">En voir plus</button>
       </div>
 
   </section>

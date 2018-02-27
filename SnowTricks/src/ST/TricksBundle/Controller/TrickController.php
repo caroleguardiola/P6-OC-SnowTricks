@@ -10,6 +10,7 @@ use ST\TricksBundle\Entity\Category;
 use ST\UserBundle\Entity\Comment;
 use ST\UserBundle\Entity\User;
 use ST\TricksBundle\Form\TrickType;
+use ST\TricksBundle\Form\TrickEditType;
 use ST\UserBundle\Form\CommentType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
@@ -148,7 +149,7 @@ class TrickController extends Controller
 
       $trick->setUpdatedAt(new \Datetime());
 
-      $form = $this->get('form.factory')->create(TrickType::class, $trick);
+      $form = $this->get('form.factory')->create(TrickEditType::class, $trick);
 
       if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
 
