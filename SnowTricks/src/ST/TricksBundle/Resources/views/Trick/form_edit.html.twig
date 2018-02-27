@@ -34,7 +34,7 @@
                           {{ form_errors(form.images) }}
                 {% for image in form.images %}
                     <div class="col-md-3" id="image-{{loop.index0}}">
-                        <img src="{{ asset(image.vars.value.webPath) }}" class="img-responsive" style="width: 150px;">
+                        <img src="{{ asset(image.vars.value.webPath) }}" class="thumbnail" style="width: 150px;">
                         <div class="fileUpload">{{ form_widget(image, {'label': '<i class="fa fa-pencil" aria-hidden="true"></i>'})  }}</div>
 
                         <a href="#delete_image_{{image.vars.value.id}}" class="btn-form" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
@@ -57,7 +57,7 @@
                           {{ form_errors(form.videos) }}
                 {% for video in form.videos %}
                     <div class="col-md-3" id="video-{{loop.index0}}">
-                        <iframe src="{{ asset(video.vars.value.url) }}" allowfullscreen style="width: 150px; height: 75px;"></iframe>
+                        <iframe class="thumbnail" src="{{ asset(video.vars.value.url) }}" allowfullscreen style="width: 150px; height: 75px;"></iframe>
                         <div class="fileUpload">{{ form_widget(video, {'attr': {'class': 'custom-file-input'}})  }}</div>
 
                         <a href="#delete_video_{{video.vars.value.id}}" class="btn-form" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i> </a>
