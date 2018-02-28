@@ -110,15 +110,15 @@
           <div class="trick_list_medias">
               <div class="col-md-12 trick_medias">
                 {% for image in trick.images %}
-                <div class="col-md-2 point5">
-                  <div class="trick">
+                <div class="col-md-2">
+                  <div class="trick-view">
                         <img class="img-responsive thumb-home" src="{{asset(image.webPath)}}" alt="{{image.alt}}">                      
                   </div>
                 </div>
               {% endfor %}
               {% for video in trick.videos %}
-                <div class="col-md-4">
-                  <div class="trick">
+                <div class="col-md-2">
+                  <div class="trick-view">
                         <iframe src="{{video.url}}" allowfullscreen ></iframe>                      
                   </div>
                 </div>
@@ -126,10 +126,10 @@
               </div>
           </div>
         </div>
-     
+      <hr class="divider">
         <div class="row trick_details">
-          <div class="trick_description">
-              <div class="col-md-12">
+          <div>
+              <div class="col-md-12 trick_description">
                   <p>{{trick.description|raw|nl2br}}</p>
               </div>
           </div>
@@ -159,8 +159,8 @@
         {% if is_granted('ROLE_USER') %}
         <div class="row trick_details">
           <div class="trick_comment_form">
-              <div class="col-md-12">
-                  <div class="form">
+              <div class="col-md-12 ">
+                  <div class="form ">
                           {{ include("TricksBundle:Trick:form_comment.html.twig") }}
                   </div>
               </div>

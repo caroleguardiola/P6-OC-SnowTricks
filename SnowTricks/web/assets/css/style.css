@@ -1114,10 +1114,26 @@ Home Section style
     justify-content: space-between;
 }
 
+.trick-view {
+    border: 1px solid  #12a7cd;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 7px;
+    height: 170px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .listtrick_image {
 }
 
 .trick img{
+    margin: auto;
+    max-height: 150px;
+}
+
+.trick-view img{
     margin: auto;
     max-height: 150px;
 }
@@ -1189,22 +1205,17 @@ Home Section style
     padding: 0 120px;
 }
 
-.trick_details {
-    padding: 20px;
-}
-
 .trick_medias {
     padding-bottom: 40px;
     padding-top: 20px;
-    padding-left: 40px;
-    padding-right: 40px;
 }
 
 .trick_description {
-    padding: 40px 100px;
+    padding: 40px;
     font-size: 16px;
-    text-align: center;
+    border-radius: 5px;
     color: #12a7cd;
+    margin-bottom: 60px;
 }
 
 .trick_information div{
