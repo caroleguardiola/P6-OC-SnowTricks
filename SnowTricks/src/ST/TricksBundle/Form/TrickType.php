@@ -20,7 +20,6 @@ class TrickType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('dateCreation',   DateTimeType::class)
             ->add('name',           TextType::class)
             ->add('description',    TextareaType::class)
             ->add('thumbnail',    ThumbnailType::class, array('required' => false))

@@ -48,13 +48,39 @@
         </div>
       {% endif %}
 
-        <div class="trick_image" style="background: url('{% if trick.thumbnail is not null %} {{asset(trick.thumbnail.webPath)}}  {% elseif trick.images is not null %} {% for image in trick.images %} {% if loop.first %} {{asset(image.webPath)}} {% endif %} {% else %} {{asset('assets/images/background/snowboarding.jpg')}} {% endfor %}  {% endif %}') no-repeat center">
+        <div class="trick_image">
 
           <div class="row">
             <div class="col-md-12">
               <div class="home_text">
-                <h1 class="text-blue wow fadeInLeft" data-wow-duration="2s">{{trick.name}}</h1>
                 
+
+
+                <div class="overlay-image">
+                  {% if trick.thumbnail is not null %}
+                      <img class="img-responsive" src="{{asset(trick.thumbnail.webPath)}}" alt="{{trick.thumbnail.alt}}">
+                      <br>
+                    {% elseif trick.images is not null %}
+                      {% for image in trick.images %}
+                          {% if loop.first %}
+                              <img class="img-responsive" src="{{asset(image.webPath)}}" alt="{{image.alt}}">
+                              <br>
+                          {% endif %}
+                      {% else %}
+                           <img class="img-responsive" src="{{asset('assets/images/background/snow.jpg')}}" alt="image par défaut">
+                          <br>
+                      {% endfor %}
+                    {% endif %}
+                  <div class="normal">
+                   <div class="text">
+                      <h1 class="text-blue wow fadeInLeft" data-wow-duration="2s">{{trick.name}}</h1>
+                      {% if trick.thumbnail is null %}
+                        <h3 class="text-blue wow fadeInLeft"> Aucune image à la une pour l'instant ! </h3>
+                      {% endif %}
+                    </div>
+
+                  </div>           
+
               </div>
             </div>
           </div>
@@ -84,16 +110,16 @@
           <div class="trick_list_medias">
               <div class="col-md-12 trick_medias">
                 {% for image in trick.images %}
-                <div class="col-md-2">
-                  <div class="trick thumbnail">
-                        <img src="{{asset(image.webPath)}}" alt="{{image.alt}}" style="width: 200px;">                      
+                <div class="col-md-2 point5">
+                  <div class="trick">
+                        <img class="img-responsive thumb-home" src="{{asset(image.webPath)}}" alt="{{image.alt}}">                      
                   </div>
                 </div>
               {% endfor %}
               {% for video in trick.videos %}
                 <div class="col-md-4">
-                  <div class="trick thumbnail">
-                        <iframe src="{{video.url}}" allowfullscreen style="width: 200px;"></iframe>                      
+                  <div class="trick">
+                        <iframe src="{{video.url}}" allowfullscreen ></iframe>                      
                   </div>
                 </div>
               {% endfor %}
