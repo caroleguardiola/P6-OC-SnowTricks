@@ -1259,6 +1259,13 @@ Home Section style
     border-radius: 5px ;
 }
 
+.thumb-edit {
+    border-radius: 5px ;
+    border: 1px solid #12a7cd;
+    padding: 5px;
+    max-height: 200px;
+}
+
 #tricksbundle_trick_thumbnail_file {
     display: none;
 }
@@ -1327,6 +1334,10 @@ Home Section style
     transition: all 0.6s;
     margin-bottom: 0 !important;
     margin-top: 20px;
+}
+
+#tricksbundle_trick_videos input {
+    font-size: 12px;
 }
 
 .button-form {
