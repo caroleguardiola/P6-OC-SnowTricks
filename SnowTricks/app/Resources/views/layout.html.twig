@@ -95,13 +95,18 @@
                 <div class="container-fluid navbar-responsive">
                     <div class="row">
                         <div class="col-xs-4">
-                            <a href="#hello"><i class="fa fa-home" aria-hidden="true"></i></a>
+                            <a href="{{ path('tricks_home') }}"><i class="fa fa-home" aria-hidden="true"></i></a>
                         </div>
                         <div class="col-xs-4">                  
                             <a href="#"><i class="fa fa-bookmark" aria-hidden="true"></i></a>
                         </div>
-                        <div class="col-xs-4">                
-                            <a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                        <div class="col-xs-4">
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                    <a href="{{ path('logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                                {% else %}
+                                    <a href="{{ path('login') }}"><i class="fa fa-sign-in"></i></a>
+                                {% endif %}                
+                            
                         </div>   
                     </div>
                 </div>

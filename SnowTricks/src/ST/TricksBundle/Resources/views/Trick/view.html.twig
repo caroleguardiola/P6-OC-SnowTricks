@@ -153,12 +153,11 @@
               </div>
         </div>
      
-
-      <hr class="divider">
+    <hr class="divider-view">
 
         {% if is_granted('ROLE_USER') %}
-        <div class="row trick_details">
-          <div class="trick_comment_form">
+        <div class="row trick_details trick_comment_form">
+          <div class="">
               <div class="col-md-12 ">
                   <div class="form ">
                           {{ include("TricksBundle:Trick:form_comment.html.twig") }}
@@ -167,8 +166,9 @@
           </div>
         </div>  
 
-      <hr class="divider ">
       {% endif %}
+
+      <hr class="divider-view">
 
         <div class="row trick_details">
           <div class="trick_comments">

@@ -405,7 +405,7 @@ Button
     text-transform: uppercase;
     font-size:18px;
     font-weight: 600;
-    border:1px solid;
+    border:1px solid #fff;
     color: #12a7cd;
     background-color: #fff;
     border-color: #fff;
@@ -414,15 +414,15 @@ Button
     font-family: 'Raleway', sans-serif;
 }
 
-.btn:hover{
-    border:1px solid;
+.btn:hover, .btn:focus{
+    border:1px solid #12a7cd;
     background-color: #eee;
     border-color: #eee;
     color:#12a7cd;
 }
 
-.btn-login:hover{
-    border:1px solid;
+.btn-login:hover, .btn-login:focus, .btn-login:visited{
+    border:1px solid #12a7cd;
     background-color:  #12a7cd;
     border-color:  #12a7cd;
     color:#fff;
@@ -442,7 +442,7 @@ Button
     border-radius: 10px;
 }
 
-.btn-form:hover {
+.btn-form:hover, .btn-form:focus {
     color: #6f6f6f;
     border:1px solid;
     background-color:  #fff;
@@ -1243,6 +1243,10 @@ Home Section style
     margin-bottom: 40px;
 }
 
+.trick_comment_form {
+    padding: 100px;
+}
+
 .trick_form {
     padding: 20px;
 }
@@ -1338,6 +1342,7 @@ Home Section style
 
 #tricksbundle_trick_videos input {
     font-size: 12px;
+    width: 400px;
 }
 
 .button-form {
@@ -1352,6 +1357,7 @@ Home Section style
 
 .add {
     padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 iframe{
@@ -1362,6 +1368,16 @@ iframe{
 
 .divider {
  margin: 30px 0;
+}
+
+.divider-view {
+     margin-right: 100px;
+     margin-left: 100px;
+}
+
+hr.divider-view {
+   border: 0;
+border-top: 1px solid  rgba(18,167,205,0.3);
 }
 
 .login-page {
@@ -1503,6 +1519,10 @@ iframe{
 
 .user-photo {
     text-align: center;
+}
+
+textarea#userbundle_comment_content.form-control {
+   height: 200px;
 }
 
 .user-comment {
