@@ -15,7 +15,7 @@ class ThumbnailEditType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('file',    FileType::class, array('label' => 'Modifier l\'image à la une'));
+            ->add('file', FileType::class, array('label' => 'Modifier l\'image à la une'));
     }/**
      * {@inheritdoc}
      */

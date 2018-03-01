@@ -15,7 +15,7 @@ class PhotoType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('file',    FileType::class, array('label' => 'Choisir une photo'));
+            ->add('file', FileType::class, array('label' => 'Choisir une photo'));
     }/**
      * {@inheritdoc}
      */
@@ -33,6 +33,4 @@ class PhotoType extends AbstractType
     {
         return 'userbundle_photo';
     }
-
-
 }

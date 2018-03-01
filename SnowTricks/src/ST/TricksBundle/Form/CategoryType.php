@@ -33,6 +33,4 @@ class CategoryType extends AbstractType
     {
         return 'tricksbundle_category';
     }
-
-
 }

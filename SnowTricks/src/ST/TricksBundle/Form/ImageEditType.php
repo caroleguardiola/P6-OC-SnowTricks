@@ -15,7 +15,7 @@ class ImageEditType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('file',    FileType::class, array('label' => 'Modifier l\'image'));
+            ->add('file', FileType::class, array('label' => 'Modifier l\'image'));
     }/**
      * {@inheritdoc}
      */
@@ -33,6 +33,4 @@ class ImageEditType extends AbstractType
     {
         return 'tricksbundle_image';
     }
-
-
 }

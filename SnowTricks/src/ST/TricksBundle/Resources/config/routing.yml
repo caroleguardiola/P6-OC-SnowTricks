@@ -51,3 +51,10 @@ videos_delete:
       _controller: TricksBundle:Video:delete
     requirements:
       id: \d+
+
+medias_edit:
+    path:     /tricks/modification médias mobile/{id}
+    defaults: 
+      _controller: TricksBundle:Trick:editMedias
+    requirements:
+      id: \d+

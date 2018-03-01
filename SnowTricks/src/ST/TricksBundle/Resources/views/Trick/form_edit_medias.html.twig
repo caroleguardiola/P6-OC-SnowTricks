@@ -7,14 +7,14 @@
 
    <div class="media">
 
-   
-
-    <div class="row col-sm-12 button-medias"><a href="{{ path('medias_edit', {'id': trick.id}) }}" class="btn btn-primary btn-lg" data-toggle="modal" data-backdrop="false">
-        Modifier les médias
+   <div class="row col-sm-12 button-return"><a href="{{ path('tricks_edit', {'id': trick.id}) }}" class="btn btn-primary btn-lg" data-toggle="modal" data-backdrop="false">
+        Retour à la modification du trick {{trick.name}}
       </a></div>
+
+   
  <hr class="divider">
 
-  <div class="medias-edit">
+ 
   <div class="form-group"  id="thumbnail_edit">
     {{ form_label(form.thumbnail, "Image à la une", {'label_attr': {'class': 'control-label'}}) }}
     {{ form_errors(form.thumbnail) }}
@@ -75,44 +75,7 @@
    
 
 
- </div>
-  <div class="row trick_details">
-        <div class="col-md-12 trick_information">
-          <div>
-            <p>Trick créé le :<br />
-              {{trick.dateCreation|date('d/m/Y à H:i')}}</p>
-          </div>
-          <div>
-            <p>Trick modifié le :<br />
-              {{trick.updatedAt|date('d/m/Y à H:i')}}</p>
-          </div>   
-        </div>
-  </div>
-
-  {# Idem pour un autre champ. #}
-  <div class="form-edit">
-    {{ form_label(form.description, "Description de la figure", {'label_attr': {'class': 'control-label'}}) }}
-    {{ form_errors(form.description) }}
-    {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
-  </div>
-
-
-  <div class="form-edit">
-    {{ form_label(form.category) }}
-    {{ form_errors(form.category) }}
-    {{ form_widget(form.category, {'attr': {'class': 'form-control category_input'}}) }}
-  </div>
-
-       <hr class="divider">
-
-  {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
-  <div class="row">
-    <div class="col-sm-12 button-form">
-      {{ form_widget(form.Enregistrer, {'attr': {'class': 'btn-primary btn-lg'}}) }}
-
-      <a href="#trick_delete"data-toggle="modal" data-backdrop="false" class="btn btn-primary btn-lg">Supprimer ce trick</a>
-    </div>
-</div>
+  
 
   {# Génération automatique des champs pas encore écrits.
      Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
@@ -227,35 +190,6 @@
    {% endfor %}
       {% endif %}
 
-       <!--start modal -->
-            {% if trick is defined %}
-  {% if trick is not null %}
-              <div class="modal fade" id="trick_delete" tabindex="-1" role="dialog" aria-hidden="true">
-                <div class="modal-dialog modal-md">
-                  <div class="modal-content">
-
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fermer</span></button>
-                        <h3 class="modal-title" id="actu_1">Suppression  Trick</h3>
-                    </div>
-                    
-                    <div class="modal-body">
-                      <div class="blog-content">
-                      </div>
-                      <div>
-                        {{render(controller('TricksBundle:Trick:delete',{'id': trick.id} ))}}
-                      </div>
-                    </div>
-
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Fermer</button>
-                    </div>
-
-                  </div> 
-                </div>
-              </div>
-               {% endif %}
-      {% endif %}
-              <!--end modal -->
+      
 
 </div>

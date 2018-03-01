@@ -17,7 +17,7 @@ class SecurityController extends Controller
     {
         // Si le visiteur est déjà identifié, on le redirige vers l'accueil
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {
-        return $this->redirectToRoute('tricks_home');
+            return $this->redirectToRoute('tricks_home');
         }
 
         // Le service authentication_utils permet de récupérer le nom d'utilisateur
@@ -46,7 +46,7 @@ class SecurityController extends Controller
             $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
             $user->setPassword($password);
 
-            $user->setConfirmationToken(md5(time()*rand(357,412)));
+            $user->setConfirmationToken(md5(time()*rand(357, 412)));
 
             // 4) save the User!
             $em = $this->getDoctrine()->getManager();
@@ -74,7 +74,7 @@ class SecurityController extends Controller
 
             $this->addFlash('warning', 'Un mail de confirmation vient de vous être envoyé, merci de cliquer sur le lien joint.');
             return $this->redirectToRoute('tricks_home');
-        }          
+        }
 
         return $this->render(
             'UserBundle:Security:register.html.twig',
@@ -87,9 +87,9 @@ class SecurityController extends Controller
         $em = $this->getDoctrine()->getManager();
         $repository = $em->getRepository('UserBundle:User');
 
-        if ($user = $repository->findOneBy(array('confirmationToken' => $token))){
-            $user->setConfirmationToken(NULL);
-            $user->setIsActive(true);            
+        if ($user = $repository->findOneBy(array('confirmationToken' => $token))) {
+            $user->setConfirmationToken(null);
+            $user->setIsActive(true);
             $em->flush();
             $this->addFlash('notice', 'Bienvenue '. $user->getUsername(). ' ! Votre compte est maintenant activé, vous pouvez vous connecter !');
         } else {
@@ -103,16 +103,15 @@ class SecurityController extends Controller
         $form = $this->get('form.factory')->create(UserForgotPasswordType::class);
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-
             $em = $this->getDoctrine()->getManager();
             $repository = $em->getRepository('UserBundle:User');
             $user = $form->getData();
 
-            if ($user = $repository->findOneBy(array('email' => $user->getEmail()))){
-                $user->setConfirmationToken(md5(time()*rand(357,412)));
+            if ($user = $repository->findOneBy(array('email' => $user->getEmail()))) {
+                $user->setConfirmationToken(md5(time()*rand(357, 412)));
                 $em->flush();
 
-                 $message = (new \Swift_Message('Changement mot de passe compte SnowTricks'))
+                $message = (new \Swift_Message('Changement mot de passe compte SnowTricks'))
                 ->setFrom('send@example.com')
                 ->setTo($user->getEmail())
                 ->setBody(
@@ -146,11 +145,10 @@ class SecurityController extends Controller
 
         $repository = $em
             ->getRepository('UserBundle:User');
-            ;
+        ;
         ;
 
-        if ($user=$repository->findOneBy(array('confirmationToken' => $token))){
-
+        if ($user=$repository->findOneBy(array('confirmationToken' => $token))) {
             $form = $this->get('form.factory')->create(UserResetPasswordType::class, $user);
 
             if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
@@ -159,18 +157,21 @@ class SecurityController extends Controller
                
                 $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
                 $user->setPassword($password);
-                $user->setConfirmationToken(NULL);
+                $user->setConfirmationToken(null);
                 $em->flush();
                 $this->addFlash('notice', 'Bienvenue '. $user->getUsername(). ' ! Votre compte est à nouveau activé, vous pouvez vous connecter !');
                 return $this->redirectToRoute('tricks_home');
             }
         }
           
-         return $this->render(
-            'UserBundle:Security:resetPassword.html.twig', array(
+        return $this->render(
+            'UserBundle:Security:resetPassword.html.twig',
+          
+             array(
             'user' => $user,
             'form' => $form->createView(),
-        ));
-
+        )
+          
+         );
     }
 }

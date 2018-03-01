@@ -102,6 +102,7 @@
                         </div>
                         <div class="col-xs-4">
                                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                    <span class="connected">{{ app.user.username }}</span>
                                     <a href="{{ path('logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
                                 {% else %}
                                     <a href="{{ path('login') }}"><i class="fa fa-sign-in"></i></a>

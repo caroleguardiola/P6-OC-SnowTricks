@@ -15,7 +15,7 @@ class ThumbnailType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('file',    FileType::class, array('label' => 'Choisir une image à la une'));
+            ->add('file', FileType::class, array('label' => 'Choisir une image à la une'));
     }/**
      * {@inheritdoc}
      */
@@ -33,6 +33,4 @@ class ThumbnailType extends AbstractType
     {
         return 'tricksbundle_thumbnail';
     }
-
-
 }

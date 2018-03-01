@@ -14,26 +14,26 @@ class ImageController extends Controller
 {
     public function deleteAction(Request $request, $id)
     {
-      $em = $this->getDoctrine()->getManager();
-      $image = $em->getRepository('TricksBundle:Image')->find($id);
+        $em = $this->getDoctrine()->getManager();
+        $image = $em->getRepository('TricksBundle:Image')->find($id);
 
-     if (null === $image) {
-        throw new NotFoundHttpException("L'image d'id ".$id." n'existe pas.");
-      }
+        if (null === $image) {
+            throw new NotFoundHttpException("L'image d'id ".$id." n'existe pas.");
+        }
 
-      $trick = $image->getTrick();
+        $trick = $image->getTrick();
 
-      $form = $this->get('form.factory')->create();
+        $form = $this->get('form.factory')->create();
         
 
-      if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-        $em->remove($image);
-        $em->flush();
-        $this->addFlash('notice', "L'image a bien été supprimée.");
-         return $this->redirectToRoute('tricks_edit', ['id' => $trick->getId()]);
-      }
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+            $em->remove($image);
+            $em->flush();
+            $this->addFlash('notice', "L'image a bien été supprimée.");
+            return $this->redirectToRoute('tricks_edit', ['id' => $trick->getId()]);
+        }
 
-       return $this->render('TricksBundle:Trick:delete_image.html.twig', array(
+        return $this->render('TricksBundle:Trick:delete_image.html.twig', array(
       'image' => $image,
       'form'   => $form->createView(),
       ));

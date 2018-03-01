@@ -1342,7 +1342,7 @@ Home Section style
 
 #tricksbundle_trick_videos input {
     font-size: 12px;
-    width: 400px;
+    max-width: 400px;
 }
 
 .button-form {

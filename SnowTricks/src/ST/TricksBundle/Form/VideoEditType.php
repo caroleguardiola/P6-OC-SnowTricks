@@ -15,7 +15,10 @@ class VideoEditType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('url',    TextType::class, array('label' => 'Modifier la balise embed de la vidéo')
+            ->add(
+                'url',
+                TextType::class,
+                array('label' => 'Modifier la balise embed de la vidéo')
     );
     }/**
      * {@inheritdoc}
@@ -34,6 +37,4 @@ class VideoEditType extends AbstractType
     {
         return 'tricksbundle_video';
     }
-
-
 }

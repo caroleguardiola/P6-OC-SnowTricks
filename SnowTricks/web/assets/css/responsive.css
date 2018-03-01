@@ -60,7 +60,7 @@ Author URI: http://www.xpeedstudio.com
         width: 100%;
     }
 
-    .medias {
+    .medias, .medias-edit {
         display: none;
     }
 
@@ -136,7 +136,24 @@ Author URI: http://www.xpeedstudio.com
 
 }
 
+@media  (max-width: 768px) and (min-width: 481px){
+    .trick img, .trick-view img {
+        margin: auto;
+        max-height: 250px;
+    }
 
+    .trick {
+        margin-left: 150px;
+        margin-right: 150px;
+        height: 350px;
+    }
+
+    .trick-view {
+        margin-left: 75px;
+        margin-right: 75px;
+        height: 300px;
+    }
+}
 
 
 /* Landscape phones and smaller */
@@ -163,6 +180,16 @@ Author URI: http://www.xpeedstudio.com
 
     .form_comment_content button{
         text-align: center;
+    }
+
+    .trick {
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+
+     .trick-view {
+        margin-left: 40px;
+        margin-right: 40px;
     }
 
 }
