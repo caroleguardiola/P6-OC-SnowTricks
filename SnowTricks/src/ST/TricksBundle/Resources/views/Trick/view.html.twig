@@ -153,7 +153,7 @@
               </div>
         </div>
      
-    <hr class="divider-view">
+ <hr class="divider-view">
 
         {% if is_granted('ROLE_USER') %}
         <div class="row trick_details trick_comment_form">
@@ -176,10 +176,10 @@
                   <h5>Commentaires</h5>
                   {% for comment in listComments %}
                     <div class="row"  id="comments">
-                      <div class="col-md-2 user-photo">
+                      <div class="col-sm-2 col-xs-3 user-photo">
                         <img src="{{asset(comment.user.photo.webPath)}}" alt="{{comment.user.photo.alt}}" class="img-circle user-photo-img">
                       </div>
-                      <div class="col-md-10 user-comment">
+                      <div class="col-sm-10 col-xs-9 user-comment">
                         <p class="user-comment-name">{{comment.user.fullName}}</p>                  
                         <p class="user-comment-content">{{comment.content}}</p>
                         <p class="user-comment-date">{{comment.dateCreation|date('d/m/Y à H:i')}}</p>

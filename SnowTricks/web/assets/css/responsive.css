@@ -6,15 +6,14 @@ Author URI: http://www.xpeedstudio.com
 */
 
 /* Portrait tablets and medium desktops */
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: 992px) {
     body {
         font-size: 1rem;
     }
 
-
-
-
-
+    .col-md-2.point5 {
+        width: 20%;  
+   }
 
 }
 
@@ -42,11 +41,23 @@ Author URI: http://www.xpeedstudio.com
         margin-top:50px;
     }
 
+    .trick_info a, .trick_info h6{
+        font-size: 20px;
+    }
+    .trick_description {
+    padding: 25px 0;
+    }
 
+    .content {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .container {
+        width: 100%;
+    }
 
 }
-
-
 
 /* Landscape phones and portrait tablets */
 @media  (max-width: 768px) {
@@ -76,6 +87,45 @@ Author URI: http://www.xpeedstudio.com
         top: -150px;
     }
 
+    .trick img {
+        margin: auto;
+        max-height: 170px;
+    }
+
+    .page-wrapper-login {
+        margin: 0 20px;
+    }
+
+    .page-wrapper-register {
+        margin: 0 20px;
+    }
+
+    .btn-login {
+        font-size: 14px;
+    }
+
+    .home_text h1 {
+        font-size: 3rem;
+    }
+
+    .main_home {
+        padding-bottom: 200px;
+        padding-top: 100px
+    }
+
+    .trick_comment_form {
+        padding: 20px 0;
+    }
+
+    textarea#userbundle_comment_content.form-control {
+        height: 70px;
+    }
+
+    div.form-edit {
+        margin: auto;
+        width: 100%;
+         padding-top: 15px;
+    }
 
 }
 
@@ -83,7 +133,7 @@ Author URI: http://www.xpeedstudio.com
 
 
 /* Landscape phones and smaller */
-@media (max-width: 479px) {
+@media (max-width: 480px) {
     html {
         font-size: 85%;
     }
@@ -91,6 +141,22 @@ Author URI: http://www.xpeedstudio.com
         display: none;
     }
 
+    p {
+        margin: 0 0 7px; 
+    }
+
+    .form-comment div {
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    .trick_comment_form {
+        padding: 20px 0 10px 0;
+    }
+
+    .form_comment_content button{
+        text-align: center;
+    }
 }
 
 
@@ -111,6 +177,3 @@ Author URI: http://www.xpeedstudio.com
     }
 
 }
-
-
-

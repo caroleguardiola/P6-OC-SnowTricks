@@ -1,9 +1,9 @@
-<div class="">
-  {{ form_start(form, {'attr': {'class': 'form-horizontal form-comment'}}) }}
+ <div class="">
+   {{ form_start(form, {'attr': {'class': 'form-horizontal form-comment'}}) }}
 
   {# Les erreurs générales du formulaire. #}
   {{ form_errors(form) }}
-  <div class="form_comment_content col-sm-6">
+  <div class="form_comment_content col-sm-8 col-xs-12">
     {{ form_label(form.content) }}
     {{ form_errors(form.content) }}
     <div class="col-sm-12">
