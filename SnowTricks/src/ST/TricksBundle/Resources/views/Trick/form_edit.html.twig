@@ -1,238 +1,225 @@
 <div class="trick_form">
-  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
 
+    {# Les erreurs générales du formulaire. #}
+    {{ form_errors(form) }}
 
-  {# Les erreurs générales du formulaire. #}
-  {{ form_errors(form) }}
+    <div class="media">
 
-   <div class="media">
+        <div class="row col-sm-12 button-medias"><a href="{{ path('medias_edit', {'id': trick.id}) }}" class="btn btn-primary btn-lg" data-toggle="modal" data-backdrop="false">
+            Modifier les médias
+          </a></div>
 
-   
+        <hr class="divider">
 
-    <div class="row col-sm-12 button-medias"><a href="{{ path('medias_edit', {'id': trick.id}) }}" class="btn btn-primary btn-lg" data-toggle="modal" data-backdrop="false">
-        Modifier les médias
-      </a></div>
- <hr class="divider">
+        <div class="medias-edit">
+            <div class="form-group"  id="thumbnail_edit">
+                {{ form_label(form.thumbnail, "Image à la une", {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_errors(form.thumbnail) }}
+                {% if trick.thumbnail is defined %}
+                    {% if trick.thumbnail is not null %}
+                        <div>
+                          <img src="{{ asset(trick.thumbnail.webPath) }}" alt="{{ trick.thumbnail.alt }}" class="img-responsive thumb-edit">
+                        </div>
+                    {% endif %}
+                {% endif %}
+                {{ form_widget(form.thumbnail) }}
+                <a href="#thumbnail_delete" class="btn-form" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+            </div>
 
-  <div class="medias-edit">
-  <div class="form-group"  id="thumbnail_edit">
-    {{ form_label(form.thumbnail, "Image à la une", {'label_attr': {'class': 'control-label'}}) }}
-    {{ form_errors(form.thumbnail) }}
-    {% if trick.thumbnail is defined %}
-          {% if trick.thumbnail is not null %}
-    <div>
-      <img src="{{ asset(trick.thumbnail.webPath) }}" alt="{{ trick.thumbnail.alt }}" class="img-responsive thumb-edit">
-    </div>
-          {% endif %}
-    {% endif %}
-    {{ form_widget(form.thumbnail) }}
-    <a href="#thumbnail_delete" class="btn-form" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-    </div>
+            <hr class="divider">
 
-                     <hr class="divider">
-
-    
+        
             <div class="media_images">
-            <div>{{ form_label(form.images, "Images", {'label_attr': {'class': 'control-label'}}) }}</div>
-            <div id="{{ form.images.vars.id }}" data-prototype="{{ form_widget(form.images.vars.prototype)|e ('html_attr')}}" class="form-group">
-                          {{ form_errors(form.images) }}
-                {% for image in form.images %}
-                    <div class="col-md-2" id="image-{{loop.index0}}">
-                        <div class="trick-view"><img src="{{ asset(image.vars.value.webPath) }}" alt="{{ asset(image.vars.value.alt) }}" class="img-responsive thumb-home"></div>
-                        <div class="fileUpload">{{ form_widget(image, {'label': '<i class="fa fa-pencil" aria-hidden="true"></i>'})  }}</div>
+                <div>{{ form_label(form.images, "Images", {'label_attr': {'class': 'control-label'}}) }}</div>
+                <div id="{{ form.images.vars.id }}" data-prototype="{{ form_widget(form.images.vars.prototype)|e ('html_attr')}}" class="form-group">
+                    {{ form_errors(form.images) }}
+                    {% for image in form.images %}
+                        <div class="col-md-2" id="image-{{loop.index0}}">
+                            <div class="trick-view"><img src="{{ asset(image.vars.value.webPath) }}" alt="{{ asset(image.vars.value.alt) }}" class="img-responsive thumb-home"></div>
+                            <div class="fileUpload">{{ form_widget(image) }}</div>
+                            <a href="#delete_image_{{image.vars.value.id}}" class="btn-form" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                        </div>
+                    {% endfor %}
+                </div>                    
 
-                        <a href="#delete_image_{{image.vars.value.id}}" class="btn-form" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                    </div>
-
-                {% endfor %}
-
-            </div>                    
-
-            <div class="add"><a href="#" id="add_image" class="btn-form">Ajouter une image</a></div>
-
-        </div>
-
-                 <hr class="divider">
-
-
-        <div class="media_videos">
-            <div>{{ form_label(form.videos, "Vidéos", {'label_attr': {'class': 'control-label'}}) }}</div>
-            <div id="{{ form.videos.vars.id }}" data-prototype="{{ form_widget(form.videos.vars.prototype)|e ('html_attr')}}" class="form-group">
-                          {{ form_errors(form.videos) }}
-                {% for video in form.videos %}
-                    <div class="col-md-3" id="video-{{loop.index0}}">
-                        <div class="trick-view"><iframe class="img-responsive thumb-home" src="{{ asset(video.vars.value.url) }}" allowfullscreen></iframe></div>
-                        <div class="fileUpload">{{ form_widget(video, {'attr': {'class': 'custom-file-input'}})  }}</div>
-
-                        <a href="#delete_video_{{video.vars.value.id}}" class="btn-form" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i> </a>
-                    </div>
-                {% endfor %}
+                <div class="add"><a href="#" id="add_image" class="btn-form">Ajouter une image</a></div>
             </div>
-        </div> <div class="add"><a href="#" id="add_video" class="btn-form">Ajouter une vidéo</a></div>
-         <hr class="divider">
+
+            <hr class="divider">
+
+            <div class="media_videos">
+                <div>{{ form_label(form.videos, "Vidéos", {'label_attr': {'class': 'control-label'}}) }}</div>
+                <div id="{{ form.videos.vars.id }}" data-prototype="{{ form_widget(form.videos.vars.prototype)|e ('html_attr')}}" class="form-group">
+                    {{ form_errors(form.videos) }}
+                    {% for video in form.videos %}
+                        <div class="col-md-3" id="video-{{loop.index0}}">
+                            <div class="trick-view"><iframe class="img-responsive thumb-home" src="{{ asset(video.vars.value.url) }}" allowfullscreen></iframe></div>
+                            <div class="fileUpload">{{ form_widget(video, {'attr': {'class': 'custom-file-input'}})  }}</div>
+                            <a href="#delete_video_{{video.vars.value.id}}" class="btn-form" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i> </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div> 
+
+                <div class="add"><a href="#" id="add_video" class="btn-form">Ajouter une vidéo</a></div>
+            </div>  
+
+            <hr class="divider">
     </div>
 
-   
 
-
- </div>
-  <div class="row trick_details">
+    <div class="row trick_details">
         <div class="col-md-12 trick_information">
-          <div>
-            <p>Trick créé le :<br />
-              {{trick.dateCreation|date('d/m/Y à H:i')}}</p>
-          </div>
-          <div>
-            <p>Trick modifié le :<br />
-              {{trick.updatedAt|date('d/m/Y à H:i')}}</p>
-          </div>   
+            <div>
+                <p>Trick créé le :<br />
+                  {{trick.dateCreation|date('d/m/Y à H:i')}}</p>
+            </div>
+            <div>
+                <p>Trick modifié le :<br />
+                  {{trick.updatedAt|date('d/m/Y à H:i')}}</p>
+            </div>   
         </div>
-  </div>
-
-  {# Idem pour un autre champ. #}
-  <div class="form-edit">
-    {{ form_label(form.description, "Description de la figure", {'label_attr': {'class': 'control-label'}}) }}
-    {{ form_errors(form.description) }}
-    {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
-  </div>
-
-
-  <div class="form-edit">
-    {{ form_label(form.category) }}
-    {{ form_errors(form.category) }}
-    {{ form_widget(form.category, {'attr': {'class': 'form-control category_input'}}) }}
-  </div>
-
-       <hr class="divider">
-
-  {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
-  <div class="row">
-    <div class="col-sm-12 button-form">
-      {{ form_widget(form.Enregistrer, {'attr': {'class': 'btn-primary btn-lg'}}) }}
-
-      <a href="#trick_delete"data-toggle="modal" data-backdrop="false" class="btn btn-primary btn-lg">Supprimer ce trick</a>
     </div>
-</div>
-
-  {# Génération automatique des champs pas encore écrits.
-     Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
-     et tous les champs cachés (type « hidden »). #}
-  {{ form_rest(form) }}
-
-  {# Fermeture de la balise <form> du formulaire HTML #}
-  {{ form_end(form) }}
 
 
-   <!--start modal -->
-   {% if trick is defined %}
-  {% if trick is not null %}
-    <div class="modal fade" id="thumbnail_delete" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog modal-md">
-        <div class="modal-content">
-
-          <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fermer</span></button>
-              <h3 class="modal-title" id="actu_1">Suppression Image à la une</h3>
-          </div>
-          
-          <div class="modal-body">
-            <div class="blog-content">
-            </div>
-         
-            <div>
-              {{render(controller('TricksBundle:Thumbnail:delete',{'id': trick.id} ))}}
-            </div>
-           
-          </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Fermer</button>
-          </div>
-
-        </div> 
-      </div>
+    {# Idem pour un autre champ. #}
+    <div class="form-edit">
+        {{ form_label(form.description, "Description de la figure", {'label_attr': {'class': 'control-label'}}) }}
+        {{ form_errors(form.description) }}
+        {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
     </div>
-    {% endif %}
-      {% endif %}
-  
-<!--end modal -->
 
-  <!--start modal -->
-   {% if trick.images is defined %}
-  {% for image in trick.images %}
-  {% if image.id is not null %}
-    <div class="modal fade" id="delete_image_{{image.id}}" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog modal-md">
-        <div class="modal-content">
 
-          <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fermer</span></button>
-              <h3 class="modal-title" id="actu_1">Suppression  Image</h3>
-          </div>
-          
-          <div class="modal-body">
-            <div class="blog-content">
-            </div>
-         
-            <div>
-              {{render(controller('TricksBundle:Image:delete',{'id': image.id} ))}}
-            </div>
-           
-          </div>
-
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Fermer</button>
-          </div>
-
-        </div> 
-      </div>
+    <div class="form-edit">
+        {{ form_label(form.category) }}
+        {{ form_errors(form.category) }}
+        {{ form_widget(form.category, {'attr': {'class': 'form-control category_input'}}) }}
     </div>
-   {% endif %}
-   {% endfor %}
-      {% endif %}
-<!--end modal -->
 
-<!--start modal -->
- 
-     {% if trick.videos is defined %}
-  {% for video in trick.videos %}
-  {% if video.id is not null %}
-    <div class="modal fade" id="delete_video_{{video.id}}" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog modal-md">
-        <div class="modal-content">
+    <hr class="divider">
 
-          <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fermer</span></button>
-              <h3 class="modal-title" id="actu_1">Suppression Vidéo</h3>
-          </div>
-          
-          <div class="modal-body">
-            <div class="blog-content">
-            </div>
-         
-            <div>
-              {{render(controller('TricksBundle:Video:delete',{'id': video.id} ))}}
-            </div>
-           
-          </div>
+    {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+    <div class="row">
+        <div class="col-sm-12 button-form">
+            {{ form_widget(form.Enregistrer, {'attr': {'class': 'btn-primary btn-lg'}}) }}
 
-          <div class="modal-footer">
-            <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Fermer</button>
-          </div>
-
-        </div> 
-      </div>
+            <a href="#trick_delete"data-toggle="modal" data-backdrop="false" class="btn btn-primary btn-lg">Supprimer ce trick</a>
+        </div>
     </div>
-   {% endif %}
-   {% endfor %}
-      {% endif %}
 
-       <!--start modal -->
-            {% if trick is defined %}
-  {% if trick is not null %}
-              <div class="modal fade" id="trick_delete" tabindex="-1" role="dialog" aria-hidden="true">
+    {# Génération automatique des champs pas encore écrits.
+    Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+    et tous les champs cachés (type « hidden »). #}
+    {{ form_rest(form) }}
+
+    {# Fermeture de la balise <form> du formulaire HTML #}
+    {{ form_end(form) }}
+
+
+    <!--start modal -->
+    {% if trick is defined %}
+        {% if trick is not null %}
+            <div class="modal fade" id="thumbnail_delete" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog modal-md">
-                  <div class="modal-content">
+                    <div class="modal-content">
+                        
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fermer</span></button>
+                            <h3 class="modal-title" id="actu_1">Suppression Image à la une</h3>
+                        </div>
+                  
+                        <div class="modal-body">
+                            <div class="blog-content">
+                            </div>
+                            <div>
+                                {{render(controller('TricksBundle:Thumbnail:delete',{'id': trick.id} ))}}
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Fermer</button>
+                        </div>
+
+                    </div> 
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+    <!--end modal -->
+
+    <!--start modal -->
+    {% if trick.images is defined %}
+        {% for image in trick.images %}
+            {% if image.id is not null %}
+                <div class="modal fade" id="delete_image_{{image.id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-md">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fermer</span></button>
+                                <h3 class="modal-title" id="actu_1">Suppression  Image</h3>
+                            </div>
+                          
+                            <div class="modal-body">
+                                <div class="blog-content">
+                                </div>
+                                <div>
+                                  {{render(controller('TricksBundle:Image:delete',{'id': image.id} ))}}
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Fermer</button>
+                            </div>
+
+                        </div> 
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    <!--end modal -->
+
+    <!--start modal -->
+    {% if trick.videos is defined %}
+        {% for video in trick.videos %}
+            {% if video.id is not null %}
+                <div class="modal fade" id="delete_video_{{video.id}}" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog modal-md">
+                        <div class="modal-content">
+
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fermer</span></button>
+                                <h3 class="modal-title" id="actu_1">Suppression Vidéo</h3>
+                            </div>
+                              
+                            <div class="modal-body">
+                                <div class="blog-content">
+                                </div>
+                                <div>
+                                    {{render(controller('TricksBundle:Video:delete',{'id': video.id} ))}}
+                                </div>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Fermer</button>
+                            </div>
+
+                        </div> 
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+    <!--end modal -->
+
+    <!--start modal -->
+    {% if trick is defined %}
+        {% if trick is not null %}
+            <div class="modal fade" id="trick_delete" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
 
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fermer</span></button>
@@ -240,22 +227,22 @@
                     </div>
                     
                     <div class="modal-body">
-                      <div class="blog-content">
-                      </div>
-                      <div>
-                        {{render(controller('TricksBundle:Trick:delete',{'id': trick.id} ))}}
-                      </div>
+                        <div class="blog-content">
+                        </div>
+                        <div>
+                            {{render(controller('TricksBundle:Trick:delete',{'id': trick.id} ))}}
+                        </div>
                     </div>
 
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Fermer</button>
+                        <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Fermer</button>
                     </div>
 
-                  </div> 
+                </div> 
                 </div>
-              </div>
-               {% endif %}
-      {% endif %}
-              <!--end modal -->
+            </div>
+        {% endif %}
+    {% endif %}
+    <!--end modal -->
 
 </div>
