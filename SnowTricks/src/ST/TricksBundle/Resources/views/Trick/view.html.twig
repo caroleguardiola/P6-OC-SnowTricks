@@ -102,10 +102,60 @@
         Retour à la liste des tricks
       </a></div>
 
+      <div class="row col-sm-12 button-medias"><a href="#medias-modal" class="btn btn-primary btn-lg" data-toggle="modal" data-backdrop="false">
+        Voir les médias
+      </a></div>
 
+      <!--start modal -->
+          <div class="modal fade" id="medias-modal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog modal-md">
+              <div class="modal-content">
 
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Fermer</span></button>
+                    <h3 class="modal-title" id="actu_1">Médias</h3>
+                </div>
+                
+                <div class="modal-body">
+                  <div class="blog-content">
+                  </div>
+                  <div>
+                    <div class="row trick_details">
+                    <div class="trick_list_medias">
+                        <div class="col-md-12 trick_medias">
+                          {% for image in trick.images %}
+                          <div class="col-md-2">
+                            <div class="trick-view">
+                                  <img class="img-responsive thumb-home" src="{{asset(image.webPath)}}" alt="{{image.alt}}">                      
+                            </div>
+                          </div>
+                        {% endfor %}
+                        {% for video in trick.videos %}
+                          <div class="col-md-2">
+                            <div class="trick-view">
+                                  <iframe src="{{video.url}}" allowfullscreen ></iframe>                      
+                            </div>
+                          </div>
+                        {% endfor %}
+                        </div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-primary btn-lg" data-dismiss="modal">Fermer</button>
+                </div>
+
+              </div> 
+            </div>
+          </div>
+        <!--end modal -->      
+      
       <section class="trick_details_section">
-         <hr class="divider">
+
+         <div class="medias">
+          <hr class="divider">
         <div class="row trick_details">
           <div class="trick_list_medias">
               <div class="col-md-12 trick_medias">
@@ -126,6 +176,8 @@
               </div>
           </div>
         </div>
+      </div>
+
       <hr class="divider">
         <div class="row trick_details">
           <div>

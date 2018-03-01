@@ -1355,6 +1355,11 @@ Home Section style
     padding: 20px;
 }
 
+.button-medias {
+    text-align: center;
+    padding: 20px;
+}
+
 .add {
     padding-top: 30px;
     padding-bottom: 30px;

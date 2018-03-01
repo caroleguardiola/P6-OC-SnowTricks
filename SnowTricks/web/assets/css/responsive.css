@@ -15,6 +15,9 @@ Author URI: http://www.xpeedstudio.com
         width: 20%;  
    }
 
+    .button-medias {
+        display: none;
+    }
 }
 
 
@@ -55,6 +58,10 @@ Author URI: http://www.xpeedstudio.com
 
     .container {
         width: 100%;
+    }
+
+    .medias {
+        display: none;
     }
 
 }
@@ -157,6 +164,7 @@ Author URI: http://www.xpeedstudio.com
     .form_comment_content button{
         text-align: center;
     }
+
 }
 
 
