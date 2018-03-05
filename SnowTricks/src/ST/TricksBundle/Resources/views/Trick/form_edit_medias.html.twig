@@ -1,9 +1,9 @@
 <div class="trick_form">
-  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+  {{ form_start(formEditMedia, {'attr': {'class': 'form-horizontal'}}) }}
 
 
   {# Les erreurs générales du formulaire. #}
-  {{ form_errors(form) }}
+  {{ form_errors(formEditMedia) }}
 
    <div class="media">
 
@@ -16,8 +16,8 @@
 
  
   <div class="form-group"  id="thumbnail_edit">
-    {{ form_label(form.thumbnail, "Image à la une", {'label_attr': {'class': 'control-label'}}) }}
-    {{ form_errors(form.thumbnail) }}
+    {{ form_label(formEditMedia.thumbnail, "Image à la une", {'label_attr': {'class': 'control-label'}}) }}
+    {{ form_errors(formEditMedia.thumbnail) }}
     {% if trick.thumbnail is defined %}
           {% if trick.thumbnail is not null %}
     <div>
@@ -25,7 +25,7 @@
     </div>
           {% endif %}
     {% endif %}
-    {{ form_widget(form.thumbnail) }}
+    {{ form_widget(formEditMedia.thumbnail) }}
     <a href="#thumbnail_delete" class="btn-form" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
     </div>
 
@@ -33,10 +33,10 @@
 
     
             <div class="media_images">
-            <div>{{ form_label(form.images, "Images", {'label_attr': {'class': 'control-label'}}) }}</div>
-            <div id="{{ form.images.vars.id }}" data-prototype="{{ form_widget(form.images.vars.prototype)|e ('html_attr')}}" class="form-group">
-                          {{ form_errors(form.images) }}
-                {% for image in form.images %}
+            <div>{{ form_label(formEditMedia.images, "Images", {'label_attr': {'class': 'control-label'}}) }}</div>
+            <div id="{{ formEditMedia.images.vars.id }}" data-prototype="{{ form_widget(formEditMedia.images.vars.prototype)|e ('html_attr')}}" class="form-group">
+                          {{ form_errors(formEditMedia.images) }}
+                {% for image in formEditMedia.images %}
                     <div class="col-md-2" id="image-{{loop.index0}}">
                         <div class="trick-view"><img src="{{ asset(image.vars.value.webPath) }}" alt="{{ asset(image.vars.value.alt) }}" class="img-responsive thumb-home"></div>
                         <div class="fileUpload">{{ form_widget(image, {'label': '<i class="fa fa-pencil" aria-hidden="true"></i>'})  }}</div>
@@ -56,10 +56,10 @@
 
 
         <div class="media_videos">
-            <div>{{ form_label(form.videos, "Vidéos", {'label_attr': {'class': 'control-label'}}) }}</div>
-            <div id="{{ form.videos.vars.id }}" data-prototype="{{ form_widget(form.videos.vars.prototype)|e ('html_attr')}}" class="form-group">
-                          {{ form_errors(form.videos) }}
-                {% for video in form.videos %}
+            <div>{{ form_label(formEditMedia.videos, "Vidéos", {'label_attr': {'class': 'control-label'}}) }}</div>
+            <div id="{{ formEditMedia.videos.vars.id }}" data-prototype="{{ form_widget(formEditMedia.videos.vars.prototype)|e ('html_attr')}}" class="form-group">
+                          {{ form_errors(formEditMedia.videos) }}
+                {% for video in formEditMedia.videos %}
                     <div class="col-md-3" id="video-{{loop.index0}}">
                         <div class="trick-view"><iframe class="img-responsive thumb-home" src="{{ asset(video.vars.value.url) }}" allowfullscreen></iframe></div>
                         <div class="fileUpload">{{ form_widget(video, {'attr': {'class': 'custom-file-input'}})  }}</div>
@@ -80,10 +80,10 @@
   {# Génération automatique des champs pas encore écrits.
      Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
      et tous les champs cachés (type « hidden »). #}
-  {{ form_rest(form) }}
+  {{ form_rest(formEditMedia) }}
 
   {# Fermeture de la balise <form> du formulaire HTML #}
-  {{ form_end(form) }}
+  {{ form_end(formEditMedia) }}
 
 
    <!--start modal -->

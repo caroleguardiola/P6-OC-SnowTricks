@@ -4,6 +4,7 @@ namespace ST\TricksBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use ST\TricksBundle\Entity\Trick;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -46,6 +47,13 @@ class Thumbnail
     private $file;
 
     private $tempFilename;
+
+    /**
+     * @ORM\OneToOne(targetEntity="ST\TricksBundle\Entity\Trick", inversedBy="thumbnail")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $trick;
+
 
     /**
      * Get id
@@ -104,6 +112,31 @@ class Thumbnail
     {
         return $this->alt;
     }
+
+    /**
+     * Set trick
+     *
+     * @param Trick $trick
+     *
+     * @return Thumbnail
+     */
+    public function setTrick(Trick $trick)
+    {
+        $this->trick = $trick;
+
+        return $this;
+    }
+
+    /**
+     * Get trick
+     *
+     * @return Trick
+     */
+    public function getTrick()
+    {
+        return $this->trick;
+    }
+
 
     public function getFile()
     {

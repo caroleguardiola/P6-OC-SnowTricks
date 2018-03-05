@@ -12,6 +12,7 @@ use ST\UserBundle\Entity\User;
 use ST\TricksBundle\Form\TrickType;
 use ST\TricksBundle\Form\TrickEditType;
 use ST\TricksBundle\Form\TrickEditMediasType;
+use ST\TricksBundle\Form\TrickEditThumbType;
 use ST\UserBundle\Form\CommentType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
@@ -144,9 +145,9 @@ class TrickController extends Controller
 
         $trick->setUpdatedAt(new \Datetime());
 
-        $form = $this->get('form.factory')->create(TrickEditType::class, $trick);
+        $formEdit = $this->get('form.factory')->create(TrickEditType::class, $trick);
 
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+        if ($request->isMethod('POST') && $formEdit->handleRequest($request)->isValid()) {
             $listImages = $trick->getImages();
             foreach ($listImages as $image) {
                 $trick->addImage($image);
@@ -167,7 +168,7 @@ class TrickController extends Controller
       
         return $this->render('TricksBundle:Trick:edit.html.twig', array(
         'trick' => $trick,
-        'form' => $form->createView(),
+        'formEdit' => $formEdit->createView(),
         ));
     }
 
@@ -182,9 +183,9 @@ class TrickController extends Controller
 
         $trick->setUpdatedAt(new \Datetime());
 
-        $form = $this->get('form.factory')->create(TrickEditMediasType::class, $trick);
+        $formEditMedia = $this->get('form.factory')->create(TrickEditMediasType::class, $trick);
 
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+        if ($request->isMethod('POST') && $formEditMedia->handleRequest($request)->isValid()) {
             $listImages = $trick->getImages();
             foreach ($listImages as $image) {
                 $trick->addImage($image);
@@ -205,7 +206,36 @@ class TrickController extends Controller
       
         return $this->render('TricksBundle:Trick:edit_medias_mobile.html.twig', array(
         'trick' => $trick,
-        'form' => $form->createView(),
+        'formEditMedia' => $formEditMedia->createView(),
+        ));
+    }
+
+    public function editThumbbyTrickAction($id, Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $trick = $em
+        ->getRepository('TricksBundle:Trick')
+        ->find($id);
+        ;
+
+        $trick->setUpdatedAt(new \Datetime());
+
+        $formEditThumb = $this->get('form.factory')->create(TrickEditThumbType::class, $trick);
+
+        if ($request->isMethod('POST') && $formEditThumb->handleRequest($request)->isValid()) {
+            
+            // Inutile de persister ici, Doctrine connait déjà notre trick
+            $em->flush();
+
+            $this->addFlash('notice', 'Image à la une bien modifiée.');
+            return $this->redirectToRoute('tricks_edit', array('id' => $trick->getId()
+        ));
+        }
+      
+        return $this->render('TricksBundle:Trick:edit_thumb_trick.html.twig', array(
+        'trick' => $trick,
+        'formEditThumb' => $formEditThumb->createView(),
         ));
     }
 

@@ -58,3 +58,10 @@ medias_edit:
       _controller: TricksBundle:Trick:editMedias
     requirements:
       id: \d+
+
+thumb_edit:
+    path:     /tricks/modification image à la une/{id}
+    defaults: 
+      _controller: TricksBundle:Trick:editThumbbyTrick
+    requirements:
+      id: \d+

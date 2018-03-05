@@ -1,8 +1,8 @@
 <div class="trick_form">
-    {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+    {{ form_start(formEdit, {'attr': {'class': 'form-horizontal'}}) }}
 
     {# Les erreurs générales du formulaire. #}
-    {{ form_errors(form) }}
+    {{ form_errors(formEdit) }}
 
     <div class="media">
 
@@ -14,8 +14,8 @@
 
         <div class="medias-edit">
             <div class="form-group"  id="thumbnail_edit">
-                {{ form_label(form.thumbnail, "Image à la une", {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_errors(form.thumbnail) }}
+                {{ form_label(formEdit.thumbnail, "Image à la une", {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_errors(formEdit.thumbnail) }}
                 {% if trick.thumbnail is defined %}
                     {% if trick.thumbnail is not null %}
                         <div>
@@ -23,18 +23,17 @@
                         </div>
                     {% endif %}
                 {% endif %}
-                {{ form_widget(form.thumbnail) }}
+                {{ form_widget(formEdit.thumbnail) }}
                 <a href="#thumbnail_delete" class="btn-form" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
             </div>
 
             <hr class="divider">
 
-        
             <div class="media_images">
-                <div>{{ form_label(form.images, "Images", {'label_attr': {'class': 'control-label'}}) }}</div>
-                <div id="{{ form.images.vars.id }}" data-prototype="{{ form_widget(form.images.vars.prototype)|e ('html_attr')}}" class="form-group">
-                    {{ form_errors(form.images) }}
-                    {% for image in form.images %}
+                <div>{{ form_label(formEdit.images, "Images", {'label_attr': {'class': 'control-label'}}) }}</div>
+                <div id="{{ formEdit.images.vars.id }}" data-prototype="{{ form_widget(formEdit.images.vars.prototype)|e ('html_attr')}}" class="form-group">
+                    {{ form_errors(formEdit.images) }}
+                    {% for image in formEdit.images %}
                         <div class="col-md-2" id="image-{{loop.index0}}">
                             <div class="trick-view"><img src="{{ asset(image.vars.value.webPath) }}" alt="{{ asset(image.vars.value.alt) }}" class="img-responsive thumb-home"></div>
                             <div class="fileUpload">{{ form_widget(image) }}</div>
@@ -49,10 +48,10 @@
             <hr class="divider">
 
             <div class="media_videos">
-                <div>{{ form_label(form.videos, "Vidéos", {'label_attr': {'class': 'control-label'}}) }}</div>
-                <div id="{{ form.videos.vars.id }}" data-prototype="{{ form_widget(form.videos.vars.prototype)|e ('html_attr')}}" class="form-group">
-                    {{ form_errors(form.videos) }}
-                    {% for video in form.videos %}
+                <div>{{ form_label(formEdit.videos, "Vidéos", {'label_attr': {'class': 'control-label'}}) }}</div>
+                <div id="{{ formEdit.videos.vars.id }}" data-prototype="{{ form_widget(formEdit.videos.vars.prototype)|e ('html_attr')}}" class="form-group">
+                    {{ form_errors(formEdit.videos) }}
+                    {% for video in formEdit.videos %}
                         <div class="col-md-3" id="video-{{loop.index0}}">
                             <div class="trick-view"><iframe class="img-responsive thumb-home" src="{{ asset(video.vars.value.url) }}" allowfullscreen></iframe></div>
                             <div class="fileUpload">{{ form_widget(video, {'attr': {'class': 'custom-file-input'}})  }}</div>
@@ -85,16 +84,16 @@
 
     {# Idem pour un autre champ. #}
     <div class="form-edit">
-        {{ form_label(form.description, "Description de la figure", {'label_attr': {'class': 'control-label'}}) }}
-        {{ form_errors(form.description) }}
-        {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+        {{ form_label(formEdit.description, "Description de la figure", {'label_attr': {'class': 'control-label'}}) }}
+        {{ form_errors(formEdit.description) }}
+        {{ form_widget(formEdit.description, {'attr': {'class': 'form-control'}}) }}
     </div>
 
 
     <div class="form-edit">
-        {{ form_label(form.category) }}
-        {{ form_errors(form.category) }}
-        {{ form_widget(form.category, {'attr': {'class': 'form-control category_input'}}) }}
+        {{ form_label(formEdit.category) }}
+        {{ form_errors(formEdit.category) }}
+        {{ form_widget(formEdit.category, {'attr': {'class': 'form-control category_input'}}) }}
     </div>
 
     <hr class="divider">
@@ -102,7 +101,7 @@
     {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
     <div class="row">
         <div class="col-sm-12 button-form">
-            {{ form_widget(form.Enregistrer, {'attr': {'class': 'btn-primary btn-lg'}}) }}
+            {{ form_widget(formEdit.Enregistrer, {'attr': {'class': 'btn-primary btn-lg'}}) }}
 
             <a href="#trick_delete"data-toggle="modal" data-backdrop="false" class="btn btn-primary btn-lg">Supprimer ce trick</a>
         </div>
@@ -111,15 +110,15 @@
     {# Génération automatique des champs pas encore écrits.
     Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
     et tous les champs cachés (type « hidden »). #}
-    {{ form_rest(form) }}
+    {{ form_rest(formEdit) }}
 
     {# Fermeture de la balise <form> du formulaire HTML #}
-    {{ form_end(form) }}
+    {{ form_end(formEdit) }}
 
 
     <!--start modal -->
-    {% if trick is defined %}
-        {% if trick is not null %}
+    {% if trick.thumbnail is defined %}
+        {% if trick.thumbnail is not null %}
             <div class="modal fade" id="thumbnail_delete" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog modal-md">
                     <div class="modal-content">
@@ -133,7 +132,7 @@
                             <div class="blog-content">
                             </div>
                             <div>
-                                {{render(controller('TricksBundle:Thumbnail:delete',{'id': trick.id} ))}}
+                                {{render(controller('TricksBundle:Thumbnail:delete',{'id': trick.thumbnail.id} ))}}
                             </div>
                         </div>
 
