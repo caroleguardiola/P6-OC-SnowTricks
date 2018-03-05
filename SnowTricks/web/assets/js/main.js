@@ -222,30 +222,6 @@ $( document ).ready(function () {
 // Forms
 //---------------------------------------------
 
-//Thumbnail
-
-$(document).ready(function() {
-    // On récupère la balise <div> en question qui contient l'attribut « data-prototype » qui nous intéresse.
-    var $container = $('div#tricksbundle_trick_thumbnail');   
-
-    // La fonction qui ajoute un lien de suppression d'une catégorie
-    function addDeleteLink($prototype) {
-      // Création du lien
-      var $deleteLink = $('<a href="#" class="btn-form"><i class="fa fa-trash-o" aria-hidden="true"></i></a>');
-
-      // Ajout du lien
-      $prototype.append($deleteLink);
-
-      // Ajout du listener sur le clic du lien pour effectivement supprimer la video
-      $deleteLink.click(function(e) {
-        $prototype.remove();
-
-        e.preventDefault(); // évite qu'un # apparaisse dans l'URL
-        return false;
-      });
-    }
-  });
-
   //Images
 
 $(document).ready(function() {
@@ -264,9 +240,9 @@ $(document).ready(function() {
     });
 
     // On ajoute un premier champ automatiquement s'il n'en existe pas déjà un (cas d'un nouveau trick par exemple).
-    if (index == 0) {
+    /*if (index == 0) {
       addImage($container);
-    }
+    }*/
 
     // La fonction qui ajoute un formulaire ImageType
     function addImage($container) {
@@ -324,9 +300,9 @@ $(document).ready(function() {
       return false;
     });
 
-    if (index == 0) {
+    /* if (index == 0) {
       addVideo($container);
-    }
+    } */
 
     function addVideo($container) {
       var template = $container.attr('data-prototype')

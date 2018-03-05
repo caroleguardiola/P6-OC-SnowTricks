@@ -10,9 +10,10 @@
             Modifier les médias
           </a></div>
 
-        <hr class="divider">
+        <hr class="divider-view">
 
         <div class="medias-edit">
+
             <div class="form-group"  id="thumbnail_edit">
                 {{ form_label(formEdit.thumbnail, "Image à la une", {'label_attr': {'class': 'control-label'}}) }}
                 {{ form_errors(formEdit.thumbnail) }}
@@ -21,42 +22,75 @@
                         <div>
                           <img src="{{ asset(trick.thumbnail.webPath) }}" alt="{{ trick.thumbnail.alt }}" class="img-responsive thumb-edit">
                         </div>
+                        {{ form_widget(formEdit.thumbnail) }}
+                        <a href="#thumbnail_delete" class="btn-form" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                    {% else %}
+                        <div class="add">
+                            {{ form_label(formEdit.thumbnail.file, "Ajouter une image à la une", {'label_attr': {'class': 'btn-form-thumb'}}) }}
+                            {{ form_errors(formEdit.thumbnail.file) }}
+                            {{ form_widget(formEdit.thumbnail.file) }}
+                        </div>
                     {% endif %}
                 {% endif %}
-                {{ form_widget(formEdit.thumbnail) }}
-                <a href="#thumbnail_delete" class="btn-form" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-            </div>
+                
+                
 
-            <hr class="divider">
+                
+            </div>
+ 
+
+            <hr class="divider-view">
 
             <div class="media_images">
+                
                 <div>{{ form_label(formEdit.images, "Images", {'label_attr': {'class': 'control-label'}}) }}</div>
+                    
                 <div id="{{ formEdit.images.vars.id }}" data-prototype="{{ form_widget(formEdit.images.vars.prototype)|e ('html_attr')}}" class="form-group">
                     {{ form_errors(formEdit.images) }}
+                    <div class="row medias">
                     {% for image in formEdit.images %}
                         <div class="col-md-2" id="image-{{loop.index0}}">
                             <div class="trick-view"><img src="{{ asset(image.vars.value.webPath) }}" alt="{{ asset(image.vars.value.alt) }}" class="img-responsive thumb-home"></div>
-                            <div class="fileUpload">{{ form_widget(image) }}</div>
-                            <a href="#delete_image_{{image.vars.value.id}}" class="btn-form" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                            <div class="fileUpload">
+                                {{ form_label(image.file, "Modifier l'image") }}
+                                {{ form_errors(image.file) }}
+                                {{ form_widget(image.file) }}
+                                <a href="#delete_image_{{image.vars.value.id}}" class="btn-form" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                            </div>                           
                         </div>
+                    {% else %}
+                        {% do formEdit.images.setRendered %}
                     {% endfor %}
-                </div>                    
+                </div>
+            </div>
 
+             
                 <div class="add"><a href="#" id="add_image" class="btn-form">Ajouter une image</a></div>
             </div>
 
-            <hr class="divider">
+             
+            <hr class="divider-view">
 
             <div class="media_videos">
+
                 <div>{{ form_label(formEdit.videos, "Vidéos", {'label_attr': {'class': 'control-label'}}) }}</div>
+
                 <div id="{{ formEdit.videos.vars.id }}" data-prototype="{{ form_widget(formEdit.videos.vars.prototype)|e ('html_attr')}}" class="form-group">
                     {{ form_errors(formEdit.videos) }}
+                    <div class="row medias">
                     {% for video in formEdit.videos %}
                         <div class="col-md-3" id="video-{{loop.index0}}">
                             <div class="trick-view"><iframe class="img-responsive thumb-home" src="{{ asset(video.vars.value.url) }}" allowfullscreen></iframe></div>
-                            <div class="fileUpload">{{ form_widget(video, {'attr': {'class': 'custom-file-input'}})  }}</div>
-                            <a href="#delete_video_{{video.vars.value.id}}" class="btn-form" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i> </a>
+                            <div class="fileUpload">
+                                {{ form_label(video.url, "Modifier la balse embed de la vidéo") }}
+                                {{ form_errors(video.url) }}
+                                {{ form_widget(video.url) }}
+                                
+                            </div>
+                            <div class="add-video"><a href="#delete_video_{{video.vars.value.id}}" class="btn-form" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i></a></div>
                         </div>
+                    {% else %}
+                        {% do formEdit.videos.setRendered %}
                     {% endfor %}
                 </div>
             </div> 
@@ -64,7 +98,7 @@
                 <div class="add"><a href="#" id="add_video" class="btn-form">Ajouter une vidéo</a></div>
             </div>  
 
-            <hr class="divider">
+            <hr class="divider-view">
     </div>
 
 
@@ -114,7 +148,7 @@
 
     {# Fermeture de la balise <form> du formulaire HTML #}
     {{ form_end(formEdit) }}
-
+    
 
     <!--start modal -->
     {% if trick.thumbnail is defined %}
