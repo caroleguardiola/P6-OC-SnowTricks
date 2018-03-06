@@ -127,6 +127,10 @@ class TrickController extends Controller
             $this->addFlash('notice', 'Trick bien enregistré.');
 
             return $this->redirectToRoute('tricks_home', array('id' => $trick->getId()));
+        } 
+
+        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid() == false) {
+            $this->addFlash('error', 'Le trick n\'a pas pu être enregistré.');
         }
         
         return $this->render('TricksBundle:Trick:add.html.twig', array(
