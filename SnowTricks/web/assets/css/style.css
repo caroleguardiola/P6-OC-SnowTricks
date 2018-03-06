@@ -1090,6 +1090,10 @@ Home Section style
     text-align: center;
 }
 
+.text-listtrick {
+    font-size: 20px;
+}
+
 .modal-title {
     font-family: 'Lobster', sans-serif;
     font-size:24px;

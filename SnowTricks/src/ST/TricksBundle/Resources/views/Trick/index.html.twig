@@ -48,7 +48,8 @@
               <div class="trick">
                   <div class="trick_image_home">
                   <a href="{{ path('tricks_view', {'id': trick.id}) }}">
-                                      
+
+                    <div class="overlay-image">
                     {% if trick.thumbnail is not null %}
                       <img class="img-responsive thumb-home" src="{{asset(trick.thumbnail.webPath)}}" alt="{{trick.thumbnail.alt}}">
                       <br>
@@ -63,7 +64,15 @@
                           <br>
                       {% endfor %}
                     {% endif %}
-                   
+                   <div class="normal">
+                            <div class="text">
+                                {% if trick.thumbnail is null %}
+                                    <p class="text-blue wow fadeInLeft text-listtrick"> Aucune image à la une pour l'instant ! </p>
+                                {% endif %}
+                            </div>
+                        </div>           
+                    </div>
+
                   </a>
                   </div>
                   <div class="trick_info">
