@@ -1277,6 +1277,22 @@ Home Section style
     border-radius: 10px;
 }
 
+.btn-form-thumb-1 {
+    font-size: 12px !important;
+    font-family: 'Raleway', sans-serif !important;
+    color: #fff !important;
+    cursor: pointer;
+     -webkit-transition: all 0.6s;
+    transition: all 0.6s;
+    border:1px solid;
+    background-color: #12a7cd;
+    border-color: #12a7cd;
+    padding: 5px 10px;
+    border-radius: 10px;
+    margin-bottom: 0 !important;
+    margin-top: 20px;
+}
+
 .thumb-home {
     border-radius: 5px ;
 }
@@ -1293,9 +1309,9 @@ Home Section style
 }
 
 #tricksbundle_trick_thumbnail label{
-    font-size: 12px;
-    font-family: 'Raleway', sans-serif;
-    color: #fff;
+    font-size: 12px !important;
+    font-family: 'Raleway', sans-serif !important;
+    color: #fff !important;
     cursor: pointer;
      -webkit-transition: all 0.6s;
     transition: all 0.6s;
@@ -1379,7 +1395,7 @@ Home Section style
 }
 
 .add {
-    padding-top: 50px;
+    padding-top: 10px;
     padding-bottom: 30px;
 }
 
@@ -1797,3 +1813,48 @@ textarea#tricksbundle_trick_description.form-control {
 
 
 /******************************************************/
+.file-return {
+  margin: 0;
+}
+
+.file-return:not(:empty) {
+  margin: 1em 0;
+}
+
+.js .file-return {
+  font-style: italic;
+  font-size: .9em;
+  font-weight: bold;
+}
+
+.js .file-return:not(:empty):before {
+  content: "Fichier sélectionné : ";
+  font-style: normal;
+  font-weight: normal;
+}
+
+.file-return-thumb {
+  margin: 0;
+}
+
+.file-return-thumb:not(:empty) {
+  margin: 1em 0;
+}
+
+.js .file-return-thumb {
+  font-style: italic;
+  font-size: .9em;
+  font-weight: bold;
+}
+
+.js .file-return-thumb:not(:empty):before {
+  content: "Fichier sélectionné : ";
+  font-style: normal;
+  font-weight: normal;
+}
+
+.empty {
+    color: #12a7cd;
+    font-size: 16px;
+    text-align: center;
+}

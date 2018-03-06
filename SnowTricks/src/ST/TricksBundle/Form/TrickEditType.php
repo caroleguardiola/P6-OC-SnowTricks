@@ -21,15 +21,15 @@ class TrickEditType extends AbstractType
     {
         $builder
             ->add('description', TextareaType::class)
-            ->add('thumbnail', ThumbnailEditType::class, array('required' => false))
+            ->add('thumbnail', ThumbnailType::class, array('required' => false))
             ->add('images', CollectionType::class, array(
-                'entry_type' => ImageEditType::class,
+                'entry_type' => ImageType::class,
                 'allow_add' =>  true,
                 'allow_delete'  => true,
                 'required' => false
             ))
             ->add('videos', CollectionType::class, array(
-                'entry_type' => VideoEditType::class,
+                'entry_type' => VideoType::class,
                 'allow_add' =>  true,
                 'allow_delete'  => true,
                 'required' => false

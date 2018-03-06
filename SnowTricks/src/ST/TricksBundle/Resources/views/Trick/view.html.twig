@@ -163,6 +163,8 @@
                                                 <img class="img-responsive thumb-home" src="{{asset(image.webPath)}}" alt="{{image.alt}}">                      
                                             </div>
                                         </div>
+                                    {% else %}
+                                        <p class="empty">Aucune illustration pour l'instant !</p>
                                     {% endfor %}
                                     {% for video in trick.videos %}
                                         <div class="col-md-2">
@@ -170,6 +172,8 @@
                                                 <iframe src="{{video.url}}" allowfullscreen ></iframe>                      
                                             </div>
                                         </div>
+                                    {% else %}
+                                        <p class="empty">Aucune vidéo pour l'instant !</p>
                                     {% endfor %}
                                 </div>
                             </div>
@@ -232,7 +236,7 @@
                                         </div>
                                     </div>
                                 {% else %}
-                                    Pas (encore !) de commentaires
+                                    <p class="empty">Aucun commentaire pour l'instant !</p>
                                 {% endfor %}
              
                                 <div class="text-center">

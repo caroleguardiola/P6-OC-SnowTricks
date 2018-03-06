@@ -22,19 +22,23 @@
                         <div>
                           <img src="{{ asset(trick.thumbnail.webPath) }}" alt="{{ trick.thumbnail.alt }}" class="img-responsive thumb-edit">
                         </div>
-                        {{ form_widget(formEdit.thumbnail) }}
-                        <a href="#thumbnail_delete" class="btn-form" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                    {% else %}
-                        <div class="add">
-                            {{ form_label(formEdit.thumbnail.file, "Ajouter une image à la une", {'label_attr': {'class': 'btn-form-thumb'}}) }}
+                        <div class="input-file-container-thumb">
+                            {{ form_label(formEdit.thumbnail.file, "Modifier l'image à la une", {'label_attr': {'class': 'btn-form-thumb-1 input-file-trigger-thumb'}}) }}
                             {{ form_errors(formEdit.thumbnail.file) }}
-                            {{ form_widget(formEdit.thumbnail.file) }}
+                            {{ form_widget(formEdit.thumbnail.file, {'attr': {'class': 'input-file-thumb'}}) }} 
+                            <a href="#thumbnail_delete" class="btn-form" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                            <p class="file-return-thumb"></p> 
+                        </div>
+                       
+                    {% else %}
+                        <div class="add input-file-container-thumb">
+                            {{ form_label(formEdit.thumbnail.file, "Ajouter une image à la une", {'label_attr': {'class': 'btn-form-thumb input-file-trigger-thumb'}}) }}
+                            {{ form_errors(formEdit.thumbnail.file) }}
+                            {{ form_widget(formEdit.thumbnail.file, {'attr': {'class': 'input-file-thumb'}}) }}
+                            <p class="file-return-thumb"></p>
                         </div>
                     {% endif %}
                 {% endif %}
-                
-                
-
                 
             </div>
  
@@ -51,24 +55,25 @@
                     {% for image in formEdit.images %}
                         <div class="col-md-2" id="image-{{loop.index0}}">
                             <div class="trick-view"><img src="{{ asset(image.vars.value.webPath) }}" alt="{{ asset(image.vars.value.alt) }}" class="img-responsive thumb-home"></div>
-                            <div class="fileUpload">
-                                {{ form_label(image.file, "Modifier l'image") }}
+                            <div class="input-file-container">
+                                {{ form_label(image.file, "Modifier l'image", {'label_attr': {'class': 'input-file-trigger'}}) }}
                                 {{ form_errors(image.file) }}
-                                {{ form_widget(image.file) }}
+                                {{ form_widget(image.file, {'attr': {'class': 'input-file'}}) }}
                                 <a href="#delete_image_{{image.vars.value.id}}" class="btn-form" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                                <p class="file-return"></p>
                             </div>                           
                         </div>
                     {% else %}
                         {% do formEdit.images.setRendered %}
                     {% endfor %}
+                    </div>
                 </div>
-            </div>
 
              
                 <div class="add"><a href="#" id="add_image" class="btn-form">Ajouter une image</a></div>
             </div>
 
-             
+
             <hr class="divider-view">
 
             <div class="media_videos">
@@ -81,11 +86,10 @@
                     {% for video in formEdit.videos %}
                         <div class="col-md-3" id="video-{{loop.index0}}">
                             <div class="trick-view"><iframe class="img-responsive thumb-home" src="{{ asset(video.vars.value.url) }}" allowfullscreen></iframe></div>
-                            <div class="fileUpload">
-                                {{ form_label(video.url, "Modifier la balse embed de la vidéo") }}
+                            <div class="input-file-container">
+                                {{ form_label(video.url, "Modifier la balise embed de la vidéo") }}
                                 {{ form_errors(video.url) }}
                                 {{ form_widget(video.url) }}
-                                
                             </div>
                             <div class="add-video"><a href="#delete_video_{{video.vars.value.id}}" class="btn-form" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i></a></div>
                         </div>

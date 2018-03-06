@@ -88,6 +88,16 @@
                     </div>
                 </section>
 
+                <div>
+                    {% for label, messages in app.flashes %}
+                        {% for message in messages %}
+                            <div class="flash-{{ label }} wow fadeInLeft" data-wow-duration="2s">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                </div>
+
                 <div class="button-return">
                     <a href="{{ path('tricks_home') }}#list_tricks" class="btn btn-primary btn-lg"><span class="meta-nav">&larr;</span> Retour à la liste des tricks</a>
                     <a href="{{ path('tricks_view', {'id': trick.id}) }}" class="btn btn-primary btn-lg">Retour au trick {{trick.name}} <span class="meta-nav">&rarr;</span></a>

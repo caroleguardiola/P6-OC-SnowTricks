@@ -204,13 +204,13 @@ jQuery(document).ready(function ($) {
 //Loading
 
 $( document ).ready(function () {
-    $(".trick_load").slice(0, 1).show();
+    $(".trick_load").slice(0, 15).show();
     if ($(".trick_load:hidden").length != 0) {
       $("#load").show();
     }   
     $("#load").on('click', function (e) {
       e.preventDefault();
-      $(".trick_load:hidden").slice(0, 1).slideDown();
+      $(".trick_load:hidden").slice(0, 5).slideDown();
       if ($(".trick_load:hidden").length == 0) {
         $("#load").fadeOut('slow');
       }
@@ -332,3 +332,45 @@ $(document).ready(function() {
       });
     }
   });
+
+
+//Upload thumbnail
+document.querySelector("html").classList.add('js');
+
+var fileInput  = document.querySelector( ".input-file-thumb" ),  
+    button     = document.querySelector( ".input-file-trigger-thumb" ),
+    the_return_thumb = document.querySelector(".file-return-thumb");
+      
+button.addEventListener( "keydown", function( event ) {  
+    if ( event.keyCode == 13 || event.keyCode == 32 ) {  
+        fileInput.focus();  
+    }  
+});
+button.addEventListener( "click", function( event ) {
+   fileInput.focus();
+   return false;
+});  
+fileInput.addEventListener( "change", function( event ) {  
+    the_return_thumb.innerHTML = this.value;  
+}); 
+
+
+//Upload images
+document.querySelector("html").classList.add('js');
+
+var fileInput  = document.querySelector( ".input-file" ),  
+    button     = document.querySelector( ".input-file-trigger" ),
+    the_return = document.querySelector(".file-return");
+      
+button.addEventListener( "keydown", function( event ) {  
+    if ( event.keyCode == 13 || event.keyCode == 32 ) {  
+        fileInput.focus();  
+    }  
+});
+button.addEventListener( "click", function( event ) {
+   fileInput.focus();
+   return false;
+});  
+fileInput.addEventListener( "change", function( event ) {  
+    the_return.innerHTML = this.value;  
+});  
