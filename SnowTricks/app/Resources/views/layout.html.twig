@@ -10,7 +10,8 @@
         <title>{% block title %}SnowTricks{% endblock %}</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" type="image/png" href="{{ asset('favicon.ico') }}">
+        <link rel="icon" type="image/png" href="{{ asset('favicon.ico') }}?v=4">
+
 
         <!--Google Font link-->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
@@ -66,8 +67,8 @@
                     <!-- Start Header Navigation -->
                     <div class="navbar-header">
                         <a class="navbar-brand" href="#brand">
-                            <img src="web/assets/images/png" class="logo logo-display m-top-10" alt="logo">
-                            <img src="web/assets/images/jpg" class="logo logo-scrolled" alt="logo">
+                            <img src="{{asset('assets/images/logo_snow.png')}}" class="logo logo-display m-top-10" alt="logo" style="width: 75px;">
+                            <img src="{{asset('assets/images/logo_snow_scroll.png')}}" class="logo logo-scrolled" alt="logo" style="width: 75px;">
                         </a>
                     </div>
                     <!-- End Header Navigation -->
