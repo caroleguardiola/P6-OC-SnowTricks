@@ -20,7 +20,6 @@ class TrickEditMediasType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('thumbnail', ThumbnailType::class, array('required' => false))
             ->add('images', CollectionType::class, array(
                 'entry_type' => ImageType::class,
                 'allow_add' =>  true,

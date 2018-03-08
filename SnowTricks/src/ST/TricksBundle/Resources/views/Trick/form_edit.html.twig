@@ -14,37 +14,6 @@
 
         <div class="medias-edit">
 
-            <div class="form-group"  id="thumbnail_edit">
-                {{ form_label(formEdit.thumbnail, "Image à la une", {'label_attr': {'class': 'control-label'}}) }}
-                {{ form_errors(formEdit.thumbnail) }}
-                {% if trick.thumbnail is defined %}
-                    {% if trick.thumbnail is not null %}
-                        <div>
-                          <img src="{{ asset(trick.thumbnail.webPath) }}" alt="{{ trick.thumbnail.alt }}" class="img-responsive thumb-edit">
-                        </div>
-                        <div class="input-file-container-thumb">
-                            {{ form_label(formEdit.thumbnail.file, "Modifier l'image à la une", {'label_attr': {'class': 'btn-form-thumb-1 input-file-trigger-thumb'}}) }}
-                            {{ form_errors(formEdit.thumbnail.file) }}
-                            {{ form_widget(formEdit.thumbnail.file, {'attr': {'class': 'input-file-thumb'}}) }} 
-                            <a href="#thumbnail_delete" class="btn-form" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                            <p class="file-return-thumb"></p> 
-                        </div>
-                       
-                    {% else %}
-                        <div class="add input-file-container-thumb">
-                            {{ form_label(formEdit.thumbnail.file, "Ajouter une image à la une", {'label_attr': {'class': 'btn-form-thumb input-file-trigger-thumb'}}) }}
-                            {{ form_errors(formEdit.thumbnail.file) }}
-                            {{ form_widget(formEdit.thumbnail.file, {'attr': {'class': 'input-file-thumb'}}) }}
-                            <p class="file-return-thumb"></p>
-                        </div>
-                    {% endif %}
-                {% endif %}
-                
-            </div>
- 
-
-            <hr class="divider-view">
-
             <div class="media_images">
                 
                 <div>{{ form_label(formEdit.images, "Images", {'label_attr': {'class': 'control-label'}}) }}</div>

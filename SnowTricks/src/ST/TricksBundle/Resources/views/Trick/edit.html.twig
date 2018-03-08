@@ -15,9 +15,13 @@
                            <a href="{{ path('thumb_edit', {'id': trick.id}) }}" data-toggle="modal" data-backdrop="false"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                         </div>
                      
-                        <div class="trick_delete">
-                            <a href="#thumbnail_delete" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash" aria-hidden="true"></i></a>
-                        </div>
+                        {% if trick.thumbnail is defined %}
+                            {% if trick.thumbnail is not null %}
+                                <div class="trick_delete">
+                                    <a href="#thumbnail_delete" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                </div>
+                            {% endif %}
+                        {% endif %}
 
                         <!--start modal -->
                         {% if trick.thumbnail is defined %}

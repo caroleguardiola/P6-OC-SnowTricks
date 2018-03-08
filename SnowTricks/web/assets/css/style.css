@@ -1187,6 +1187,10 @@ Home Section style
     width: 15%;
 }
 
+.trick_update_delete {
+    display: flex;
+}
+
 .trick_name h6{
     color: #12a7cd;
     font-family: 'Lobster', sans-serif;
