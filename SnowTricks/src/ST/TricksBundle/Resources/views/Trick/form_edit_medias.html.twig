@@ -23,7 +23,7 @@
                         <div class="col-md-2" id="image-{{loop.index0}}">
                             <div class="trick-view"><img src="{{ asset(image.vars.value.webPath) }}" alt="{{ asset(image.vars.value.alt) }}" class="img-responsive thumb-home"></div>
                             <div class="input-file-container">
-                                {{ form_label(image.file, "Modifier l'image", {'label_attr': {'class': 'input-file-trigger'}}) }}
+                                {{ form_label(image.file, "Modifier l'image", {'label_attr': {'class': 'input-file'}}) }}
                                 {{ form_errors(image.file) }}
                                 {{ form_widget(image.file, {'attr': {'class': 'input-file'}}) }}
                                 <a href="#delete_image_{{image.vars.value.id}}" class="btn-form" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i></a>

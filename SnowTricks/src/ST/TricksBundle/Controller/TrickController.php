@@ -109,30 +109,30 @@ class TrickController extends Controller
 
         $form = $this->get('form.factory')->create(TrickType::class, $trick);
 
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-            $listImages = $trick->getImages();
-            foreach ($listImages as $image) {
-                $trick->addImage($image);
+         if ($request->isMethod('POST')) {
+            if($form->handleRequest($request)->isValid()) {
+                $listImages = $trick->getImages();
+                foreach ($listImages as $image) {
+                    $trick->addImage($image);
+                }
+
+                $listVideos = $trick->getVideos();
+                foreach ($listVideos as $video) {
+                    $trick->addVideo($video);
+                }
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($trick);
+                $em->flush();
+
+                $this->addFlash('notice', 'Trick bien enregistré.');
+
+                return $this->redirectToRoute('tricks_home', array('id' => $trick->getId()));
+            }else{
+                 $this->addFlash('error', 'Le trick n\'a pas pu être enregistré.');
             }
+         }
 
-            $listVideos = $trick->getVideos();
-            foreach ($listVideos as $video) {
-                $trick->addVideo($video);
-            }
-
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($trick);
-            $em->flush();
-
-            $this->addFlash('notice', 'Trick bien enregistré.');
-
-            return $this->redirectToRoute('tricks_home', array('id' => $trick->getId()));
-        } 
-
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid() == false) {
-            $this->addFlash('error', 'Le trick n\'a pas pu être enregistré.');
-        }
-        
         return $this->render('TricksBundle:Trick:add.html.twig', array(
         'form' => $form->createView(),
         ));

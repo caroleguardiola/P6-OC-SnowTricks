@@ -21,20 +21,20 @@
                         <div>
                           <img src="{{ asset(trick.thumbnail.webPath) }}" alt="{{ trick.thumbnail.alt }}" class="img-responsive thumb-edit">
                         </div>
-                        <div class="input-file-container-thumb">
-                            {{ form_label(formEditThumb.thumbnail.file, "Modifier l'image à la une", {'label_attr': {'class': 'btn-form-thumb-1 input-file-trigger-thumb'}}) }}
+                        <div class="input-file-container">
+                            {{ form_label(formEditThumb.thumbnail.file, "Modifier l'image à la une", {'label_attr': {'class': 'btn-form-thumb-1 input-file-trigger'}}) }}
                             {{ form_errors(formEditThumb.thumbnail.file) }}
-                            {{ form_widget(formEditThumb.thumbnail.file, {'attr': {'class': 'input-file-thumb'}}) }} 
+                            {{ form_widget(formEditThumb.thumbnail.file, {'attr': {'class': 'input-file'}}) }} 
                             <a href="#thumbnail_delete" class="btn-form" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                            <p class="file-return-thumb"></p> 
+                            <p class="file-return"></p> 
                         </div>
                        
                     {% else %}
-                        <div class="add input-file-container-thumb">
-                            {{ form_label(formEditThumb.thumbnail.file, "Ajouter une image à la une", {'label_attr': {'class': 'btn-form-thumb input-file-trigger-thumb'}}) }}
+                        <div class="add input-file-container">
+                            {{ form_label(formEditThumb.thumbnail.file, "Ajouter une image à la une", {'label_attr': {'class': 'btn-form-thumb input-file-trigger'}}) }}
                             {{ form_errors(formEditThumb.thumbnail.file) }}
-                            {{ form_widget(formEditThumb.thumbnail.file, {'attr': {'class': 'input-file-thumb'}}) }}
-                            <p class="file-return-thumb"></p>
+                            {{ form_widget(formEditThumb.thumbnail.file, {'attr': {'class': 'input-file'}}) }}
+                            <p class="file-return"></p>
                         </div>
                     {% endif %}
                 {% endif %}

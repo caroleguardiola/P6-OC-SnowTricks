@@ -205,13 +205,25 @@ jQuery(document).ready(function ($) {
 
 $( document ).ready(function () {
     $(".trick_load").slice(0, 15).show();
-    if ($(".trick_load:hidden").length != 0) {
+    var trickslength = $(".trick_load").length;
+      var trickslengthhidden= $(".trick_load:hidden").length;
+      if((trickslength-trickslengthhidden) >=15) {
+        $(".scrollup").removeClass("hidden")
+      }
+     
+    if (trickslengthhidden != 0) {
       $("#load").show();
-    }   
+    }  
+
     $("#load").on('click', function (e) {
       e.preventDefault();
       $(".trick_load:hidden").slice(0, 5).slideDown();
-      if ($(".trick_load:hidden").length == 0) {
+      var trickslength = $(".trick_load").length;
+      var trickslengthhidden= $(".trick_load:hidden").length;
+      if((trickslength-trickslengthhidden) >=15) {
+        $(".scrollup").removeClass("hidden")
+      }
+      if (trickslengthhidden == 0) {
         $("#load").fadeOut('slow');
       }
     });
@@ -260,6 +272,8 @@ $(document).ready(function() {
       // On ajoute au prototype un lien pour pouvoir supprimer l'image
       addDeleteLink($prototype);
 
+      addFileReturn($prototype);
+
       // On ajoute le prototype modifié à la fin de la balise <div>
       $container.append($prototype);
 
@@ -282,6 +296,14 @@ $(document).ready(function() {
         e.preventDefault(); // évite qu'un # apparaisse dans l'URL
         return false;
       });
+    }
+
+    function addFileReturn($prototype) {
+      // Création du lien
+      var $filereturn = $('<p class="file-return"></p>');
+
+      // Ajout du lien
+      $prototype.append($filereturn);
     }
   });
 
@@ -333,44 +355,22 @@ $(document).ready(function() {
     }
   });
 
+$('#tricksbundle_trick_images').on('change', 'input[type="file"]', function(){
+    console.log($(this));
+        var file_name = this.value.replace(/\\/g, '/').replace(/.*\//, '');
+        $(this).siblings(".file-return").text(file_name);
+        $(this).parent().parent().children(".file-return").text(file_name);
+    });
 
-//Upload thumbnail
-document.querySelector("html").classList.add('js');
+$('.input-file-container').on('change', 'input[type="file"]', function(){
+    console.log($(this));
+        var file_name = this.value.replace(/\\/g, '/').replace(/.*\//, '');
+        $(this).siblings(".file-return").text(file_name);
+    });
 
-var fileInput  = document.querySelector( ".input-file-thumb" ),  
-    button     = document.querySelector( ".input-file-trigger-thumb" ),
-    the_return_thumb = document.querySelector(".file-return-thumb");
-      
-button.addEventListener( "keydown", function( event ) {  
-    if ( event.keyCode == 13 || event.keyCode == 32 ) {  
-        fileInput.focus();  
-    }  
-});
-button.addEventListener( "click", function( event ) {
-   fileInput.focus();
-   return false;
-});  
-fileInput.addEventListener( "change", function( event ) {  
-    the_return_thumb.innerHTML = this.value;  
-}); 
-
-
-//Upload images
-document.querySelector("html").classList.add('js');
-
-var fileInput  = document.querySelector( ".input-file" ),  
-    button     = document.querySelector( ".input-file-trigger" ),
-    the_return = document.querySelector(".file-return");
-      
-button.addEventListener( "keydown", function( event ) {  
-    if ( event.keyCode == 13 || event.keyCode == 32 ) {  
-        fileInput.focus();  
-    }  
-});
-button.addEventListener( "click", function( event ) {
-   fileInput.focus();
-   return false;
-});  
-fileInput.addEventListener( "change", function( event ) {  
-    the_return.innerHTML = this.value;  
-});  
+$('#user_photo').on('change', 'input[type="file"]', function(){
+    console.log($(this));
+        var file_name = this.value.replace(/\\/g, '/').replace(/.*\//, '');
+        $(this).siblings(".file-return").text(file_name);
+        $(this).parent().parent().parent().parent().children(".file-return").text(file_name);
+    });
