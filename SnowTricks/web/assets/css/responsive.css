@@ -64,6 +64,21 @@ Author URI: http://www.xpeedstudio.com
         display: none;
     }
 
+    .flash-warning {
+        font-size:20px;
+        margin: 0 70px;
+    }
+
+.flash-error {
+     font-size:20px;
+        margin: 0 70px;
+    }
+
+.flash-notice {
+     font-size:20px;
+        margin: 0 70px;
+    }
+
 }
 
 /* Landscape phones and portrait tablets */

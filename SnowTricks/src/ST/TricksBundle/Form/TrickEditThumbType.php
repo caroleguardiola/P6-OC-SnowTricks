@@ -20,7 +20,7 @@ class TrickEditThumbType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('thumbnail', ThumbnailEditType::class, array('required' => false))
+            ->add('thumbnail', ThumbnailType::class, array('required' => false))
             ->add('Enregistrer', SubmitType::class);
     }/**
      * {@inheritdoc}

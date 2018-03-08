@@ -7,13 +7,13 @@ use ST\TricksBundle\Entity\Thumbnail;
 use ST\TricksBundle\Entity\Image;
 use ST\TricksBundle\Entity\Video;
 use ST\TricksBundle\Entity\Category;
-use ST\UserBundle\Entity\Comment;
+use ST\TricksBundle\Entity\Comment;
 use ST\UserBundle\Entity\User;
 use ST\TricksBundle\Form\TrickType;
 use ST\TricksBundle\Form\TrickEditType;
 use ST\TricksBundle\Form\TrickEditMediasType;
 use ST\TricksBundle\Form\TrickEditThumbType;
-use ST\UserBundle\Form\CommentType;
+use ST\TricksBundle\Form\CommentType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -51,7 +51,7 @@ class TrickController extends Controller
         ->find($id);
 
         $listComments = $em
-        ->getRepository('UserBundle:Comment')
+        ->getRepository('TricksBundle:Comment')
         ->findByTrick($id, $page, $nbPerPage);
 
         // On calcule le nombre total de pages grâce au count($listAdverts) qui retourne le nombre total d'annonces

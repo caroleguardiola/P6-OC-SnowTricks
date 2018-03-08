@@ -8,7 +8,7 @@ use ST\TricksBundle\Entity\Thumbnail;
 use ST\TricksBundle\Entity\Image;
 use ST\TricksBundle\Entity\Video;
 use ST\TricksBundle\Entity\Category;
-use ST\UserBundle\Entity\Comment;
+use ST\TricksBundle\Entity\Comment;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -74,7 +74,7 @@ class Trick
     private $videos;
 
     /**
-     * @ORM\OneToMany(targetEntity="ST\UserBundle\Entity\Comment", mappedBy="trick", cascade={"persist","remove"})
+     * @ORM\OneToMany(targetEntity="ST\TricksBundle\Entity\Comment", mappedBy="trick", cascade={"persist","remove"})
      */
     private $comments;
 

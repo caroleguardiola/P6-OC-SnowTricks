@@ -1214,7 +1214,7 @@ Home Section style
     padding-top: 20px;
 }
 
-.medias {
+.medias, .medias-mobile{
     padding-bottom: 30px;
 }
 
@@ -1386,6 +1386,10 @@ Home Section style
 .button-form {
     text-align: right;
     padding-right: 100px;
+}
+
+.button-form-mobile {
+    text-align: center;
 }
 
 .button-return {

@@ -1,6 +1,6 @@
 <?php
 
-namespace ST\UserBundle\Entity;
+namespace ST\TricksBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use ST\TricksBundle\Entity\Trick;
@@ -11,7 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * Comment
  *
  * @ORM\Table(name="comment")
- * @ORM\Entity(repositoryClass="ST\UserBundle\Repository\CommentRepository")
+ * @ORM\Entity(repositoryClass="ST\TricksBundle\Repository\CommentRepository")
  */
 class Comment
 {

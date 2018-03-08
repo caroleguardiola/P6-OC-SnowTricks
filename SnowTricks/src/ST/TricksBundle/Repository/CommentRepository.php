@@ -1,6 +1,6 @@
 <?php
 
-namespace ST\UserBundle\Repository;
+namespace ST\TricksBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Tools\Pagination\Paginator;

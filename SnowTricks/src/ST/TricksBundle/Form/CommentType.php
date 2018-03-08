@@ -1,6 +1,6 @@
 <?php
 
-namespace ST\UserBundle\Form;
+namespace ST\TricksBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
@@ -28,7 +28,7 @@ class CommentType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'ST\UserBundle\Entity\Comment'
+            'data_class' => 'ST\TricksBundle\Entity\Comment'
         ));
     }
 

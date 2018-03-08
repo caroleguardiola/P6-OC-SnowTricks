@@ -4,7 +4,7 @@ namespace ST\UserBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use ST\UserBundle\Entity\Comment;
+use ST\TricksBundle\Entity\Comment;
 use ST\UserBundle\Entity\Photo;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -91,7 +91,7 @@ class User implements AdvancedUserInterface, \Serializable
     private $confirmationToken;
 
     /**
-     * @ORM\OneToMany(targetEntity="ST\UserBundle\Entity\Comment", mappedBy="user", cascade={"persist", "remove"})
+     * @ORM\OneToMany(targetEntity="ST\TricksBundle\Entity\Comment", mappedBy="user", cascade={"persist", "remove"})
      */
     private $comments;
 
