@@ -26,11 +26,15 @@ class ImageController extends Controller
         $form = $this->get('form.factory')->create();
         
 
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-            $em->remove($image);
-            $em->flush();
-            $this->addFlash('notice', "L'image a bien été supprimée.");
-            return $this->redirectToRoute('tricks_edit', ['id' => $trick->getId()]);
+         if ($request->isMethod('POST')) {
+            if($form->handleRequest($request)->isValid()) {
+                $em->remove($image);
+                $em->flush();
+                $this->addFlash('notice', "L'image a bien été supprimée.");
+                return $this->redirectToRoute('tricks_edit', ['id' => $trick->getId()]);
+            }else{
+                $this->addFlash('error', 'L\'image n\'a pas pu être supprimée.');
+            }
         }
 
         return $this->render('TricksBundle:Trick:delete_image.html.twig', array(

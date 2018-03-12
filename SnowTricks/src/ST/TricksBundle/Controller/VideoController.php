@@ -25,11 +25,15 @@ class VideoController extends Controller
         $form = $this->get('form.factory')->create();
         
 
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-            $em->remove($video);
-            $em->flush();
-            $this->addFlash('notice', "La video a bien été supprimée.");
-            return $this->redirectToRoute('tricks_edit', ['id' => $trick->getId()]);
+       if ($request->isMethod('POST')) {
+            if($form->handleRequest($request)->isValid()) {
+                $em->remove($video);
+                $em->flush();
+                $this->addFlash('notice', "La video a bien été supprimée.");
+                return $this->redirectToRoute('tricks_edit', ['id' => $trick->getId()]);
+            }else{
+                $this->addFlash('error', 'La vidéo n\'a pas pu être supprimée.');
+            }
         }
 
         return $this->render('TricksBundle:Trick:delete_video.html.twig', array(
