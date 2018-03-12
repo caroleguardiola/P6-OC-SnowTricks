@@ -360,6 +360,7 @@ $('#tricksbundle_trick_images').on('change', 'input[type="file"]', function(){
         var file_name = this.value.replace(/\\/g, '/').replace(/.*\//, '');
         $(this).siblings(".file-return").text(file_name);
         $(this).parent().parent().parent().children(".file-return").text(file_name);
+        $(this).parent().parent().children(".file-return").text(file_name);
     });
 
 

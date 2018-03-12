@@ -145,7 +145,7 @@ class TrickController extends Controller
         $formEdit = $this->get('form.factory')->create(TrickEditType::class, $trick);
 
         if ($request->isMethod('POST')) {
-            if($form->handleRequest($request)->isValid()) {
+            if($formEdit->handleRequest($request)->isValid()) {
             
                 // Inutile de persister ici, Doctrine connait déjà notre trick
                 $em->flush();
@@ -177,7 +177,7 @@ class TrickController extends Controller
         $formEditMedia = $this->get('form.factory')->create(TrickEditMediasType::class, $trick);
 
         if ($request->isMethod('POST')) {
-            if($form->handleRequest($request)->isValid()) {
+            if($formEditMedia->handleRequest($request)->isValid()) {
                         
                 // Inutile de persister ici, Doctrine connait déjà notre trick
                 $em->flush();
@@ -209,7 +209,7 @@ class TrickController extends Controller
         $formEditThumb = $this->get('form.factory')->create(TrickEditThumbType::class, $trick);
 
         if ($request->isMethod('POST')) {
-            if($form->handleRequest($request)->isValid()) {
+            if($formEditThumb->handleRequest($request)->isValid()) {
             
                 // Inutile de persister ici, Doctrine connait déjà notre trick
                 $em->flush();

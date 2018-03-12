@@ -41,40 +41,44 @@ class SecurityController extends Controller
 
         // 2) handle the submit (will only happen on POST)
         
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+        if ($request->isMethod('POST')) {
+            if($form->handleRequest($request)->isValid()) {
 
-            // 3) Encode the password (you could also do this via Doctrine listener)
-            $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
-            $user->setPassword($password);
+                // 3) Encode the password (you could also do this via Doctrine listener)
+                $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
+                $user->setPassword($password);
 
-            $user->setConfirmationToken(md5(time()*rand(357, 412)));
+                $user->setConfirmationToken(md5(time()*rand(357, 412)));
 
-            // 4) save the User!
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($user);
-            $em->flush();
+                // 4) save the User!
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
 
-            // ... do any other work - like sending them an email, etc
-            // maybe set a "flash" success message for the user
-          
-            $message = (new \Swift_Message('Validation compte SnowTricks'))
-                ->setFrom('send@example.com')
-                ->setTo($user->getEmail())
-                ->setBody(
-                    $this->renderView(
-                        'UserBundle:Security:registerValidation.html.twig',
-                        array('name' => $user->getUsername(),
-                        'token' => $user->getConfirmationToken())
-                    ),
-                    'text/html'
-                );
+                // ... do any other work - like sending them an email, etc
+                // maybe set a "flash" success message for the user
+              
+                $message = (new \Swift_Message('Validation compte SnowTricks'))
+                    ->setFrom('send@example.com')
+                    ->setTo($user->getEmail())
+                    ->setBody(
+                        $this->renderView(
+                            'UserBundle:Security:registerValidation.html.twig',
+                            array('name' => $user->getUsername(),
+                            'token' => $user->getConfirmationToken())
+                        ),
+                        'text/html'
+                    );
 
-            $this->get('mailer')->send($message);
-            // or, you can also fetch the mailer service this way
-            // $this->get('mailer')->send($message);
+                $this->get('mailer')->send($message);
+                // or, you can also fetch the mailer service this way
+                // $this->get('mailer')->send($message);
 
-            $this->addFlash('warning', 'Un mail de confirmation vient de vous être envoyé, merci de cliquer sur le lien joint.');
-            return $this->redirectToRoute('tricks_home');
+                $this->addFlash('warning', 'Un mail de confirmation vient de vous être envoyé, merci de cliquer sur le lien joint.');
+                return $this->redirectToRoute('tricks_home');
+            }else{
+                $this->addFlash('error', 'Le mail de confirmation n\' a pas pu être envoyé.');
+            }
         }
 
         return $this->render(
@@ -103,34 +107,40 @@ class SecurityController extends Controller
     {
         $form = $this->get('form.factory')->create(UserForgotPasswordType::class);
 
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $repository = $em->getRepository('UserBundle:User');
-            $user = $form->getData();
+        if ($request->isMethod('POST')) {
+            if($form->handleRequest($request)->isValid()) {
+                $repository = $em->getRepository('UserBundle:User');
+                $user = $form->getData();
 
-            if ($user = $repository->findOneBy(array('email' => $user->getEmail()))) {
-                $user->setConfirmationToken(md5(time()*rand(357, 412)));
-                $em->flush();
+                if ($user = $repository->findOneBy(array('email' => $user->getEmail()))) {
+                    $user->setConfirmationToken(md5(time()*rand(357, 412)));
+                    $em->flush();
 
-                $message = (new \Swift_Message('Changement mot de passe compte SnowTricks'))
-                ->setFrom('send@example.com')
-                ->setTo($user->getEmail())
-                ->setBody(
-                    $this->renderView(
-                        'UserBundle:Security:forgotPasswordValidation.html.twig',
-                        array('name' => $user->getUsername(),
-                        'token' => $user->getConfirmationToken())
-                    ),
-                    'text/html'
-                );
+                    $message = (new \Swift_Message('Changement mot de passe compte SnowTricks'))
+                    ->setFrom('send@example.com')
+                    ->setTo($user->getEmail())
+                    ->setBody(
+                        $this->renderView(
+                            'UserBundle:Security:forgotPasswordValidation.html.twig',
+                            array('name' => $user->getUsername(),
+                            'token' => $user->getConfirmationToken())
+                        ),
+                        'text/html'
+                    );
 
-                $this->get('mailer')->send($message);
-                $this->addFlash('warning', 'Un mail de confirmation vient de vous être envoyé, merci de cliquer sur le lien joint.');
-            } else {
-                $this->addFlash('error', 'Mail invalide');
-                return $this->redirectToRoute('forgot_password');
+                    $this->get('mailer')->send($message);
+
+                    $this->addFlash('warning', 'Un mail de confirmation vient de vous être envoyé, merci de cliquer sur le lien joint.');
+
+                } else {
+                    $this->addFlash('error', 'Mail invalide');
+                    return $this->redirectToRoute('forgot_password');
+                }
+
+                return $this->redirectToRoute('tricks_home');
+            }else{
+                $this->addFlash('error', 'Le mail de confirmation n\' a pas pu être envoyé.');
             }
-            return $this->redirectToRoute('tricks_home');
         }
         return $this->render(
             'UserBundle:Security:forgotPassword.html.twig',
@@ -147,19 +157,23 @@ class SecurityController extends Controller
         $repository = $em
             ->getRepository('UserBundle:User');
 
-        if ($user=$repository->findOneBy(array('confirmationToken' => $token))) {
+        if ($user = $repository->findOneBy(array('confirmationToken' => $token))) {
             $form = $this->get('form.factory')->create(UserResetPasswordType::class, $user);
 
-            if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+            if ($request->isMethod('POST')) {
+                if($form->handleRequest($request)->isValid()) {
 
-                // Inutile de persister ici, Doctrine connait déjà notre user
-               
-                $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
-                $user->setPassword($password);
-                $user->setConfirmationToken(null);
-                $em->flush();
-                $this->addFlash('notice', 'Bienvenue '. $user->getUsername(). ' ! Votre compte est à nouveau activé, vous pouvez vous connecter !');
-                return $this->redirectToRoute('tricks_home');
+                    // Inutile de persister ici, Doctrine connait déjà notre user
+                   
+                    $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
+                    $user->setPassword($password);
+                    $user->setConfirmationToken(null);
+                    $em->flush();
+                    $this->addFlash('notice', 'Bienvenue '. $user->getUsername(). ' ! Votre compte est à nouveau activé, vous pouvez vous connecter !');
+                    return $this->redirectToRoute('tricks_home');
+                 }else{
+                    $this->addFlash('error', 'Votre compte n\' a pas pu être réactivé. Merci de renouveler votre demande.');
+                }
             }
         }
           
@@ -169,7 +183,7 @@ class SecurityController extends Controller
              array(
             'user' => $user,
             'form' => $form->createView(),
-        )
+            )
           
          );
     }
