@@ -17,6 +17,13 @@
               <div class="home_text">
                 <h1 class="text-blue wow fadeInLeft" data-wow-duration="2s">Trick</h1>
                 <p class="text-blue wow fadeInLeft" data-wow-duration="2s">Formulaire de création</h1>
+                  {% for label, messages in app.flashes %}
+                        {% for message in messages %}
+                            <div class="flash-{{ label }} wow fadeInLeft" data-wow-duration="2s">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
               </div>
             </div>
           </div>

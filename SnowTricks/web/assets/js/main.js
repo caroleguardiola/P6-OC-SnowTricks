@@ -359,7 +359,15 @@ $('#tricksbundle_trick_images').on('change', 'input[type="file"]', function(){
     console.log($(this));
         var file_name = this.value.replace(/\\/g, '/').replace(/.*\//, '');
         $(this).siblings(".file-return").text(file_name);
-        $(this).parent().parent().children(".file-return").text(file_name);
+        $(this).parent().parent().parent().children(".file-return").text(file_name);
+    });
+
+
+$('#tricksbundle_trick_thumbnail').on('change', 'input[type="file"]', function(){
+    console.log($(this));
+        var file_name = this.value.replace(/\\/g, '/').replace(/.*\//, '');
+        $(this).siblings(".file-return").text(file_name);
+        $(this).parent().parent().parent().children(".file-return").text(file_name);
     });
 
 $('.input-file-container').on('change', 'input[type="file"]', function(){

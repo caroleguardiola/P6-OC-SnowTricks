@@ -111,16 +111,7 @@ class TrickController extends Controller
 
          if ($request->isMethod('POST')) {
             if($form->handleRequest($request)->isValid()) {
-                $listImages = $trick->getImages();
-                foreach ($listImages as $image) {
-                    $trick->addImage($image);
-                }
-
-                $listVideos = $trick->getVideos();
-                foreach ($listVideos as $video) {
-                    $trick->addVideo($video);
-                }
-
+               
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($trick);
                 $em->flush();
@@ -136,6 +127,8 @@ class TrickController extends Controller
         return $this->render('TricksBundle:Trick:add.html.twig', array(
         'form' => $form->createView(),
         ));
+
+         var_dump($trick->getImages());
     }
 
     public function editAction($id, Request $request)
@@ -152,15 +145,6 @@ class TrickController extends Controller
         $formEdit = $this->get('form.factory')->create(TrickEditType::class, $trick);
 
         if ($request->isMethod('POST') && $formEdit->handleRequest($request)->isValid()) {
-            $listImages = $trick->getImages();
-            foreach ($listImages as $image) {
-                $trick->addImage($image);
-            }
-
-            $listVideos = $trick->getVideos();
-            foreach ($listVideos as $video) {
-                $trick->addVideo($video);
-            }
             
             // Inutile de persister ici, Doctrine connait déjà notre trick
             $em->flush();
@@ -190,16 +174,7 @@ class TrickController extends Controller
         $formEditMedia = $this->get('form.factory')->create(TrickEditMediasType::class, $trick);
 
         if ($request->isMethod('POST') && $formEditMedia->handleRequest($request)->isValid()) {
-            $listImages = $trick->getImages();
-            foreach ($listImages as $image) {
-                $trick->addImage($image);
-            }
-
-            $listVideos = $trick->getVideos();
-            foreach ($listVideos as $video) {
-                $trick->addVideo($video);
-            }
-            
+                        
             // Inutile de persister ici, Doctrine connait déjà notre trick
             $em->flush();
 

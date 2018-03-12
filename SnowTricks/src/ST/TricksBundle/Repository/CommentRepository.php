@@ -19,7 +19,7 @@ class CommentRepository extends EntityRepository
             ->leftJoin('c.user', 'u')
             ->addSelect('u')
             ->where('c.trick = :trick')
-              ->setParameter('trick', $trick_id)
+            ->setParameter('trick', $trick_id)
             ->orderBy('c.dateCreation', 'DESC')
             ->getQuery()
         ;

@@ -24,13 +24,15 @@ class TrickEditMediasType extends AbstractType
                 'entry_type' => ImageType::class,
                 'allow_add' =>  true,
                 'allow_delete'  => true,
-                'required' => false
+                'required' => false,
+                'by_reference' => false
             ))
             ->add('videos', CollectionType::class, array(
                 'entry_type' => VideoType::class,
                 'allow_add' =>  true,
                 'allow_delete'  => true,
-                'required' => false
+                'required' => false,
+                'by_reference' => false
             ))
             ->add('Enregistrer', SubmitType::class);
     }/**
