@@ -10,32 +10,32 @@
     <div class="row page-wrapper">
 
       <section class="trick_header">
-        <div class="trick_info_details pull-right">
-          <div class="trick_update">
-            <a href=""><i class="fa fa-pencil" aria-hidden="true"></i></a>
-          </div>
-          <div class="trick_delete">
-            <a href=""><i class="fa fa-trash" aria-hidden="true"></i></a>
-          </div>
-        </div>
 
         <div class="trick_image">
           <div class="row">
             <div class="col-md-12">
               <div class="home_text">
-                <h1 class="text-blue wow fadeInLeft" data-wow-duration="2s">Trick Name</h1>
+                <h1 class="text-blue wow fadeInLeft" data-wow-duration="2s">Trick</h1>
                 <p class="text-blue wow fadeInLeft" data-wow-duration="2s">Formulaire de création</h1>
+                  {% for label, messages in app.flashes %}
+                        {% for message in messages %}
+                            <div class="flash-{{ label }} wow fadeInLeft" data-wow-duration="2s">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
               </div>
             </div>
           </div>
-          <!-- scroll down-->
-          <div class="scrolldown">
-             <a href="#list_tricks"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
-          </div><!-- End off scroll down -->
+      
         </div>
       </section>
 
-      <h5>Formulaire de création</h5>
+      <div class="button-return"><a href="{{ path('tricks_home') }}#list_tricks" class="btn btn-primary btn-lg">
+        <span class="meta-nav">&larr;</span> 
+        Retour à la liste des tricks
+      </a>
+      </div>
 
       {{ include("TricksBundle:Trick:form.html.twig") }}
 

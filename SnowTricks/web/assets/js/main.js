@@ -204,14 +204,26 @@ jQuery(document).ready(function ($) {
 //Loading
 
 $( document ).ready(function () {
-    $(".trick_load").slice(0, 1).show();
-    if ($(".trick_load:hidden").length != 0) {
+    $(".trick_load").slice(0, 15).show();
+    var trickslength = $(".trick_load").length;
+      var trickslengthhidden= $(".trick_load:hidden").length;
+      if((trickslength-trickslengthhidden) >=15) {
+        $(".scrollup").removeClass("hidden")
+      }
+     
+    if (trickslengthhidden != 0) {
       $("#load").show();
-    }   
+    }  
+
     $("#load").on('click', function (e) {
       e.preventDefault();
-      $(".trick_load:hidden").slice(0, 1).slideDown();
-      if ($(".trick_load:hidden").length == 0) {
+      $(".trick_load:hidden").slice(0, 5).slideDown();
+      var trickslength = $(".trick_load").length;
+      var trickslengthhidden= $(".trick_load:hidden").length;
+      if((trickslength-trickslengthhidden) >=15) {
+        $(".scrollup").removeClass("hidden")
+      }
+      if (trickslengthhidden == 0) {
         $("#load").fadeOut('slow');
       }
     });
@@ -221,37 +233,6 @@ $( document ).ready(function () {
 //---------------------------------------------
 // Forms
 //---------------------------------------------
-
-//Thumbnail
-
-$(document).ready(function() {
-    // On récupère la balise <div> en question qui contient l'attribut « data-prototype » qui nous intéresse.
-    var $container = $('div#tricksbundle_trick_thumbnail');
-
-    
-      // S'il existe déjà des images, on ajoute un lien de suppression pour chacune d'entre elles
-      $container.children('div').each(function() {
-        addDeleteLink($(this));
-      });
-   
-
-    // La fonction qui ajoute un lien de suppression d'une catégorie
-    function addDeleteLink($prototype) {
-      // Création du lien
-      var $deleteLink = $('<a href="#" class="btn btn-danger">Ne pas modifier l\'image à la une</a>');
-
-      // Ajout du lien
-      $prototype.append($deleteLink);
-
-      // Ajout du listener sur le clic du lien pour effectivement supprimer la video
-      $deleteLink.click(function(e) {
-        $prototype.remove();
-
-        e.preventDefault(); // évite qu'un # apparaisse dans l'URL
-        return false;
-      });
-    }
-  });
 
   //Images
 
@@ -271,14 +252,9 @@ $(document).ready(function() {
     });
 
     // On ajoute un premier champ automatiquement s'il n'en existe pas déjà un (cas d'un nouveau trick par exemple).
-    if (index == 0) {
+    /*if (index == 0) {
       addImage($container);
-    } else {
-      // S'il existe déjà des images, on ajoute un lien de suppression pour chacune d'entre elles
-      $container.children('div').each(function() {
-        addDeleteLink($(this));
-      });
-    }
+    }*/
 
     // La fonction qui ajoute un formulaire ImageType
     function addImage($container) {
@@ -293,8 +269,10 @@ $(document).ready(function() {
       // On crée un objet jquery qui contient ce template
       var $prototype = $(template);
 
-      // On ajoute au prototype un lien pour pouvoir supprimer la video
+      // On ajoute au prototype un lien pour pouvoir supprimer l'image
       addDeleteLink($prototype);
+
+      addFileReturn($prototype);
 
       // On ajoute le prototype modifié à la fin de la balise <div>
       $container.append($prototype);
@@ -306,18 +284,26 @@ $(document).ready(function() {
     // La fonction qui ajoute un lien de suppression d'une catégorie
     function addDeleteLink($prototype) {
       // Création du lien
-      var $deleteLink = $('<a href="#" class="btn btn-danger">Ne pas modifier cette image</a>');
+      var $deleteLink = $('<a href="#" class="btn-form"><i class="fa fa-trash-o" aria-hidden="true"></i></a>');
 
       // Ajout du lien
       $prototype.append($deleteLink);
 
-      // Ajout du listener sur le clic du lien pour effectivement supprimer la video
+      // Ajout du listener sur le clic du lien pour effectivement supprimer l'image
       $deleteLink.click(function(e) {
         $prototype.remove();
 
         e.preventDefault(); // évite qu'un # apparaisse dans l'URL
         return false;
       });
+    }
+
+    function addFileReturn($prototype) {
+      // Création du lien
+      var $filereturn = $('<p class="file-return"></p>');
+
+      // Ajout du lien
+      $prototype.append($filereturn);
     }
   });
 
@@ -336,13 +322,9 @@ $(document).ready(function() {
       return false;
     });
 
-    if (index == 0) {
+    /* if (index == 0) {
       addVideo($container);
-    } else {
-      $container.children('div').each(function() {
-        addDeleteLink($(this));
-      });
-    }
+    } */
 
     function addVideo($container) {
       var template = $container.attr('data-prototype')
@@ -360,7 +342,7 @@ $(document).ready(function() {
     }
 
     function addDeleteLink($prototype) {
-      var $deleteLink = $('<a href="#" class="btn btn-danger">Ne pas modifier cette vidéo</a>');
+      var $deleteLink = $('<a href="#" class="btn-form"><i class="fa fa-trash-o" aria-hidden="true"></i></a>');
 
       $prototype.append($deleteLink);
 
@@ -372,3 +354,32 @@ $(document).ready(function() {
       });
     }
   });
+
+$('#tricksbundle_trick_images').on('change', 'input[type="file"]', function(){
+    console.log($(this));
+        var file_name = this.value.replace(/\\/g, '/').replace(/.*\//, '');
+        $(this).siblings(".file-return").text(file_name);
+        $(this).parent().parent().parent().children(".file-return").text(file_name);
+        $(this).parent().parent().children(".file-return").text(file_name);
+    });
+
+
+$('#tricksbundle_trick_thumbnail').on('change', 'input[type="file"]', function(){
+    console.log($(this));
+        var file_name = this.value.replace(/\\/g, '/').replace(/.*\//, '');
+        $(this).siblings(".file-return").text(file_name);
+        $(this).parent().parent().parent().children(".file-return").text(file_name);
+    });
+
+$('.input-file-container').on('change', 'input[type="file"]', function(){
+    console.log($(this));
+        var file_name = this.value.replace(/\\/g, '/').replace(/.*\//, '');
+        $(this).siblings(".file-return").text(file_name);
+    });
+
+$('#user_photo').on('change', 'input[type="file"]', function(){
+    console.log($(this));
+        var file_name = this.value.replace(/\\/g, '/').replace(/.*\//, '');
+        $(this).siblings(".file-return").text(file_name);
+        $(this).parent().parent().parent().parent().children(".file-return").text(file_name);
+    });

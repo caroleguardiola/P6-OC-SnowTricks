@@ -1,0 +1,50 @@
+<div class="trick_form">
+  {{ form_start(formEditThumb, {'attr': {'class': 'form-horizontal'}}) }}
+
+
+  {# Les erreurs générales du formulaire. #}
+  {{ form_errors(formEditThumb) }}
+
+   
+ <hr class="divider">
+
+ <div class="row col-sm-12 button-return"><a href="{{ path('tricks_edit', {'id': trick.id}) }}" class="btn btn-primary btn-lg" data-toggle="modal" data-backdrop="false">
+        Retour à la modification du trick {{trick.name}}
+      </a></div>
+
+ 
+  <div class="form-group"  id="thumbnail_edit">
+                {{ form_label(formEditThumb.thumbnail, "Image à la une", {'label_attr': {'class': 'control-label'}}) }}
+                {{ form_errors(formEditThumb.thumbnail) }}
+                {% if trick.thumbnail is defined %}
+                    {% if trick.thumbnail is not null %}
+                        <div>
+                          <img src="{{ asset(trick.thumbnail.webPath) }}" alt="{{ trick.thumbnail.alt }}" class="img-responsive thumb-edit">
+                        </div>
+                        <div class="input-file-container">
+                            {{ form_label(formEditThumb.thumbnail.file, "Modifier l'image à la une", {'label_attr': {'class': 'btn-form-thumb-1 input-file-trigger'}}) }}
+                            {{ form_errors(formEditThumb.thumbnail.file) }}
+                            {{ form_widget(formEditThumb.thumbnail.file, {'attr': {'class': 'input-file'}}) }} 
+                            <a href="#thumbnail_delete" class="btn-form" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+                            <p class="file-return"></p> 
+                        </div>
+                       
+                    {% else %}
+                        <div class="add input-file-container">
+                            {{ form_label(formEditThumb.thumbnail.file, "Ajouter une image à la une", {'label_attr': {'class': 'btn-form-thumb input-file-trigger'}}) }}
+                            {{ form_errors(formEditThumb.thumbnail.file) }}
+                            {{ form_widget(formEditThumb.thumbnail.file, {'attr': {'class': 'input-file'}}) }}
+                            <p class="file-return"></p>
+                        </div>
+                    {% endif %}
+                {% endif %}
+                
+            </div>
+
+  {# Génération automatique des champs pas encore écrits.
+     Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
+     et tous les champs cachés (type « hidden »). #}
+  {{ form_rest(formEditThumb) }}
+
+  {# Fermeture de la balise <form> du formulaire HTML #}
+  {{ form_end(formEditThumb) }}

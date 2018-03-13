@@ -30,6 +30,11 @@ security:
             logout:
                 path: logout
                 target: login
+        secured_area:
+            # ...
+            form_login:
+                # ...
+                csrf_token_generator: security.csrf.token_manager
 
     access_control:
     #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }

@@ -10,7 +10,8 @@
         <title>{% block title %}SnowTricks{% endblock %}</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="icon" type="image/png" href="{{ asset('favicon.ico') }}">
+        <link rel="icon" type="image/png" href="{{ asset('favicon.ico') }}?v=4">
+
 
         <!--Google Font link-->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
@@ -66,8 +67,8 @@
                     <!-- Start Header Navigation -->
                     <div class="navbar-header">
                         <a class="navbar-brand" href="#brand">
-                            <img src="web/assets/images/png" class="logo logo-display m-top-10" alt="logo">
-                            <img src="web/assets/images/jpg" class="logo logo-scrolled" alt="logo">
+                            <img src="{{asset('assets/images/logo_snow.png')}}" class="logo logo-display m-top-10" alt="logo" style="width: 75px;">
+                            <img src="{{asset('assets/images/logo_snow_scroll.png')}}" class="logo logo-scrolled" alt="logo" style="width: 75px;">
                         </a>
                     </div>
                     <!-- End Header Navigation -->
@@ -95,13 +96,19 @@
                 <div class="container-fluid navbar-responsive">
                     <div class="row">
                         <div class="col-xs-4">
-                            <a href="#hello"><i class="fa fa-home" aria-hidden="true"></i></a>
+                            <a href="{{ path('tricks_home') }}"><i class="fa fa-home" aria-hidden="true"></i></a>
                         </div>
                         <div class="col-xs-4">                  
-                            <a href="#"><i class="fa fa-bookmark" aria-hidden="true"></i></a>
+                            <a href="{{ path('tricks_home') }}#list_tricks"><i class="fa fa-bookmark" aria-hidden="true"></i></a>
                         </div>
-                        <div class="col-xs-4">                
-                            <a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                        <div class="col-xs-4">
+                                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                                    <span class="connected">{{ app.user.username }}</span>
+                                    <a href="{{ path('logout') }}"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                                {% else %}
+                                    <a href="{{ path('login') }}"><i class="fa fa-sign-in"></i></a>
+                                {% endif %}                
+                            
                         </div>   
                     </div>
                 </div>
@@ -112,7 +119,7 @@
 
             
             <!-- scroll up-->
-            <div class="scrollup">
+            <div class="scrollup hidden">
                 <a href="#"><i class="fa fa-chevron-up"></i></a>
             </div><!-- End off scroll up -->
 

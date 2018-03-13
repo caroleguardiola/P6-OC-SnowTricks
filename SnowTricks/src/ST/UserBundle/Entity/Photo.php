@@ -40,7 +40,7 @@ class Photo
 
     /**
     * @var UploadedFile
-    * 
+    *
     * @Assert\Image()
     */
     private $file;
@@ -105,17 +105,17 @@ class Photo
         return $this->alt;
     }
 
-     public function getFile()
+    public function getFile()
     {
         return $this->file;
     }
 
     public function setFile(UploadedFile $file)
     {
-       $this->file = $file;
+        $this->file = $file;
         // On vérifie si on avait déjà un fichier pour cette entité
         if (null !== $this->extension) {
-        // On sauvegarde l'extension du fichier pour le supprimer plus tard
+            // On sauvegarde l'extension du fichier pour le supprimer plus tard
             $this->tempFilename = $this->extension;
             // On réinitialise les valeurs des attributs extension et alt
             $this->extension = null;
@@ -131,7 +131,7 @@ class Photo
     {
         // Si jamais il n'y a pas de fichier (champ facultatif), on ne fait rien
         if (null === $this->file) {
-          return;
+            return;
         }
 
         // Le nom du fichier est son id, on doit juste stocker également son extension
@@ -150,15 +150,15 @@ class Photo
     {
         // Si jamais il n'y a pas de fichier (champ facultatif), on ne fait rien
         if (null === $this->file) {
-          return;
+            return;
         }
 
         // Si on avait un ancien fichier, on le supprime
         if (null !== $this->tempFilename) {
-          $oldFile = $this->getUploadRootDir().'/'.$this->id.'.'.$this->tempFilename;
-          if (file_exists($oldFile)) {
-            unlink($oldFile);
-          }
+            $oldFile = $this->getUploadRootDir().'/'.$this->id.'.'.$this->tempFilename;
+            if (file_exists($oldFile)) {
+                unlink($oldFile);
+            }
         }
 
         // On déplace le fichier envoyé dans le répertoire de notre choix
@@ -184,8 +184,8 @@ class Photo
     {
         // En PostRemove, on n'a pas accès à l'id, on utilise notre nom sauvegardé
         if (file_exists($this->tempFilename)) {
-          // On supprime le fichier
-          unlink($this->tempFilename);
+            // On supprime le fichier
+            unlink($this->tempFilename);
         }
     }
 

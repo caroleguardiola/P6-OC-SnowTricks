@@ -20,27 +20,31 @@ class TrickType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('dateCreation',   DateTimeType::class)
-            ->add('name',           TextType::class)
-            ->add('description',    TextareaType::class)
-            ->add('thumbnail',    ThumbnailType::class, array('required' => false))
-            ->add('images',         CollectionType::class, array(
+            ->add('name', TextType::class)
+            ->add('description', TextareaType::class)
+            ->add('thumbnail', ThumbnailType::class, array('required' => false))
+            ->add('images', CollectionType::class, array(
                 'entry_type' => ImageType::class,
                 'allow_add' =>  true,
-                'allow_delete'  => true
+                'allow_delete'  => true,
+                'required' => false,
+                'by_reference' => false
             ))
-            ->add('videos',         CollectionType::class, array(
+            ->add('videos', CollectionType::class, array(
                 'entry_type' => VideoType::class,
                 'allow_add' =>  true,
-                'allow_delete'  => true
+                'allow_delete'  => true,
+                'required' => false,
+                'by_reference' => false
             ))
-            ->add('category',       EntityType::class, array(
+            ->add('category', EntityType::class, array(
                 'class' => 'TricksBundle:Category',
                 'choice_label' =>  'name',
                 'multiple'  => false,
-                'expanded'  => false
+                'expanded'  => false,
+                'label' => 'Catégorie',
             ))
-            ->add('Enregistrer',           SubmitType::class);
+            ->add('Enregistrer', SubmitType::class);
     }/**
      * {@inheritdoc}
      */
@@ -58,6 +62,4 @@ class TrickType extends AbstractType
     {
         return 'tricksbundle_trick';
     }
-
-
 }

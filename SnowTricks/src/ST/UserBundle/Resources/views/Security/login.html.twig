@@ -29,6 +29,10 @@
       <input type="password" id="password" name="_password" />
       <br />
     </div>
+
+    <input type="hidden" name="_csrf_token"
+        value="{{ csrf_token('authenticate') }}"
+    >
     
     <div class="login-submit">
       <input type="submit" class="btn-login" value="Login" />

@@ -109,10 +109,12 @@ div.navbar-collapse a {
 }
 .navbar-responsive {
     text-align: center;
+    color: #12a7cd;
 }
 .navbar-responsive .fa{
     padding-top: 15px;
     font-size: 20px;
+    color: #12a7cd;
 }
 
 

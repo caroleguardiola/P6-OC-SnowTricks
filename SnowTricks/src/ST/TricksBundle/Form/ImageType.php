@@ -15,7 +15,7 @@ class ImageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('file',    FileType::class);
+            ->add('file', FileType::class, array('label' => 'Choisir une image'));
     }/**
      * {@inheritdoc}
      */
@@ -33,6 +33,4 @@ class ImageType extends AbstractType
     {
         return 'tricksbundle_image';
     }
-
-
 }

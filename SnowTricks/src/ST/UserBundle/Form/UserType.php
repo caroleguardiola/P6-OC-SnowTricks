@@ -18,14 +18,14 @@ class UserType extends AbstractType
     {
         $builder
             ->add('email', EmailType::class)
-            ->add('username', TextType::class)
-            ->add('firstName', TextType::class)
-            ->add('lastName', TextType::class)
-            ->add('photo',   PhotoType::class)          
+            ->add('username', TextType::class, array('label' => 'Nom d\'utilisateur'))
+            ->add('firstName', TextType::class, array('label' => 'Prénom'))
+            ->add('lastName', TextType::class, array('label' => 'Nom'))
+            ->add('photo', PhotoType::class)
             ->add('plainPassword', RepeatedType::class, array(
                 'type' => PasswordType::class,
-                'first_options'  => array('label' => 'Password'),
-                'second_options' => array('label' => 'Repeat Password'),
+                'first_options'  => array('label' => 'Mot de passe'),
+                'second_options' => array('label' => 'Répéter Mot de passe'),
             ))
         ;
     }

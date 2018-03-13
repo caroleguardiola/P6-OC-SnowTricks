@@ -6,16 +6,18 @@ Author URI: http://www.xpeedstudio.com
 */
 
 /* Portrait tablets and medium desktops */
-@media (min-width: 992px) and (max-width: 1199px) {
+@media (min-width: 992px) {
     body {
         font-size: 1rem;
     }
 
+    .col-md-2.point5 {
+        width: 20%;  
+   }
 
-
-
-
-
+    .button-medias {
+        display: none;
+    }
 }
 
 
@@ -42,11 +44,42 @@ Author URI: http://www.xpeedstudio.com
         margin-top:50px;
     }
 
+    .trick_info a, .trick_info h6{
+        font-size: 20px;
+    }
+    .trick_description {
+    padding: 25px 0;
+    }
 
+    .content {
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .medias, .medias-edit {
+        display: none;
+    }
+
+    .flash-warning {
+        font-size:20px;
+        margin: 0 70px;
+    }
+
+.flash-error {
+     font-size:20px;
+        margin: 0 70px;
+    }
+
+.flash-notice {
+     font-size:20px;
+        margin: 0 70px;
+    }
 
 }
-
-
 
 /* Landscape phones and portrait tablets */
 @media  (max-width: 768px) {
@@ -76,19 +109,102 @@ Author URI: http://www.xpeedstudio.com
         top: -150px;
     }
 
+    .trick img {
+        margin: auto;
+        max-height: 170px;
+    }
+
+    .page-wrapper-login {
+        margin: 0 20px;
+    }
+
+    .page-wrapper-register {
+        margin: 0 20px;
+    }
+
+    .btn-login {
+        font-size: 14px;
+    }
+
+    .home_text h1 {
+        font-size: 3rem;
+    }
+
+    .main_home {
+        padding-bottom: 200px;
+        padding-top: 100px
+    }
+
+    .trick_comment_form {
+        padding: 20px 0;
+    }
+
+    textarea#userbundle_comment_content.form-control {
+        height: 70px;
+    }
+
+    div.form-edit {
+        margin: auto;
+        width: 100%;
+         padding-top: 15px;
+    }
 
 }
 
+@media  (max-width: 768px) and (min-width: 481px){
+    .trick img, .trick-view img {
+        margin: auto;
+        max-height: 250px;
+    }
 
+    .trick {
+        margin-left: 150px;
+        margin-right: 150px;
+        height: 350px;
+    }
+
+    .trick-view {
+        margin-left: 75px;
+        margin-right: 75px;
+        height: 300px;
+    }
+}
 
 
 /* Landscape phones and smaller */
-@media (max-width: 479px) {
+@media (max-width: 480px) {
     html {
         font-size: 85%;
     }
     .testimonial_slid .slick-arrow {
         display: none;
+    }
+
+    p {
+        margin: 0 0 7px; 
+    }
+
+    .form-comment div {
+        display: block;
+        margin-bottom: 15px;
+    }
+
+    .trick_comment_form {
+        padding: 20px 0 10px 0;
+    }
+
+    .form_comment_content button{
+        text-align: center;
+    }
+
+    .trick {
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+
+     .trick-view {
+        margin-left: 40px;
+        margin-right: 40px;
     }
 
 }
@@ -111,6 +227,3 @@ Author URI: http://www.xpeedstudio.com
     }
 
 }
-
-
-

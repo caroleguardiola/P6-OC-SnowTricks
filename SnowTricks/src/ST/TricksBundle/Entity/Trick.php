@@ -8,7 +8,7 @@ use ST\TricksBundle\Entity\Thumbnail;
 use ST\TricksBundle\Entity\Image;
 use ST\TricksBundle\Entity\Video;
 use ST\TricksBundle\Entity\Category;
-use ST\UserBundle\Entity\Comment;
+use ST\TricksBundle\Entity\Comment;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -56,7 +56,7 @@ class Trick
     private $category;
 
     /**
-     * @ORM\OneToOne(targetEntity="ST\TricksBundle\Entity\Thumbnail", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity="ST\TricksBundle\Entity\Thumbnail", mappedBy="trick", cascade={"persist", "remove"})
      * @Assert\Valid()
      */
     private $thumbnail;
@@ -74,7 +74,7 @@ class Trick
     private $videos;
 
     /**
-     * @ORM\OneToMany(targetEntity="ST\UserBundle\Entity\Comment", mappedBy="trick", cascade={"persist","remove"})
+     * @ORM\OneToMany(targetEntity="ST\TricksBundle\Entity\Comment", mappedBy="trick", cascade={"persist","remove"})
      */
     private $comments;
 
@@ -193,9 +193,21 @@ class Trick
     public function setThumbnail(Thumbnail $thumbnail = null)
     {
         $this->thumbnail = $thumbnail;
+        $thumbnail->setTrick($this);
 
         return $this;
     }
+
+    /**
+     * Remove thumbnail
+     *
+     * @param Thumbnail $thumbnail
+     */
+    public function removeThumbnail(thumbnail $thumbnail)
+    {
+        $this->thumbnail->removeElement($thumbnail);
+    }
+
 
     /**
      * Get thumbnail
