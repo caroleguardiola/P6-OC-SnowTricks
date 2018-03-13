@@ -86,7 +86,7 @@ class User implements AdvancedUserInterface, \Serializable
     private $password;
 
     /**
-     * @ORM\Column(name="confirmationToken", type="string", nullable=true)
+     * @ORM\Column(name="confirmation_token", type="string", nullable=true)
      */
     private $confirmationToken;
 
