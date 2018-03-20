@@ -18,9 +18,9 @@ class CommentTest extends TestCase
 
     public function testSetContentComment()
     {
-    	$comment = new Comment;
-    	$comment->setContent('Génial !!');
-    	$this->assertSame('Génial !!', $comment->getContent());
+        $comment = new Comment;
+        $comment->setContent('Génial !!');
+        $this->assertSame('Génial !!', $comment->getContent());
     }
 
     public function testGetTrickNameComment()

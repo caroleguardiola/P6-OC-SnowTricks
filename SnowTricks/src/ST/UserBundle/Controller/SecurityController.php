@@ -42,7 +42,7 @@ class SecurityController extends Controller
         // 2) handle the submit (will only happen on POST)
         
         if ($request->isMethod('POST')) {
-            if($form->handleRequest($request)->isValid()) {
+            if ($form->handleRequest($request)->isValid()) {
 
                 // 3) Encode the password (you could also do this via Doctrine listener)
                 $password = $passwordEncoder->encodePassword($user, $user->getPlainPassword());
@@ -76,7 +76,7 @@ class SecurityController extends Controller
 
                 $this->addFlash('warning', 'Un mail de confirmation vient de vous être envoyé, merci de cliquer sur le lien joint.');
                 return $this->redirectToRoute('tricks_home');
-            }else{
+            } else {
                 $this->addFlash('error', 'Le mail de confirmation n\' a pas pu être envoyé.');
             }
         }
@@ -108,7 +108,7 @@ class SecurityController extends Controller
         $form = $this->get('form.factory')->create(UserForgotPasswordType::class);
 
         if ($request->isMethod('POST')) {
-            if($form->handleRequest($request)->isValid()) {
+            if ($form->handleRequest($request)->isValid()) {
                 $repository = $em->getRepository('UserBundle:User');
                 $user = $form->getData();
 
@@ -131,14 +131,13 @@ class SecurityController extends Controller
                     $this->get('mailer')->send($message);
 
                     $this->addFlash('warning', 'Un mail de confirmation vient de vous être envoyé, merci de cliquer sur le lien joint.');
-
                 } else {
                     $this->addFlash('error', 'Mail invalide');
                     return $this->redirectToRoute('forgot_password');
                 }
 
                 return $this->redirectToRoute('tricks_home');
-            }else{
+            } else {
                 $this->addFlash('error', 'Le mail de confirmation n\' a pas pu être envoyé.');
             }
         }
@@ -161,7 +160,7 @@ class SecurityController extends Controller
             $form = $this->get('form.factory')->create(UserResetPasswordType::class, $user);
 
             if ($request->isMethod('POST')) {
-                if($form->handleRequest($request)->isValid()) {
+                if ($form->handleRequest($request)->isValid()) {
 
                     // Inutile de persister ici, Doctrine connait déjà notre user
                    
@@ -171,7 +170,7 @@ class SecurityController extends Controller
                     $em->flush();
                     $this->addFlash('notice', 'Bienvenue '. $user->getUsername(). ' ! Votre compte est à nouveau activé, vous pouvez vous connecter !');
                     return $this->redirectToRoute('tricks_home');
-                 }else{
+                } else {
                     $this->addFlash('error', 'Votre compte n\' a pas pu être réactivé. Merci de renouveler votre demande.');
                 }
             }

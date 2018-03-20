@@ -26,12 +26,12 @@ class ThumbnailController extends Controller
         
 
         if ($request->isMethod('POST')) {
-            if($form->handleRequest($request)->isValid()) {
+            if ($form->handleRequest($request)->isValid()) {
                 $em->remove($thumbnail);
                 $em->flush();
                 $this->addFlash('notice', "L'image à la une a bien été supprimée.");
                 return $this->redirectToRoute('tricks_edit', ['id' => $trick->getId()]);
-            }else{
+            } else {
                 $this->addFlash('error', 'L\'image à la une n\'a pas pu être supprimée.');
             }
         }

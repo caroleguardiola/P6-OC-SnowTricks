@@ -109,9 +109,8 @@ class TrickController extends Controller
 
         $form = $this->get('form.factory')->create(TrickType::class, $trick);
 
-         if ($request->isMethod('POST')) {
-            if($form->handleRequest($request)->isValid()) {
-               
+        if ($request->isMethod('POST')) {
+            if ($form->handleRequest($request)->isValid()) {
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($trick);
                 $em->flush();
@@ -119,16 +118,16 @@ class TrickController extends Controller
                 $this->addFlash('notice', 'Trick bien enregistré.');
 
                 return $this->redirectToRoute('tricks_home', array('id' => $trick->getId()));
-            }else{
-                 $this->addFlash('error', 'Le trick n\'a pas pu être enregistré.');
+            } else {
+                $this->addFlash('error', 'Le trick n\'a pas pu être enregistré.');
             }
-         }
+        }
 
         return $this->render('TricksBundle:Trick:add.html.twig', array(
         'form' => $form->createView(),
         ));
 
-         var_dump($trick->getImages());
+        var_dump($trick->getImages());
     }
 
     public function editAction($id, Request $request)
@@ -145,14 +144,14 @@ class TrickController extends Controller
         $formEdit = $this->get('form.factory')->create(TrickEditType::class, $trick);
 
         if ($request->isMethod('POST')) {
-            if($formEdit->handleRequest($request)->isValid()) {
+            if ($formEdit->handleRequest($request)->isValid()) {
             
                 // Inutile de persister ici, Doctrine connait déjà notre trick
                 $em->flush();
 
                 $this->addFlash('notice', 'Trick bien modifié.');
                 return $this->redirectToRoute('tricks_view', array('id' => $trick->getId()));
-            }else{
+            } else {
                 $this->addFlash('error', 'Le trick n\'a pas pu être modifié.');
             }
         }
@@ -177,14 +176,14 @@ class TrickController extends Controller
         $formEditMedia = $this->get('form.factory')->create(TrickEditMediasType::class, $trick);
 
         if ($request->isMethod('POST')) {
-            if($formEditMedia->handleRequest($request)->isValid()) {
+            if ($formEditMedia->handleRequest($request)->isValid()) {
                         
                 // Inutile de persister ici, Doctrine connait déjà notre trick
                 $em->flush();
 
                 $this->addFlash('notice', 'Médias bien modifiés.');
                 return $this->redirectToRoute('tricks_edit', array('id' => $trick->getId() ));
-            }else{
+            } else {
                 $this->addFlash('error', 'Les Médias n\'ont pas pu être modifiés.');
             }
         }
@@ -209,14 +208,14 @@ class TrickController extends Controller
         $formEditThumb = $this->get('form.factory')->create(TrickEditThumbType::class, $trick);
 
         if ($request->isMethod('POST')) {
-            if($formEditThumb->handleRequest($request)->isValid()) {
+            if ($formEditThumb->handleRequest($request)->isValid()) {
             
                 // Inutile de persister ici, Doctrine connait déjà notre trick
                 $em->flush();
 
                 $this->addFlash('notice', 'Image à la une bien modifiée.');
                 return $this->redirectToRoute('tricks_edit', array('id' => $trick->getId()));
-            }else{
+            } else {
                 $this->addFlash('error', 'L\'image à la une n\'a pas pu être modifiée.');
             }
         }
@@ -240,12 +239,12 @@ class TrickController extends Controller
         
 
         if ($request->isMethod('POST')) {
-            if($form->handleRequest($request)->isValid()) {
+            if ($form->handleRequest($request)->isValid()) {
                 $em->remove($trick);
                 $em->flush();
                 $this->addFlash('notice', "Le trick a bien été supprimé.");
                 return $this->redirectToRoute('tricks_home');
-            }else{
+            } else {
                 $this->addFlash('error', 'Le trick  n\'a pas pu être supprimé.');
             }
         }

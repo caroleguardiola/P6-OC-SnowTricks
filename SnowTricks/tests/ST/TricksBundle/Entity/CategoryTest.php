@@ -10,8 +10,8 @@ class CategoryTest extends TestCase
 {
     public function testSetNameCategory()
     {
-    	$category = new Category;
-    	$category->setName('Grab');
-    	$this->assertSame('Grab', $category->getName());
+        $category = new Category;
+        $category->setName('Grab');
+        $this->assertSame('Grab', $category->getName());
     }
 }

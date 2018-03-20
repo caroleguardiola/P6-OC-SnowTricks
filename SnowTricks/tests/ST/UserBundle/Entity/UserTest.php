@@ -10,9 +10,9 @@ class UserTest extends TestCase
 {
     public function testSetFirstNameUser()
     {
-    	$user = new User;
-    	$user->setFirstName('Lisy');
-    	$this->assertSame('Lisy', $user->getFirstName());
+        $user = new User;
+        $user->setFirstName('Lisy');
+        $this->assertSame('Lisy', $user->getFirstName());
     }
 
     public function testSetLastNameUser()
