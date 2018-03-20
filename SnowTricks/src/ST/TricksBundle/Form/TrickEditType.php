@@ -42,7 +42,7 @@ class TrickEditType extends AbstractType
                 'expanded'  => false,
                 'label' => 'Catégorie'
             ))
-            ->add('Enregistrer', SubmitType::class);
+            ;
     }/**
      * {@inheritdoc}
      */

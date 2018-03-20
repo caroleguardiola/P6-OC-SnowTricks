@@ -36,11 +36,9 @@
   <!-- Page Content -->
   <section class="container roomy-50-100 list_tricks" id="list_tricks">
 
-      {% if is_granted('ROLE_USER') %}
-        <div class="button-return"><a href="{{ path('tricks_add') }}" class="btn btn-primary btn-lg">
-        Créer un trick
-      </a></div>
-      {% endif %}
+      
+        <div class="button-return"><a href="{{ path('tricks_add') }}" class="btn btn-primary btn-lg" name="ajout">Créer un trick</a></div>
+      
 
       <div class="row featurette">
         {% for trick in listTricks %}
