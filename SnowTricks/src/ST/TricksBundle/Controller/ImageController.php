@@ -23,11 +23,11 @@ class ImageController extends Controller
 
         $trick = $image->getTrick();
 
-        $form = $this->get('form.factory')->create();
+        $formDeleteImage = $this->get('form.factory')->create();
         
 
         if ($request->isMethod('POST')) {
-            if ($form->handleRequest($request)->isValid()) {
+            if ($formDeleteImage->handleRequest($request)->isValid()) {
                 $em->remove($image);
                 $em->flush();
                 $this->addFlash('notice', "L'image a bien été supprimée.");
@@ -39,7 +39,7 @@ class ImageController extends Controller
 
         return $this->render('TricksBundle:Trick:delete_image.html.twig', array(
       'image' => $image,
-      'form'   => $form->createView(),
+      'formDeleteImage'   => $formDeleteImage->createView(),
       ));
     }
 }

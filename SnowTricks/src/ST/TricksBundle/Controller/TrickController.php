@@ -77,9 +77,9 @@ class TrickController extends Controller
             $comment->setUser($this->getUser());
         }
 
-        $form = $this->get('form.factory')->create(CommentType::class, $comment);
+        $formComment = $this->get('form.factory')->create(CommentType::class, $comment);
 
-        if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
+        if ($request->isMethod('POST') && $formComment->handleRequest($request)->isValid()) {
             $em->persist($comment);
             $em->flush();
 
@@ -93,7 +93,7 @@ class TrickController extends Controller
           'listComments' => $listComments,
           'nbPages'     => $nbPages,
           'page'        => $page,
-          'form' => $form->createView(),
+          'formComment' => $formComment->createView(),
       ));
     }
 
@@ -107,10 +107,10 @@ class TrickController extends Controller
 
         $trick->setDateCreation(new \Datetime());
 
-        $form = $this->get('form.factory')->create(TrickType::class, $trick);
+        $formAdd = $this->get('form.factory')->create(TrickType::class, $trick);
 
         if ($request->isMethod('POST')) {
-            if ($form->handleRequest($request)->isValid()) {
+            if ($formAdd->handleRequest($request)->isValid()) {
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($trick);
                 $em->flush();
@@ -124,7 +124,7 @@ class TrickController extends Controller
         }
 
         return $this->render('TricksBundle:Trick:add.html.twig', array(
-        'form' => $form->createView(),
+        'formAdd' => $formAdd->createView(),
         ));
 
         var_dump($trick->getImages());
@@ -235,11 +235,11 @@ class TrickController extends Controller
             throw new NotFoundHttpException("Le trick d'id ".$id." n'existe pas.");
         }
 
-        $form = $this->get('form.factory')->create();
+        $formDeleteTrick = $this->get('form.factory')->create();
         
 
         if ($request->isMethod('POST')) {
-            if ($form->handleRequest($request)->isValid()) {
+            if ($formDeleteTrick->handleRequest($request)->isValid()) {
                 $em->remove($trick);
                 $em->flush();
                 $this->addFlash('notice', "Le trick a bien été supprimé.");
@@ -251,7 +251,7 @@ class TrickController extends Controller
 
         return $this->render('TricksBundle:Trick:delete.html.twig', array(
       'trick' => $trick,
-      'form'   => $form->createView(),
+      'formDeleteTrick'   => $formDeleteTrick->createView(),
       ));
     }
 }

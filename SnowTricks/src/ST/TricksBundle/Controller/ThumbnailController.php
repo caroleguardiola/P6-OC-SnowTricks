@@ -22,11 +22,11 @@ class ThumbnailController extends Controller
 
         $trick = $thumbnail->getTrick();
 
-        $form = $this->get('form.factory')->create();
+        $formDeleteThumb = $this->get('form.factory')->create();
         
 
         if ($request->isMethod('POST')) {
-            if ($form->handleRequest($request)->isValid()) {
+            if ($formDeleteThumb->handleRequest($request)->isValid()) {
                 $em->remove($thumbnail);
                 $em->flush();
                 $this->addFlash('notice', "L'image à la une a bien été supprimée.");
@@ -38,7 +38,7 @@ class ThumbnailController extends Controller
 
         return $this->render('TricksBundle:Trick:delete_thumbnail.html.twig', array(
       'thumbnail' => $thumbnail,
-      'form'   => $form->createView(),
+      'formDeleteThumb'   => $formDeleteThumb->createView(),
       ));
     }
 }
