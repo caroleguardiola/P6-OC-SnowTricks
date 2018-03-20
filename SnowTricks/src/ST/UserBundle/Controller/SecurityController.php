@@ -24,7 +24,6 @@ class SecurityController extends Controller
         // et l'erreur dans le cas où le formulaire a déjà été soumis mais était invalide
         // (mauvais mot de passe par exemple)
         $authenticationUtils = $this->get('security.authentication_utils');
-        $this->addFlash('notice', 'Bienvenue sur SnowTricks ! ');
 
         return $this->render('UserBundle:Security:login.html.twig', array(
           'last_username' => $authenticationUtils->getLastUsername(),
@@ -109,6 +108,7 @@ class SecurityController extends Controller
 
         if ($request->isMethod('POST')) {
             if ($formForgotPassword->handleRequest($request)->isValid()) {
+                $em = $this->getDoctrine()->getManager();
                 $repository = $em->getRepository('UserBundle:User');
                 $user = $formForgotPassword->getData();
 

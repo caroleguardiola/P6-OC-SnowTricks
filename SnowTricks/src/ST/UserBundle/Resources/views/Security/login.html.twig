@@ -2,52 +2,53 @@
 
 {% block sections_body %}
 
-  <!-- Page Content -->
-<div class="container login-page">
-  <div class="row login-title">
-        <div class="home_text">
-            <h1 class="text-blue wow fadeInLeft" data-wow-duration="2s">Login</h1>
+    <!-- Page Content -->
+    <div class="container login-page">
+
+        <div class="row login-title">
+            <div class="home_text">
+                <h1 class="text-blue wow fadeInLeft" data-wow-duration="2s">Login</h1>
+            </div>
+        </div><!--End off row-->
+
+        <div class="row page-wrapper-login">
+            {# S'il y a une erreur, on l'affiche dans un joli cadre #}
+            {% if error %}
+                <div class="alert alert-danger">{{ error.message }}</div>
+            {% endif %}
+
+            {# Le formulaire, avec URL de soumission vers la route « login_check » comme on l'a vu #}
+            <form class="login" action="{{ path('login_check') }}" method="post">
+
+                <div class="login-user">
+                    <label for="username">Username</label><br />
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" />
+                    <br />
+                </div>
+
+                <div class="login-user">
+                    <label for="password">Mot de passe</label><br />
+                    <input type="password" id="password" name="_password" />
+                    <br />
+                </div>
+
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
+                
+                <div class="login-submit">
+                    <input type="submit" class="btn-login" value="Login" name="submit-login" />
+                </div>
+
+            </form>
+
+            <div class="register">
+                <a href="{{ path('register') }}">S'enregistrer</a>
+            </div>
+
+            <div class="forgot">
+                <a href="{{ path('forgot_password') }}">Mot de passe oublié ?</a>
+            </div>
+
         </div>
-  </div><!--End off row-->
-  <div class="row page-wrapper-login">
-  {# S'il y a une erreur, on l'affiche dans un joli cadre #}
-  {% if error %}
-    <div class="alert alert-danger">{{ error.message }}</div>
-  {% endif %}
-
-  {# Le formulaire, avec URL de soumission vers la route « login_check » comme on l'a vu #}
-  <form class="login" action="{{ path('login_check') }}" method="post">
-
-    <div class="login-user">
-    <label for="username">Username</label><br />
-      <input type="text" id="username" name="_username" value="{{ last_username }}" />
-      <br />
     </div>
-
-    <div class="login-user">
-      <label for="password">Mot de passe</label><br />
-      <input type="password" id="password" name="_password" />
-      <br />
-    </div>
-
-    <input type="hidden" name="_csrf_token"
-        value="{{ csrf_token('authenticate') }}"
-    >
-    
-    <div class="login-submit">
-      <input type="submit" class="btn-login" value="Login" name="submit-login" />
-    </div>
-  </form>
-
-  <div class="register">
-    <a href="{{ path('register') }}">S'enregistrer</a>
-  </div>
-
-  <div class="forgot">
-    <a href="{{ path('forgot_password') }}">Mot de passe oublié ?</a>
-  </div>
-
- </div>
-</div>
 
 {% endblock %}
