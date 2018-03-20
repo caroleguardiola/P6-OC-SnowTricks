@@ -33,8 +33,7 @@ class TrickEditMediasType extends AbstractType
                 'allow_delete'  => true,
                 'required' => false,
                 'by_reference' => false
-            ))
-            ->add('Enregistrer', SubmitType::class);
+            ));
     }/**
      * {@inheritdoc}
      */
