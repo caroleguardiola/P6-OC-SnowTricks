@@ -450,6 +450,34 @@ Button
     color:#12a7cd;
 }
 
+.btn-add {
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Raleway', sans-serif;
+    color: #12a7cd;
+    cursor: pointer;
+     -webkit-transition: all 0.6s;
+    transition: all 0.6s;
+    border:1px solid;
+    background-color: #e5e5e5;
+    border-color: #e5e5e5;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.btn-add:hover {
+    border:1px solid;
+    background-color:  #fff;
+    border-color:  #fff;
+    color:#12a7cd;
+}
+
+.btn-add:focus {
+    background-color:  #e5e5e5;
+    border-color:  #e5e5e5;
+    color:#12a7cd !important;
+}
+
 .btn-page {
     border-radius: 5px;
     border: 1px solid rgba(18,167,205,0.5);
@@ -1319,7 +1347,7 @@ Home Section style
 #tricksbundle_trick_thumbnail label{
     font-size: 12px !important;
     font-family: 'Raleway', sans-serif !important;
-    color: #fff !important;
+    color: #fff;
     cursor: pointer;
      -webkit-transition: all 0.6s;
     transition: all 0.6s;
@@ -1333,7 +1361,6 @@ Home Section style
 }
 
 #tricksbundle_trick_thumbnail label:hover {
-    color: #6f6f6f;
     border:1px solid;
     background-color:  #fff;
     border-color:  #fff;
@@ -1365,7 +1392,6 @@ Home Section style
 }
 
 #tricksbundle_trick_images label:hover {
-    color: #6f6f6f;
     border:1px solid;
     background-color:  #fff;
     border-color:  #fff;
