@@ -4,7 +4,7 @@ namespace ST\TricksBundle\Controller;
 
 use ST\TricksBundle\Entity\Trick;
 use ST\TricksBundle\Entity\Image;
-use ST\TricksBundle\Form\ImageType;
+use ST\TricksBundle\Form\Type\ImageType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
