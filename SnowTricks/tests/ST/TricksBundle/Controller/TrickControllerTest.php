@@ -9,21 +9,20 @@ use ST\TricksBundle\Entity\Comment;
 use ST\TricksBundle\Repository\TrickRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 
-
 class TrickControllerTest extends WebTestCase
 {
-	private $client = null;
+    private $client = null;
   
-	public function setUp()
-	{
-	    $this->client = static::createClient();
-	}
+    public function setUp()
+    {
+        $this->client = static::createClient();
+    }
 
-  	public function testHomePageIsUp()
-	{
-		$crawler = $this->client->request('GET', '/');
+    public function testHomePageIsUp()
+    {
+        $crawler = $this->client->request('GET', '/');
 
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
-        $this->assertSame(1, $crawler->filter('html:contains("Bienvenue sur SnowTricks !")')->count());  
-	}
+        $this->assertSame(1, $crawler->filter('html:contains("Bienvenue sur SnowTricks !")')->count());
+    }
 }

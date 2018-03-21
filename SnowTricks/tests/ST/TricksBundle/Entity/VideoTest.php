@@ -10,9 +10,9 @@ class VideoTest extends TestCase
 {
     public function testSetUrlVideo()
     {
-    	$video = new Video;
-    	$video->setUrl('https://www.youtube.com/embed/iKkhKekZNQ8');
-    	$this->assertSame('https://www.youtube.com/embed/iKkhKekZNQ8', $video->getUrl());
+        $video = new Video;
+        $video->setUrl('https://www.youtube.com/embed/iKkhKekZNQ8');
+        $this->assertSame('https://www.youtube.com/embed/iKkhKekZNQ8', $video->getUrl());
     }
 
     public function testGetTrickNameVideo()

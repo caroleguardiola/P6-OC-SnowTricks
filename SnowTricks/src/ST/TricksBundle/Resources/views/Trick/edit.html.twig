@@ -12,13 +12,13 @@
                 <section class="trick_header">
                     <div class="trick_info_details pull-right">
                         <div class="trick_update">
-                           <a href="{{ path('thumb_edit', {'id': trick.id}) }}" data-toggle="modal" data-backdrop="false"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                           <a href="{{ path('thumb_edit', {'id': trick.id}) }}" data-toggle="modal" data-backdrop="false" title="Modifier l'image à la une"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                         </div>
                      
                         {% if trick.thumbnail is defined %}
                             {% if trick.thumbnail is not null %}
                                 <div class="trick_delete">
-                                    <a href="#thumbnail_delete" data-toggle="modal" data-backdrop="false"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                    <a href="#thumbnail_delete" data-toggle="modal" data-backdrop="false" title="Supprimer l'image à la une"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                 </div>
                             {% endif %}
                         {% endif %}

@@ -2,53 +2,55 @@
 
 {% block sections_body %}
 
-  <!-- Page Content -->
-<div class="container login-page">
-  <div class="row login-title">
-        <div class="home_text">
-            <h1 class="text-blue wow fadeInLeft" data-wow-duration="2s">Enregistrement</h1>
+    <!-- Page Content -->
+    <div class="container login-page">
+
+        <div class="row login-title">
+            <div class="home_text">
+                <h1 class="text-blue wow fadeInLeft" data-wow-duration="2s">Enregistrement</h1>
+            </div>
+        </div><!--End off row-->
+
+        <div class="row page-wrapper-register">
+
+            {{ form_start(formRegister) }}
+
+            <div class="register-user">
+                {{ form_row(formRegister.username) }}
+            </div>
+
+            <div class="register-user">
+                {{ form_row(formRegister.email) }}
+            </div>
+
+            <div class="register-user">
+                {{ form_row(formRegister.firstName) }}
+            </div>
+
+             <div class="register-user">
+                {{ form_row(formRegister.lastName) }}
+            </div>
+
+            <div class="register-user">
+                {{ form_row(formRegister.photo) }}
+                <p class="file-return"></p>
+            </div>
+
+            <div class="register-user">
+                {{ form_row(formRegister.plainPassword.first) }}
+            </div>
+
+            <div class="register-user">
+                {{ form_row(formRegister.plainPassword.second) }}
+            </div>
+            
+            <div class="register-submit">
+                <input type="submit" class="btn-login" value="Enregistrer" name="submit-register" />
+            </div>
+
+            {{ form_end(formRegister) }}
+
         </div>
-  </div><!--End off row-->
-  <div class="row page-wrapper-register">
-
-{{ form_start(form) }}
-
-    <div class="register-user">
-    {{ form_row(form.username) }}
     </div>
-
-    <div class="register-user">
-      {{ form_row(form.email) }}
-    </div>
-
-     <div class="register-user">
-    {{ form_row(form.firstName) }}
-    </div>
-
-     <div class="register-user">
-    {{ form_row(form.lastName) }}
-    </div>
-
-     <div class="register-user">
-    {{ form_row(form.photo) }}
-    <p class="file-return"></p>
-    </div>
-
-    <div class="register-user">
-      {{ form_row(form.plainPassword.first) }}
-    </div>
-
-    <div class="register-user">
-      {{ form_row(form.plainPassword.second) }}
-    </div>
-    
-    <div class="register-submit">
-      <input type="submit" class="btn-login" value="Enregistrer" name="submit-register" />
-    </div>
-
-  {{ form_end(form) }}
-
- </div>
-</div>
 
 {% endblock %}

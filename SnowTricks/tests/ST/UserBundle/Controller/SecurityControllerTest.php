@@ -9,7 +9,7 @@ use ST\TricksBundle\Entity\Comment;
 
 class SecurityControllerTest extends WebTestCase
 {
-	private $client = null;
+    private $client = null;
   
     public function setUp()
     {
@@ -21,7 +21,6 @@ class SecurityControllerTest extends WebTestCase
         $this->client->request('GET', '/login');
 
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
-  
     }
 
     public function testLogoutIsUp()
@@ -29,7 +28,6 @@ class SecurityControllerTest extends WebTestCase
         $this->client->request('GET', '/logout');
 
         $this->assertEquals(302, $this->client->getResponse()->getStatusCode());
-  
     }
 
     public function testRegisterIsUp()
@@ -37,15 +35,13 @@ class SecurityControllerTest extends WebTestCase
         $this->client->request('GET', '/register');
 
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
-  
     }
 
-     public function testForgotPasswordIsUp()
+    public function testForgotPasswordIsUp()
     {
         $this->client->request('GET', '/forgot_password/reset');
 
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
-  
     }
 
     public function testLogin()
@@ -64,6 +60,5 @@ class SecurityControllerTest extends WebTestCase
         $this->assertSame(1, $crawler->filter('div.flash-notice')->count());
 
         //echo $client->getResponse()->getContent();
-       
     }
 }

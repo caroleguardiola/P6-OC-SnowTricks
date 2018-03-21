@@ -1,12 +1,8 @@
-  <p>
-    Etes-vous certain de vouloir supprimer cette vidéo ?
-  </p>
+<p>Etes-vous certain de vouloir supprimer cette vidéo ?</p>
+
 <form id="delete_video_{{video.id}}" action="{{ path('videos_delete', {'id': video.id}) }}" method="post">
-
-
-  {# Ici j'ai écrit le bouton de soumission à la main #}
-  <input type="submit" value="Supprimer" class="btn btn-danger" />
-  {# Ceci va générer le champ CSRF #}
-  {{ form_rest(form) }}
-
+ 	{# Ici j'ai écrit le bouton de soumission à la main #}
+  	<input type="submit" value="Supprimer" class="btn btn-danger" />
+  	{# Ceci va générer le champ CSRF #}
+  	{{ form_rest(formDeleteVideo) }}
 </form>

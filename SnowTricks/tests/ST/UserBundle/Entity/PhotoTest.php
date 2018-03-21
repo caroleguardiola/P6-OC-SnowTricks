@@ -9,9 +9,9 @@ class PhotoTest extends TestCase
 {
     public function testSetExtensionPhoto()
     {
-    	$photo = new Photo;
-    	$photo->setExtension('png');
-    	$this->assertSame('png', $photo->getExtension());
+        $photo = new Photo;
+        $photo->setExtension('png');
+        $this->assertSame('png', $photo->getExtension());
     }
 
     public function testSetAltPhoto()

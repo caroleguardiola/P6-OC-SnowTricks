@@ -11,9 +11,9 @@ class ImageTest extends TestCase
 {
     public function testSetExtensionImage()
     {
-    	$image = new Image;
-    	$image->setExtension('jpg');
-    	$this->assertSame('jpg', $image->getExtension());
+        $image = new Image;
+        $image->setExtension('jpg');
+        $this->assertSame('jpg', $image->getExtension());
     }
 
     public function testSetAltImage()

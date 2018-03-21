@@ -355,6 +355,9 @@ $(document).ready(function() {
     }
   });
 
+
+//File return
+
 $('#tricksbundle_trick_images').on('change', 'input[type="file"]', function(){
     console.log($(this));
         var file_name = this.value.replace(/\\/g, '/').replace(/.*\//, '');

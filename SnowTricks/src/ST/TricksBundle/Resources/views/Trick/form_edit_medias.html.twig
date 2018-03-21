@@ -35,20 +35,20 @@
                     {% endfor %}
                 </div>
             </div>
-
              
-                <div class="add"><a href="#" id="add_image" class="btn-form">Ajouter une image</a></div>
+            <div class="add"><a href="#" id="add_image" class="btn-form">Ajouter une image</a></div>
+
         </div>
 
-       <hr class="divider-view">
+        <hr class="divider-view">
 
-            <div class="media_videos">
+        <div class="media_videos">
 
-                <div>{{ form_label(formEditMedia.videos, "Vidéos", {'label_attr': {'class': 'control-label'}}) }}</div>
+            <div>{{ form_label(formEditMedia.videos, "Vidéos", {'label_attr': {'class': 'control-label'}}) }}</div>
 
-                <div id="{{ formEditMedia.videos.vars.id }}" data-prototype="{{ form_widget(formEditMedia.videos.vars.prototype)|e ('html_attr')}}" class="form-group">
-                    {{ form_errors(formEditMedia.videos) }}
-                    <div class="row medias-mobile">
+            <div id="{{ formEditMedia.videos.vars.id }}" data-prototype="{{ form_widget(formEditMedia.videos.vars.prototype)|e ('html_attr')}}" class="form-group">
+                {{ form_errors(formEditMedia.videos) }}
+                <div class="row medias-mobile">
                     {% for video in formEditMedia.videos %}
                         <div class="col-md-3" id="video-{{loop.index0}}">
                             <div class="trick-view"><iframe class="img-responsive thumb-home" src="{{ asset(video.vars.value.url) }}" allowfullscreen></iframe></div>
@@ -65,10 +65,12 @@
                 </div>
             </div> 
 
-                <div class="add"><a href="#" id="add_video" class="btn-form">Ajouter une vidéo</a></div>
-            </div>  
+            <div class="add"><a href="#" id="add_video" class="btn-form">Ajouter une vidéo</a></div>
 
-            <hr class="divider-view">
+        </div>  
+
+        <hr class="divider-view">
+
     </div>
 
     <div class="row">
@@ -77,17 +79,16 @@
         </div>
     </div>
 
-  {# Génération automatique des champs pas encore écrits.
+    {# Génération automatique des champs pas encore écrits.
      Dans cet exemple, ce serait le champ CSRF (géré automatiquement par Symfony !)
      et tous les champs cachés (type « hidden »). #}
-  {{ form_rest(formEditMedia) }}
+    {{ form_rest(formEditMedia) }}
 
-  {# Fermeture de la balise <form> du formulaire HTML #}
-  {{ form_end(formEditMedia) }}
+    {# Fermeture de la balise <form> du formulaire HTML #}
+    {{ form_end(formEditMedia) }}
 
-
-   <!--start modal -->
-   {% if trick.thumbnail is defined %}
+    <!--start modal -->
+    {% if trick.thumbnail is defined %}
         {% if trick.thumbnail is not null %}
             <div class="modal fade" id="thumbnail_delete" tabindex="-1" role="dialog" aria-hidden="true">
                 <div class="modal-dialog modal-md">
@@ -117,8 +118,8 @@
     {% endif %}
     <!--end modal -->
 
-  <!--start modal -->
-   {% if trick.images is defined %}
+    <!--start modal -->
+    {% if trick.images is defined %}
         {% for image in trick.images %}
             {% if image.id is not null %}
                 <div class="modal fade" id="delete_image_{{image.id}}" tabindex="-1" role="dialog" aria-hidden="true">
@@ -151,7 +152,7 @@
     <!--end modal -->
 
     <!--start modal -->
-     {% if trick.videos is defined %}
+    {% if trick.videos is defined %}
         {% for video in trick.videos %}
             {% if video.id is not null %}
                 <div class="modal fade" id="delete_video_{{video.id}}" tabindex="-1" role="dialog" aria-hidden="true">

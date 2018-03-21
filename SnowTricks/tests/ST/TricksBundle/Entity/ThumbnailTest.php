@@ -10,9 +10,9 @@ class ThumbnailTest extends TestCase
 {
     public function testSetExtensionThumbnail()
     {
-    	$thumbnail = new Thumbnail;
-    	$thumbnail->setExtension('jpg');
-    	$this->assertSame('jpg', $thumbnail->getExtension());
+        $thumbnail = new Thumbnail;
+        $thumbnail->setExtension('jpg');
+        $this->assertSame('jpg', $thumbnail->getExtension());
     }
 
     public function testSetAltThumbnail()

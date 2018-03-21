@@ -11,30 +11,30 @@ class TrickTest extends TestCase
 {
     public function testSetNameTrick()
     {
-    	$trick = new Trick;
-    	$trick->setName('Indy');
-    	$this->assertSame('Indy', $trick->getName());
+        $trick = new Trick;
+        $trick->setName('Indy');
+        $this->assertSame('Indy', $trick->getName());
     }
 
     public function testSetDescriptionTrick()
     {
-    	$trick = new Trick;
-    	$trick->setDescription('saisie de la carre frontside de la planche, entre les deux pieds, avec la main arrière');
-    	$this->assertSame('saisie de la carre frontside de la planche, entre les deux pieds, avec la main arrière', $trick->getDescription());
+        $trick = new Trick;
+        $trick->setDescription('saisie de la carre frontside de la planche, entre les deux pieds, avec la main arrière');
+        $this->assertSame('saisie de la carre frontside de la planche, entre les deux pieds, avec la main arrière', $trick->getDescription());
     }
 
     public function testSetDateCreationTrick()
     {
-    	$trick = new Trick;
-    	$trick->setDateCreation('2018-02-14 17:32:00');
-    	$this->assertSame('2018-02-14 17:32:00', $trick->getDateCreation());
+        $trick = new Trick;
+        $trick->setDateCreation('2018-02-14 17:32:00');
+        $this->assertSame('2018-02-14 17:32:00', $trick->getDateCreation());
     }
 
     public function testSetUpdatedAtTrick()
     {
-    	$trick = new Trick;
-    	$trick->setUpdatedAt('2018-02-14 17:32:00');
-    	$this->assertSame('2018-02-14 17:32:00', $trick->getUpdatedAt());
+        $trick = new Trick;
+        $trick->setUpdatedAt('2018-02-14 17:32:00');
+        $this->assertSame('2018-02-14 17:32:00', $trick->getUpdatedAt());
     }
 
     public function testSetCategoryTrick()
