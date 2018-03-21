@@ -126,8 +126,6 @@ class TrickController extends Controller
         return $this->render('TricksBundle:Trick:add.html.twig', array(
         'formAdd' => $formAdd->createView(),
         ));
-
-        var_dump($trick->getImages());
     }
 
     public function editAction($id, Request $request)
