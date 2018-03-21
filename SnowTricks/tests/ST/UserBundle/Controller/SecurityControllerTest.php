@@ -57,8 +57,22 @@ class SecurityControllerTest extends WebTestCase
 
         $crawler = $client->followRedirect(); // Attention à bien récupérer le crawler mis à jour
 
-        $this->assertSame(1, $crawler->filter('div.flash-notice')->count());
+        $this->assertSame(1, $crawler->filter('html:contains("Bienvenue sur SnowTricks !")')->count());
 
         //echo $client->getResponse()->getContent();
+    }
+
+    public function testLinkLogin()
+    {
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/');
+
+        $link = $crawler->selectLink('Connexion')->link();
+        $crawler = $client->click($link);
+
+        $info = $crawler->filter('h1')->text();
+        $info = $string = trim(preg_replace('/\s\s+/', ' ', $info)); // On retire les retours à la ligne pour faciliter la vérification
+
+        $this->assertSame("Login", $info);
     }
 }
