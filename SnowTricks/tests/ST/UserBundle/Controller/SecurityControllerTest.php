@@ -74,5 +74,5 @@ class SecurityControllerTest extends WebTestCase
         $info = $string = trim(preg_replace('/\s\s+/', ' ', $info)); // On retire les retours à la ligne pour faciliter la vérification
 
         $this->assertSame("Login", $info);
-    }   
+    }
 }
