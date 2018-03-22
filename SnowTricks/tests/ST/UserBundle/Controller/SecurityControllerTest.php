@@ -6,6 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use ST\TricksBundle\Entity\Category;
 use ST\TricksBundle\Entity\Trick;
 use ST\TricksBundle\Entity\Comment;
+use ST\UserBundle\Entity\User;
+use ST\UserBundle\Repository\UserRepository;
+use Doctrine\ORM\EntityManager;
 
 class SecurityControllerTest extends WebTestCase
 {
@@ -46,16 +49,14 @@ class SecurityControllerTest extends WebTestCase
 
     public function testLogin()
     {
-        $client = static::createClient();
-
-        $crawler = $client->request('GET', '/login');
+        $crawler = $this->client->request('GET', '/login');
 
         $form = $crawler->selectButton('submit-login')->form();
         $form['_username'] = 'Lisy';
         $form['_password'] = 'lisy';
-        $client->submit($form);
+        $this->client->submit($form);
 
-        $crawler = $client->followRedirect(); // Attention à bien récupérer le crawler mis à jour
+        $crawler = $this->client->followRedirect(); // Attention à bien récupérer le crawler mis à jour
 
         $this->assertSame(1, $crawler->filter('html:contains("Bienvenue sur SnowTricks !")')->count());
 
@@ -64,15 +65,14 @@ class SecurityControllerTest extends WebTestCase
 
     public function testLinkLogin()
     {
-        $client = static::createClient();
-        $crawler = $client->request('GET', '/');
+        $crawler = $this->client->request('GET', '/');
 
         $link = $crawler->selectLink('Connexion')->link();
-        $crawler = $client->click($link);
+        $crawler = $this->client->click($link);
 
         $info = $crawler->filter('h1')->text();
         $info = $string = trim(preg_replace('/\s\s+/', ' ', $info)); // On retire les retours à la ligne pour faciliter la vérification
 
         $this->assertSame("Login", $info);
-    }
+    }   
 }

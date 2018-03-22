@@ -48,7 +48,7 @@ class TrickController extends Controller
 
         $trick = $em
         ->getRepository('TricksBundle:Trick')
-        ->find($id);
+        ->find((int)$id);
 
         $listComments = $em
         ->getRepository('TricksBundle:Comment')
