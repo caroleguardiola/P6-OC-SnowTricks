@@ -6,13 +6,13 @@ This project is the 6th done as part of my training (« Développeur d’applica
 # Instructions for this project :
 The website must be developped with Symfony but without using bundles except for initial data.
 There 2 types of users :
-	* Anonymous : 
-		Can only access to the homepage with the list of tricks, to the details of the trick with comments.
-		Can also register as user member to access to all the fonctionnalities of the website.
-	* User member connected : 
-		In addition to anonymous access can also create a new trick, edit or delete a trick.
-		Can also post comments.
-		Can also connect to the website with login page, reset his password.
+* 	Anonymous : 
+	* 	Can only access to the homepage with the list of tricks, to the details of the trick with comments.
+	* 	Can also register as user member to access to all the fonctionnalities of the website.
+* 	User member connected : 
+	* 	In addition to anonymous access can also create a new trick, edit or delete a trick.
+	* 	Can also post comments.
+	* 	Can also connect to the website with login page, reset his password.
 
 
 This project was developed with Symfony 3.4.6 and installed with the dependencies by Composer.
@@ -23,8 +23,8 @@ PHPUnit is installed too.
 
 # Structure :
 2 bundles in src :
-	* TricksBundle : Tricks management and initial data in DataFixtures.
-	* UserBundle : User management.
+* 	TricksBundle : Tricks management and initial data in DataFixtures.
+* 	UserBundle : User management.
 
 
 # Installing :
