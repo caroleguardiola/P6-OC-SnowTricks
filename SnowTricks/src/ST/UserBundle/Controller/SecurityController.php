@@ -70,8 +70,6 @@ class SecurityController extends Controller
                     );
 
                 $this->get('mailer')->send($message);
-                // or, you can also fetch the mailer service this way
-                // $this->get('mailer')->send($message);
 
                 $this->addFlash('warning', 'Un mail de confirmation vient de vous être envoyé, merci de cliquer sur le lien joint.');
                 return $this->redirectToRoute('tricks_home');

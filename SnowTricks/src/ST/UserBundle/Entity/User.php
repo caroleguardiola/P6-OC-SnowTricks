@@ -107,7 +107,6 @@ class User implements AdvancedUserInterface, \Serializable
     {
         $this->isActive = false;
         // may not be needed, see section on salt below
-        // $this->salt = md5(uniqid('', true));
         $this->comments = new ArrayCollection();
     }
 
@@ -347,7 +346,6 @@ class User implements AdvancedUserInterface, \Serializable
             $this->password,
             $this->isActive,
             // see section on salt below
-            // $this->salt,
         ));
     }
 
@@ -360,7 +358,6 @@ class User implements AdvancedUserInterface, \Serializable
             $this->password,
             $this->isActive,
             // see section on salt below
-            // $this->salt
         ) = unserialize($serialized);
     }
 

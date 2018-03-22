@@ -118,23 +118,11 @@ class LoadFixtures implements FixtureInterface, ContainerAwareInterface
         $thumbnail1->setTrick($trick1);
         $manager->persist($thumbnail1);
 
-        /*$thumbnail2 = new Thumbnail;
-        $thumbnail2->setExtension('jpeg');
-        $thumbnail2->setAlt('japan.jpg');
-        $thumbnail2->setTrick($trick2);
-        $manager->persist($thumbnail2);*/
-
         $thumbnail3 = new Thumbnail;
         $thumbnail3->setExtension('jpeg');
         $thumbnail3->setAlt('tail-grab.jpg');
         $thumbnail3->setTrick($trick3);
         $manager->persist($thumbnail3);
-
-        /*$thumbnail4 = new Thumbnail;
-        $thumbnail4->setExtension('jpeg');
-        $thumbnail4->setAlt('nose-grab.jpg');
-        $thumbnail4->setTrick($trick4);
-        $manager->persist($thumbnail4);*/
 
         $thumbnail5 = new Thumbnail;
         $thumbnail5->setExtension('jpeg');
@@ -214,18 +202,6 @@ class LoadFixtures implements FixtureInterface, ContainerAwareInterface
         $image7->setAlt('tail-grab-3.jpg');
         $image7->setTrick($trick3);
         $manager->persist($image7);
-
-        /*$image8 = new Image;
-        $image8->setExtension('jpeg');
-        $image8->setAlt('nose-grab-1.jpg');
-        $image8->setTrick($trick4);
-        $manager->persist($image8);
-
-        $image9 = new Image;
-        $image9->setExtension('jpeg');
-        $image9->setAlt('nose-grab-2.jpg');
-        $image9->setTrick($trick4);
-        $manager->persist($image9);*/
 
         $image10 = new Image;
         $image10->setExtension('jpeg');
@@ -308,11 +284,6 @@ class LoadFixtures implements FixtureInterface, ContainerAwareInterface
         $video4->setUrl('https://www.youtube.com/embed/M-W7Pmo-YMY');
         $video4->setTrick($trick4);
         $manager->persist($video4);
-
-        /*$video5 = new Video;
-        $video5->setUrl('https://www.youtube.com/embed/6tgjY8baFT0');
-        $video5->setTrick($trick5);
-        $manager->persist($video5);*/
 
         $video6 = new Video;
         $video6->setUrl('https://www.youtube.com/embed/6z6KBAbM0MY');
