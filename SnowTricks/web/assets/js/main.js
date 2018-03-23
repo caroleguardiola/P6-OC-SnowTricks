@@ -228,6 +228,19 @@ $(document).ready(function() {
 
     var index = $container.find(':input').length;
 
+    function addDeleteLink($prototype) {
+      var $deleteLink = $('<a href="#" class="btn-form"><i class="fa fa-trash-o" aria-hidden="true"></i></a>');
+
+      $prototype.append($deleteLink);
+
+      $deleteLink.click(function(e) {
+        $prototype.remove();
+
+        e.preventDefault(); 
+        return false;
+      });
+    }
+
     function addVideo($container) {
       var template = $container.attr('data-prototype')
         .replace(/__name__label__/g, 'Video n°' + (index+1))
@@ -241,20 +254,7 @@ $(document).ready(function() {
       $container.append($prototype);
 
       index++;
-    }
-
-    function addDeleteLink($prototype) {
-      var $deleteLink = $('<a href="#" class="btn-form"><i class="fa fa-trash-o" aria-hidden="true"></i></a>');
-
-      $prototype.append($deleteLink);
-
-      $deleteLink.click(function(e) {
-        $prototype.remove();
-
-        e.preventDefault(); 
-        return false;
-      });
-    }
+    }    
 
     $('#add_video').click(function(e) {
       addVideo($container);
