@@ -15,16 +15,16 @@ jQuery(document).ready(function ($) {
     /*---------------------------------------------*
      * Mobile menu
      ---------------------------------------------*/
-    $('#navbar-menu').find('a[href*="#"]:not([href="#"])').click(function () {
-        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
+    $("#navbar-menu").find('a[href*="#"]:not([href="#"])').click(function () {
+        if (location.pathname.replace(/^\//, "") === this.pathname.replace(/^\//, "") && location.hostname === this.hostname) {
             var target = $(this.hash);
-            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+            target = target.length ? target : $("[name=" + this.hash.slice(1) + "]");
             if (target.length) {
                 $("html,body").animate({
                     scrollTop: (target.offset().top - 80)
                 }, 1000);
-                if ($('.navbar-toggle').css('display') !== 'none') {
-                    $(this).parents('.container').find(".navbar-toggle").trigger("click");
+                if ($(".navbar-toggle").css("display") !== "none") {
+                    $(this).parents(".container").find(".navbar-toggle").trigger("click");
                 }
                 return false;
             }
@@ -44,16 +44,16 @@ jQuery(document).ready(function ($) {
 
 // magnificPopup
 
-    $('.popup-img').magnificPopup({
-        type: 'image',
+    $(".popup-img").magnificPopup({
+        type: "image",
         gallery: {
             enabled: true
         }
     });
 
-    $('.video-link').magnificPopup({
-        type: 'iframe',
-        mainClass: 'mfp-fade',
+    $(".video-link").magnificPopup({
+        type: "iframe",
+        mainClass: "mfp-fade",
         iframe: {
   markup: '<div class="mfp-iframe-scaler">'+
             '<div class="mfp-close"></div>'+
@@ -62,20 +62,20 @@ jQuery(document).ready(function ($) {
 
   patterns: {
     youtube: {
-      index: 'youtube.com/', // String that detects type of video (in this case YouTube). Simply via url.indexOf(index).
+      index: "youtube.com/", // String that detects type of video (in this case YouTube). Simply via url.indexOf(index).
 
-      id: 'v=', // String that splits URL in a two parts, second part should be %id%
+      id: "v=", // String that splits URL in a two parts, second part should be %id%
       // Or null - full URL will be returned
       // Or a function that should return %id%, for example:
       // id: function(url) { return 'parsed id'; }
 
-      src: '//www.youtube.com/embed/%id%?autoplay=1' // URL that will be set as a source for iframe.
+      src: "//www.youtube.com/embed/%id%?autoplay=1" // URL that will be set as a source for iframe.
     }
     // you may add here more sources
 
   },
 
-  srcAction: 'iframe_src', // Templating object key. First part defines CSS selector, second attribute. "iframe_src" means: find "iframe" and set attribute "src".
+  srcAction: "iframe_src", // Templating object key. First part defines CSS selector, second attribute. "iframe_src" means: find "iframe" and set attribute "src".
 }
  
     });
@@ -87,24 +87,24 @@ jQuery(document).ready(function ($) {
 
     $(window).scroll(function () {
         if ($(this).scrollTop() > 400) {
-            $('.scrollup').fadeIn('slow');
+            $(".scrollup").fadeIn("slow");
         } else {
-            $('.scrollup').fadeOut('slow');
+            $(".scrollup").fadeOut("slow");
         }
     });
-    $('.scrollup').click(function () {
+    $(".scrollup").click(function () {
         $("html, body").animate({scrollTop: 0}, 1000);
         return false;
     });
 
 
-    $('a[href^="#"]').on('click', function(event) {
+    $('a[href^="#"]').on("click", function(event) {
 
-    var target = $(this.getAttribute('href'));
+    var target = $(this.getAttribute("href"));
 
     if( target.length ) {
         event.preventDefault();
-        $('html, body').stop().animate({
+        $("html, body").stop().animate({
             scrollTop: target.offset().top
         }, 1000);
     }
@@ -136,7 +136,7 @@ $( document ).ready(function () {
         $(".scrollup").removeClass("hidden")
       }
       if (trickslengthhidden === 0) {
-        $("#load").fadeOut('slow');
+        $("#load").fadeOut("slow");
       }
     });
   });
@@ -150,7 +150,7 @@ $( document ).ready(function () {
 
 $(document).ready(function() {
     // On récupère la balise <div> en question qui contient l'attribut « data-prototype » qui nous intéresse.
-    var $container = $('div#tricksbundle_trick_images');
+    var $container = $("div#tricksbundle_trick_images");
 
     // On définit un compteur unique pour nommer les champs qu'on va ajouter dynamiquement
     var index = $container.find(":input").length;
@@ -185,8 +185,8 @@ $(document).ready(function() {
       // Dans le contenu de l'attribut « data-prototype », on remplace :
       // - le texte "__name__label__" qu'il contient par le label du champ
       // - le texte "__name__" qu'il contient par le numéro du champ
-      var template = $container.attr('data-prototype')
-        .replace(/__name__label__/g, 'Image n°' + (index+1))
+      var template = $container.attr("data-prototype")
+        .replace(/__name__label__/g, "Image n°" + (index+1))
         .replace(/__name__/g,        index)
       ;
 
@@ -206,7 +206,7 @@ $(document).ready(function() {
     }
 
     // On ajoute un nouveau champ à chaque clic sur le lien d'ajout.
-    $('#add_image').click(function(e) {
+    $("#add_image").click(function(e) {
       addImage($container);
 
       e.preventDefault(); // évite qu'un # apparaisse dans l'URL
@@ -224,9 +224,9 @@ $(document).ready(function() {
 //Videos
 
 $(document).ready(function() {
-    var $container = $('div#tricksbundle_trick_videos');
+    var $container = $("div#tricksbundle_trick_videos");
 
-    var index = $container.find(':input').length;
+    var index = $container.find(":input").length;
 
     function addDeleteLink($prototype) {
       var $deleteLink = $('<a href="#" class="btn-form"><i class="fa fa-trash-o" aria-hidden="true"></i></a>');
@@ -242,8 +242,8 @@ $(document).ready(function() {
     }
 
     function addVideo($container) {
-      var template = $container.attr('data-prototype')
-        .replace(/__name__label__/g, 'Video n°' + (index+1))
+      var template = $container.attr("data-prototype")
+        .replace(/__name__label__/g, "Video n°" + (index+1))
         .replace(/__name__/g,        index)
       ;
 
@@ -256,7 +256,7 @@ $(document).ready(function() {
       index++;
     }    
 
-    $('#add_video').click(function(e) {
+    $("#add_video").click(function(e) {
       addVideo($container);
 
       e.preventDefault(); 
@@ -272,31 +272,27 @@ $(document).ready(function() {
 
 //File return
 
-$('#tricksbundle_trick_images').on('change', 'input[type="file"]', function(){
-    console.log($(this));
-        var file_name = this.value.replace(/\\/g, '/').replace(/.*\//, '');
-        $(this).siblings(".file-return").text(file_name);
-        $(this).parent().parent().parent().children(".file-return").text(file_name);
-        $(this).parent().parent().children(".file-return").text(file_name);
+$("#tricksbundle_trick_images").on("change", 'input[type="file"]', function(){
+        var fileName = this.value.replace(/\\/g, '/').replace(/.*\//, '');
+        $(this).siblings(".file-return").text(fileName);
+        $(this).parent().parent().parent().children(".file-return").text(fileName);
+        $(this).parent().parent().children(".file-return").text(fileName);
     });
 
 
-$('#tricksbundle_trick_thumbnail').on('change', 'input[type="file"]', function(){
-    console.log($(this));
-        var file_name = this.value.replace(/\\/g, '/').replace(/.*\//, '');
-        $(this).siblings(".file-return").text(file_name);
-        $(this).parent().parent().parent().children(".file-return").text(file_name);
+$("#tricksbundle_trick_thumbnail").on("change", 'input[type="file"]', function(){
+        var fileName = this.value.replace(/\\/g, '/').replace(/.*\//, '');
+        $(this).siblings(".file-return").text(fileName);
+        $(this).parent().parent().parent().children(".file-return").text(fileName);
     });
 
-$('.input-file-container').on('change', 'input[type="file"]', function(){
-    console.log($(this));
-        var file_name = this.value.replace(/\\/g, '/').replace(/.*\//, '');
-        $(this).siblings(".file-return").text(file_name);
+$(".input-file-container").on("change", 'input[type="file"]', function(){
+        var fileName = this.value.replace(/\\/g, '/').replace(/.*\//, '');
+        $(this).siblings(".file-return").text(fileName);
     });
 
-$('#user_photo').on('change', 'input[type="file"]', function(){
-    console.log($(this));
-        var file_name = this.value.replace(/\\/g, '/').replace(/.*\//, '');
-        $(this).siblings(".file-return").text(file_name);
-        $(this).parent().parent().parent().parent().children(".file-return").text(file_name);
+$("#user_photo").on("change", 'input[type="file"]', function(){
+        var fileName = this.value.replace(/\\/g, '/').replace(/.*\//, '');
+        $(this).siblings(".file-return").text(fileName);
+        $(this).parent().parent().parent().parent().children(".file-return").text(fileName);
     });
