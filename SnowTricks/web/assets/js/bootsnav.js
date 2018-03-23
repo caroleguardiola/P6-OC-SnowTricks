@@ -47,6 +47,7 @@
                     for (var i = 0; i < list.length; i++) {
                         ListHTML += '<li>' + list[i] + '</li>'
                     }
+                }
                 
                 //Generate HTML for first list
                 createHTML(firstList);
