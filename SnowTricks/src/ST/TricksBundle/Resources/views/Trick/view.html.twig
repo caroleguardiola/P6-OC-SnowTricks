@@ -71,9 +71,9 @@
                                         {% endif %}
                                         <div class="normal">
                                             <div class="text">
-                                                <h1 class="text-blue wow fadeInLeft" data-wow-duration="2s">{{trick.name}}</h1>
+                                                <h1 class="text-blue animation">{{trick.name}}</h1>
                                                 {% if trick.thumbnail is null %}
-                                                    <h3 class="text-blue wow fadeInLeft"> Aucune image à la une pour l'instant ! </h3>
+                                                    <h3 class="text-blue animation"> Aucune image à la une pour l'instant ! </h3>
                                                 {% endif %}
                                             </div>
                                         </div>           
@@ -87,7 +87,7 @@
                 <div>
                     {% for label, messages in app.flashes %}
                         {% for message in messages %}
-                            <div class="flash-{{ label }} wow fadeInLeft" data-wow-duration="2s">
+                            <div class="flash-{{ label }} animation">
                                 {{ message }}
                             </div>
                         {% endfor %}
