@@ -49,6 +49,5 @@ class ImageControllerTest extends WebTestCase
 
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
         $this->assertSame(1, $crawler->filter('html:contains("Etes-vous certain de vouloir supprimer cette image")')->count());
-        echo $this->client->getResponse()->getContent();
     }
 }
