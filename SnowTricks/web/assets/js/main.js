@@ -31,10 +31,22 @@ jQuery(document).ready(function ($) {
         }
     });
 
+ /*---------------------------------------------*
+     * WOW
+     ---------------------------------------------*/
+
+    var wow = new WOW({
+        mobile: false // trigger animations on mobile devices (default is true)
+    });
+    wow.init();
+    
+
 // Animation home and titles
 $( document ).ready(function () {
     $(".animation").fadeIn(6000);
   });
+
+
 
 //---------------------------------------------
 // Scroll Up and Down
