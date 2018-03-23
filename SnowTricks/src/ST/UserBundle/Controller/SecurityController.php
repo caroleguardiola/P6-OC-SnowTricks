@@ -13,7 +13,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class SecurityController extends Controller
 {
-    public function loginAction(Request $request)
+    public function loginAction()
     {
         // Si le visiteur est déjà identifié, on le redirige vers l'accueil
         if ($this->get('security.authorization_checker')->isGranted('IS_AUTHENTICATED_REMEMBERED')) {

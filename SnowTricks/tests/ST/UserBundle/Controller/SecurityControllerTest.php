@@ -71,7 +71,7 @@ class SecurityControllerTest extends WebTestCase
         $crawler = $this->client->click($link);
 
         $info = $crawler->filter('h1')->text();
-        $info = $string = trim(preg_replace('/\s\s+/', ' ', $info)); // On retire les retours à la ligne pour faciliter la vérification
+        $info = trim(preg_replace('/\s\s+/', ' ', $info)); // On retire les retours à la ligne pour faciliter la vérification
 
         $this->assertSame("Login", $info);
     }
