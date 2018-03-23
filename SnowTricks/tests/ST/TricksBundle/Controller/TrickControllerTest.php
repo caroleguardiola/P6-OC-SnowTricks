@@ -42,6 +42,7 @@ class TrickControllerTest extends WebTestCase
     public function testTrickShow()
     {
         $comment = new Comment;
+        $comment->setContent('Génial !!');
 
         $commentRepository = $this->createMock(CommentRepository:: class);
 
