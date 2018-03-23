@@ -31,9 +31,8 @@ class ThumbnailController extends Controller
                 $em->flush();
                 $this->addFlash('notice', "L'image à la une a bien été supprimée.");
                 return $this->redirectToRoute('tricks_edit', ['id' => $trick->getId()]);
-            } else {
-                $this->addFlash('error', 'L\'image à la une n\'a pas pu être supprimée.');
             }
+            $this->addFlash('error', 'L\'image à la une n\'a pas pu être supprimée.');
         }
 
         return $this->render('TricksBundle:Trick:delete_thumbnail.html.twig', array(

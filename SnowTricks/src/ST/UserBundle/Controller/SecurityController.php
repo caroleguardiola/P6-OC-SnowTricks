@@ -73,9 +73,8 @@ class SecurityController extends Controller
 
                 $this->addFlash('warning', 'Un mail de confirmation vient de vous être envoyé, merci de cliquer sur le lien joint.');
                 return $this->redirectToRoute('tricks_home');
-            } else {
-                $this->addFlash('error', 'Le mail de confirmation n\' a pas pu être envoyé.');
             }
+            $this->addFlash('error', 'Le mail de confirmation n\' a pas pu être envoyé.');
         }
 
         return $this->render(
@@ -135,9 +134,8 @@ class SecurityController extends Controller
                 }
 
                 return $this->redirectToRoute('tricks_home');
-            } else {
-                $this->addFlash('error', 'Le mail de confirmation n\' a pas pu être envoyé.');
             }
+            $this->addFlash('error', 'Le mail de confirmation n\' a pas pu être envoyé.');
         }
         return $this->render(
             'UserBundle:Security:forgotPassword.html.twig',
@@ -168,9 +166,8 @@ class SecurityController extends Controller
                     $em->flush();
                     $this->addFlash('notice', 'Bienvenue '. $user->getUsername(). ' ! Votre compte est à nouveau activé, vous pouvez vous connecter !');
                     return $this->redirectToRoute('tricks_home');
-                } else {
-                    $this->addFlash('error', 'Votre compte n\' a pas pu être réactivé. Merci de renouveler votre demande.');
                 }
+                $this->addFlash('error', 'Votre compte n\' a pas pu être réactivé. Merci de renouveler votre demande.');
             }
         }
           

@@ -118,9 +118,8 @@ class TrickController extends Controller
                 $this->addFlash('notice', 'Trick bien enregistré.');
 
                 return $this->redirectToRoute('tricks_home', array('id' => $trick->getId()));
-            } else {
-                $this->addFlash('error', 'Le trick n\'a pas pu être enregistré.');
             }
+            $this->addFlash('error', 'Le trick n\'a pas pu être enregistré.');
         }
 
         return $this->render('TricksBundle:Trick:add.html.twig', array(
@@ -149,9 +148,8 @@ class TrickController extends Controller
 
                 $this->addFlash('notice', 'Trick bien modifié.');
                 return $this->redirectToRoute('tricks_view', array('id' => $trick->getId()));
-            } else {
-                $this->addFlash('error', 'Le trick n\'a pas pu être modifié.');
             }
+            $this->addFlash('error', 'Le trick n\'a pas pu être modifié.');
         }
       
         return $this->render('TricksBundle:Trick:edit.html.twig', array(
@@ -181,9 +179,8 @@ class TrickController extends Controller
 
                 $this->addFlash('notice', 'Médias bien modifiés.');
                 return $this->redirectToRoute('tricks_edit', array('id' => $trick->getId() ));
-            } else {
-                $this->addFlash('error', 'Les Médias n\'ont pas pu être modifiés.');
             }
+            $this->addFlash('error', 'Les Médias n\'ont pas pu être modifiés.');
         }
       
         return $this->render('TricksBundle:Trick:edit_medias_mobile.html.twig', array(
@@ -213,9 +210,8 @@ class TrickController extends Controller
 
                 $this->addFlash('notice', 'Image à la une bien modifiée.');
                 return $this->redirectToRoute('tricks_edit', array('id' => $trick->getId()));
-            } else {
-                $this->addFlash('error', 'L\'image à la une n\'a pas pu être modifiée.');
             }
+            $this->addFlash('error', 'L\'image à la une n\'a pas pu être modifiée.');
         }
       
         return $this->render('TricksBundle:Trick:edit_thumb_trick.html.twig', array(
@@ -242,9 +238,8 @@ class TrickController extends Controller
                 $em->flush();
                 $this->addFlash('notice', "Le trick a bien été supprimé.");
                 return $this->redirectToRoute('tricks_home');
-            } else {
-                $this->addFlash('error', 'Le trick  n\'a pas pu être supprimé.');
             }
+            $this->addFlash('error', 'Le trick  n\'a pas pu être supprimé.');
         }
 
         return $this->render('TricksBundle:Trick:delete.html.twig', array(

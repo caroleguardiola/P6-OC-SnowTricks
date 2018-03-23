@@ -31,9 +31,8 @@ class VideoController extends Controller
                 $em->flush();
                 $this->addFlash('notice', "La video a bien été supprimée.");
                 return $this->redirectToRoute('tricks_edit', ['id' => $trick->getId()]);
-            } else {
-                $this->addFlash('error', 'La vidéo n\'a pas pu être supprimée.');
             }
+            $this->addFlash('error', 'La vidéo n\'a pas pu être supprimée.');
         }
 
         return $this->render('TricksBundle:Trick:delete_video.html.twig', array(
