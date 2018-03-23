@@ -404,7 +404,7 @@ class User implements AdvancedUserInterface, \Serializable
      *
      * @return boolean
      */
-    public function getIsActive()
+    public function isActive()
     {
         return $this->isActive;
     }

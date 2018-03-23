@@ -30,7 +30,7 @@
             if( getNav.hasClass("brand-center")){                
                 var postsArr = new Array(),
                     index = $("nav.brand-center"),
-                    $postsList = index.find('ul.navbar-nav');
+                    $postsList = index.find("ul.navbar-nav");
 
                 //Create array of all posts in lists
                 index.find('ul.navbar-nav > li').each(function(){
@@ -47,7 +47,6 @@
                     for (var i = 0; i < list.length; i++) {
                         ListHTML += '<li>' + list[i] + '</li>'
                     }
-                }
                 
                 //Generate HTML for first list
                 createHTML(firstList);
@@ -510,7 +509,7 @@
 
                     // Scroll
                     var scrollTop = $(window).scrollTop(),
-                        $anchor = $(this).find('a'),
+                        $anchor = $(this).find("a"),
                         $section = $($anchor.attr('href')).offset().top,
                         $window = $(window).width(),
                         $minusDesktop = getNav.data("minus-value-desktop"),
@@ -530,12 +529,12 @@
                 
                 // Activate Navigation
                 var fixSpy = function() {
-                    var data = $body.data('bs.scrollspy');
+                    var data = $body.data("bs.scrollspy");
                     if (data) {
                         offset = getNav.outerHeight();
                         data.options.offset = offset;
                         $body.data('bs.scrollspy', data);
-                        $body.scrollspy('refresh');
+                        $body.scrollspy("refresh");
                     }
                 }
                 
