@@ -16,14 +16,14 @@ jQuery(document).ready(function ($) {
      * Mobile menu
      ---------------------------------------------*/
     $('#navbar-menu').find('a[href*="#"]:not([href="#"])').click(function () {
-        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname === this.hostname) {
             var target = $(this.hash);
             target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
             if (target.length) {
                 $('html,body').animate({
                     scrollTop: (target.offset().top - 80)
                 }, 1000);
-                if ($('.navbar-toggle').css('display') != 'none') {
+                if ($('.navbar-toggle').css('display') !== 'none') {
                     $(this).parents('.container').find(".navbar-toggle").trigger("click");
                 }
                 return false;
@@ -81,63 +81,6 @@ jQuery(document).ready(function ($) {
     });
 
 
-
-// slick slider active Home Page Tow
-    $(".testimonial_slid").slick({
-        dots: false,
-        infinite: false,
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        arrows: true,
-        prevArrow: "<i class='fa fa-angle-left nextprevleft'></i>",
-        nextArrow: "<i class='fa fa-angle-right nextprevright'></i>",
-        autoplay: true,
-        autoplaySpeed: 2000
-    });
-
-
-
-//    featured slider
-    $('.featured_slider').slick({
-        centerMode: true,
-        dote: true,
-        centerPadding: '60px',
-        slidesToShow: 3,
-        speed: 1500,
-        index: 2,
-        responsive: [
-            {
-                breakpoint: 768,
-                settings: {
-                    arrows: false,
-                    centerMode: true,
-                    centerPadding: '40px',
-                    slidesToShow: 1
-                }
-            },
-            {
-                breakpoint: 480,
-                settings: {
-                    arrows: false,
-                    centerMode: true,
-                    centerPadding: '40px',
-                    slidesToShow: 1
-                }
-            }
-        ]
-    });
-
-
-
-//---------------------------------------------
-// Counter 
-//---------------------------------------------
-
-    $('.statistic-counter').counterUp({
-        delay: 10,
-        time: 2000
-    });
-
 //---------------------------------------------
 // Scroll Up and Down
 //---------------------------------------------
@@ -168,37 +111,6 @@ jQuery(document).ready(function ($) {
 
 });
 
-   
-
-//About us accordion 
-
-    $("#faq_main_content").collapse({
-        accordion: true,
-        open: function () {
-            this.addClass("open");
-            this.css({height: this.children().outerHeight()});
-        },
-        close: function () {
-            this.css({height: "0px"});
-            this.removeClass("open");
-        }
-    });
-
-
-
-
-
-//Team Skillbar active js
-
-    jQuery('.teamskillbar').each(function () {
-        jQuery(this).find('.teamskillbar-bar').animate({
-            width: jQuery(this).attr('data-percent')
-        }, 6000);
-    });
-
-
-    //End
-
 });
 
 //Loading
@@ -211,7 +123,7 @@ $( document ).ready(function () {
         $(".scrollup").removeClass("hidden")
       }
      
-    if (trickslengthhidden != 0) {
+    if (trickslengthhidden !== 0) {
       $("#load").show();
     }  
 
@@ -223,7 +135,7 @@ $( document ).ready(function () {
       if((trickslength-trickslengthhidden) >=15) {
         $(".scrollup").removeClass("hidden")
       }
-      if (trickslengthhidden == 0) {
+      if (trickslengthhidden === 0) {
         $("#load").fadeOut('slow');
       }
     });
@@ -243,18 +155,30 @@ $(document).ready(function() {
     // On définit un compteur unique pour nommer les champs qu'on va ajouter dynamiquement
     var index = $container.find(':input').length;
 
-    // On ajoute un nouveau champ à chaque clic sur le lien d'ajout.
-    $('#add_image').click(function(e) {
-      addImage($container);
+    // La fonction qui ajoute un lien de suppression d'une catégorie
+    function addDeleteLink($prototype) {
+      // Création du lien
+      var $deleteLink = $('<a href="#" class="btn-form"><i class="fa fa-trash-o" aria-hidden="true"></i></a>');
 
-      e.preventDefault(); // évite qu'un # apparaisse dans l'URL
-      return false;
-    });
+      // Ajout du lien
+      $prototype.append($deleteLink);
 
-    // On ajoute un premier champ automatiquement s'il n'en existe pas déjà un (cas d'un nouveau trick par exemple).
-    /*if (index == 0) {
-      addImage($container);
-    }*/
+      // Ajout du listener sur le clic du lien pour effectivement supprimer l'image
+      $deleteLink.click(function(e) {
+        $prototype.remove();
+
+        e.preventDefault(); // évite qu'un # apparaisse dans l'URL
+        return false;
+      });
+    }
+
+    function addFileReturn($prototype) {
+      // Création du lien
+      var $filereturn = $('<p class="file-return"></p>');
+
+      // Ajout du lien
+      $prototype.append($filereturn);
+    }
 
     // La fonction qui ajoute un formulaire ImageType
     function addImage($container) {
@@ -281,30 +205,19 @@ $(document).ready(function() {
       index++;
     }
 
-    // La fonction qui ajoute un lien de suppression d'une catégorie
-    function addDeleteLink($prototype) {
-      // Création du lien
-      var $deleteLink = $('<a href="#" class="btn-form"><i class="fa fa-trash-o" aria-hidden="true"></i></a>');
+    // On ajoute un nouveau champ à chaque clic sur le lien d'ajout.
+    $('#add_image').click(function(e) {
+      addImage($container);
 
-      // Ajout du lien
-      $prototype.append($deleteLink);
+      e.preventDefault(); // évite qu'un # apparaisse dans l'URL
+      return false;
+    });
 
-      // Ajout du listener sur le clic du lien pour effectivement supprimer l'image
-      $deleteLink.click(function(e) {
-        $prototype.remove();
+    // On ajoute un premier champ automatiquement s'il n'en existe pas déjà un (cas d'un nouveau trick par exemple).
+    /*if (index == 0) {
+      addImage($container);
+    }*/
 
-        e.preventDefault(); // évite qu'un # apparaisse dans l'URL
-        return false;
-      });
-    }
-
-    function addFileReturn($prototype) {
-      // Création du lien
-      var $filereturn = $('<p class="file-return"></p>');
-
-      // Ajout du lien
-      $prototype.append($filereturn);
-    }
   });
 
 
@@ -314,17 +227,6 @@ $(document).ready(function() {
     var $container = $('div#tricksbundle_trick_videos');
 
     var index = $container.find(':input').length;
-
-    $('#add_video').click(function(e) {
-      addVideo($container);
-
-      e.preventDefault(); 
-      return false;
-    });
-
-    /* if (index == 0) {
-      addVideo($container);
-    } */
 
     function addVideo($container) {
       var template = $container.attr('data-prototype')
@@ -353,6 +255,18 @@ $(document).ready(function() {
         return false;
       });
     }
+
+    $('#add_video').click(function(e) {
+      addVideo($container);
+
+      e.preventDefault(); 
+      return false;
+    });
+
+    /* if (index == 0) {
+      addVideo($container);
+    } */
+
   });
 
 
