@@ -20,7 +20,7 @@ jQuery(document).ready(function ($) {
             var target = $(this.hash);
             target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
             if (target.length) {
-                $('html,body').animate({
+                $("html,body").animate({
                     scrollTop: (target.offset().top - 80)
                 }, 1000);
                 if ($('.navbar-toggle').css('display') !== 'none') {
@@ -127,7 +127,7 @@ $( document ).ready(function () {
       $("#load").show();
     }  
 
-    $("#load").on('click', function (e) {
+    $("#load").on("click", function (e) {
       e.preventDefault();
       $(".trick_load:hidden").slice(0, 5).slideDown();
       var trickslength = $(".trick_load").length;
@@ -153,7 +153,7 @@ $(document).ready(function() {
     var $container = $('div#tricksbundle_trick_images');
 
     // On définit un compteur unique pour nommer les champs qu'on va ajouter dynamiquement
-    var index = $container.find(':input').length;
+    var index = $container.find(":input").length;
 
     // La fonction qui ajoute un lien de suppression d'une catégorie
     function addDeleteLink($prototype) {
