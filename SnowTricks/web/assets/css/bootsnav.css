@@ -693,6 +693,11 @@ body.on-side .wrap-sticky nav.navbar.bootsnav.sticked{
 }
 
 @media (min-width: 992px) {
+
+    nav.navbar.bootsnav.navbar-fixed .logo-display{
+        display: none;
+    }
+    
     .navbar-fixed-bottom {
         display: none !important;
     }
