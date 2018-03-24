@@ -15,7 +15,7 @@ jQuery(document).ready(function ($) {
     /*---------------------------------------------*
      * Mobile menu
      ---------------------------------------------*/
-    $("#navbar-menu").find('a[href*="#"]:not([href="#"])').click(function () {
+    $("#navbar-menu").find("a[href*='#']:not([href='#'])").click(function () {
         if (location.pathname.replace(/^\//, "") === this.pathname.replace(/^\//, "") && location.hostname === this.hostname) {
             var target = $(this.hash);
             target = target.length ? target : $("[name=" + this.hash.slice(1) + "]");
@@ -56,7 +56,7 @@ $( document ).ready(function () {
     });
 
 
-    $('a[href^="#"]').on("click", function(event) {
+    $("a[href^='#']").on("click", function(event) {
 
     var target = $(this.getAttribute("href"));
 
@@ -116,7 +116,7 @@ $(document).ready(function() {
     // La fonction qui ajoute un lien de suppression d'une catégorie
     function addDeleteLink($prototype) {
       // Création du lien
-      var $deleteLink = $('<a href="#" class="btn-form"><i class="fa fa-trash-o" aria-hidden="true"></i></a>');
+      var $deleteLink = $("<a href='#' class='btn-form'><i class='fa fa-trash-o' aria-hidden='true'></i></a>");
 
       // Ajout du lien
       $prototype.append($deleteLink);
@@ -132,7 +132,7 @@ $(document).ready(function() {
 
     function addFileReturn($prototype) {
       // Création du lien
-      var $filereturn = $('<p class="file-return"></p>');
+      var $filereturn = $("<p class='file-return'></p>");
 
       // Ajout du lien
       $prototype.append($filereturn);
@@ -187,7 +187,7 @@ $(document).ready(function() {
     var index = $container.find(":input").length;
 
     function addDeleteLink($prototype) {
-      var $deleteLink = $('<a href="#" class="btn-form"><i class="fa fa-trash-o" aria-hidden="true"></i></a>');
+      var $deleteLink = $("<a href='#' class='btn-form'><i class='fa fa-trash-o' aria-hidden='true'></i></a>");
 
       $prototype.append($deleteLink);
 
@@ -230,27 +230,27 @@ $(document).ready(function() {
 
 //File return
 
-$("#tricksbundle_trick_images").on("change", 'input[type="file"]', function(){
-        var fileName = this.value.replace(/\\/g, '/').replace(/.*\//, '');
+$("#tricksbundle_trick_images").on("change", "input[type='file']", function(){
+        var fileName = this.value.replace(/\\/g, "/").replace(/.*\//, "");
         $(this).siblings(".file-return").text(fileName);
         $(this).parent().parent().parent().children(".file-return").text(fileName);
         $(this).parent().parent().children(".file-return").text(fileName);
     });
 
 
-$("#tricksbundle_trick_thumbnail").on("change", 'input[type="file"]', function(){
-        var fileName = this.value.replace(/\\/g, '/').replace(/.*\//, '');
+$("#tricksbundle_trick_thumbnail").on("change", "input[type='file']", function(){
+        var fileName = this.value.replace(/\\/g, "/").replace(/.*\//, "");
         $(this).siblings(".file-return").text(fileName);
         $(this).parent().parent().parent().children(".file-return").text(fileName);
     });
 
-$(".input-file-container").on("change", 'input[type="file"]', function(){
-        var fileName = this.value.replace(/\\/g, '/').replace(/.*\//, '');
+$(".input-file-container").on("change", "input[type='file']", function(){
+        var fileName = this.value.replace(/\\/g, "/").replace(/.*\//, "");
         $(this).siblings(".file-return").text(fileName);
     });
 
-$("#user_photo").on("change", 'input[type="file"]', function(){
-        var fileName = this.value.replace(/\\/g, '/').replace(/.*\//, '');
+$("#user_photo").on("change", "input[type='file']", function(){
+        var fileName = this.value.replace(/\\/g, "/").replace(/.*\//, "");
         $(this).siblings(".file-return").text(fileName);
         $(this).parent().parent().parent().parent().children(".file-return").text(fileName);
     });
