@@ -3,6 +3,8 @@ Community website about snowboard tricks with Symfony
 
 This project is the 6th done as part of my training (« Développeur d’applications-spécialité PHP/Symfony » OC).
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/681cc0192f9f4db6afe2d04b3e233f1c)](https://www.codacy.com/app/caroleguardiola/P6-OC-SnowTricks?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=caroleguardiola/P6-OC-SnowTricks&amp;utm_campaign=Badge_Grade)
+
 # Instructions for this project :
 The website must be developped with Symfony but without using bundles except for initial data.
 There 2 types of users :
