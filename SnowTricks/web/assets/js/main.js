@@ -34,7 +34,7 @@ jQuery(document).ready(function ($) {
 
 // Animation home and titles
 $( document ).ready(function () {
-    $(".animation").fadeIn(6000);
+    $(".animation").fadeIn(4000);
   });
 
 
