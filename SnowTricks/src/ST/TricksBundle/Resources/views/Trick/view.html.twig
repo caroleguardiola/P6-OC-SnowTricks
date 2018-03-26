@@ -164,7 +164,7 @@
                                     {% for image in trick.images %}
                                         <div class="col-md-2">
                                             <div class="trick-view">
-                                                <img class="img-responsive thumb-home" src="{{asset(image.webPath)}}" alt="{{image.alt}}">                      
+                                                <a href="{{asset(image.webPath)}}" class="image-magnific-popup"><img class="img-responsive thumb-home" src="{{asset(image.webPath)}}" alt="{{image.alt}}"></a>                   
                                             </div>
                                         </div>
                                     {% else %}
@@ -173,7 +173,7 @@
                                     {% for video in trick.videos %}
                                         <div class="col-md-2">
                                             <div class="trick-view">
-                                                <iframe src="{{video.url}}" allowfullscreen ></iframe>                      
+                                                <a href="{{video.url}}" class="video-magnific-popup"><iframe src="{{video.url}}" allowfullscreen ></iframe></a>                  
                                             </div>
                                         </div>
                                     {% else %}
