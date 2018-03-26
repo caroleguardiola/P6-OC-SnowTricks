@@ -61,7 +61,7 @@ class UserTest extends TestCase
     {
         $user = new User;
         $user->setIsActive('1');
-        $this->assertSame('1', $user->getIsActive());
+        $this->assertSame('1', $user->isActive());
     }
 
     public function testGetPhotoAltUser()
