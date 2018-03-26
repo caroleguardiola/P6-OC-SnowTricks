@@ -86,11 +86,11 @@ function extendMagnificIframe(){
                             }
                         }                                   
 
-                        var suffix = "?autoplay=1";
+                        var suffix = "?autoplay=0";
 
                         if( $start > 0 ){
 
-                            suffix = "?start=" + $start + "&autoplay=1";
+                            suffix = "?start=" + $start + "&autoplay=0";
                         }
 
                     return m[1] + suffix;
@@ -104,7 +104,7 @@ function extendMagnificIframe(){
                     if ( !m || !m[5] ) return null;
                     return m[5];
                 },
-                src: "//player.vimeo.com/video/%id%?autoplay=1"
+                src: "//player.vimeo.com/video/%id%?autoplay=0"
             }
         }
     };
