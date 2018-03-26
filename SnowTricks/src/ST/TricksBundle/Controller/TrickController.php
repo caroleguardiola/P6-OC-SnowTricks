@@ -127,6 +127,10 @@ class TrickController extends Controller
         ));
     }
 
+    /**
+    * @Security("has_role('ROLE_USER')")
+    */
+
     public function editAction($id, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -157,6 +161,10 @@ class TrickController extends Controller
         'formEdit' => $formEdit->createView(),
         ));
     }
+
+    /**
+    * @Security("has_role('ROLE_USER')")
+    */
 
     public function editMediasAction($id, Request $request)
     {
@@ -189,6 +197,10 @@ class TrickController extends Controller
         ));
     }
 
+    /**
+    * @Security("has_role('ROLE_USER')")
+    */
+
     public function editThumbbyTrickAction($id, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -219,6 +231,10 @@ class TrickController extends Controller
         'formEditThumb' => $formEditThumb->createView(),
         ));
     }
+
+    /**
+    * @Security("has_role('ROLE_USER')")
+    */
 
     public function deleteAction(Request $request, $id)
     {
