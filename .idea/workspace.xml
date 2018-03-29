@@ -2,61 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="685fbc1c-455f-434e-a27c-92a822c8cad1" name="Default" comment="">
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/P6_OC_SnowTricks.iml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/dictionaries/Carole_Guardiola.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/php.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/SnowTricks/.gitignore" afterPath="$PROJECT_DIR$/SnowTricks/.gitignore" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/app/AppKernel.php" afterPath="$PROJECT_DIR$/SnowTricks/app/AppKernel.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Controller/ImageController.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Controller/ImageController.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Controller/ThumbnailController.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Controller/ThumbnailController.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Controller/TrickController.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Controller/TrickController.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Controller/VideoController.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Controller/VideoController.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/DataFixtures/ORM/LoadFixtures.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/DataFixtures/ORM/LoadFixtures.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/DependencyInjection/Configuration.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/DependencyInjection/Configuration.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/DependencyInjection/TricksExtension.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/DependencyInjection/TricksExtension.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Entity/Category.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Entity/Category.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Entity/Comment.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Entity/Comment.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Entity/Image.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Entity/Image.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Entity/Thumbnail.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Entity/Thumbnail.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Entity/Trick.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Entity/Trick.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Entity/Video.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Entity/Video.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Form/Type/CategoryType.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Form/Type/CategoryType.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Form/Type/CommentType.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Form/Type/CommentType.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Form/Type/ImageType.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Form/Type/ImageType.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Form/Type/ThumbnailType.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Form/Type/ThumbnailType.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Form/Type/TrickEditMediasType.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Form/Type/TrickEditMediasType.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Form/Type/TrickEditThumbType.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Form/Type/TrickEditThumbType.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Form/Type/TrickEditType.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Form/Type/TrickEditType.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Form/Type/TrickType.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Form/Type/TrickType.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Form/Type/VideoType.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Form/Type/VideoType.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Repository/CategoryRepository.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Repository/CategoryRepository.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Repository/CommentRepository.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Repository/CommentRepository.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Repository/ImageRepository.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Repository/ImageRepository.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Repository/ThumbnailRepository.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Repository/ThumbnailRepository.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Repository/TrickRepository.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Repository/TrickRepository.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Repository/VideoRepository.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Repository/VideoRepository.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/TricksBundle.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/TricksBundle.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/UserBundle/Controller/SecurityController.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/UserBundle/Controller/SecurityController.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/UserBundle/DependencyInjection/Configuration.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/UserBundle/DependencyInjection/Configuration.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/UserBundle/DependencyInjection/UserExtension.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/UserBundle/DependencyInjection/UserExtension.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/UserBundle/Entity/Photo.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/UserBundle/Entity/Photo.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/UserBundle/Entity/User.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/UserBundle/Entity/User.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/UserBundle/Form/Type/PhotoType.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/UserBundle/Form/Type/PhotoType.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/UserBundle/Form/Type/UserForgotPasswordType.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/UserBundle/Form/Type/UserForgotPasswordType.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/UserBundle/Form/Type/UserResetPasswordType.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/UserBundle/Form/Type/UserResetPasswordType.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/UserBundle/Form/Type/UserType.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/UserBundle/Form/Type/UserType.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/UserBundle/Repository/PhotoRepository.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/UserBundle/Repository/PhotoRepository.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/UserBundle/Repository/UserRepository.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/UserBundle/Repository/UserRepository.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/src/ST/UserBundle/UserBundle.php" afterPath="$PROJECT_DIR$/SnowTricks/src/ST/UserBundle/UserBundle.php" />
       <change beforePath="$PROJECT_DIR$/SnowTricks/tests/ST/TricksBundle/Controller/ImageControllerTest.php" afterPath="$PROJECT_DIR$/SnowTricks/tests/ST/TricksBundle/Controller/ImageControllerTest.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/tests/ST/TricksBundle/Controller/TrickControllerTest.php" afterPath="$PROJECT_DIR$/SnowTricks/tests/ST/TricksBundle/Controller/TrickControllerTest.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/tests/ST/TricksBundle/Entity/CategoryTest.php" afterPath="$PROJECT_DIR$/SnowTricks/tests/ST/TricksBundle/Entity/CategoryTest.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/tests/ST/TricksBundle/Entity/CommentTest.php" afterPath="$PROJECT_DIR$/SnowTricks/tests/ST/TricksBundle/Entity/CommentTest.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/tests/ST/TricksBundle/Entity/ImageTest.php" afterPath="$PROJECT_DIR$/SnowTricks/tests/ST/TricksBundle/Entity/ImageTest.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/tests/ST/TricksBundle/Entity/ThumbnailTest.php" afterPath="$PROJECT_DIR$/SnowTricks/tests/ST/TricksBundle/Entity/ThumbnailTest.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/tests/ST/TricksBundle/Entity/TrickTest.php" afterPath="$PROJECT_DIR$/SnowTricks/tests/ST/TricksBundle/Entity/TrickTest.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/tests/ST/TricksBundle/Entity/VideoTest.php" afterPath="$PROJECT_DIR$/SnowTricks/tests/ST/TricksBundle/Entity/VideoTest.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/tests/ST/UserBundle/Controller/SecurityControllerTest.php" afterPath="$PROJECT_DIR$/SnowTricks/tests/ST/UserBundle/Controller/SecurityControllerTest.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/tests/ST/UserBundle/Entity/PhotoTest.php" afterPath="$PROJECT_DIR$/SnowTricks/tests/ST/UserBundle/Entity/PhotoTest.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/tests/ST/UserBundle/Entity/UserTest.php" afterPath="$PROJECT_DIR$/SnowTricks/tests/ST/UserBundle/Entity/UserTest.php" />
-      <change beforePath="$PROJECT_DIR$/SnowTricks/var/SymfonyRequirements.php" afterPath="$PROJECT_DIR$/SnowTricks/var/SymfonyRequirements.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -87,11 +41,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/SnowTricks/.gitignore">
+      <file leaf-file-name="ImageControllerTest.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/SnowTricks/tests/ST/TricksBundle/Controller/ImageControllerTest.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="17" column="9" lean-forward="false" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -217,6 +171,36 @@
               <item name="TricksBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Entity" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
+            <path>
+              <item name="P6_OC_SnowTricks" type="b2602c69:ProjectViewProjectNode" />
+              <item name="P6_OC_SnowTricks" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="SnowTricks" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="tests" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="P6_OC_SnowTricks" type="b2602c69:ProjectViewProjectNode" />
+              <item name="P6_OC_SnowTricks" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="SnowTricks" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="tests" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="ST" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="P6_OC_SnowTricks" type="b2602c69:ProjectViewProjectNode" />
+              <item name="P6_OC_SnowTricks" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="SnowTricks" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="tests" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="ST" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="TricksBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="P6_OC_SnowTricks" type="b2602c69:ProjectViewProjectNode" />
+              <item name="P6_OC_SnowTricks" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="SnowTricks" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="tests" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="ST" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="TricksBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Controller" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -263,12 +247,12 @@
       <workItem from="1522323335927" duration="5700000" />
       <workItem from="1522334680478" duration="90000" />
       <workItem from="1522335014808" duration="1066000" />
-      <workItem from="1522336499578" duration="2225000" />
+      <workItem from="1522336499578" duration="2366000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32243000" />
+    <option name="totallyTimeSpent" value="32384000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -470,13 +454,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SnowTricks/tests/ST/TricksBundle/Controller/ImageControllerTest.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1216">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../../../apps/phpmyadmin4.7.4/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -500,6 +477,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/SnowTricks/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="17" column="9" lean-forward="false" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/SnowTricks/src/ST/TricksBundle/Entity/Category.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="814">
@@ -508,10 +493,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SnowTricks/.gitignore">
+    <entry file="file://$PROJECT_DIR$/SnowTricks/tests/ST/TricksBundle/Controller/ImageControllerTest.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="17" column="9" lean-forward="false" selection-start-line="17" selection-start-column="9" selection-end-line="17" selection-end-column="9" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
