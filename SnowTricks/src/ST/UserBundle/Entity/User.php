@@ -5,7 +5,6 @@ namespace ST\UserBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use ST\TricksBundle\Entity\Comment;
-use ST\UserBundle\Entity\Photo;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\AdvancedUserInterface;
@@ -110,7 +109,6 @@ class User implements AdvancedUserInterface, \Serializable
         $this->comments = new ArrayCollection();
     }
 
-     
     /**
      * Get id
      *
@@ -119,13 +117,6 @@ class User implements AdvancedUserInterface, \Serializable
     public function getId()
     {
         return $this->id;
-    }
-
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
     }
 
     /**
