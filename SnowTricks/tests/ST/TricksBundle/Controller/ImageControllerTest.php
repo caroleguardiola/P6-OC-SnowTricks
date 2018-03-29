@@ -11,7 +11,6 @@ use Symfony\Component\BrowserKit\Cookie;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\HttpFoundation\Response;
 
-
 class ImageControllerTest extends WebTestCase
 {
     private $client = null;
