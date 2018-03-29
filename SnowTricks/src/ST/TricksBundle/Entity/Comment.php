@@ -3,7 +3,6 @@
 namespace ST\TricksBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use ST\TricksBundle\Entity\Trick;
 use ST\UserBundle\Entity\User;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -56,7 +55,6 @@ class Comment
     {
         $this->dateCreation = new \Datetime();
     }
-
 
     /**
      * Get id

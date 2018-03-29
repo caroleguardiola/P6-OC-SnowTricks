@@ -3,7 +3,6 @@
 namespace ST\TricksBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use ST\TricksBundle\Entity\Trick;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**

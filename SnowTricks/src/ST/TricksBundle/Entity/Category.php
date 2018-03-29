@@ -4,7 +4,6 @@ namespace ST\TricksBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use ST\TricksBundle\Entity\Trick;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -37,7 +36,14 @@ class Category
      */
     private $tricks;
 
- 
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->tricks = new ArrayCollection();
+    }
+
     /**
      * Get id
      *
@@ -70,13 +76,6 @@ class Category
     public function getName()
     {
         return $this->name;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->tricks = new ArrayCollection();
     }
 
     /**

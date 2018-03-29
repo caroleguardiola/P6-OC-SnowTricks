@@ -4,11 +4,6 @@ namespace ST\TricksBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
-use ST\TricksBundle\Entity\Thumbnail;
-use ST\TricksBundle\Entity\Image;
-use ST\TricksBundle\Entity\Video;
-use ST\TricksBundle\Entity\Category;
-use ST\TricksBundle\Entity\Comment;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
@@ -90,7 +85,18 @@ class Trick
      * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */
     private $updatedAt;
-        
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->dateCreation = new \Datetime();
+        $this->images = new ArrayCollection();
+        $this->videos = new ArrayCollection();
+        $this->comments = new ArrayCollection();
+    }
+
     /**
      * Get id
      *
@@ -99,13 +105,6 @@ class Trick
     public function getId()
     {
         return $this->id;
-    }
-
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
     }
 
     /**
@@ -179,16 +178,6 @@ class Trick
     {
         return $this->category;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->dateCreation = new \Datetime();
-        $this->images = new ArrayCollection();
-        $this->videos = new ArrayCollection();
-        $this->comments = new ArrayCollection();
-    }
 
     /**
      * Set thumbnail
@@ -214,7 +203,6 @@ class Trick
     {
         $this->thumbnail->removeElement($thumbnail);
     }
-
 
     /**
      * Get thumbnail

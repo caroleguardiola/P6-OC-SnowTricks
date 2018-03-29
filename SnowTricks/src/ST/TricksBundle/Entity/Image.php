@@ -4,7 +4,6 @@ namespace ST\TricksBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use ST\TricksBundle\Entity\Trick;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -54,7 +53,6 @@ class Image
      */
     private $trick;
 
-
     /**
      * Get id
      *
@@ -63,13 +61,6 @@ class Image
     public function getId()
     {
         return $this->id;
-    }
-
-    public function setId($id)
-    {
-        $this->id = $id;
-
-        return $this;
     }
 
     /**

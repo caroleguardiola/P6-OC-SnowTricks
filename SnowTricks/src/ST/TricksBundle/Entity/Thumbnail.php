@@ -4,7 +4,6 @@ namespace ST\TricksBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
-use ST\TricksBundle\Entity\Trick;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -53,7 +52,6 @@ class Thumbnail
      * @ORM\JoinColumn(nullable=false)
      */
     private $trick;
-
 
     /**
      * Get id
