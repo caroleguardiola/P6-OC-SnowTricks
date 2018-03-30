@@ -6,10 +6,8 @@ use ST\UserBundle\Form\Type\UserType;
 use ST\UserBundle\Form\Type\UserForgotPasswordType;
 use ST\UserBundle\Form\Type\UserResetPasswordType;
 use ST\UserBundle\Entity\User;
-use ST\UserBundle\Entity\Photo;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class SecurityController extends Controller
 {

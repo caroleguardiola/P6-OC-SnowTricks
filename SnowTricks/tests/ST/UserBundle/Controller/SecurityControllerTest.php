@@ -3,12 +3,6 @@
 namespace Tests\ST\TricksBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use ST\TricksBundle\Entity\Category;
-use ST\TricksBundle\Entity\Trick;
-use ST\TricksBundle\Entity\Comment;
-use ST\UserBundle\Entity\User;
-use ST\UserBundle\Repository\UserRepository;
-use Doctrine\ORM\EntityManager;
 
 class SecurityControllerTest extends WebTestCase
 {

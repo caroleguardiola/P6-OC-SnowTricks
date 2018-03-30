@@ -5,7 +5,6 @@ namespace Tests\ST\TricksBundle\Entity;
 use PHPUnit\Framework\TestCase;
 use ST\TricksBundle\Entity\Image;
 use ST\TricksBundle\Entity\Trick;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class ImageTest extends TestCase
 {

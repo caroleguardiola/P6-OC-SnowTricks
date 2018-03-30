@@ -3,19 +3,13 @@
 namespace ST\TricksBundle\Controller;
 
 use ST\TricksBundle\Entity\Trick;
-use ST\TricksBundle\Entity\Thumbnail;
-use ST\TricksBundle\Entity\Image;
-use ST\TricksBundle\Entity\Video;
-use ST\TricksBundle\Entity\Category;
 use ST\TricksBundle\Entity\Comment;
-use ST\UserBundle\Entity\User;
 use ST\TricksBundle\Form\Type\TrickType;
 use ST\TricksBundle\Form\Type\TrickEditType;
 use ST\TricksBundle\Form\Type\TrickEditMediasType;
 use ST\TricksBundle\Form\Type\TrickEditThumbType;
 use ST\TricksBundle\Form\Type\CommentType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
@@ -65,7 +59,7 @@ class TrickController extends Controller
         if (null === $trick) {
             throw new NotFoundHttpException("Le trick d'id ".$id." n'existe pas.");
         }
-    
+
         $comment = new Comment();
 
         $comment->setDateCreation(new \Datetime());
@@ -87,7 +81,7 @@ class TrickController extends Controller
 
             return $this->redirectToRoute('tricks_view', array('id' => $trick->getId()));
         }
-        
+
         return $this->render('TricksBundle:Trick:view.html.twig', array(
           'trick' => $trick,
           'listComments' => $listComments,
@@ -146,7 +140,7 @@ class TrickController extends Controller
 
         if ($request->isMethod('POST')) {
             if ($formEdit->handleRequest($request)->isValid()) {
-            
+
                 // Inutile de persister ici, Doctrine connait déjà notre trick
                 $em->flush();
 
@@ -155,7 +149,7 @@ class TrickController extends Controller
             }
             $this->addFlash('error', 'Le trick n\'a pas pu être modifié.');
         }
-      
+
         return $this->render('TricksBundle:Trick:edit.html.twig', array(
         'trick' => $trick,
         'formEdit' => $formEdit->createView(),
@@ -181,7 +175,7 @@ class TrickController extends Controller
 
         if ($request->isMethod('POST')) {
             if ($formEditMedia->handleRequest($request)->isValid()) {
-                        
+
                 // Inutile de persister ici, Doctrine connait déjà notre trick
                 $em->flush();
 
@@ -190,7 +184,7 @@ class TrickController extends Controller
             }
             $this->addFlash('error', 'Les Médias n\'ont pas pu être modifiés.');
         }
-      
+
         return $this->render('TricksBundle:Trick:edit_medias_mobile.html.twig', array(
         'trick' => $trick,
         'formEditMedia' => $formEditMedia->createView(),
@@ -216,7 +210,7 @@ class TrickController extends Controller
 
         if ($request->isMethod('POST')) {
             if ($formEditThumb->handleRequest($request)->isValid()) {
-            
+
                 // Inutile de persister ici, Doctrine connait déjà notre trick
                 $em->flush();
 
@@ -225,7 +219,7 @@ class TrickController extends Controller
             }
             $this->addFlash('error', 'L\'image à la une n\'a pas pu être modifiée.');
         }
-      
+
         return $this->render('TricksBundle:Trick:edit_thumb_trick.html.twig', array(
         'trick' => $trick,
         'formEditThumb' => $formEditThumb->createView(),
@@ -246,7 +240,7 @@ class TrickController extends Controller
         }
 
         $formDeleteTrick = $this->get('form.factory')->create();
-        
+
 
         if ($request->isMethod('POST')) {
             if ($formDeleteTrick->handleRequest($request)->isValid()) {

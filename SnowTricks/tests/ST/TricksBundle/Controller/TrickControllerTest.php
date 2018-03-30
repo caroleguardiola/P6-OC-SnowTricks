@@ -11,7 +11,6 @@ use ST\TricksBundle\Repository\CommentRepository;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\BrowserKit\Cookie;
-use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\HttpFoundation\Response;
 
 class TrickControllerTest extends WebTestCase

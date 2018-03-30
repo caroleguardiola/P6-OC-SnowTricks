@@ -2,10 +2,7 @@
 
 namespace ST\TricksBundle\Controller;
 
-use ST\TricksBundle\Entity\Trick;
-use ST\TricksBundle\Entity\Video;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;

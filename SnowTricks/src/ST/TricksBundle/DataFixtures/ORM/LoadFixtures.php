@@ -12,7 +12,6 @@ use ST\TricksBundle\Entity\Video;
 use ST\TricksBundle\Entity\Comment;
 use ST\UserBundle\Entity\User;
 use ST\UserBundle\Entity\Photo;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 

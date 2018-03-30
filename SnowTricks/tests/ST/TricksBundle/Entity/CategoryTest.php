@@ -4,7 +4,6 @@ namespace Tests\ST\TricksBundle\Entity;
 
 use PHPUnit\Framework\TestCase;
 use ST\TricksBundle\Entity\Category;
-use ST\TricksBundle\Entity\Trick;
 
 class CategoryTest extends TestCase
 {
