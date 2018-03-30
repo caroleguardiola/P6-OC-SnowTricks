@@ -16,6 +16,9 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 
 class TrickController extends Controller
 {
+    /**
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function indexAction()
     {
         $listTricks = $this
@@ -30,6 +33,12 @@ class TrickController extends Controller
       ));
     }
 
+    /**
+     * @param $id
+     * @param Request $request
+     * @param $page
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function viewAction($id, Request $request, $page)
     {
         if ($page < 1) {
@@ -92,9 +101,10 @@ class TrickController extends Controller
     }
 
     /**
-    * @Security("has_role('ROLE_USER')")
-    */
-
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @Security("has_role('ROLE_USER')")
+     */
     public function addAction(Request $request)
     {
         $trick = new Trick();
@@ -122,9 +132,11 @@ class TrickController extends Controller
     }
 
     /**
-    * @Security("has_role('ROLE_USER')")
-    */
-
+     * @param $id
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @Security("has_role('ROLE_USER')")
+     */
     public function editAction($id, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -157,9 +169,11 @@ class TrickController extends Controller
     }
 
     /**
-    * @Security("has_role('ROLE_USER')")
-    */
-
+     * @param $id
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @Security("has_role('ROLE_USER')")
+     */
     public function editMediasAction($id, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -192,9 +206,11 @@ class TrickController extends Controller
     }
 
     /**
-    * @Security("has_role('ROLE_USER')")
-    */
-
+     * @param $id
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @Security("has_role('ROLE_USER')")
+     */
     public function editThumbbyTrickAction($id, Request $request)
     {
         $em = $this->getDoctrine()->getManager();
@@ -227,9 +243,11 @@ class TrickController extends Controller
     }
 
     /**
-    * @Security("has_role('ROLE_USER')")
-    */
-
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @Security("has_role('ROLE_USER')")
+     */
     public function deleteAction(Request $request, $id)
     {
         $em = $this->getDoctrine()->getManager();

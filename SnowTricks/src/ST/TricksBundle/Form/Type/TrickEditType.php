@@ -12,7 +12,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class TrickEditType extends AbstractType
 {
     /**
-     * {@inheritdoc}
+     * @param FormBuilderInterface $builder
+     * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -40,8 +41,10 @@ class TrickEditType extends AbstractType
                 'label' => 'Catégorie'
             ))
             ;
-    }/**
-     * {@inheritdoc}
+    }
+
+    /**
+     * @param OptionsResolver $resolver
      */
     public function configureOptions(OptionsResolver $resolver)
     {
@@ -51,7 +54,7 @@ class TrickEditType extends AbstractType
     }
 
     /**
-     * {@inheritdoc}
+     * @return null|string
      */
     public function getBlockPrefix()
     {

@@ -10,14 +10,17 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class PhotoType extends AbstractType
 {
     /**
-     * {@inheritdoc}
+     * @param FormBuilderInterface $builder
+     * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('file', FileType::class, array('label' => 'Choisir une photo'));
-    }/**
-     * {@inheritdoc}
+    }
+
+    /**
+     * @param OptionsResolver $resolver
      */
     public function configureOptions(OptionsResolver $resolver)
     {
@@ -27,7 +30,7 @@ class PhotoType extends AbstractType
     }
 
     /**
-     * {@inheritdoc}
+     * @return null|string
      */
     public function getBlockPrefix()
     {

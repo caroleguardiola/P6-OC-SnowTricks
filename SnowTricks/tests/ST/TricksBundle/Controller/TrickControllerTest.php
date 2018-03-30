@@ -16,12 +16,18 @@ use Symfony\Component\HttpFoundation\Response;
 class TrickControllerTest extends WebTestCase
 {
     private $client = null;
-  
+
+    /**
+     *
+     */
     public function setUp()
     {
         $this->client = static::createClient();
     }
 
+    /**
+     *
+     */
     public function testHomePageIsUp()
     {
         $crawler = $this->client->request('GET', '/');
@@ -30,6 +36,10 @@ class TrickControllerTest extends WebTestCase
         $this->assertSame(1, $crawler->filter('html:contains("Bienvenue sur SnowTricks !")')->count());
     }
 
+    /**
+     * @param $repositories
+     * @throws \ReflectionException
+     */
     private function mockRepositories($repositories)
     {
         $EntityManager = $this->createMock(EntityManager::class);
@@ -42,6 +52,27 @@ class TrickControllerTest extends WebTestCase
         $this->client->getcontainer()->set('doctrine.orm.default_entity_manager', $EntityManager);
     }
 
+    /**
+     *
+     */
+    private function logIn()
+    {
+        $session = $this->client->getContainer()->get('session');
+
+        // the firewall context defaults to the firewall name
+        $firewallContext = 'main';
+
+        $token = new UsernamePasswordToken('admin', null, $firewallContext, array('ROLE_USER'));
+        $session->set('_security_'.$firewallContext, serialize($token));
+        $session->save();
+
+        $cookie = new Cookie($session->getName(), $session->getId());
+        $this->client->getCookieJar()->set($cookie);
+    }
+
+    /**
+     * @throws \ReflectionException
+     */
     public function testTrickShow()
     {
         $comment = new Comment;
@@ -77,6 +108,9 @@ class TrickControllerTest extends WebTestCase
         $this->assertSame(1, $crawler->filter('html:contains("Trick créé le :")')->count());
     }
 
+    /**
+     * @throws \ReflectionException
+     */
     public function testTrickFindForDelete()
     {
         $trick = new Trick;
@@ -101,20 +135,5 @@ class TrickControllerTest extends WebTestCase
 
         $this->assertSame(Response::HTTP_OK, $this->client->getResponse()->getStatusCode());
         $this->assertSame(1, $crawler->filter('html:contains("Etes-vous certain de vouloir supprimer le trick "Blabla"")')->count());
-    }
-
-    private function logIn()
-    {
-        $session = $this->client->getContainer()->get('session');
-
-        // the firewall context defaults to the firewall name
-        $firewallContext = 'main';
-
-        $token = new UsernamePasswordToken('admin', null, $firewallContext, array('ROLE_USER'));
-        $session->set('_security_'.$firewallContext, serialize($token));
-        $session->save();
-
-        $cookie = new Cookie($session->getName(), $session->getId());
-        $this->client->getCookieJar()->set($cookie);
     }
 }

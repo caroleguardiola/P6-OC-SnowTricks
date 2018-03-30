@@ -11,6 +11,10 @@ use Symfony\Component\HttpFoundation\Request;
 
 class SecurityController extends Controller
 {
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function loginAction(Request $request)
     {
         // Si le visiteur est déjà identifié, on le redirige vers l'accueil
@@ -29,6 +33,10 @@ class SecurityController extends Controller
         ));
     }
 
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function registerAction(Request $request)
     {
         $passwordEncoder = $this->get('security.password_encoder');
@@ -81,6 +89,10 @@ class SecurityController extends Controller
         );
     }
 
+    /**
+     * @param $token
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     public function checkAction($token)
     {
         $em = $this->getDoctrine()->getManager();
@@ -97,6 +109,10 @@ class SecurityController extends Controller
         return $this->redirectToRoute('tricks_home');
     }
 
+    /**
+     * @param Request $request
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function forgotPasswordAction(Request $request)
     {
         $formForgotPassword = $this->get('form.factory')->create(UserForgotPasswordType::class);
@@ -141,6 +157,11 @@ class SecurityController extends Controller
         );
     }
 
+    /**
+     * @param Request $request
+     * @param $token
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     */
     public function resetPasswordAction(Request $request, $token)
     {
         $passwordEncoder = $this->get('security.password_encoder');

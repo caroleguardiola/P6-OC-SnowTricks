@@ -7,6 +7,9 @@ use ST\TricksBundle\Entity\Category;
 
 class CategoryTest extends TestCase
 {
+    /**
+     *
+     */
     public function testSetNameCategory()
     {
         $category = new Category;

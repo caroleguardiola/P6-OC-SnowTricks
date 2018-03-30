@@ -7,6 +7,9 @@ use ST\UserBundle\Entity\Photo;
 
 class PhotoTest extends TestCase
 {
+    /**
+     *
+     */
     public function testSetExtensionPhoto()
     {
         $photo = new Photo;
@@ -14,6 +17,9 @@ class PhotoTest extends TestCase
         $this->assertSame('png', $photo->getExtension());
     }
 
+    /**
+     *
+     */
     public function testSetAltPhoto()
     {
         $photo = new Photo;

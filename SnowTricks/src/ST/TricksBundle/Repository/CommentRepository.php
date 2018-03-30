@@ -13,6 +13,12 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
  */
 class CommentRepository extends EntityRepository
 {
+    /**
+     * @param $trick_id
+     * @param $page
+     * @param $nbPerPage
+     * @return Paginator
+     */
     public function findByTrick($trick_id, $page, $nbPerPage)
     {
         $query = $this->createQueryBuilder('c')

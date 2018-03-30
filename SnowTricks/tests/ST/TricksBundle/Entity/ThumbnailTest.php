@@ -8,6 +8,9 @@ use ST\TricksBundle\Entity\Trick;
 
 class ThumbnailTest extends TestCase
 {
+    /**
+     *
+     */
     public function testSetExtensionThumbnail()
     {
         $thumbnail = new Thumbnail;
@@ -15,6 +18,9 @@ class ThumbnailTest extends TestCase
         $this->assertSame('jpg', $thumbnail->getExtension());
     }
 
+    /**
+     *
+     */
     public function testSetAltThumbnail()
     {
         $thumbnail = new Thumbnail;
@@ -22,6 +28,9 @@ class ThumbnailTest extends TestCase
         $this->assertSame('Indy', $thumbnail->getAlt());
     }
 
+    /**
+     *
+     */
     public function testGetTrickNameThumbnail()
     {
         $thumbnail = new Thumbnail;

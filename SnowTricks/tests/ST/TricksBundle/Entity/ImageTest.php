@@ -8,6 +8,9 @@ use ST\TricksBundle\Entity\Trick;
 
 class ImageTest extends TestCase
 {
+    /**
+     *
+     */
     public function testSetExtensionImage()
     {
         $image = new Image;
@@ -15,6 +18,9 @@ class ImageTest extends TestCase
         $this->assertSame('jpg', $image->getExtension());
     }
 
+    /**
+     *
+     */
     public function testSetAltImage()
     {
         $image = new Image;
@@ -22,6 +28,9 @@ class ImageTest extends TestCase
         $this->assertSame('Indy', $image->getAlt());
     }
 
+    /**
+     *
+     */
     public function testGetTrickNameImage()
     {
         $image = new Image;

@@ -13,12 +13,19 @@ use Symfony\Component\HttpFoundation\Response;
 class ImageControllerTest extends WebTestCase
 {
     private $client = null;
-  
+
+    /**
+     *
+     */
     public function setUp()
     {
         $this->client = static::createClient();
     }
 
+    /**
+     * @param $repositories
+     * @throws \ReflectionException
+     */
     private function mockRepositories($repositories)
     {
         $EntityManager = $this->createMock(EntityManager::class);
@@ -31,6 +38,9 @@ class ImageControllerTest extends WebTestCase
         $this->client->getcontainer()->set('doctrine.orm.default_entity_manager', $EntityManager);
     }
 
+    /**
+     * @throws \ReflectionException
+     */
     public function testImagesFindForDelete()
     {
         $image = new Image;
@@ -55,6 +65,9 @@ class ImageControllerTest extends WebTestCase
         $this->assertSame(1, $crawler->filter('html:contains("Etes-vous certain de vouloir supprimer cette image")')->count());
     }
 
+    /**
+     *
+     */
     private function logIn()
     {
         $session = $this->client->getContainer()->get('session');

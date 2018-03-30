@@ -12,6 +12,9 @@ use Doctrine\ORM\EntityRepository;
  */
 class TrickRepository extends EntityRepository
 {
+    /**
+     * @return mixed
+     */
     public function getTricks()
     {
         $query = $this->createQueryBuilder('t')
@@ -26,6 +29,11 @@ class TrickRepository extends EntityRepository
         ;
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
     public function getTrickDetails($id)
     {
         $query = $this->createQueryBuilder('t')

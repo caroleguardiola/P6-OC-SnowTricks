@@ -8,6 +8,9 @@ use ST\TricksBundle\Entity\Trick;
 
 class VideoTest extends TestCase
 {
+    /**
+     *
+     */
     public function testSetUrlVideo()
     {
         $video = new Video;
@@ -15,6 +18,9 @@ class VideoTest extends TestCase
         $this->assertSame('https://www.youtube.com/embed/iKkhKekZNQ8', $video->getUrl());
     }
 
+    /**
+     *
+     */
     public function testGetTrickNameVideo()
     {
         $video = new Video;

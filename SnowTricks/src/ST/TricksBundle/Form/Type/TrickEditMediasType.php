@@ -11,7 +11,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class TrickEditMediasType extends AbstractType
 {
     /**
-     * {@inheritdoc}
+     * @param FormBuilderInterface $builder
+     * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -30,8 +31,10 @@ class TrickEditMediasType extends AbstractType
                 'required' => false,
                 'by_reference' => false
             ));
-    }/**
-     * {@inheritdoc}
+    }
+
+    /**
+     * @param OptionsResolver $resolver
      */
     public function configureOptions(OptionsResolver $resolver)
     {
@@ -41,7 +44,7 @@ class TrickEditMediasType extends AbstractType
     }
 
     /**
-     * {@inheritdoc}
+     * @return null|string
      */
     public function getBlockPrefix()
     {

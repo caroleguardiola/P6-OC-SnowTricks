@@ -9,6 +9,9 @@ use ST\UserBundle\Entity\User;
 
 class CommentTest extends TestCase
 {
+    /**
+     *
+     */
     public function testSetDateCreationComment()
     {
         $comment = new Comment;
@@ -16,6 +19,9 @@ class CommentTest extends TestCase
         $this->assertSame('2018-02-14 17:32:00', $comment->getDateCreation());
     }
 
+    /**
+     *
+     */
     public function testSetContentComment()
     {
         $comment = new Comment;
@@ -23,6 +29,9 @@ class CommentTest extends TestCase
         $this->assertSame('Génial !!', $comment->getContent());
     }
 
+    /**
+     *
+     */
     public function testGetTrickNameComment()
     {
         $comment = new Comment;
@@ -34,6 +43,9 @@ class CommentTest extends TestCase
         $this->assertEquals('Japan', $comment->getTrick()->getName());
     }
 
+    /**
+     *
+     */
     public function testGetUserUsernameComment()
     {
         $comment = new Comment;

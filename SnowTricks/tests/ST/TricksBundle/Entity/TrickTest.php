@@ -9,6 +9,9 @@ use ST\TricksBundle\Entity\Thumbnail;
 
 class TrickTest extends TestCase
 {
+    /**
+     *
+     */
     public function testSetNameTrick()
     {
         $trick = new Trick;
@@ -16,6 +19,9 @@ class TrickTest extends TestCase
         $this->assertSame('Indy', $trick->getName());
     }
 
+    /**
+     *
+     */
     public function testSetDescriptionTrick()
     {
         $trick = new Trick;
@@ -23,6 +29,9 @@ class TrickTest extends TestCase
         $this->assertSame('saisie de la carre frontside de la planche, entre les deux pieds, avec la main arrière', $trick->getDescription());
     }
 
+    /**
+     *
+     */
     public function testSetDateCreationTrick()
     {
         $trick = new Trick;
@@ -30,6 +39,9 @@ class TrickTest extends TestCase
         $this->assertSame('2018-02-14 17:32:00', $trick->getDateCreation());
     }
 
+    /**
+     *
+     */
     public function testSetUpdatedAtTrick()
     {
         $trick = new Trick;
@@ -37,6 +49,9 @@ class TrickTest extends TestCase
         $this->assertSame('2018-02-14 17:32:00', $trick->getUpdatedAt());
     }
 
+    /**
+     *
+     */
     public function testSetCategoryTrick()
     {
         $trick = new Trick;
@@ -47,6 +62,9 @@ class TrickTest extends TestCase
         $this->assertEquals($category, $trick->getCategory());
     }
 
+    /**
+     *
+     */
     public function testGetCategoryNameTrick()
     {
         $trick = new Trick;
@@ -58,6 +76,9 @@ class TrickTest extends TestCase
         $this->assertEquals('Grabs', $trick->getCategory()->getName());
     }
 
+    /**
+     *
+     */
     public function testGetThumbnailAltTrick()
     {
         $trick = new Trick;

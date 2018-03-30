@@ -8,6 +8,9 @@ use ST\UserBundle\Entity\Photo;
 
 class UserTest extends TestCase
 {
+    /**
+     *
+     */
     public function testSetFirstNameUser()
     {
         $user = new User;
@@ -15,6 +18,9 @@ class UserTest extends TestCase
         $this->assertSame('Lisy', $user->getFirstName());
     }
 
+    /**
+     *
+     */
     public function testSetLastNameUser()
     {
         $user = new User;
@@ -22,6 +28,9 @@ class UserTest extends TestCase
         $this->assertSame('Lake', $user->getLastName());
     }
 
+    /**
+     *
+     */
     public function testSetUsernameUser()
     {
         $user = new User;
@@ -29,6 +38,9 @@ class UserTest extends TestCase
         $this->assertSame('Lisy', $user->getUsername());
     }
 
+    /**
+     *
+     */
     public function testSetEmailUser()
     {
         $user = new User;
@@ -36,6 +48,9 @@ class UserTest extends TestCase
         $this->assertSame('lisy.a@gmail.com', $user->getEmail());
     }
 
+    /**
+     *
+     */
     public function testSetPlainPasswordUser()
     {
         $user = new User;
@@ -43,6 +58,9 @@ class UserTest extends TestCase
         $this->assertSame('lisy', $user->getPlainPassword());
     }
 
+    /**
+     *
+     */
     public function testSetPasswordUser()
     {
         $user = new User;
@@ -50,6 +68,9 @@ class UserTest extends TestCase
         $this->assertSame('lisy', $user->getPassword());
     }
 
+    /**
+     *
+     */
     public function testSetConfirmationTokenUser()
     {
         $user = new User;
@@ -57,6 +78,9 @@ class UserTest extends TestCase
         $this->assertSame('$2y$13$bclp1q8Pzj54xVBvmPhz7ecimj70GlrxklbAVA550Va1cjyTdwd.q', $user->getConfirmationToken());
     }
 
+    /**
+     *
+     */
     public function testSetIsActiveUser()
     {
         $user = new User;
@@ -64,6 +88,9 @@ class UserTest extends TestCase
         $this->assertSame('1', $user->isActive());
     }
 
+    /**
+     *
+     */
     public function testGetPhotoAltUser()
     {
         $user = new User;

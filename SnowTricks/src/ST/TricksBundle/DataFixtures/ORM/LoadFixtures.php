@@ -22,12 +22,19 @@ class LoadFixtures implements FixtureInterface, ContainerAwareInterface
      */
     private $container;
 
+    /**
+     * @param ContainerInterface|null $container
+     */
     public function setContainer(ContainerInterface $container = null)
     {
         $this->container = $container;
     }
 
     // Dans l'argument de la méthode load, l'objet $manager est l'EntityManager
+
+    /**
+     * @param ObjectManager $manager
+     */
     public function load(ObjectManager $manager)
     {
         //Catégories
