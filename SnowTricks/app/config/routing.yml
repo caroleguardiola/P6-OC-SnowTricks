@@ -1,11 +1,11 @@
 tricks:
-    resource: "@TricksBundle/Resources/config/routing.yml"
+    resource: "@AppBundle/Resources/config/routing.yml"
     prefix:   /
 
 login:
     path: /login
     defaults:
-        _controller: UserBundle:Security:login
+        _controller: AppBundle:Security:login
 
 login_check:
     path: /login_check
@@ -16,19 +16,19 @@ logout:
 register:
     path: /register
     defaults:
-        _controller: UserBundle:Security:register
+        _controller: AppBundle:Security:register
 
 register_confirmation:
     path: /register_confirmation/{token}
     defaults:
-        _controller: UserBundle:Security:check
+        _controller: AppBundle:Security:check
 
 forgot_password:
     path: /forgot_password/reset
     defaults:
-        _controller: UserBundle:Security:forgotPassword
+        _controller: AppBundle:Security:forgotPassword
 
 reset_password:
     path: /reset_password/{token}
     defaults:
-        _controller: UserBundle:Security:resetPassword
+        _controller: AppBundle:Security:resetPassword

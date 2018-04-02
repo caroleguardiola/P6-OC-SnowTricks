@@ -190,7 +190,7 @@ $( document ).ready(function () {
 
 $(document).ready(function() {
     // On récupère la balise <div> en question qui contient l'attribut « data-prototype » qui nous intéresse.
-    var $container = $('div#tricksbundle_trick_images');
+    var $container = $('div#appbundle_trick_images');
 
     // On définit un compteur unique pour nommer les champs qu'on va ajouter dynamiquement
     var index = $container.find(':input').length;
@@ -264,7 +264,7 @@ $(document).ready(function() {
 //Videos
 
 $(document).ready(function() {
-    var $container = $('div#tricksbundle_trick_videos');
+    var $container = $('div#appbundle_trick_videos');
 
     var index = $container.find(':input').length;
 
@@ -312,7 +312,7 @@ $(document).ready(function() {
 
 //File return
 
-$('#tricksbundle_trick_images').on('change', 'input[type="file"]', function(){
+$('#appbundle_trick_images').on('change', 'input[type="file"]', function(){
         var fileName = this.value.replace(/\\/g, '/').replace(/.*\//, '');
         $(this).siblings('.file-return').text(fileName);
         $(this).parent().parent().parent().children('.file-return').text(fileName);
@@ -320,7 +320,7 @@ $('#tricksbundle_trick_images').on('change', 'input[type="file"]', function(){
     });
 
 
-$('#tricksbundle_trick_thumbnail').on('change', 'input[type="file"]', function(){
+$('#appbundle_trick_thumbnail').on('change', 'input[type="file"]', function(){
         var fileName = this.value.replace(/\\/g, '/').replace(/.*\//, '');
         $(this).siblings('.file-return').text(fileName);
         $(this).parent().parent().parent().children('.file-return').text(fileName);

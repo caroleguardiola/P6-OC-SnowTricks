@@ -1,0 +1,42 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Ajout Trick {% endblock %}
+
+{% block sections_body %}
+
+<div class="home_tricks">
+    <div class="container content">
+        <div class="row page-wrapper">
+
+            <section class="trick_header">
+                <div class="trick_image">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="home_text">
+                                <h1 class="text-blue animation">Trick</h1>
+                                <p class="text-blue animation">Formulaire de création</p>
+                                {% for label, messages in app.flashes %}
+                                    {% for message in messages %}
+                                        <div class="flash-{{ label }} animation">
+                                            {{ message }}
+                                        </div>
+                                    {% endfor %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="button-return">
+                <a href="{{ path('tricks_home') }}#list_tricks" class="btn btn-primary btn-lg"><span class="meta-nav">&larr;</span>Retour à la liste des tricks</a>
+            </div>
+
+            {{ include("AppBundle:Trick:form.html.twig") }}
+
+        </div>
+    </div>
+</div> <!--End off Home Sections-->
+
+
+{% endblock %}

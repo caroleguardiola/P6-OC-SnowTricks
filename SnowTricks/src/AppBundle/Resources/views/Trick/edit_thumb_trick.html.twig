@@ -1,0 +1,31 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}{{ parent() }} - Modifier l'image à la une du Trick {{trick.name}}{% endblock %}
+
+{% block sections_body %}
+
+<div class="home_tricks">
+    <div class="container content">
+        <div class="row page-wrapper">
+
+            <section class="trick_header">
+                <div class="home_text">
+                    <div class="text">
+                        <h1 class="text-blue animation">{{trick.name}}</h1>
+                        <p class="text-blue animation">Formulaire de modification de l'image à la une</p>
+                    </div>
+                </div>           
+           </section>
+
+            <div class="button-return">
+                <a href="{{ path('tricks_home') }}#list_tricks" class="btn btn-primary btn-lg"><span class="meta-nav">&larr;</span>Retour à la liste des tricks</a>
+                <a href="{{ path('tricks_view', {'id': trick.id}) }}" class="btn btn-primary btn-lg">Retour au trick {{trick.name}} <span class="meta-nav">&rarr;</span></a>
+            </div>
+
+            {{ include("AppBundle:Trick:form_edit_thumb.html.twig") }}
+
+        </div>
+    </div>
+</div> <!--End off Home Sections-->
+
+{% endblock %}
