@@ -85,9 +85,13 @@ class TrickControllerTest extends WebTestCase
             ->method('findByTrick')
             ->willReturn([]);
 
+        $reflectionClass = new \ReflectionClass(Trick::class);
+
         $trick = new Trick;
         $trick->setCategory(new Category);
-        $trick->setId(7777);
+        $reflectionProperty = $reflectionClass->getProperty('id');
+        $reflectionProperty->setAccessible(true);
+        $reflectionProperty->setValue($trick, 7777);
 
         $trickRepository = $this->createMock(TrickRepository:: class);
 
@@ -113,9 +117,13 @@ class TrickControllerTest extends WebTestCase
      */
     public function testTrickFindForDelete()
     {
+        $reflectionClass = new \ReflectionClass(Trick::class);
+
         $trick = new Trick;
         $trick->setCategory(new Category);
-        $trick->setId(7777);
+        $reflectionProperty = $reflectionClass->getProperty('id');
+        $reflectionProperty->setAccessible(true);
+        $reflectionProperty->setValue($trick, 7777);
         $trick->setName('Blabla');
 
         $trickRepository = $this->createMock(TrickRepository:: class);

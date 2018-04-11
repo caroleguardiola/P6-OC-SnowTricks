@@ -43,10 +43,13 @@ class ImageControllerTest extends WebTestCase
      */
     public function testImagesFindForDelete()
     {
+        $reflectionClass = new \ReflectionClass(Image::class);
         $image = new Image;
-        $image->setId(7777);
+        $reflectionProperty = $reflectionClass->getProperty('id');
+        $reflectionProperty->setAccessible(true);
+        $reflectionProperty->setValue($image, 7777);
 
-        $imageRepository = $this->createMock(ImageRepository:: class);
+        $imageRepository = $this->createMock(ImageRepository::class);
 
         $imageRepository
             ->expects($this->once())

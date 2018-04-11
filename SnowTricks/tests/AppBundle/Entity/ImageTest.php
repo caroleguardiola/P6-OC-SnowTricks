@@ -16,6 +16,7 @@ class ImageTest extends TestCase
         $image = new Image;
         $image->setExtension('jpg');
         $this->assertSame('jpg', $image->getExtension());
+        $this->assertNull($image->getId());
     }
 
     /**
