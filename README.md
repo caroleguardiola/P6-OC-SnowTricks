@@ -24,9 +24,8 @@ PHPUnit is installed too.
 
 
 # Structure :
-2 bundles in src :
-* 	TricksBundle : Tricks management and initial data in DataFixtures.
-* 	UserBundle : User management.
+1 bundle in src :
+* 	AppBundle : Tricks management and initial data in DataFixtures and User management.
 
 
 # Installing :
@@ -37,7 +36,7 @@ PHPUnit is installed too.
 	Copy /app/config/parameters.yml.dist and rename it in /app/config/parameters.yml and update with your parameters.
 5. 	Create the database : php bin/console doctrine:database:create
 6. 	Create schema with entities : php bin/console doctrine:schema:update --force
-7. 	Install initial data with 10 tricks (P6-OC-SnowTricks/SnowTricks/src/ST/TricksBundle/DataFixtures/ORM/LoadFixtures.php) : php bin/console doctrine:fixtures:load
+7. 	Install initial data with 10 tricks (P6-OC-SnowTricks/SnowTricks/src/ST/AppBundle/DataFixtures/ORM/LoadFixtures.php) : php bin/console doctrine:fixtures:load
 8. 	Open the website with web/app_dev.php.
 
 
